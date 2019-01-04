@@ -1,0 +1,5 @@
+package thermalmodel
+
+class ThermalPlot {
+
+}
