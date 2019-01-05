@@ -12,9 +12,10 @@ class ThermalHistorySimulation(val ageStep:Double, val burialHistory: List[(Doub
   val burialDepths: Vector[Int] = Vector.range(0,finalDepth+1,1)
   val ageMap: Map[Int, Double] = stepIndex.zip(ages).toMap
   val temperatureTensor: Map[Int,Map[Int,Double]] = tempTensorMap
-  this.calculate
+  val results = this.calculate
 
-  def calculate = samples.par.foreach(s => new SimulatedSample(s, this))
+  def calculate = //samples.par.foreach(s => new SimulatedSample(s, this))
+  samples.map(s => new SimulatedSample(s, this))
 
   def ages: Vector[Double] = stepIndex.map(step => initialAge - (step * adjustedAgeStep))
 

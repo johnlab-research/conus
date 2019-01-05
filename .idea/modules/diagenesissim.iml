@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="diagenesissim [file:/K:/Coding/Scala/DiagenesisSim/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="diagenesissim [file:/Users/papa/IdeaProjects/diagenesissim/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/../../target/scala-2.12/classes" />
     <output-test url="file://$MODULE_DIR$/../../target/scala-2.12/test-classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../..">
       <sourceFolder url="file://$MODULE_DIR$/../../src/main/scala" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../src/test/scala" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.12/src_managed/main" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.12/src_managed/test" isTestSource="true" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/../../target" />
@@ -14,18 +13,12 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.12.7:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalafx:scalafxml-core-sfx8_2.12:0.4:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalafx:scalafxml-core-macros-sfx8_2.12:0.4:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalafx:scalafx-extras_2.12:0.3.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-web:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-swing:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-media:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-graphics:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-fxml:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-controls:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-base:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: com.beachape:enumeratum_2.12:1.5.13:jar" level="project" />
-    <orderEntry type="library" name="sbt: com.beachape:enumeratum-macros_2.12:1.5.9:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-graphics:11:mac:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-fxml:11:mac:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-controls:11:mac:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-base:11:mac:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalafx:scalafx_2.12:11-R16:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-reflect:2.12.7:jar" level="project" />
     <orderEntry type="module-library">
       <library name="sbt: unmanaged-sources-and-docs">
         <CLASSES />
@@ -45,7 +38,17 @@
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" name="sbt: org.scala-lang:scala-reflect:2.12.7:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalafx:scalafx_2.12:11-R16:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.beachape:enumeratum-macros_2.12:1.5.9:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.beachape:enumeratum_2.12:1.5.13:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-base:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-controls:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-fxml:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-graphics:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-media:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-swing:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-web:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalafx:scalafx-extras_2.12:0.3.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalafx:scalafxml-core-macros-sfx8_2.12:0.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalafx:scalafxml-core-sfx8_2.12:0.4:jar" level="project" />
   </component>
 </module>

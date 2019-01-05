@@ -7,7 +7,7 @@ class CalculationStep (val stepNumber: Int, val myDepth: Int, val myAge: Double,
 
   if (stepNumber != 0) D47iFinal = calculate
 
-  println(sample.name, "| #"+stepNumber+"| Age = "+f"$myAge%1.1f"+" Ma | Depth = "+myDepth+" m | Temp = "+f"$temp%1.1f"+"˚C | Δ47obs = "+f"$D47iFinal%1.4f"+"%")
+  //println(sample.name, "| #"+stepNumber+"| Age = "+f"$myAge%1.1f"+" Ma | Depth = "+myDepth+" m | Temp = "+f"$temp%1.1f"+"˚C | Δ47obs = "+f"$D47iFinal%1.4f"+"%")
 
   def age: Double = myAge
   def finalTemp: Double = tempFinal
