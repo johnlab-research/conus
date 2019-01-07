@@ -13,8 +13,8 @@ import thermalmodel.{Sample, ThermalHistorySimulation, CalculationStep}
 
 object DiageneSim extends JFXApp {
 
-  val burialHistory = List((126.0,0.0), (0.0,4500.0))
-  val geothermalGradient = List((126.0,35.0))
+  val burialHistory = List((126.0,0.0), (0.0,6500.0))
+  val geothermalGradient = List((126.0,50.0))
   val surfaceTemperatures = List((126.0, 20.0),(0.0, 20.0))
 
   val sample1 = new Sample(name = "Sample 1", age = 63.0, stratigraphicDepth = 0.0, D47observed = 0.712, depositionalTemperature = 20.0)
@@ -28,18 +28,24 @@ object DiageneSim extends JFXApp {
 
   val firstResults: ListBuffer[CalculationStep] = model1.results.head.simSteps
 
-  println(firstResults.foreach(j => j.finalTemp))
+  val series1D47Env = firstResults.map(_.D47eq)
+  val series1D47sample = firstResults.map(_.D47iFinal)
+
+  val series1 = series1D47Env.zip(series1D47sample)
+
+  val plotMaximum = series1D47Env.max
+  val plotMinimum = series1D47Env.min
+
+  series1.foreach(println(_))
 
         stage = new JFXApp.PrimaryStage {
           title = "DiageneSim"
           scene = new Scene {
-            root = new ScatterChart(NumberAxis("X", 0, 6, 1), NumberAxis("Y", 0, 6, 1)) {
+            root = new ScatterChart(NumberAxis("D47Env", plotMinimum, plotMaximum, .1), NumberAxis("D47Obs", plotMinimum, plotMaximum, .1)) {
               title = "Scatter Chart"
               legendSide = Side.Right
               data = ObservableBuffer(
-                xySeries("Series 1", Seq((0.1, 0.2), (1.1, 0.8), (1.9, 2.5), (3.2, 3.3), (3.9, 3.5), (5.1, 5.4))),
-                xySeries("Series 2", Seq((0, 4), (1, 1), (2, 4.5), (3, 3.5), (4, 4.25), (5, 4.5))),
-                xySeries("Series 3", Seq((0, 1), (1, 2.55), (2, 4), (3, 3), (4, 4.5), (5, 5.5))))
+                xySeries("D47 env vs D47 obs", series1)),
             }
           }
         }
