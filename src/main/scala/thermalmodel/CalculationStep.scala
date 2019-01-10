@@ -10,11 +10,11 @@ class CalculationStep (val stepNumber: Int, val myDepth: Int, val myAge: Double,
   //println(sample.name, "| #"+stepNumber+"| Age = "+f"$myAge%1.1f"+" Ma | Depth = "+myDepth+" m | Temp = "+f"$temp%1.1f"+"˚C | Δ47obs = "+f"$D47iFinal%1.4f"+"%")
 
   def age: Double = myAge
-  def finalTemp: Double = tempFinal
+  def finalTemp: Double = math.sqrt(0.04028 * math.pow(10,6)/(calculate - 0.23776))-273.15
   def tempKelvin: Double = temp + 273.15
 
   def D47eq: Double = {
-    0.98 * (-3.407 * math.pow(10,9) / math.pow(tempKelvin,4) + 2.365 * math.pow(10,7) / math.pow(tempKelvin,3) - 2.607 * math.pow(10,3) / math.pow(tempKelvin,2) - 5.88 / tempKelvin) + 0.293
+    0.04028 * math.pow(10,6) / math.pow(tempKelvin,2) + 0.23776
   }
 
 
