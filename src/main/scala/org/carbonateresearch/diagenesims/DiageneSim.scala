@@ -1,4 +1,4 @@
-package diagenesim
+package org.carbonateresearch.diagenesims
 
 import scala.collection.mutable.ListBuffer
 import scalafx.application.JFXApp
@@ -9,7 +9,8 @@ import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart
-import thermalmodel.{Sample, ThermalHistorySimulation, CalculationStep, Constants}
+import org.carbonateresearch.diagenesims.thermalmodel.{CalculationStep, Constants, Sample, ThermalHistorySimulation}
+import org.carbonateresearch.diagenesims.thermalmodel.{CalculationStep, Sample, ThermalHistorySimulation}
 
 
 object DiageneSim extends JFXApp {

@@ -1,4 +1,4 @@
-package thermalmodel
+package org.carbonateresearch.diagenesims.thermalmodel
 
 class CalculationStep (val stepNumber: Int, val myDepth: Int, val myAge: Double, val D47iStart: Double, val temp: Double, val sample: SimulatedSample) {
   var D47iFinal: Double = D47iStart

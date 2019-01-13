@@ -1,4 +1,4 @@
-package thermalmodel
+package org.carbonateresearch.diagenesims.thermalmodel
 
 class ThermalHistorySimulation(val ageStep:Double, val burialHistory: List[(Double,Double)], val geothermalGradient: List[(Double,Double)], val surfaceTemp: List[(Double, Double)], val samples: List[Sample]) {
   val (burialAge, burialDepth) = burialHistory.unzip

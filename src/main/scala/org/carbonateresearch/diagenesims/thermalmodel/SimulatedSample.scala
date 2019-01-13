@@ -1,4 +1,4 @@
-package thermalmodel
+package org.carbonateresearch.diagenesims.thermalmodel
 
 import scala.collection.mutable.ListBuffer
 

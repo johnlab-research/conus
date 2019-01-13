@@ -1,4 +1,4 @@
-package thermalmodel
+package org.carbonateresearch.diagenesims.thermalmodel
 
 object ThermalModel extends App {
     //val regionalParameters = new Constants()
