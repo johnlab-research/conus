@@ -1,6 +1,6 @@
 package org.carbonateresearch.diagenesims.thermalmodel
 
-class Constants() {
+object Constants {
   def tref = 699.7
   def kref = 0.00000292
   def ea = 197

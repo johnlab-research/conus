@@ -1,5 +1,6 @@
 package org.carbonateresearch.diagenesims.thermalmodel
 
+import scala.annotation.tailrec
 import scala.collection.mutable.ListBuffer
 
 
@@ -24,18 +25,35 @@ class SimulatedSample(sample: Sample, thermalHistory: ThermalHistorySimulation )
   def ageStep: Double = thermalHistory.adjustedAgeStep
 
   def temperatureAtAgeDepth(stepNumber: Int, depth:Int): Double = {
+
     val ageDepthRel = temperatureTensor(stepNumber)
-    if(depth>=0){ageDepthRel(depth)}
-    else {
-      val (surfAge, surfTemp) = thermalHistory.surfaceTemp.unzip
-      thermalHistory.interpolator(age, surfAge, surfTemp)
+
+    depth>=0 match {
+      case true => ageDepthRel(depth)
+      case false => {val (surfAge, surfTemp) = thermalHistory.surfaceTemp.unzip
+                thermalHistory.interpolator(age, surfAge, surfTemp)}
     }
   }
 
+
+
   def calculate = {
-    while(simSteps.last.stepNumber != thermalHistory.nbSteps){
-      simSteps+=CalculationStep(simSteps.last, this)
+
+    @tailrec
+    def calculateLoop: Unit = {
+      (thermalHistory.nbSteps - simSteps.last.stepNumber) match {
+        case 1 => simSteps += CalculationStep(simSteps.last, this)
+        case _ => {
+          simSteps += CalculationStep(simSteps.last, this)
+          calculateLoop
+        }
+      }
+
     }
+      calculateLoop
+
+
   }
+
 
 }
