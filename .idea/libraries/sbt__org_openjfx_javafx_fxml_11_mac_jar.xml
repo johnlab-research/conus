@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="sbt: org.openjfx:javafx-fxml:11:mac:jar">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.openjfx/javafx-fxml/jars/javafx-fxml-11-mac.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

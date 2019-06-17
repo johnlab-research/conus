@@ -46,33 +46,31 @@ class ThermalHistorySimulation(val ageStep:Double, val burialHistory: List[(Doub
     var botX = 0.0
     var botY = 0.0
 
-    if(Index < xs.size-1){
+    (Index < xs.size-1) match {
+      case true => {
       topY = ys(Index)
       topX = topValue
       botY = ys(Index+1)
       botX = xs(Index+1)}
-    else {
+      case false => {
       topY = ys(Index-1)
       topX = xs(Index-1)
       botY = ys(Index)
       botX = xs(Index)
     }
+    }
     (botY-topY)/(topX-botX)*(topX-value)+topY
   }
 
-  def getClosest(num: Double, list:List[Double]): Double = {
-    val difference: List[Double] = list.map(a => a - num)
 
-    @tailrec
-    def getClosestLoop(num: Double, list:List[Double]): Unit = {
 
+    def getClosest[A: Numeric](num: A, list: List[A]): A = {
+      val im = implicitly[Numeric[A]]
+      list match {
+        case x :: xs => list.minBy (y => im.abs(im.minus(y, num)))
+        case Nil => throw new RuntimeException("Empty list")
+      }
     }
-
-    for(i <- 0 to list.size-1){
-      if (list.length-1>=i && list(i+1)-num < 0) return list(i)
-    }
-    (list(list.length-1))
-  }
 
 
 }
