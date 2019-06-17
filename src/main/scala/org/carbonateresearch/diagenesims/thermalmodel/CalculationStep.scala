@@ -1,4 +1,4 @@
-package thermalmodel
+package org.carbonateresearch.diagenesims.thermalmodel
 
 class CalculationStep (val stepNumber: Int, val myDepth: Int, val myAge: Double, val D47iStart: Double, val temp: Double, val sample: SimulatedSample) {
   var D47iFinal: Double = D47iStart
@@ -19,11 +19,10 @@ class CalculationStep (val stepNumber: Int, val myDepth: Int, val myAge: Double,
 
 
   def calculate: Double = {
-    val const = new Constants
-    val Tref = const.tref
-    val Kref = const.kref
-    val Ea = const.ea
-    val R = const.r
+    val Tref = Constants.tref
+    val Kref = Constants.kref
+    val Ea = Constants.ea
+    val R = Constants.r
     val dT = sample.ageStep * 1000000 * 365 * 24 * 60 * 60
 
     (D47iStart - D47eq) * math.exp(-dT * Kref * math.exp(Ea / R * ((1 / Tref) - (1 / tempKelvin)))) + D47eq

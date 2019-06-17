@@ -1,6 +1,9 @@
-package thermalmodel
+package org.carbonateresearch.diagenesims.thermalmodel
 
-class ThermalHistorySimulation(val ageStep:Double, val burialHistory: List[(Double,Double)], val geothermalGradient: List[(Double,Double)], val surfaceTemp: List[(Double, Double)], val samples: List[Sample]) {
+
+class ThermalHistorySimulation(val ageStep:Double, val burialHistory: List[(Double,Double)], val geothermalGradient: List[(Double,Double)], val surfaceTemp: List[(Double, Double)], val samples: List[Sample])
+{
+  import scala.annotation.tailrec
   val (burialAge, burialDepth) = burialHistory.unzip
   val initialAge: Double = burialAge.head
   val finalAge: Double = 0.0
@@ -12,10 +15,9 @@ class ThermalHistorySimulation(val ageStep:Double, val burialHistory: List[(Doub
   val burialDepths: Vector[Int] = Vector.range(0,finalDepth+1,1)
   val ageMap: Map[Int, Double] = stepIndex.zip(ages).toMap
   val temperatureTensor: Map[Int,Map[Int,Double]] = tempTensorMap
-  val results = this.calculate
+  val results: List[SimulatedSample] = this.calculate
 
-  def calculate = //samples.par.foreach(s => new SimulatedSample(s, this))
-  samples.map(s => new SimulatedSample(s, this))
+  def calculate: List[SimulatedSample] = samples.map(s => new SimulatedSample(s, this))
 
   def ages: Vector[Double] = stepIndex.map(step => initialAge - (step * adjustedAgeStep))
 
@@ -59,8 +61,15 @@ class ThermalHistorySimulation(val ageStep:Double, val burialHistory: List[(Doub
   }
 
   def getClosest(num: Double, list:List[Double]): Double = {
+    val difference: List[Double] = list.map(a => a - num)
+
+    @tailrec
+    def getClosestLoop(num: Double, list:List[Double]): Unit = {
+
+    }
+
     for(i <- 0 to list.size-1){
-      if (list.length-1>i && list(i+1)-num < 0) return list(i)
+      if (list.length-1>=i && list(i+1)-num < 0) return list(i)
     }
     (list(list.length-1))
   }
