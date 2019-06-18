@@ -10,7 +10,7 @@ import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart
 import org.carbonateresearch.diagenesims.thermalmodel.{CalculationStep, Constants, Sample, ThermalHistorySimulation}
-import org.carbonateresearch.diagenesims.thermalmodel.{CalculationStep, Sample, ThermalHistorySimulation}
+import org.carbonateresearch.diagenesims.thermalmodel.{CalculationStep, Sample, ThermalHistorySimulation, ClumpedEquations}
 
 
 object DiageneSim extends JFXApp {
@@ -39,11 +39,16 @@ object DiageneSim extends JFXApp {
 
   val series1 = time.zip(temperature)
 
+
   val dataset = ObservableBuffer(
     xySeries("Sample 1", series(0)),
+    xySeries("Sample 1 target", Seq((0.0, ClumpedEquations.davies19_T(sample1.D47observed)))),
     xySeries("Sample 2", series(1)),
+    xySeries("Sample 2 target", Seq((0.0, ClumpedEquations.davies19_T(sample2.D47observed)))),
     xySeries("Sample 3", series(2)),
-    xySeries("Sample 4", series(3)))
+    xySeries("Sample 3 target", Seq((0.0, ClumpedEquations.davies19_T(sample3.D47observed)))),
+    xySeries("Sample 4", series(3)),
+    xySeries("Sample 4 target", Seq((0.0, ClumpedEquations.davies19_T(sample4.D47observed)))))
 
   series.foreach(_.foreach(println))
 
