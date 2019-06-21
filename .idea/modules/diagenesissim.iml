@@ -14,18 +14,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.12.7:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalafx:scalafxml-core-sfx8_2.12:0.4:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalafx:scalafxml-core-macros-sfx8_2.12:0.4:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalafx:scalafx-extras_2.12:0.3.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-web:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-swing:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-media:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-graphics:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-fxml:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-controls:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.openjfx:javafx-base:11:win:jar" level="project" />
-    <orderEntry type="library" name="sbt: com.beachape:enumeratum_2.12:1.5.13:jar" level="project" />
-    <orderEntry type="library" name="sbt: com.beachape:enumeratum-macros_2.12:1.5.9:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalafx:scalafx_2.12:11-R16:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-reflect:2.12.7:jar" level="project" />
     <orderEntry type="module-library">
       <library name="sbt: unmanaged-sources-and-docs">
         <CLASSES />
@@ -45,7 +35,17 @@
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" name="sbt: org.scala-lang:scala-reflect:2.12.7:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalafx:scalafx_2.12:11-R16:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.beachape:enumeratum-macros_2.12:1.5.9:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.beachape:enumeratum_2.12:1.5.13:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-base:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-controls:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-fxml:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-graphics:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-media:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-swing:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.openjfx:javafx-web:11:win:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalafx:scalafx-extras_2.12:0.3.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalafx:scalafxml-core-macros-sfx8_2.12:0.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalafx:scalafxml-core-sfx8_2.12:0.4:jar" level="project" />
   </component>
 </module>

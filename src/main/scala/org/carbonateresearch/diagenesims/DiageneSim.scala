@@ -51,6 +51,7 @@ object DiageneSim extends JFXApp {
     xySeries("Sample 4 target", Seq((0.0, ClumpedEquations.davies19_T(sample4.D47observed)))))
 
   series.foreach(_.foreach(println))
+  println("with hydra 1")
 
 val maxTime = sampleList.map(a => a.depositionalAge).max+5
 val minTemp = series.flatMap(a => a.map(b => b._2)).min-5
