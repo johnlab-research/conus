@@ -1,4 +1,4 @@
-package org.carbonateresearch.diagenesims.thermalmodel
+package org.carbonateresearch.diagenesims.clumpedThermalModels
 
 case object ClumpedEquations {
   val davies19_D47: Double => Double = (temp: Double) => 0.04028 * math.pow(10,6) / math.pow(temp+273.15,2) + 0.23776

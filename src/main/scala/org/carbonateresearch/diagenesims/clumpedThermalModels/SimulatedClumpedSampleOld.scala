@@ -1,9 +1,9 @@
-package org.carbonateresearch.diagenesims.thermalmodel
+package org.carbonateresearch.diagenesims.clumpedThermalModels
 
 import scala.annotation.tailrec
 import scala.collection.mutable.ListBuffer
 
-class SimulatedSample(sample: Sample, thermalHistory: ThermalHistorySimulation ) {
+final case class SimulatedClumpedSampleOld(sample: ClumpedSample, thermalHistory: ThermalHistorySimulationOld ) {
   val name: String = sample.name
   val age: Double = sample.depositionalAge
   val depth: Int = math.ceil(sample.depositionalDepth).toInt
@@ -14,7 +14,7 @@ class SimulatedSample(sample: Sample, thermalHistory: ThermalHistorySimulation )
   val surfaceTMap: Map[Int,Double] = thermalHistory.depth2Temp(thermalHistory.initialAge)
   val initialSurfaceT = sample.depositionalTemperature //surfaceTMap(0)
 
-  var simSteps = ListBuffer(CalculationStep(stepNumber = 0, currentDepth = depth, thermalHistory.initialAge, ClumpedEquations.davies19_D47(depoTemp), initialSurfaceT, this))
+  var simSteps = ListBuffer(ThermalCalculationStepOld(stepNumber = 0, currentDepth = depth, thermalHistory.initialAge, ClumpedEquations.davies19_D47(depoTemp), initialSurfaceT, this))
 
   calculate
 
@@ -47,9 +47,9 @@ class SimulatedSample(sample: Sample, thermalHistory: ThermalHistorySimulation )
     @tailrec
     def calculateLoop: Unit = {
       (thermalHistory.nbSteps - simSteps.last.stepNumber) match {
-        case 1 => simSteps += CalculationStep(simSteps.last, this)
+        case 1 => simSteps += ThermalCalculationStepOld(simSteps.last, this)
         case _ => {
-          simSteps += CalculationStep(simSteps.last, this)
+          simSteps += ThermalCalculationStepOld(simSteps.last, this)
           calculateLoop
         }
       }

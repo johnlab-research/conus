@@ -1,6 +1,9 @@
-package org.carbonateresearch.diagenesims.thermalmodel
+package org.carbonateresearch.diagenesims.clumpedThermalModels
 
-class CalculationStep (val stepNumber: Int, val myDepth: Int, val myAge: Double, val D47iStart: Double, val temp: Double, val sample: SimulatedSample) {
+import org.carbonateresearch.diagenesims.ageSteppedModels.{AbstractCalculationStep}
+
+final case class ThermalCalculationStepOld(stepNumber: Int, myDepth: Int, myAge: Double, D47iStart: Double, temp: Double, sample: SimulatedClumpedSampleOld)
+extends AbstractCalculationStep {
   var D47iFinal: Double = D47iStart
   var tempFinal: Double = temp
   val thermalRegime: Map[Int, Double] = sample.temperatureTensor(stepNumber)
@@ -29,12 +32,12 @@ class CalculationStep (val stepNumber: Int, val myDepth: Int, val myAge: Double,
   }
 }
 
-object CalculationStep {
-  def apply(stepNumber: Int, currentDepth: Int, prevStepAge: Double, prevD47i: Double, prevTemp: Double, sample: SimulatedSample): CalculationStep = {
-    new CalculationStep(stepNumber, currentDepth, prevStepAge, prevD47i, prevTemp, sample)}
+object ThermalCalculationStepOld {
+  def apply(stepNumber: Int, currentDepth: Int, prevStepAge: Double, prevD47i: Double, prevTemp: Double, sample: SimulatedClumpedSampleOld): ThermalCalculationStepOld = {
+    new ThermalCalculationStepOld(stepNumber, currentDepth, prevStepAge, prevD47i, prevTemp, sample)}
 
 
-  def apply(previousStep: CalculationStep, sample: SimulatedSample): CalculationStep = {
+  def apply(previousStep: ThermalCalculationStepOld, sample: SimulatedClumpedSampleOld): ThermalCalculationStepOld = {
 
     val newStepNumber = previousStep.stepNumber+1
     val newAgeOfStep = previousStep.age - sample.ageStep
@@ -42,7 +45,7 @@ object CalculationStep {
     val newDepth = if (newAgeOfStep <= sample.age) sample.depthForStep(newAgeOfStep)-depthOffset + sample.depth else 0
     val newTemp = sample.temperatureAtAgeDepth(newStepNumber, newDepth)
 
-    new CalculationStep(newStepNumber,
+    new ThermalCalculationStepOld(newStepNumber,
       newDepth,
       newAgeOfStep,
       previousStep.D47iFinal,

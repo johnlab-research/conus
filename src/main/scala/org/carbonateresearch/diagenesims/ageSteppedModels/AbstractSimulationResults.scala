@@ -1,0 +1,2 @@
+package org.carbonateresearch.diagenesims.ageSteppedModels
+trait AbstractSimulationResults

@@ -1,6 +1,7 @@
 package org.carbonateresearch.diagenesims
 
 import scala.collection.mutable.ListBuffer
+import scala.collection.Map
 import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Side
@@ -9,30 +10,69 @@ import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart
-import org.carbonateresearch.diagenesims.thermalmodel.{CalculationStep, Constants, Sample, ThermalHistorySimulation}
-import org.carbonateresearch.diagenesims.thermalmodel.{CalculationStep, Sample, ThermalHistorySimulation, ClumpedEquations}
+import org.carbonateresearch.diagenesims.ageSteppedModels.{AbstractSimulationParameters, ChainableCalculation, Stepper}
+import org.carbonateresearch.diagenesims.clumpedThermalModels.{ClumpedEquations, ClumpedSample, ForwardThermalClumpedModeller, ThermalCalculationStepOld, ThermalClumpedSimulationParameter, ThermalHistorySimulationOld}
+import akka.actor.Actor
+import akka.actor.ActorSystem
+import akka.actor.Props
+import org.carbonateresearch.diagenesims.calculationparameters.{AgesFromMaxMinCP, InterpolatorCP, MultiplierFromStepsCP}
+import org.carbonateresearch.measurementvalues.NumberWithErrors
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.{Await, Future}
+import spire.implicits._
+import spire.math._
+import spire.algebra._
+
 
 
 object DiageneSim extends JFXApp {
-  val burialHistory = List((110.0,0.0), (30.0,3000.0), (0.0,6500.0))
-  val geothermalGradient = List((110.0,30.0),(0.0,30.0))
-  val surfaceTemperatures = List((110.0, 30.0),(0.0, 25.0))
 
-  val sample1 = new Sample(name = "cc1", depositionalAge = 82.0, D47observed = 0.712, depositionalTemperature = 25.0)
-  val sample2 = new Sample(name = "cc2", depositionalAge = 82.0, depositionalDepth=450, D47observed = 0.450, depositionalTemperature = 0.0)
-  val sample3 = new Sample(name = "cc3", depositionalAge = 55.0, D47observed = 0.712, depositionalTemperature = 40.0)
-  val sample4 = new Sample(name = "cc4", depositionalAge = 20.0, D47observed = 0.600, depositionalTemperature = 40.0)
+
+  /*val actorSystem = ActorSystem("Diagenesim-Akka")
+  val Modeller = actorSystem.actorOf(Props[ForwardThermalClumpedModeller])*/
+
+  val burialHistory = List((Number(30.0),Number(0.0)), (Number(25.0),Number(3000.0)), (Number(20.0),Number(6500.0)))
+  val geothermalGradient = List((Number(110.0),Number(30.0)),(Number(0.0),Number(30.0)))
+  val surfaceTemperatures = List((Number(110.0), Number(30.0)),(Number(0.0), Number(25.0)))
+  val numberOfSteps = 10
+
+  val a = Stepper(numberOfSteps) + AgesFromMaxMinCP(Number(30.0),Number(20.0)) + InterpolatorCP(outputValueLabel = "Depth", inputValueLabel = "Age", xyList =burialHistory)
+
+  print(a)
+  println("      ")
+  print(a.evaluate)
+
+
+/*
+  private final case class tryMe[A](value: spire.math.Fractional[A], error:spire.math.Fractional[A]) {
+    override def toString(): String = (value.toString+" ± "+error.toString)
+  }
+
+  println(tryMe[Double](20.3,23.01))
+
+
+
+  val sample1 = new ClumpedSample(name = "cc1", depositionalAge = 82.0, D47observed = 0.712, depositionalTemperature = 25.0)
+  val sample2 = new ClumpedSample(name = "cc2", depositionalAge = 82.0, depositionalDepth=450, D47observed = 0.450, depositionalTemperature = 0.0)
+  val sample3 = new ClumpedSample(name = "cc3", depositionalAge = 55.0, D47observed = 0.712, depositionalTemperature = 40.0)
+  val sample4 = new ClumpedSample(name = "cc4", depositionalAge = 20.0, D47observed = 0.600, depositionalTemperature = 40.0)
 
   val sampleList = List(sample1, sample2, sample3, sample4)
 
+  val modelParameter = Map("Burial history" -> burialHistory, "geothermal gradient" -> geothermalGradient, "surface temperatures" -> surfaceTemperatures,
+                            "number of steps" -> numberOfSteps, "sample list" -> sampleList)
 
-  val model1 = new ThermalHistorySimulation(ageStep = 1,
+  Modeller ! sampleList
+
+
+  val model1 = new ThermalHistorySimulationOld(ageStep = 1,
     burialHistory = burialHistory, samples = sampleList, geothermalGradient = geothermalGradient, surfaceTemp = surfaceTemperatures)
 
   val series = model1.results.map(a => a.simSteps.map(_.myAge).zip(a.simSteps.map(_.finalTemp)).filter(p => p._1 <= a.age))
 
 
-  val firstResults: ListBuffer[CalculationStep] = model1.results.head.simSteps
+  val firstResults: ListBuffer[ThermalCalculationStepOld] = model1.results.head.simSteps
 
   val time = firstResults.map(_.myAge)
   val temperature = firstResults.map(_.finalTemp)
@@ -51,7 +91,8 @@ object DiageneSim extends JFXApp {
     xySeries("Sample 4 target", Seq((0.0, ClumpedEquations.davies19_T(sample4.D47observed)))))
 
   series.foreach(_.foreach(println))
-  println("with hydra 1")
+
+
 
 val maxTime = sampleList.map(a => a.depositionalAge).max+5
 val minTemp = series.flatMap(a => a.map(b => b._2)).min-5
@@ -77,6 +118,7 @@ val minTemp = series.flatMap(a => a.map(b => b._2)).min-5
             ObservableBuffer(data.map {case (x, y) => XYChart.Data[Number, Number](x, y)})
           )
 
+actorSystem.terminate()*/
 
       }
 

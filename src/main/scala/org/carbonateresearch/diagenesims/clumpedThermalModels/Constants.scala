@@ -1,4 +1,4 @@
-package org.carbonateresearch.diagenesims.thermalmodel
+package org.carbonateresearch.diagenesims.clumpedThermalModels
 
 object Constants {
   def tref = 699.7
