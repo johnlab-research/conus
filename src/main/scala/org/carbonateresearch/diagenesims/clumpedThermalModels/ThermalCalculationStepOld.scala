@@ -1,6 +1,6 @@
 package org.carbonateresearch.diagenesims.clumpedThermalModels
 
-import org.carbonateresearch.diagenesims.ageSteppedModels.{AbstractCalculationStep}
+import org.carbonateresearch.diagenesims.common.{AbstractCalculationStep}
 
 final case class ThermalCalculationStepOld(stepNumber: Int, myDepth: Int, myAge: Double, D47iStart: Double, temp: Double, sample: SimulatedClumpedSampleOld)
 extends AbstractCalculationStep {

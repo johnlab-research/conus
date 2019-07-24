@@ -7,12 +7,14 @@ final case class CalculationResults(steps: List[Number], parameters: List[Calcul
    def values(label:String): Map[Number,Number] = results(label)
    def valueForStep(label: String, step:Number): Number = values(label)(step)
 
+   def resultsPerStep: Map[Number,Map[String, Number]] = {
+      steps.map(s => (s,results.map(r => (r._1, r._2(s))))).toMap
+
+   }
+
    override def toString: String = {
 
-      val line:String = results.map(x => x._1.toString+" | ").foldLeft("Step # | ")(_+_) + EOL +
-      steps.map(s => s.toString+" | "+ results.map(r => r._2(s).toString + " | "))
-      println(line+"Did it work?")
-     results.map(x => x._1.toString).foldLeft("Step #")(_+_)
+      steps.map(step => "Step: "+ step.toString + resultsPerStep(step).map(k => k._1.toString + ": " + k._2.toString + " | " ).foldLeft(" -> ")(_+_) + EOL).foldLeft(EOL)(_+_)
    }
 }
 

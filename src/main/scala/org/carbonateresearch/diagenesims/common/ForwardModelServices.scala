@@ -1,4 +1,4 @@
-package org.carbonateresearch.diagenesims.ageSteppedModels
+package org.carbonateresearch.diagenesims.common
 
 import scala.collection.immutable.List
 import scala.annotation.{tailrec}

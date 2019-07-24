@@ -1,4 +1,4 @@
-package org.carbonateresearch.diagenesims.ageSteppedModels
+package org.carbonateresearch.diagenesims.common
 
 import org.carbonateresearch.diagenesims.calculationparameters.CalculationParameters
 

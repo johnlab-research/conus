@@ -10,39 +10,66 @@ import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart
-import org.carbonateresearch.diagenesims.ageSteppedModels.{AbstractSimulationParameters, ChainableCalculation, Stepper}
-import org.carbonateresearch.diagenesims.clumpedThermalModels.{ClumpedEquations, ClumpedSample, ForwardThermalClumpedModeller, ThermalCalculationStepOld, ThermalClumpedSimulationParameter, ThermalHistorySimulationOld}
+import org.carbonateresearch.diagenesims.common.{AbstractSimulationParameters, ChainableCalculation, NumberWrapper, ParrallelModellerDispatcherActor, Stepper}
+import org.carbonateresearch.diagenesims.clumpedThermalModels.{ClumpedEquations, ClumpedSample, ThermalCalculationStepOld, ThermalClumpedSimulationParameter, ThermalHistorySimulationOld}
 import akka.actor.Actor
 import akka.actor.ActorSystem
 import akka.actor.Props
-import org.carbonateresearch.diagenesims.calculationparameters.{AgesFromMaxMinCP, InterpolatorCP, MultiplierFromStepsCP}
-import org.carbonateresearch.measurementvalues.NumberWithErrors
+import akka.pattern.ask
+import akka.util.Timeout
 
-import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.ExecutionContext.global
 import scala.concurrent.{Await, Future}
+import scala.concurrent.duration._
+import org.carbonateresearch.diagenesims.calculationparameters.{AgesFromIncrementCP, AgesFromMaxMinCP, BurialTemperatureCP, CalculationResults, GeothermalGradientHistoryCP, InterpolatorCP, SurfaceTemperaturesHistoryCP}
 import spire.implicits._
 import spire.math._
 import spire.algebra._
 
 
+object DiageneSim extends JFXApp with NumberWrapper {
 
-object DiageneSim extends JFXApp {
+
+  val actorSystem = ActorSystem("Diagenesim-Akka")
+  val modeller = actorSystem.actorOf(Props[ParrallelModellerDispatcherActor])
+
+  def time[R](block: => R): R = {
+    val t0 = System.nanoTime()
+    val result = block    // call-by-name
+    val t1 = System.nanoTime()
+    println("Elapsed time: " + ((t1 - t0)/10E9) + " seconds")
+    result
+  }
+
+  val burialHistory = List((30.0,0.0), (25.0,3000.0), (20.0,6500.0))
+  val geothermalGradient = List((110.0,30.0),(0.0,30.0))
+  val surfaceTemperatures = List((110.0,30.0),(0.0, 25.0))
+  val numberOfSteps = 20
+
+  val a: List[ChainableCalculation] = (500 to 1000 by 10).map(x =>
+   Stepper(numberOfSteps) |-> AgesFromMaxMinCP(70,50) |->
+    InterpolatorCP(outputValueLabel = "Depth", inputValueLabel = "Age", xyList =List((70.0,0.0), (65.0,450.0), (50.0,x))) |->
+    InterpolatorCP(outputValueLabel = "Geothermal Gradient", inputValueLabel = "Age", xyList =geothermalGradient) |->
+    InterpolatorCP(outputValueLabel = "Surface Temperature", inputValueLabel = "Age", xyList =surfaceTemperatures) |->
+    BurialTemperatureCP(geothermalGradient)).toList
 
 
-  /*val actorSystem = ActorSystem("Diagenesim-Akka")
-  val Modeller = actorSystem.actorOf(Props[ForwardThermalClumpedModeller])*/
 
-  val burialHistory = List((Number(30.0),Number(0.0)), (Number(25.0),Number(3000.0)), (Number(20.0),Number(6500.0)))
-  val geothermalGradient = List((Number(110.0),Number(30.0)),(Number(0.0),Number(30.0)))
-  val surfaceTemperatures = List((Number(110.0), Number(30.0)),(Number(0.0), Number(25.0)))
-  val numberOfSteps = 10
 
-  val a = Stepper(numberOfSteps) + AgesFromMaxMinCP(Number(30.0),Number(20.0)) + InterpolatorCP(outputValueLabel = "Depth", inputValueLabel = "Age", xyList =burialHistory)
 
-  print(a)
-  println("      ")
-  print(a.evaluate)
+  def handleResults(modelResults: List[CalculationResults]) = {
+    //l.foreach(println)
+    println("Terminating the actor system")
+    val tolerance = Interval(Number(40), Number(50))
+    println(tolerance)
 
+    val validResults = modelResults.filter(p => tolerance.contains(p.results("Burial Temperature")(numberOfSteps)) )
+    println("Found "+validResults.size+" calibrated models:")
+    //validResults.foreach(println)
+    print("")
+  }
+
+  modeller ! a
 
 /*
   private final case class tryMe[A](value: spire.math.Fractional[A], error:spire.math.Fractional[A]) {
@@ -118,8 +145,11 @@ val minTemp = series.flatMap(a => a.map(b => b._2)).min-5
             ObservableBuffer(data.map {case (x, y) => XYChart.Data[Number, Number](x, y)})
           )
 
-actorSystem.terminate()*/
+*/
 
+  override def stopApp(): Unit =
+    actorSystem.terminate()
+    super.stopApp()
       }
 
 

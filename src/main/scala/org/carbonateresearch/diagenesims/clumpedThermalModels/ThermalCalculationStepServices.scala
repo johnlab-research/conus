@@ -1,6 +1,6 @@
 package org.carbonateresearch.diagenesims.clumpedThermalModels
 
-import org.carbonateresearch.diagenesims.ageSteppedModels.AbstractCalculationStep
+import org.carbonateresearch.diagenesims.common.AbstractCalculationStep
 
 trait ThermalCalculationStepServices extends AbstractCalculationStep {
    def calculate (stepNumber: Int,

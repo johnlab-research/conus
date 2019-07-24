@@ -1,5 +1,5 @@
 package org.carbonateresearch.diagenesims.clumpedThermalModels
-import org.carbonateresearch.diagenesims.ageSteppedModels.{AbstractCalculationStep, AbstractSimulationParameters}
+import org.carbonateresearch.diagenesims.common.{AbstractCalculationStep, AbstractSimulationParameters}
 
 final case class ThermalClumpedSimulationParameter (stepNumber: Int,
                                                     age: Double,
