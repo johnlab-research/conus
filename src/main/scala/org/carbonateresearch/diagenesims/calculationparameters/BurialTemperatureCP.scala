@@ -1,14 +1,15 @@
 package org.carbonateresearch.diagenesims.calculationparameters
 
-import spire.math.{Number, Numeric}
+import spire.math.{Number}
 import spire.implicits._
+import org.carbonateresearch.diagenesims.calculationparameters.parametersIO.{GeothermalGradient, Depth, BurialTemperature, SurfaceTemperature, CalculationParametersIOLabels}
 
 final case class BurialTemperatureCP(geothermalGradientsAgeMap: List[(Number,Number)]) extends CalculationParameters {
 
-  override def calculate (steps:List[Number],previousResults:Map[String,Map[Number,Number]]): Map[String, Map[Number,Number]]  = {
-    val burialTemperatures = steps.map(step => (step,previousResults("Depth")(step)*previousResults("Geothermal Gradient")(step)/1000+previousResults("Surface Temperature")(step)))
+  override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
+    val burialTemperatures = previousResults(step)(Depth)*previousResults(step)(GeothermalGradient)/1000+previousResults(step)(SurfaceTemperature)
 
-      Map("Burial Temperature" -> burialTemperatures.toMap)++previousResults
+      Map(step -> Map(BurialTemperature -> burialTemperatures))
 
   }
 

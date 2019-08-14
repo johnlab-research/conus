@@ -1,17 +1,15 @@
 package org.carbonateresearch.diagenesims.calculationparameters
 
-import spire.math.{Number, Numeric, abs}
+import org.carbonateresearch.diagenesims.calculationparameters.parametersIO.{CalculationParametersIOLabels}
+import spire.math.{Number, abs}
 import spire.implicits._
 
-final case class MultiplierFromStepsCP(outputValueLabel: String, maxValue: Number, minValue: Number) extends CalculationParameters {
+final case class MultiplierFromStepsCP(outputValueLabel: CalculationParametersIOLabels, maxValue: Number, minValue: Number, increment: Number) extends CalculationParameters {
 
-   override def calculate (steps:List[Number],previousResults:Map[String,Map[Number,Number]]): Map[String, Map[Number,Number]]  = {
+   override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
 
-        val numberOfSteps = steps.size-1
-        val increment = abs(maxValue-minValue)/(numberOfSteps)
-        val resultsList = steps.map(stepNb => (stepNb, (maxValue-(stepNb*increment)))).toMap
-        Map(outputValueLabel -> resultsList)
-
+        val resultsList = maxValue-(step*increment)
+        Map(step -> Map(outputValueLabel -> resultsList))
   }
 
 }

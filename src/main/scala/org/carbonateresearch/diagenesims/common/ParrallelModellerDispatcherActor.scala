@@ -1,5 +1,5 @@
 package org.carbonateresearch.diagenesims.common
-
+import scala.compat.Platform.EOL
 import akka.actor.Actor
 import akka.actor.ActorSystem
 import akka.actor.Props
@@ -42,7 +42,7 @@ class ParrallelModellerDispatcherActor extends Actor {
             model match {
               case m:CalculationResults => {
                 resultsList += m
-                println(m)
+                val modelData = "Model #: "+m.summary+EOL
 
                 val t1 = System.nanoTime()
                 val elapsedTime = ((t1 - t0)/10E9)
@@ -50,12 +50,15 @@ class ParrallelModellerDispatcherActor extends Actor {
                 val predictedTime = elapsedTime/percentCompleted*(100-percentCompleted)
 
                 if(resultsList.size == initialCount){
-                  println("-> 100% completed in "+elapsedTime+" seconds.")
+                  val runStatistics = "-> 100% completed in "+elapsedTime+" seconds."+ EOL
+                  println(modelData+runStatistics)
                   DiageneSim.handleResults(resultsList.toList)
                 }
                 else {
-                  println("-> "+percentCompleted+"% completed in "+elapsedTime+" seconds. Predicted time remaining: "+predictedTime+" seconds.")
+                  val runStatistics = "-> "+percentCompleted+"% completed in "+elapsedTime+" seconds. Predicted time remaining: "+predictedTime+" seconds."+ EOL
+                  println(modelData+runStatistics)
                 }
+
                 }
             }}
         })

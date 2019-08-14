@@ -1,17 +1,18 @@
 package org.carbonateresearch.diagenesims.calculationparameters
+import org.carbonateresearch.diagenesims.calculationparameters.parametersIO.{CalculationParametersIOLabels}
 
 import spire.math._
 import spire.implicits._
 import spire.algebra._
 
-final case class InterpolatorCP(outputValueLabel: String, inputValueLabel:String, xyList: List[(Number, Number)])
+final case class InterpolatorCP(outputValueLabel: CalculationParametersIOLabels, inputValueLabel:CalculationParametersIOLabels, xyList: List[(Number, Number)])
 extends CalculationParameters {
 
-  override def calculate (steps:List[Number],previousResults:Map[String,Map[Number,Number]]): Map[String, Map[Number,Number]] = {
+  override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]] = {
 
-    val xValues = previousResults(inputValueLabel)
+    val xValue = previousResults(step)(inputValueLabel)
 
-    Map(outputValueLabel -> xValues.map(x => (x._1, interpolateSingleValue(x._2, xyList))))
+    Map(step -> Map(outputValueLabel -> interpolateSingleValue(xValue, xyList)))
 
   }
 

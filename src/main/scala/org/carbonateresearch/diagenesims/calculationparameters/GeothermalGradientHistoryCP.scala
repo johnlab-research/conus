@@ -1,13 +1,14 @@
 package org.carbonateresearch.diagenesims.calculationparameters
 
-import spire.math.{Number, Numeric}
+import spire.math.{Number}
+import org.carbonateresearch.diagenesims.calculationparameters.parametersIO.{GeothermalGradient, Depth, Age, CalculationParametersIOLabels}
 import spire.implicits._
 
-final case class GeothermalGradientHistoryCP(GeothermalGradientsAgeMap:List[(Number, Number)]) extends CalculationParameters {
+final case class GeothermalGradientHistoryCP(geothermalGradientsAgeMap:List[(Number, Number)]) extends CalculationParameters {
 
-  override def calculate (steps:List[Number],previousResults:Map[String,Map[Number,Number]]): Map[String, Map[Number,Number]]  = {
+  override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
 
-    InterpolatorCP(inputValueLabel = "Age", outputValueLabel ="Geothermal Gradient", xyList = GeothermalGradientsAgeMap).calculate(steps, previousResults)
+    InterpolatorCP(inputValueLabel = Age, outputValueLabel = GeothermalGradient, xyList = geothermalGradientsAgeMap).calculate(step, previousResults)
 
   }
 

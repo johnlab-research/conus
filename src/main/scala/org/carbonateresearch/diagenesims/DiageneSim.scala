@@ -11,6 +11,7 @@ import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart
 import org.carbonateresearch.diagenesims.common.{AbstractSimulationParameters, ChainableCalculation, NumberWrapper, ParrallelModellerDispatcherActor, Stepper}
+import org.carbonateresearch.diagenesims.calculationparameters.parametersIO._
 import org.carbonateresearch.diagenesims.clumpedThermalModels.{ClumpedEquations, ClumpedSample, ThermalCalculationStepOld, ThermalClumpedSimulationParameter, ThermalHistorySimulationOld}
 import akka.actor.Actor
 import akka.actor.ActorSystem
@@ -18,10 +19,12 @@ import akka.actor.Props
 import akka.pattern.ask
 import akka.util.Timeout
 
+import scala.compat.Platform.EOL
+
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
-import org.carbonateresearch.diagenesims.calculationparameters.{AgesFromIncrementCP, AgesFromMaxMinCP, BurialTemperatureCP, CalculationResults, GeothermalGradientHistoryCP, InterpolatorCP, SurfaceTemperaturesHistoryCP}
+import org.carbonateresearch.diagenesims.calculationparameters.{AgesFromMaxMinCP, BurialTemperatureCP, CalculationResults, GeothermalGradientHistoryCP, InterpolatorCP, SurfaceTemperaturesHistoryCP, FunctionCP}
 import spire.implicits._
 import spire.math._
 import spire.algebra._
@@ -31,7 +34,7 @@ object DiageneSim extends JFXApp with NumberWrapper {
 
 
   val actorSystem = ActorSystem("Diagenesim-Akka")
-  val modeller = actorSystem.actorOf(Props[ParrallelModellerDispatcherActor])
+  private val modeller = actorSystem.actorOf(Props[ParrallelModellerDispatcherActor])
 
   def time[R](block: => R): R = {
     val t0 = System.nanoTime()
@@ -42,30 +45,43 @@ object DiageneSim extends JFXApp with NumberWrapper {
   }
 
   val burialHistory = List((30.0,0.0), (25.0,3000.0), (20.0,6500.0))
-  val geothermalGradient = List((110.0,30.0),(0.0,30.0))
+  val geothermalGradient = List((110.0,30.0),(0.0,20.0))
   val surfaceTemperatures = List((110.0,30.0),(0.0, 25.0))
-  val numberOfSteps = 20
+  val numberOfSteps = 130
 
-  val a: List[ChainableCalculation] = (500 to 1000 by 10).map(x =>
-   Stepper(numberOfSteps) |-> AgesFromMaxMinCP(70,50) |->
-    InterpolatorCP(outputValueLabel = "Depth", inputValueLabel = "Age", xyList =List((70.0,0.0), (65.0,450.0), (50.0,x))) |->
-    InterpolatorCP(outputValueLabel = "Geothermal Gradient", inputValueLabel = "Age", xyList =geothermalGradient) |->
-    InterpolatorCP(outputValueLabel = "Surface Temperature", inputValueLabel = "Age", xyList =surfaceTemperatures) |->
-    BurialTemperatureCP(geothermalGradient)).toList
+  //val doubleFun = (x: List[Number]) => x.map(_*2)
+  //val doubler = FunctionCP(List(Depth), List(Doubler()), doubleFun)
+
+  val doubleFun = (x: Number) => x * 2
+  val quadrupleFun = (x: Number, y:Number) => x * y
+  val simpleQuadrupler = quadrupleFun(Number(2), _: Number)
+
+  val doubler = FunctionCP(Depth, doubleFun, Doubler(0))
+
+  case object Quadrupler extends CalculationParametersIOLabels {override def toString: String = "My Quadrupler"}
+
+  val quadrupler = FunctionCP((Doubler(), Doubler()), quadrupleFun, Quadrupler)
+
+  val a: List[ChainableCalculation] = (500 to 1000 by 5).map(x =>
+   Stepper(numberOfSteps) |-> AgesFromMaxMinCP(110,0) |->
+    InterpolatorCP(outputValueLabel = Depth, inputValueLabel = Age, xyList =List((70.0,0.0), (65.0,450.0), (50.0,x))) |->
+    InterpolatorCP(outputValueLabel = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) |->
+    InterpolatorCP(outputValueLabel = SurfaceTemperature, inputValueLabel = Age, xyList =surfaceTemperatures) |->
+    BurialTemperatureCP(geothermalGradient) |->
+  doubler |->
+  quadrupler).toList
 
 
-
+case class MyGod(n:Int =0) extends CalculationParametersIOLabels
 
 
   def handleResults(modelResults: List[CalculationResults]) = {
-    //l.foreach(println)
-    println("Terminating the actor system")
-    val tolerance = Interval(Number(40), Number(50))
-    println(tolerance)
+    val tolerance = Interval(Number(45), Number(48))
 
-    val validResults = modelResults.filter(p => tolerance.contains(p.results("Burial Temperature")(numberOfSteps)) )
+    val validResults = modelResults.filter(p => tolerance.contains(
+      p.finalResult(BurialTemperature)) )
     println("Found "+validResults.size+" calibrated models:")
-    //validResults.foreach(println)
+    validResults.map(r => "Model ->"+r.summary+EOL).foreach(println)
     print("")
   }
 
