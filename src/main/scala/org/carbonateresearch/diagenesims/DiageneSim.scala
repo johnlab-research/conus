@@ -24,7 +24,7 @@ import scala.compat.Platform.EOL
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
-import org.carbonateresearch.diagenesims.calculationparameters.{AgesFromMaxMinCP, BurialTemperatureCP, CalculationResults, GeothermalGradientHistoryCP, InterpolatorCP, SurfaceTemperaturesHistoryCP, FunctionCP}
+import org.carbonateresearch.diagenesims.calculationparameters.{AgesFromMaxMinCP, BurialTemperatureCP, CalculationResults, GeothermalGradientHistoryCP, InterpolatorCP, SurfaceTemperaturesHistoryCP, ApplyFunction}
 import spire.implicits._
 import spire.math._
 import spire.algebra._
@@ -56,11 +56,11 @@ object DiageneSim extends JFXApp with NumberWrapper {
   val quadrupleFun = (x: Number, y:Number) => x * y
   val simpleQuadrupler = quadrupleFun(Number(2), _: Number)
 
-  val doubler = FunctionCP(Depth, doubleFun, Doubler(0))
+  val doubler = ApplyFunction(Previous(Depth,1000,TakeSpecificValue(40)), doubleFun, Doubler)
 
-  case object Quadrupler extends CalculationParametersIOLabels {override def toString: String = "My Quadrupler"}
+  case object Quadrupler extends CalculationParametersIOLabels
 
-  val quadrupler = FunctionCP((Doubler(), Doubler()), quadrupleFun, Quadrupler)
+  val quadrupler = ApplyFunction((Doubler, Doubler), quadrupleFun, Quadrupler)
 
   val a: List[ChainableCalculation] = (500 to 1000 by 5).map(x =>
    Stepper(numberOfSteps) |-> AgesFromMaxMinCP(110,0) |->
