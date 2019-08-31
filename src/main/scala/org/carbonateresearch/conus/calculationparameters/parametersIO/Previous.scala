@@ -4,5 +4,5 @@ final case class Previous(input:CalculationParametersIOLabels, offset:Int, rule:
 object Previous {
   def apply(input:CalculationParametersIOLabels) = new Previous(input, 1, TakeStepZeroValue)
   def apply(input:CalculationParametersIOLabels, offset:Int) = new Previous(input, offset, TakeStepZeroValue)
-  def apply(input:CalculationParametersIOLabels, rule:PreviousZeroHandle) = new Previous(input, 1, TakeStepZeroValue)
+  def apply(input:CalculationParametersIOLabels, rule:PreviousZeroHandle) = new Previous(input, 1, rule)
 }

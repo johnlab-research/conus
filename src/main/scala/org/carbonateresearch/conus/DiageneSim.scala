@@ -23,7 +23,7 @@ import scala.compat.Platform.EOL
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
-import org.carbonateresearch.conus.calculationparameters.{AgesFromMaxMinCP, ApplyFunction, BurialTemperatureCP, CalculationResults, GeothermalGradientHistoryCP, InterpolatorCP, SurfaceTemperaturesHistoryCP}
+import org.carbonateresearch.conus.calculationparameters.{AgesFromMaxMinCP, AgesToDepthCP, ApplyFunction, BurialTemperatureCP, CalculationResults, GeothermalGradientHistoryCP, InterpolatorCP, SurfaceTemperaturesHistoryCP}
 import spire.implicits._
 import spire.math._
 import spire.algebra._
@@ -44,43 +44,49 @@ object DiageneSim extends JFXApp with NumberWrapper {
     result
   }
 
-  val burialHistory = List((30.0,0.0), (25.0,3000.0), (20.0,6500.0))
+  val burialHistory = List((110.0,0.0), (90.0,3000.0), (65.0,6500.0),(15.0,4000.0),(10.0,2500.0),(0.0,0.0))
   val geothermalGradient = List((110.0,30.0),(0.0,20.0))
   val surfaceTemperatures = List((110.0,30.0),(0.0, 25.0))
-  val numberOfSteps = 130
+  val numberOfSteps = 220
 
-  //val doubleFun = (x: List[Number]) => x.map(_*2)
-  //val doubler = FunctionCP(List(Depth), List(Doubler()), doubleFun)
+ /* Testing the model using diffusion of Passey and Henkes as a test*/
 
-  val doubleFun = (x: Number) => x * 2
-  val quadrupleFun = (x: Number, y:Number) => x * y
-  val wrongSignatureFunc = (x: Double, y:Double) => x * y
-  val simpleQuadrupler = quadrupleFun(Number(2), _: Number)
+  def tref = 699.7
+  def kref = 0.00000292
+  def ea = 197
+  def r = 0.008314
 
-  val doubler = ApplyFunction(Previous(Depth,1000,TakeSpecificValue(40)), doubleFun, Doubler)
+  case object dT extends CalculationParametersIOLabels
+  case object TKelvin extends CalculationParametersIOLabels
+  case object D47i extends CalculationParametersIOLabels
+  case object D47eq extends CalculationParametersIOLabels
 
-  case object Quadrupler extends CalculationParametersIOLabels
+  val D47eqFun = (t:Number) => Number(0.04028 * math.pow(10,6) / math.pow((t+273.15).toDouble,2) + 0.23776)
+  val dTFun = (previousT: Number, currentT: Number) => (currentT-previousT)* 1000000 * 365 * 24 * 60 * 60
+  val D47iFun =  (D47iStart: Number, D47eq: Number, T: Number,dTi: Number) =>
+    (D47iStart - D47eq) * math.exp((-1*dTi * kref * math.exp((ea / r * ((1 / tref) - (1 / (T+273.15)))).toDouble)).toDouble) + D47eq
 
-  val quadrupler = ApplyFunction((Doubler, Doubler), wrongSignatureFunc, Quadrupler)
 
-  val a: List[ChainableCalculation] = (500 to 1000 by 10).map(x =>
+  val a: List[ChainableCalculation] = (15 to 40 by 1).map(x =>
    Stepper(numberOfSteps) |-> AgesFromMaxMinCP(110,0) |->
-    InterpolatorCP(outputValueLabel = Depth, inputValueLabel = Age, xyList =List((70.0,0.0), (65.0,450.0), (50.0,x))) |->
+    AgesToDepthCP(burialHistory) |->
     InterpolatorCP(outputValueLabel = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) |->
-    InterpolatorCP(outputValueLabel = SurfaceTemperature, inputValueLabel = Age, xyList =surfaceTemperatures) |->
+    InterpolatorCP(outputValueLabel = SurfaceTemperature, inputValueLabel = Age, xyList = List((110.0,30.0),(0.0, x))) |->
     BurialTemperatureCP(geothermalGradient) |->
-  doubler |->
-  quadrupler).toList
+    ApplyFunction(BurialTemperature,D47eqFun,D47eq) |->
+    ApplyFunction((Previous(BurialTemperature),BurialTemperature),dTFun,dT) |->
+    ApplyFunction((Previous(D47i,TakeValueForLabel(D47eq)),D47eq,BurialTemperature,dT),D47iFun,D47i)
+  ).toList
 
 
 case class MyGod(n:Int =0) extends CalculationParametersIOLabels
 
 
   def handleResults(modelResults: List[CalculationResults]) = {
-    val tolerance = Interval(Number(45), Number(48))
+    val tolerance = Interval(Number(0.645), Number(0.655))
 
     val validResults = modelResults.filter(p => tolerance.contains(
-      p.finalResult(BurialTemperature)) )
+      p.finalResult(D47i)) )
     println("Found "+validResults.size+" calibrated models:")
     validResults.map(r => "Model ->"+r.summary+EOL).foreach(println)
     print("")

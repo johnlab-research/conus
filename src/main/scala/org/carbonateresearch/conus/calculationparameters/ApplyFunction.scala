@@ -33,6 +33,7 @@ final case class ApplyFunction(inputs: List[CalculationParametersIOLabels], outp
             case TakeStepZeroValue => previousResults(Number(0))(i.input)
             case TakeCurrentStepValue =>previousResults(step)(i.input)
             case TakeSpecificValue(v) => v
+            case TakeValueForLabel(l) => previousResults(step)(l)
           }
         }
 

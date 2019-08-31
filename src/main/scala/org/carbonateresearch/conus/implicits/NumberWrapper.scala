@@ -21,42 +21,42 @@ trait NumberWrapper {
 
   implicit def functionalWrapper (wrongFunc: (Double,Double,Double) => Double
                                  ): (Number, Number, Number) => Number = {
-    (v1,v2,v3: Number) => Number(wrongFunc((v1.toDouble,v2.toDouble,v3.toDouble)))
+    (v1,v2,v3: Number) => Number(wrongFunc(v1.toDouble,v2.toDouble,v3.toDouble))
   }
 
   implicit def functionalWrapper (wrongFunc: (Double,Double,Double,Double) => Double
                                  ): (Number, Number, Number,Number) => Number = {
-    (v1,v2,v3,v4: Number) => Number(wrongFunc((v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble)))
+    (v1,v2,v3,v4: Number) => Number(wrongFunc(v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble))
   }
 
   implicit def functionalWrapper (wrongFunc: (Double, Double,Double,Double,Double) => Double
                                  ): (Number,Number, Number, Number,Number) => Number = {
-    (v1,v2,v3,v4,v5: Number) => Number(wrongFunc((v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble)))
+    (v1,v2,v3,v4,v5: Number) => Number(wrongFunc(v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble))
   }
 
   implicit def functionalWrapper (wrongFunc: (Double,Double, Double,Double,Double,Double) => Double
                                  ): (Number,Number,Number, Number, Number,Number) => Number = {
-    (v1,v2,v3,v4,v5,v6: Number) => Number(wrongFunc((v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble,v6.toDouble)))
+    (v1,v2,v3,v4,v5,v6: Number) => Number(wrongFunc(v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble,v6.toDouble))
   }
 
   implicit def functionalWrapper (wrongFunc: (Double,Double,Double, Double,Double,Double,Double) => Double
                                  ): (Number,Number,Number,Number, Number, Number,Number) => Number = {
-    (v1,v2,v3,v4,v5,v6,v7: Number) => Number(wrongFunc((v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble,v6.toDouble,v7.toDouble)))
+    (v1,v2,v3,v4,v5,v6,v7: Number) => Number(wrongFunc(v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble,v6.toDouble,v7.toDouble))
   }
 
   implicit def functionalWrapper (wrongFunc: (Double,Double,Double,Double, Double,Double,Double,Double) => Double
                                  ): (Number,Number,Number,Number,Number, Number, Number,Number) => Number = {
-    (v1,v2,v3,v4,v5,v6,v7,v8: Number) => Number(wrongFunc((v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble,v6.toDouble,v7.toDouble,v8.toDouble)))
+    (v1,v2,v3,v4,v5,v6,v7,v8: Number) => Number(wrongFunc(v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble,v6.toDouble,v7.toDouble,v8.toDouble))
   }
 
   implicit def functionalWrapper (wrongFunc: (Double,Double,Double,Double,Double, Double,Double,Double,Double) => Double
                                  ): (Number,Number,Number,Number,Number,Number, Number, Number,Number) => Number = {
-    (v1,v2,v3,v4,v5,v6,v7,v8,v9: Number) => Number(wrongFunc((v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble,v6.toDouble,v7.toDouble,v8.toDouble,v9.toDouble)))
+    (v1,v2,v3,v4,v5,v6,v7,v8,v9: Number) => Number(wrongFunc(v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble,v6.toDouble,v7.toDouble,v8.toDouble,v9.toDouble))
   }
 
   implicit def functionalWrapper (wrongFunc: (Double,Double,Double,Double,Double,Double, Double,Double,Double,Double) => Double
                                  ): (Number,Number,Number,Number,Number,Number,Number, Number, Number,Number) => Number = {
-    (v1,v2,v3,v4,v5,v6,v7,v8,v9,v10: Number) => Number(wrongFunc((v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble,v6.toDouble,v7.toDouble,v8.toDouble,v9.toDouble,v10.toDouble)))
+    (v1,v2,v3,v4,v5,v6,v7,v8,v9,v10: Number) => Number(wrongFunc(v1.toDouble,v2.toDouble,v3.toDouble,v4.toDouble,v5.toDouble,v6.toDouble,v7.toDouble,v8.toDouble,v9.toDouble,v10.toDouble))
   }
 
 
