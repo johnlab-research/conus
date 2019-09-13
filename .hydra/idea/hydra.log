@@ -1,0 +1,82 @@
+2019-09-13 13:04:53.137 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 49 files in 1 roots took 55 ms.
+2019-09-13 13:04:53.143 INFO  c.t.hydra.Hydra - Loaded pickle store with 0 entries.
+2019-09-13 13:04:53.143 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2019-09-13 13:04:53.144 INFO  c.t.hydra.Hydra - Hydra version:       2.1.12
+2019-09-13 13:04:53.144 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2019-09-13 13:04:53.153 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 7 ms.
+2019-09-13 13:04:53.153 INFO  c.t.hydra.Hydra - Clean build: true
+2019-09-13 13:04:53.501 INFO  c.t.h.l.ActivatedLicenseText - ActivatedLicenseText.validate took 327 ms.
+2019-09-13 13:04:53.502 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 280. Maximum cores: 8
+2019-09-13 13:04:53.504 INFO  c.t.h.SourcePartitioner$ - No automatically balanced partition file C:\Users\cmjohn1\IdeaProjects\diagenesissim\.hydra\idea\diagenesissim\main\partition.hydra exist yet. Using plain partition strategy.
+2019-09-13 13:04:53.522 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 13 files.
+2019-09-13 13:04:53.523 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 12 files.
+2019-09-13 13:04:53.523 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 12 files.
+2019-09-13 13:04:53.523 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 12 files.
+2019-09-13 13:04:55.860 ERROR worker.1 - C:\Users\cmjohn1\IdeaProjects\diagenesissim\src\main\scala\org\carbonateresearch\conus\DiageneSim.scala:54: overloaded method value apply with alternatives:
+  (inputs: List[(org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels, List[spire.math.Number])])org.carbonateresearch.conus.calculationparameters.InitializeValues <and>
+  (input: (org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels, spire.math.Number)*)org.carbonateresearch.conus.calculationparameters.InitializeValues
+ cannot be applied to (List[(Product with Serializable with org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels, List[AnyVal])])
+ val b = Stepper(numberOfSteps) + InitializeValues(List(
+                                  ^
+2019-09-13 13:04:55.913 INFO  worker.0 - Worker used 0 cached entries.
+2019-09-13 13:04:55.913 INFO  c.t.h.WorkerThread - [worker.0]: 2346 ms 	13 sources.
+2019-09-13 13:04:56.012 INFO  worker.1 - Worker used 4 cached entries.
+2019-09-13 13:04:56.013 INFO  c.t.h.WorkerThread - [worker.1]: 2446 ms 	12 sources.
+2019-09-13 13:04:56.053 ERROR worker.3 - C:\Users\cmjohn1\IdeaProjects\diagenesissim\src\main\scala\org\carbonateresearch\conus\DiageneSim.scala:54: overloaded method value apply with alternatives:
+  (inputs: List[(org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels, List[spire.math.Number])])org.carbonateresearch.conus.calculationparameters.InitializeValues <and>
+  (input: (org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels, spire.math.Number)*)org.carbonateresearch.conus.calculationparameters.InitializeValues
+ cannot be applied to (List[(Product with Serializable with org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels, List[AnyVal])])
+ val b = Stepper(numberOfSteps) + InitializeValues(List(
+                                  ^
+2019-09-13 13:04:56.164 INFO  worker.3 - Worker used 9 cached entries.
+2019-09-13 13:04:56.165 INFO  c.t.h.WorkerThread - [worker.3]: 2597 ms 	12 sources.
+2019-09-13 13:04:56.203 INFO  worker.2 - Worker used 14 cached entries.
+2019-09-13 13:04:56.203 INFO  c.t.h.WorkerThread - [worker.2]: 2636 ms 	12 sources.
+2019-09-13 13:04:56.214 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 106 milliseconds
+2019-09-13 13:04:56.216 INFO  c.t.hydra.Hydra - Hydra compiling: 2693 ms
+2019-09-13 13:06:23.687 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 49 files in 1 roots took 18 ms.
+2019-09-13 13:06:23.695 INFO  c.t.hydra.Hydra - Loaded pickle store with 21 entries.
+2019-09-13 13:06:23.695 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2019-09-13 13:06:23.695 INFO  c.t.hydra.Hydra - Hydra version:       2.1.12
+2019-09-13 13:06:23.695 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2019-09-13 13:06:23.697 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2019-09-13 13:06:23.697 INFO  c.t.hydra.Hydra - Clean build: true
+2019-09-13 13:06:23.700 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 280. Maximum cores: 8
+2019-09-13 13:06:23.701 INFO  c.t.h.SourcePartitioner$ - No automatically balanced partition file C:\Users\cmjohn1\IdeaProjects\diagenesissim\.hydra\idea\diagenesissim\main\partition.hydra exist yet. Using plain partition strategy.
+2019-09-13 13:06:23.707 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 13 files.
+2019-09-13 13:06:23.708 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 12 files.
+2019-09-13 13:06:23.708 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 12 files.
+2019-09-13 13:06:23.708 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 12 files.
+2019-09-13 13:06:25.939 INFO  worker.0 - Worker used 0 cached entries.
+2019-09-13 13:06:25.939 INFO  c.t.h.WorkerThread - [worker.0]: 2230 ms 	13 sources.
+2019-09-13 13:06:25.965 INFO  worker.1 - Worker used 27 cached entries.
+2019-09-13 13:06:25.965 INFO  c.t.h.WorkerThread - [worker.1]: 2256 ms 	12 sources.
+2019-09-13 13:06:26.330 INFO  worker.3 - Worker used 30 cached entries.
+2019-09-13 13:06:26.330 INFO  c.t.h.WorkerThread - [worker.3]: 2621 ms 	12 sources.
+2019-09-13 13:06:26.384 INFO  worker.2 - Worker used 30 cached entries.
+2019-09-13 13:06:26.384 INFO  c.t.h.WorkerThread - [worker.2]: 2675 ms 	12 sources.
+2019-09-13 13:06:26.384 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 111 milliseconds
+2019-09-13 13:06:26.384 INFO  c.t.hydra.Hydra - Hydra compiling: 2677 ms
+2019-09-13 13:06:26.431 INFO  worker.0 - Total time in late files: 115 ms in 8 late files
+2019-09-13 13:06:26.431 INFO  worker.1 - Total time in late files: 794 ms in 22 late files
+2019-09-13 13:06:26.431 INFO  worker.2 - Total time in late files: 345 ms in 25 late files
+2019-09-13 13:06:26.431 INFO  worker.3 - Total time in late files: 642 ms in 27 late files
+2019-09-13 13:06:26.433 INFO  c.t.hydra.Hydra - Compile time threshold for reporting unbalanced workers is 4230 ms.
+2019-09-13 13:06:26.453 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in C:\Users\cmjohn1\.triplequote\metrics\diagenesissim-1568376383695
+2019-09-13 13:14:30.664 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 49 files in 1 roots took 137 ms.
+2019-09-13 13:14:30.708 INFO  c.t.hydra.Hydra - Loaded pickle store with 61 entries.
+2019-09-13 13:14:30.709 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2019-09-13 13:14:30.712 INFO  c.t.hydra.Hydra - Hydra version:       2.1.12
+2019-09-13 13:14:30.712 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2019-09-13 13:14:30.724 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 10 ms.
+2019-09-13 13:14:30.724 INFO  c.t.hydra.Hydra - Clean build: false
+2019-09-13 13:14:30.900 INFO  c.t.h.l.ActivatedLicenseText - ActivatedLicenseText.validate took 157 ms.
+2019-09-13 13:14:30.901 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 280. Maximum cores: 8
+2019-09-13 13:14:30.905 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2019-09-13 13:14:30.923 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 567
+2019-09-13 13:14:30.934 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2019-09-13 13:14:34.603 INFO  worker.0 - Worker used 0 cached entries.
+2019-09-13 13:14:34.603 INFO  c.t.h.WorkerThread - [worker.0]: 3624 ms 	1 sources.
+2019-09-13 13:14:34.617 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 70 milliseconds
+2019-09-13 13:14:34.618 INFO  c.t.hydra.Hydra - Hydra compiling: 3685 ms
+2019-09-13 13:14:34.681 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in C:\Users\cmjohn1\.triplequote\metrics\diagenesissim-1568376870708

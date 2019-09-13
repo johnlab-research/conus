@@ -12,7 +12,6 @@ import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart
 import org.carbonateresearch.conus.common.{AbstractSimulationParameters, ChainableCalculation, ParrallelModellerDispatcherActor, Stepper}
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import org.carbonateresearch.conus.clumpedThermalModels.{ClumpedEquations, ClumpedSample, ThermalCalculationStepOld, ThermalClumpedSimulationParameter, ThermalHistorySimulationOld}
 import akka.actor.Actor
 import akka.actor.ActorSystem
 import akka.actor.Props
@@ -53,7 +52,7 @@ object DiageneSim extends JFXApp with NumberWrapper with PasseyHenkesClumpedDiff
 
  val b = Stepper(numberOfSteps) + InitializeValues(List(
    (D47i,(0.654 to 0.673 by 0.01).toList),
-   (depositionalAge, (110 to 105 by 1).toList))) +
+   (depositionalAge,List(110.0,105.3,100.2)))) +
    AgesFromMaxMinCP(110,0) +
    BurialDepthCP(List((110.0,0.0), (100.0,150.0), (50.0,3500.0),(38.0,0.0),(0.0,0.0))) +
    InterpolatorCP(outputValueLabel = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) +

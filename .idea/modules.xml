@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CoNuS.iml" filepath="$PROJECT_DIR$/.idea/modules/CoNuS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/diagenesissim.iml" filepath="$PROJECT_DIR$/.idea/modules/diagenesissim.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/diagenesissim-build.iml" filepath="$PROJECT_DIR$/.idea/modules/diagenesissim-build.iml" />
     </modules>
   </component>
