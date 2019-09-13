@@ -7,19 +7,14 @@ import spire.math._
 import spire.algebra._
 import scala.annotation.tailrec
 
-final case class ChainableCalculation(steps:List[Number], modelParameters:List[CalculationParameters]) {
-
-  /*
-  def |->(nextModelParameters: CalculationParameters): ChainableCalculation = {
-    ChainableCalculation(steps,  nextModelParameters::modelParameters)
-  }*/
+final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameters:List[CalculationParameters]) {
 
   def +(nextModelParameters: CalculationParameters*): ChainableCalculation = {
 
     nextModelParameters.size match {
       case 0 => this
       case _ => {
-        ChainableCalculation(steps,  nextModelParameters.toList:::modelParameters)
+        ChainableCalculation(ID,steps,  nextModelParameters.toList:::modelParameters)
 
       }
     }
@@ -27,26 +22,12 @@ final case class ChainableCalculation(steps:List[Number], modelParameters:List[C
 
   def +(nextChainableCalculation: ChainableCalculation): ChainableCalculation = {
 
-    ChainableCalculation(steps,this.modelParameters ++ nextChainableCalculation.modelParameters)
-  }
-
-  def ||->(nextModelParameters: CalculationParameters*): ChainableCalculation = {
-
-    nextModelParameters.size match {
-      case 0 => this
-      case 1 => {
-        ChainableCalculation(steps,  nextModelParameters(0)::modelParameters)
-
-      }
-      case _ => {
-        val paralleledCP = ParalleledCPs(nextModelParameters.toVector)
-        ChainableCalculation(steps,  paralleledCP::modelParameters)}
-    }
+    ChainableCalculation(ID, steps,this.modelParameters ++ nextChainableCalculation.modelParameters)
   }
 
   def ==(secondChainableCalculation: ChainableCalculation): ChainableCalculation = {
 
-     ChainableCalculation(steps,  secondChainableCalculation.modelParameters:::modelParameters)
+     ChainableCalculation(ID, steps,  secondChainableCalculation.modelParameters:::modelParameters)
   }
 
 
@@ -63,7 +44,7 @@ final case class ChainableCalculation(steps:List[Number], modelParameters:List[C
       }
     }
       val initialMap:Map[Number, Map[CalculationParametersIOLabels,Number]] = Map(Number(0) -> Map(NumberOfSteps -> (Number(steps.size))))
-    CalculationResults(steps, modelParameters, traverseSteps(steps,  initialMap))
+    CalculationResults(ID,steps, modelParameters, traverseSteps(steps,  initialMap))
     }
 
 

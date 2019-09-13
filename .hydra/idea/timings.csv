@@ -1,3 +1,13 @@
 Time, Tag, Workers, Files, Compilation Duration (ms), GC Duration (ms)
 2019/09/13 13:06:23,        diagenesissim/main,   4,    49,      2677,       111
 2019/09/13 13:14:30,        diagenesissim/main,   1,     1,      3685,        70
+2019/09/13 13:33:09,        diagenesissim/main,   1,     1,      1377,        20
+2019/09/13 13:39:27,        diagenesissim/main,   1,     1,       769,         0
+2019/09/13 13:46:02,        diagenesissim/main,   1,     1,       827,         0
+2019/09/13 13:57:33,        diagenesissim/main,   3,     3,      1175,        48
+2019/09/13 13:58:52,        diagenesissim/main,   2,     2,       725,        43
+2019/09/13 15:08:00,        diagenesissim/main,   1,     1,       390,         0
+2019/09/13 15:08:27,        diagenesissim/main,   1,     1,       360,         0
+2019/09/13 15:11:52,        diagenesissim/main,   1,     1,       649,        37
+2019/09/13 15:49:53,        diagenesissim/main,   3,     3,       785,         0
+2019/09/13 15:52:40,        diagenesissim/main,   4,     8,      1072,        34

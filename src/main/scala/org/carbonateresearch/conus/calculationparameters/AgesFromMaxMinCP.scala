@@ -1,9 +1,9 @@
 package org.carbonateresearch.conus.calculationparameters
-import org.carbonateresearch.conus.calculationparameters.parametersIO.{Age, CalculationParametersIOLabels, NumberOfSteps}
-import spire.math.{Number}
+import org.carbonateresearch.conus.calculationparameters.parametersIO.{CalculationParametersIOLabels, NumberOfSteps, StandardsIOLabels}
+import spire.math.Number
 import spire.implicits._
 
-final case class AgesFromMaxMinCP(maxAge: Number, minAge:Number) extends CalculationParameters{
+final case class AgesFromMaxMinCP(maxAge: Number, minAge:Number) extends CalculationParameters with StandardsIOLabels{
 
    override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
      val increment = (maxAge-minAge)/(previousResults(step)(NumberOfSteps)-1)

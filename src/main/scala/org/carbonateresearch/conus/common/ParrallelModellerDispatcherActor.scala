@@ -42,7 +42,7 @@ class ParrallelModellerDispatcherActor extends Actor {
             model match {
               case m:CalculationResults => {
                 resultsList += m
-                val modelData = "Model #: "+m.summary+EOL
+                val modelData = m.summary+EOL
 
                 val t1 = System.nanoTime()
                 val elapsedTime = ((t1 - t0)/10E9)

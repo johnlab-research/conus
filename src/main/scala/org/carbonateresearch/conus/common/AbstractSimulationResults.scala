@@ -1,2 +1,0 @@
-package org.carbonateresearch.conus.common
-trait AbstractSimulationResults

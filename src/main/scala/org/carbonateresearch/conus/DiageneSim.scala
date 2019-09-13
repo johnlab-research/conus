@@ -10,7 +10,7 @@ import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart
-import org.carbonateresearch.conus.common.{AbstractSimulationParameters, ChainableCalculation, ParrallelModellerDispatcherActor, Stepper}
+import org.carbonateresearch.conus.common.{ChainableCalculation, ParrallelModellerDispatcherActor, Stepper}
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import akka.actor.Actor
 import akka.actor.ActorSystem
@@ -30,7 +30,7 @@ import org.carbonateresearch.conus.implicits.NumberWrapper
 import org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel
 
 
-object DiageneSim extends JFXApp with NumberWrapper with PasseyHenkesClumpedDiffusionModel {
+object DiageneSim extends JFXApp with NumberWrapper with StandardsIOLabels with PasseyHenkesClumpedDiffusionModel {
 
 
   val actorSystem = ActorSystem("Diagenesim-Akka")
@@ -75,7 +75,7 @@ object DiageneSim extends JFXApp with NumberWrapper with PasseyHenkesClumpedDiff
     val validResults = modelResults.filter(p => tolerance.contains(
       p.finalResult(SampleTemp)) )
     println("Found "+validResults.size+" calibrated models:")
-    validResults.map(r => "Model ->"+r.summary+EOL).foreach(println)
+    validResults.map(r => r.summary+EOL).foreach(println)
     print("")
   }
 
