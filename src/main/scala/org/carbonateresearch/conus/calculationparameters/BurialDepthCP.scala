@@ -3,7 +3,7 @@ import org.carbonateresearch.conus.calculationparameters.parametersIO.{Age, Dept
 import spire.math.{Number, Numeric}
 import spire.implicits._
 
-final case class AgesToDepthCP(ageModel:List[(Number, Number)]) extends CalculationParameters {
+final case class BurialDepthCP(ageModel:List[(Number, Number)]) extends CalculationParameters {
 
    override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
 

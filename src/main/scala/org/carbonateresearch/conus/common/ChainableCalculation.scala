@@ -14,7 +14,7 @@ final case class ChainableCalculation(steps:List[Number], modelParameters:List[C
     ChainableCalculation(steps,  nextModelParameters::modelParameters)
   }*/
 
-  def |->(nextModelParameters: CalculationParameters*): ChainableCalculation = {
+  def +(nextModelParameters: CalculationParameters*): ChainableCalculation = {
 
     nextModelParameters.size match {
       case 0 => this
@@ -23,6 +23,11 @@ final case class ChainableCalculation(steps:List[Number], modelParameters:List[C
 
       }
     }
+  }
+
+  def +(nextChainableCalculation: ChainableCalculation): ChainableCalculation = {
+
+    ChainableCalculation(steps,this.modelParameters ++ nextChainableCalculation.modelParameters)
   }
 
   def ||->(nextModelParameters: CalculationParameters*): ChainableCalculation = {
@@ -39,7 +44,7 @@ final case class ChainableCalculation(steps:List[Number], modelParameters:List[C
     }
   }
 
-  def ->(secondChainableCalculation: ChainableCalculation): ChainableCalculation = {
+  def ==(secondChainableCalculation: ChainableCalculation): ChainableCalculation = {
 
      ChainableCalculation(steps,  secondChainableCalculation.modelParameters:::modelParameters)
   }

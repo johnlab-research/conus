@@ -23,14 +23,15 @@ import scala.compat.Platform.EOL
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
-import org.carbonateresearch.conus.calculationparameters.{AgesFromMaxMinCP, AgesToDepthCP, ApplyFunction, BurialTemperatureCP, CalculationResults, GeothermalGradientHistoryCP, InterpolatorCP, SurfaceTemperaturesHistoryCP}
+import org.carbonateresearch.conus.calculationparameters.{InitializeValues,AgesFromMaxMinCP, ApplyFunction, BurialDepthCP, BurialTemperatureCP, CalculationResults, GeothermalGradientHistoryCP, Initializer, InterpolatorCP, SurfaceTemperaturesHistoryCP}
 import spire.implicits._
 import spire.math._
 import spire.algebra._
 import org.carbonateresearch.conus.implicits.NumberWrapper
+import org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel
 
 
-object DiageneSim extends JFXApp with NumberWrapper {
+object DiageneSim extends JFXApp with NumberWrapper with PasseyHenkesClumpedDiffusionModel {
 
 
   val actorSystem = ActorSystem("Diagenesim-Akka")
@@ -44,55 +45,42 @@ object DiageneSim extends JFXApp with NumberWrapper {
     result
   }
 
-  val burialHistory = List((110.0,0.0), (90.0,3000.0), (65.0,6500.0),(15.0,4000.0),(10.0,2500.0),(0.0,0.0))
-  val geothermalGradient = List((110.0,30.0),(0.0,20.0))
-  val surfaceTemperatures = List((110.0,30.0),(0.0, 25.0))
+  val burialHistory = List((110.0,0.0), (100.0,150.0), (50.0,4766.0),(38.0,0.0),(0.0,0.0))
+  val geothermalGradient = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
+  val surfaceTemperatures = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val numberOfSteps = 220
+  val depositionalAge = Parameter("Initial age of deposition", "Ma", Some(0))
 
- /* Testing the model using diffusion of Passey and Henkes as a test*/
+ val b = Stepper(numberOfSteps) + InitializeValues(List(
+   (D47i,(0.654 to 0.673 by 0.01).toList),
+   (depositionalAge, (110 to 105 by 1).toList))) +
+   AgesFromMaxMinCP(110,0) +
+   BurialDepthCP(List((110.0,0.0), (100.0,150.0), (50.0,3500.0),(38.0,0.0),(0.0,0.0))) +
+   InterpolatorCP(outputValueLabel = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) +
+   InterpolatorCP(outputValueLabel = SurfaceTemperature, inputValueLabel = Age, xyList = surfaceTemperatures) +
+   BurialTemperatureCP(geothermalGradient) +
+   ApplyFunction(BurialTemperature,D47eqFun,D47eq) +
+   ApplyFunction((Previous(Age),Age),dTFun,dT) +
+   ApplyFunction((Previous(D47i,TakeCurrentStepValue),D47eq,BurialTemperature,dT),D47iFun,D47i) +
+   ApplyFunction(D47i,davies19_T, SampleTemp)
 
-  def tref = 699.7
-  def kref = 0.00000292
-  def ea = 197
-  def r = 0.008314
-
-  case object dT extends CalculationParametersIOLabels
-  case object TKelvin extends CalculationParametersIOLabels
-  case object D47i extends CalculationParametersIOLabels
-  case object D47eq extends CalculationParametersIOLabels
-
-  val D47eqFun = (t:Number) => Number(0.04028 * math.pow(10,6) / math.pow((t+273.15).toDouble,2) + 0.23776)
-  val dTFun = (previousT: Number, currentT: Number) => (currentT-previousT)* 1000000 * 365 * 24 * 60 * 60
-  val D47iFun =  (D47iStart: Number, D47eq: Number, T: Number,dTi: Number) =>
-    (D47iStart - D47eq) * math.exp((-1*dTi * kref * math.exp((ea / r * ((1 / tref) - (1 / (T+273.15)))).toDouble)).toDouble) + D47eq
-
-
-  val a: List[ChainableCalculation] = (15 to 40 by 1).map(x =>
-   Stepper(numberOfSteps) |-> AgesFromMaxMinCP(110,0) |->
-    AgesToDepthCP(burialHistory) |->
-    InterpolatorCP(outputValueLabel = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) |->
-    InterpolatorCP(outputValueLabel = SurfaceTemperature, inputValueLabel = Age, xyList = List((110.0,30.0),(0.0, x))) |->
-    BurialTemperatureCP(geothermalGradient) |->
-    ApplyFunction(BurialTemperature,D47eqFun,D47eq) |->
-    ApplyFunction((Previous(BurialTemperature),BurialTemperature),dTFun,dT) |->
-    ApplyFunction((Previous(D47i,TakeValueForLabel(D47eq)),D47eq,BurialTemperature,dT),D47iFun,D47i)
-  ).toList
+     b.run
 
 
-case class MyGod(n:Int =0) extends CalculationParametersIOLabels
+
 
 
   def handleResults(modelResults: List[CalculationResults]) = {
-    val tolerance = Interval(Number(0.645), Number(0.655))
+    val tolerance = Interval(Number(30.0), Number(55.0))
 
     val validResults = modelResults.filter(p => tolerance.contains(
-      p.finalResult(D47i)) )
+      p.finalResult(SampleTemp)) )
     println("Found "+validResults.size+" calibrated models:")
     validResults.map(r => "Model ->"+r.summary+EOL).foreach(println)
     print("")
   }
 
-  modeller ! a
+
 
 /*
   private final case class tryMe[A](value: spire.math.Fractional[A], error:spire.math.Fractional[A]) {

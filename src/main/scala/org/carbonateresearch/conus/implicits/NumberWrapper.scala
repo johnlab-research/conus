@@ -1,6 +1,7 @@
 package org.carbonateresearch.conus.implicits
 
 import spire.math.Number
+import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
 
 trait NumberWrapper {
   implicit val wrapSimpleListDouble = (myValues:List[Double]) =>  myValues.map(nb => Number(nb))
@@ -9,6 +10,9 @@ trait NumberWrapper {
   implicit val wrapTupledListInt = (myValues:List[(Int,Int)]) => myValues.map(nb => (Number(nb._1),Number(nb._2)))
   implicit val wrapTupledListIntDouble = (myValues:List[(Int,Double)]) => myValues.map(nb => (Number(nb._1),Number(nb._2)))
   implicit val wrapTupledListDoubleInt = (myValues:List[(Double,Int)]) => myValues.map(nb => (Number(nb._1),Number(nb._2)))
+  implicit val wrapTupledListIOInt = (myValues:List[(CalculationParametersIOLabels,List[Int])]) => myValues.map(nb => (nb._1,nb._2.map(x => Number(x))))
+  implicit val wrapTupledListIODouble = (myValues:List[(CalculationParametersIOLabels,List[Double])]) => myValues.map(nb => (nb._1,nb._2.map(x => Number(x))))
+
 
 
   implicit def functionalWrapper (wrongSigFunc: Double => Double): Number => Number = {

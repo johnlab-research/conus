@@ -1,6 +1,6 @@
 package org.carbonateresearch.conus.calculationparameters
 import org.carbonateresearch.conus.calculationparameters.parametersIO.{Age, CalculationParametersIOLabels, NumberOfSteps}
-import spire.math.{Number, Numeric}
+import spire.math.{Number}
 import spire.implicits._
 
 final case class AgesFromMaxMinCP(maxAge: Number, minAge:Number) extends CalculationParameters{
