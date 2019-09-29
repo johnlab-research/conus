@@ -20,7 +20,7 @@ final case class CalculationResults(ID:Int, steps: List[Number], parameters: Lis
 
    def summary: String = {
       val step = steps.last
-      "Model # " + ID + " ->" + results(step).map(k =>  k._1.toString + ": " + k._2.toString + " " + k._1.unit + " | ").foldLeft("| ")(_+_)
+      "Model # " + ID + " ->" + results(step).map(k =>  k._1.toString + ": " + k._2.toString + k._1.unit + " | ").foldLeft("| ")(_+_)
    }
 
    override def toString: String = {

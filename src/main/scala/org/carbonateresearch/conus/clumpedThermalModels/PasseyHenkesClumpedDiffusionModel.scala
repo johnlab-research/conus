@@ -1,6 +1,6 @@
 package org.carbonateresearch.conus.clumpedThermalModels
 
-import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
+import org.carbonateresearch.conus.calculationparameters.parametersIO.{CalculationParametersIOLabels,Parameter}
 import spire.math.{Number, abs}
 
 trait PasseyHenkesClumpedDiffusionModel {
@@ -9,12 +9,12 @@ trait PasseyHenkesClumpedDiffusionModel {
   def ea = 197
   def r = 0.008314
 
-  case object dT extends CalculationParametersIOLabels
-  case object TKelvin extends CalculationParametersIOLabels
-  case object D47i extends CalculationParametersIOLabels
-  case object D47eq extends CalculationParametersIOLabels
-  case object SampleTemp extends CalculationParametersIOLabels
-  case object TemperatureDepth extends CalculationParametersIOLabels
+  val dT = Parameter("dT","˚C")
+ val TKelvin = Parameter("T","˚K")
+val D47i = Parameter("Δ47","‰")
+val D47eq = Parameter("Δ47eq","‰")
+val SampleTemp = Parameter("Sample temperature","˚C")
+val TemperatureDepth = Parameter("Temperature Depth","˚C")
 
   val D47eqFun = (t:Number) => Number(0.04028 * math.pow(10,6) / math.pow((t+273.15).toDouble,2) + 0.23776)
   val dTFun = (previousT: Number, currentT: Number) => abs(previousT-currentT)* 1000000 * 365 * 24 * 60 * 60

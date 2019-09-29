@@ -6,7 +6,7 @@ import spire.math.Number
 
 
 
-final case class ApplyFunction(inputs: List[CalculationParametersIOLabels], output: CalculationParametersIOLabels, functionBlock: List[Number] => Number) extends CalculationParameters {
+final case class Calculation(inputs: List[CalculationParametersIOLabels], output: CalculationParametersIOLabels, functionBlock: List[Number] => Number) extends CalculationParameters {
 
   override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
 
@@ -44,13 +44,13 @@ final case class ApplyFunction(inputs: List[CalculationParametersIOLabels], outp
 
 }
 
-object ApplyFunction {
+object Calculation {
   def apply(inputs: List[CalculationParametersIOLabels], outputs:List[CalculationParametersIOLabels], function: List[Number] => List[Number]) = {
 
     def functionBlock(values: List[Number]) = {
       function(values)(0)
     }
-    new ApplyFunction(inputs = inputs,  output = outputs(0), functionBlock = functionBlock)
+    new Calculation(inputs = inputs,  output = outputs(0), functionBlock = functionBlock)
   }
 
   def apply(v1: CalculationParametersIOLabels, function: Number => Number, output:CalculationParametersIOLabels) = {
@@ -58,7 +58,7 @@ object ApplyFunction {
     def functionBlock(values: List[Number]) = {
       function(values(0))
     }
-    new ApplyFunction(inputs = List(v1), output = output, functionBlock = functionBlock)
+    new Calculation(inputs = List(v1), output = output, functionBlock = functionBlock)
   }
 
   def apply(inputs: (CalculationParametersIOLabels, CalculationParametersIOLabels),
@@ -68,7 +68,7 @@ object ApplyFunction {
     def functionBlock(values: List[Number]) = {
       function(values.head, values(1))
     }
-    new ApplyFunction(inputs = List(inputs._1,inputs._2), output = output, functionBlock = functionBlock)
+    new Calculation(inputs = List(inputs._1,inputs._2), output = output, functionBlock = functionBlock)
   }
 
   def apply(inputs:(CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels),
@@ -77,7 +77,7 @@ object ApplyFunction {
     def functionBlock(values: List[Number]) = {
       function(values.head, values(1), values(2))
     }
-    new ApplyFunction(inputs = List(inputs._1,inputs._2, inputs._3), output = output, functionBlock = functionBlock)
+    new Calculation(inputs = List(inputs._1,inputs._2, inputs._3), output = output, functionBlock = functionBlock)
   }
 
 
@@ -87,7 +87,7 @@ object ApplyFunction {
     def functionBlock(values: List[Number]) = {
       function(values.head, values(1), values(2), values(3))
     }
-    new ApplyFunction(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4), output = output, functionBlock = functionBlock)
+    new Calculation(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4), output = output, functionBlock = functionBlock)
   }
 
   def apply(inputs:(CalculationParametersIOLabels, CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels, CalculationParametersIOLabels),
@@ -96,7 +96,7 @@ object ApplyFunction {
     def functionBlock(values: List[Number]) = {
       function(values.head, values(1), values(2), values(3), values(4))
     }
-    new ApplyFunction(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5), output = output, functionBlock = functionBlock)
+    new Calculation(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5), output = output, functionBlock = functionBlock)
   }
 
   def apply(inputs:(CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels, CalculationParametersIOLabels),
@@ -105,7 +105,7 @@ object ApplyFunction {
     def functionBlock(values: List[Number]) = {
       function(values.head, values(1), values(2), values(3), values(4), values(5))
     }
-    new ApplyFunction(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5, inputs._6), output = output, functionBlock = functionBlock)
+    new Calculation(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5, inputs._6), output = output, functionBlock = functionBlock)
   }
 
   def apply(inputs:(CalculationParametersIOLabels,CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels, CalculationParametersIOLabels),
@@ -114,7 +114,7 @@ object ApplyFunction {
     def functionBlock(values: List[Number]) = {
       function(values.head, values(1), values(2), values(3), values(4), values(5), values(6))
     }
-    new ApplyFunction(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5, inputs._6, inputs._7), output = output, functionBlock = functionBlock)
+    new Calculation(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5, inputs._6, inputs._7), output = output, functionBlock = functionBlock)
   }
 
   def apply(inputs:(CalculationParametersIOLabels, CalculationParametersIOLabels,CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels, CalculationParametersIOLabels),
@@ -123,7 +123,7 @@ object ApplyFunction {
     def functionBlock(values: List[Number]) = {
       function(values.head, values(1), values(2), values(3), values(4), values(5), values(6), values(7))
     }
-    new ApplyFunction(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5, inputs._6, inputs._7, inputs._8), output = output, functionBlock = functionBlock)
+    new Calculation(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5, inputs._6, inputs._7, inputs._8), output = output, functionBlock = functionBlock)
   }
 
   def apply(inputs:(CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels,CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels, CalculationParametersIOLabels),
@@ -132,7 +132,7 @@ object ApplyFunction {
     def functionBlock(values: List[Number]) = {
       function(values.head, values(1), values(2), values(3), values(4), values(5), values(6), values(7), values(8))
     }
-    new ApplyFunction(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5, inputs._6, inputs._7, inputs._8, inputs._9), output = output, functionBlock = functionBlock)
+    new Calculation(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5, inputs._6, inputs._7, inputs._8, inputs._9), output = output, functionBlock = functionBlock)
   }
 
   def apply(inputs:(CalculationParametersIOLabels,CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels,CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels,CalculationParametersIOLabels, CalculationParametersIOLabels, CalculationParametersIOLabels),
@@ -141,7 +141,7 @@ object ApplyFunction {
     def functionBlock(values: List[Number]) = {
       function(values.head, values(1), values(2), values(3), values(4), values(5), values(6), values(7), values(8), values(9))
     }
-    new ApplyFunction(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5, inputs._6, inputs._7, inputs._8, inputs._9, inputs._10), output = output, functionBlock = functionBlock)
+    new Calculation(inputs = List(inputs._1,inputs._2, inputs._3, inputs._4, inputs._5, inputs._6, inputs._7, inputs._8, inputs._9, inputs._10), output = output, functionBlock = functionBlock)
   }
 
 }

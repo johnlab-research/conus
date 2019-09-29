@@ -1,5 +1,5 @@
 package org.carbonateresearch.conus
-
+/*
 import scala.collection.mutable.ListBuffer
 import scala.collection.Map
 import scalafx.application.JFXApp
@@ -9,8 +9,8 @@ import scalafx.scene.Scene
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
-import scalafx.scene.chart.XYChart
-import org.carbonateresearch.conus.common.{ChainableCalculation, ParrallelModellerDispatcherActor, Stepper}
+import scalafx.scene.chart.XYChart*/
+import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, ParrallelModellerDispatcherActor, SteppedModel}
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import akka.actor.Actor
 import akka.actor.ActorSystem
@@ -22,7 +22,7 @@ import scala.compat.Platform.EOL
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
-import org.carbonateresearch.conus.calculationparameters.{InitializeValues,AgesFromMaxMinCP, ApplyFunction, BurialDepthCP, BurialTemperatureCP, CalculationResults, GeothermalGradientHistoryCP, Initializer, InterpolatorCP, SurfaceTemperaturesHistoryCP}
+import org.carbonateresearch.conus.calculationparameters.{AgesFromMaxMinCP, BurialDepthCP, BurialTemperatureCP, Calculation, CalculationResults, GeothermalGradientHistoryCP, InitializeValues, Initializer, InterpolatorCP, SurfaceTemperaturesHistoryCP}
 import spire.implicits._
 import spire.math._
 import spire.algebra._
@@ -30,7 +30,7 @@ import org.carbonateresearch.conus.implicits.NumberWrapper
 import org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel
 
 
-object DiageneSim extends JFXApp with NumberWrapper with StandardsIOLabels with PasseyHenkesClumpedDiffusionModel {
+object DiageneSim extends App with NumberWrapper with StandardsIOLabels with PasseyHenkesClumpedDiffusionModel {
 
 
   val actorSystem = ActorSystem("Diagenesim-Akka")
@@ -48,29 +48,52 @@ object DiageneSim extends JFXApp with NumberWrapper with StandardsIOLabels with 
   val geothermalGradient = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val surfaceTemperatures = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val numberOfSteps = 220
-  val depositionalAge = Parameter("Initial age of deposition", "Ma", Some(0))
+  val depositionalAge = Parameter("Initial age of deposition", " Ma", Some(0))
+  val ageList:List[Number] = (50 to 75 by 1).toList.map(x=>Number(x))
+  //val ageList = List(134, 123, 112)
 
- val b = Stepper(numberOfSteps) + InitializeValues(List(
-   (D47i,(0.654 to 0.673 by 0.01).toList),
-   (depositionalAge,List(110.0,105.3,100.2)))) +
-   AgesFromMaxMinCP(110,0) +
-   BurialDepthCP(List((110.0,0.0), (100.0,150.0), (50.0,3500.0),(38.0,0.0),(0.0,0.0))) +
-   InterpolatorCP(outputValueLabel = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) +
-   InterpolatorCP(outputValueLabel = SurfaceTemperature, inputValueLabel = Age, xyList = surfaceTemperatures) +
-   BurialTemperatureCP(geothermalGradient) +
-   ApplyFunction(BurialTemperature,D47eqFun,D47eq) +
-   ApplyFunction((Previous(Age),Age),dTFun,dT) +
-   ApplyFunction((Previous(D47i,TakeCurrentStepValue),D47eq,BurialTemperature,dT),D47iFun,D47i) +
-   ApplyFunction(D47i,davies19_T, SampleTemp)
+  val initalValues:List[(CalculationParametersIOLabels,List[Number])] = List(
+    (D47i,(0.654 to  0.673 by 0.01).toList),
+    (depositionalAge,ageList)
+  )
 
-     b.run
+  /*
+ val b = SteppedModel(numberOfSteps) next
+   InitializeValues(initalValues) next
+   AgesFromMaxMinCP(110,0) next
+   BurialDepthCP(List((110.0,0.0), (100.0,150.0), (50.0,3500.0),(38.0,0.0),(0.0,0.0))) next
+   InterpolatorCP(outputValueLabel = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) next
+   InterpolatorCP(outputValueLabel = SurfaceTemperature, inputValueLabel = Age, xyList = surfaceTemperatures) next
+   BurialTemperatureCP(geothermalGradient) next
+   Calculation(BurialTemperature,D47eqFun,D47eq) next
+   Calculation((Previous(Age),Age),dTFun,dT) next
+   Calculation((Previous(D47i,TakeCurrentStepValue),D47eq,BurialTemperature,dT),D47iFun,D47i) next
+   (List(Age), List(D47i), (x:List[Number]) => List(x(0)*2)) next
+   (List(Age), List(D47i), (x:List[Number]) => List(x(0)*3)) next
+   (List(Previous(Age)), List(D47i), (x:List[Number]) => List(x(0)*4)) next
+   (List(Age), List(D47i), (x:List[Number]) => List(x(0)*5))
+
+
+
+
+  val c = b next Calculation(D47i,davies19_T, SampleTemp)
+
+
+     val runnedModel = b.run*/
+
+  val aFunFunction = (x:Double) => x*2
+
+  implicit val transformMe = (x:CalculationParametersIOLabels) => x.value
+  println(aFunFunction(3))
+  println(aFunFunction(D47i))
+
 
 
 
 
 
   def handleResults(modelResults: List[CalculationResults]) = {
-    val tolerance = Interval(Number(30.0), Number(55.0))
+    val tolerance = Interval(Number(35.0), Number(38.0))
 
     val validResults = modelResults.filter(p => tolerance.contains(
       p.finalResult(SampleTemp)) )
@@ -156,10 +179,10 @@ val minTemp = series.flatMap(a => a.map(b => b._2)).min-5
           )
 
 */
-
+/*
   override def stopApp(): Unit =
     actorSystem.terminate()
-    super.stopApp()
+    super.stopApp()*/
       }
 
 

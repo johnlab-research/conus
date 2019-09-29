@@ -6,10 +6,11 @@ import spire.implicits._
 import spire.math._
 import spire.algebra._
 import scala.annotation.tailrec
+import org.carbonateresearch.conus.calculationparameters.{Calculation}
 
 final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameters:List[CalculationParameters]) {
 
-  def +(nextModelParameters: CalculationParameters*): ChainableCalculation = {
+  def next(nextModelParameters: CalculationParameters*): ChainableCalculation = {
 
     nextModelParameters.size match {
       case 0 => this
@@ -20,7 +21,7 @@ final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameter
     }
   }
 
-  def +(nextChainableCalculation: ChainableCalculation): ChainableCalculation = {
+  def next(nextChainableCalculation: ChainableCalculation): ChainableCalculation = {
 
     ChainableCalculation(ID, steps,this.modelParameters ++ nextChainableCalculation.modelParameters)
   }
@@ -29,8 +30,6 @@ final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameter
 
      ChainableCalculation(ID, steps,  secondChainableCalculation.modelParameters:::modelParameters)
   }
-
-
 
     def evaluate: CalculationResults = {
 
