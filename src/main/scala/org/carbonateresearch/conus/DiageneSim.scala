@@ -10,7 +10,7 @@ import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart*/
-import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, ParrallelModellerDispatcherActor, SteppedModel}
+import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, ParrallelModellerDispatcherActor, NewSteppedModel}
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import akka.actor.Actor
 import akka.actor.ActorSystem
@@ -22,15 +22,15 @@ import scala.compat.Platform.EOL
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
-import org.carbonateresearch.conus.calculationparameters.{AgesFromMaxMinCP, BurialDepthCP, BurialTemperatureCP, Calculation, CalculationResults, GeothermalGradientHistoryCP, InitializeValues, Initializer, InterpolatorCP, SurfaceTemperaturesHistoryCP}
-import spire.implicits._
+import org.carbonateresearch.conus.calculationparameters.{AgesFromMaxMinCP, BurialDepthCP, BurialTemperatureCP, CalculateStepValue, CalculateValueForStep, CalculationResults, GeothermalGradientHistoryCP, InitializeValues, Initializer, InterpolatorCP, SurfaceTemperaturesHistoryCP}
+//import spire.implicits._
 import spire.math._
 import spire.algebra._
 import org.carbonateresearch.conus.implicits.NumberWrapper
 import org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel
 
 
-object DiageneSim extends App with NumberWrapper with StandardsIOLabels with PasseyHenkesClumpedDiffusionModel {
+object DiageneSim extends App with NumberWrapper with StandardsParameters with PasseyHenkesClumpedDiffusionModel {
 
 
   val actorSystem = ActorSystem("Diagenesim-Akka")
@@ -52,40 +52,37 @@ object DiageneSim extends App with NumberWrapper with StandardsIOLabels with Pas
   val ageList:List[Number] = (50 to 75 by 1).toList.map(x=>Number(x))
   //val ageList = List(134, 123, 112)
 
-  val initalValues:List[(CalculationParametersIOLabels,List[Number])] = List(
+  val initialValues:List[(CalculationParametersIOLabels,List[Number])] = List(
     (D47i,(0.654 to  0.673 by 0.01).toList),
     (depositionalAge,ageList)
   )
 
-  /*
- val b = SteppedModel(numberOfSteps) next
-   InitializeValues(initalValues) next
+
+ val b = NewSteppedModel(numberOfSteps) next
+   InitializeValues(initialValues) next
    AgesFromMaxMinCP(110,0) next
    BurialDepthCP(List((110.0,0.0), (100.0,150.0), (50.0,3500.0),(38.0,0.0),(0.0,0.0))) next
    InterpolatorCP(outputValueLabel = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) next
    InterpolatorCP(outputValueLabel = SurfaceTemperature, inputValueLabel = Age, xyList = surfaceTemperatures) next
-   BurialTemperatureCP(geothermalGradient) next
-   Calculation(BurialTemperature,D47eqFun,D47eq) next
-   Calculation((Previous(Age),Age),dTFun,dT) next
-   Calculation((Previous(D47i,TakeCurrentStepValue),D47eq,BurialTemperature,dT),D47iFun,D47i) next
-   (List(Age), List(D47i), (x:List[Number]) => List(x(0)*2)) next
-   (List(Age), List(D47i), (x:List[Number]) => List(x(0)*3)) next
-   (List(Previous(Age)), List(D47i), (x:List[Number]) => List(x(0)*4)) next
-   (List(Age), List(D47i), (x:List[Number]) => List(x(0)*5))
+   BurialTemperatureCP(geothermalGradient)  next
+   CalculateStepValue(D47eq).applying(D47eqFun).withParameters(BurialTemperature)  next
+   CalculateStepValue(dT).applying(dTFun).withParameters(Previous(Age),Age) next
+   CalculateStepValue(D47i).applying(D47iFun).withParameters(Previous(D47i,TakeCurrentStepValue),D47eq, BurialTemperature,dT) next
+   CalculateStepValue(SampleTemp).applying(davies19_T).withParameters(D47i)
+
+
+  val runnedModel = b.run
+  implicit val transformMe = (x:CalculationParametersIOLabels) => (x*1)
+  val push = (x:CalculationParametersIOLabels) => (2 * x - 1)/2
+
+   foo (push, dT)
+
+  def foo(fun:(CalculationParametersIOLabels) => Double, label: CalculationParametersIOLabels):Double = {
+    fun(label)
+  }
 
 
 
-
-  val c = b next Calculation(D47i,davies19_T, SampleTemp)
-
-
-     val runnedModel = b.run*/
-
-  val aFunFunction = (x:Double) => x*2
-
-  implicit val transformMe = (x:CalculationParametersIOLabels) => x.value
-  println(aFunFunction(3))
-  println(aFunFunction(D47i))
 
 
 

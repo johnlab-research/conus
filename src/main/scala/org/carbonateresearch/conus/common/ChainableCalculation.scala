@@ -6,7 +6,7 @@ import spire.implicits._
 import spire.math._
 import spire.algebra._
 import scala.annotation.tailrec
-import org.carbonateresearch.conus.calculationparameters.{Calculation}
+import org.carbonateresearch.conus.calculationparameters.{CalculateValueForStep}
 
 final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameters:List[CalculationParameters]) {
 

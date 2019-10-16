@@ -6,7 +6,13 @@ trait CalculationParametersIOLabels{
     val fullString = this.getClass.getSimpleName
   fullString.take(fullString.size-1)}
   def unit: String = ""
-  def value = 0.0
+  def value = Number(0.0)
+  def valueForStep: Option[Double] = Some(1.0)
+  implicit def *(x:Double, y: CalculationParametersIOLabels):Double = y * x
+  def *(x:Double):Double = this.valueForStep.getOrElse(1.0)*x
+  def /(x:Double):Double = this.valueForStep.getOrElse(1.0)/x
+  def +(x:Double):Double = this.valueForStep.getOrElse(0.0)+x
+  def -(x:Double):Double = this.valueForStep.getOrElse(0.0)-x
 }
 case object NumberOfSteps extends CalculationParametersIOLabels {override def toString: String = "Number of Steps"}
 case object Depth extends CalculationParametersIOLabels {override def toString: String = "Depth"}
@@ -16,4 +22,5 @@ final case class Parameter(name: String, unitName:String = "", defaultValue:Opti
                            precision:Int=2) extends CalculationParametersIOLabels {
   override def toString: String = name
   override def unit: String = unitName
+
 }

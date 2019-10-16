@@ -3,32 +3,32 @@ package org.carbonateresearch.conus.common
 import akka.actor.Props
 import org.carbonateresearch.conus.DiageneSim.actorSystem
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import org.carbonateresearch.conus.calculationparameters.{Calculation, CalculationParameters, ParalleledCPs}
+import org.carbonateresearch.conus.calculationparameters.{CalculateValueForStep, CalculationParameters, ParalleledCPs}
 import spire.math._
 
 import scala.annotation.tailrec
 
-final case class ModelCalculationSpace(calculations:List[ChainableCalculation]) {
+final case class ModelCalculationSpace(calculations:List[ChainableCalculation], parameters: Map[Parameter,Number]) {
 
 
   def next(nextCalculationParameter: CalculationParameters): ModelCalculationSpace = {
 
-    ModelCalculationSpace(calculations.map(cl => cl next nextCalculationParameter))
+    ModelCalculationSpace(calculations.map(cl => cl next nextCalculationParameter), Map())
   }
 
   def next(nextChainableCalculation: ChainableCalculation): ModelCalculationSpace = {
 
-    ModelCalculationSpace(calculations.map(cl => cl next nextChainableCalculation))
+    ModelCalculationSpace(calculations.map(cl => cl next nextChainableCalculation), Map())
   }
 
   def next(nextModelCalculationSpace: ModelCalculationSpace): ModelCalculationSpace = {
 
     ModelCalculationSpace(calculations.flatMap(cl => nextModelCalculationSpace.calculations.map(
-      ncl => cl next ncl)))
+      ncl => cl next ncl)), Map())
   }
 
-  def next(inputs: List[CalculationParametersIOLabels], outputs:List[CalculationParametersIOLabels], function: List[Number] => List[Number]): ModelCalculationSpace ={
-      ModelCalculationSpace(calculations.map(cl => cl next Calculation(inputs,outputs,function)))
+  def next(inputs: List[CalculationParametersIOLabels], outputs:List[Parameter], function: List[Number] => List[Number]): ModelCalculationSpace ={
+      ModelCalculationSpace(calculations.map(cl => cl next CalculateValueForStep(inputs,outputs,function)),outputs.map(v => (v,Number(0))).toMap++this.parameters)
 
   }
 

@@ -1,6 +1,6 @@
 package org.carbonateresearch.conus.calculationparameters.parametersIO
 
-trait StandardsIOLabels {
+trait StandardsParameters {
 val Depth = Parameter("Burial depth"," m")
 val Age  = Parameter("Age"," Ma")
 val SurfaceTemperature  = Parameter("Surface Temperature","˚C")
