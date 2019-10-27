@@ -2,11 +2,14 @@ package org.carbonateresearch.conus.calculationparameters
 
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import org.carbonateresearch.conus.calculationparameters.CalculateStepValueError
+import scala.compat.Platform.EOL
 import spire.implicits._
 import spire.math.Number
 
 
 final case class CalculateStepValue(inputs: Option[List[CalculationParametersIOLabels]], output:CalculationParametersIOLabels, functionBlock: Option[List[Number] => Number]) extends CalculationParameters {
+
+  override val outputs = List(output)
 
   override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
 
@@ -29,6 +32,7 @@ final case class CalculateStepValue(inputs: Option[List[CalculationParametersIOL
     Map(step -> Map(outputLabel -> result))
   }
 
+
   def applying(function: Any):CalculateStepValue = {
 
     def newFunctionBlock(values: List[Number]) = {
@@ -44,6 +48,8 @@ final case class CalculateStepValue(inputs: Option[List[CalculationParametersIOL
   def withParameters(newParameters:CalculationParametersIOLabels*): CalculateStepValue = {
     CalculateStepValue(inputs = Option(newParameters.toList), output = output, functionBlock = functionBlock)
   }
+
+
 
   private def findValueFromLabel(input:CalculationParametersIOLabels, step:Number, previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Number ={
     input match {
@@ -62,6 +68,21 @@ final case class CalculateStepValue(inputs: Option[List[CalculationParametersIOL
       }
       case _ => previousResults(step)(input)
     }
+  }
+
+  override def checkForError(previousParameters:List[CalculationParameters]): String = {
+
+    val parameterList = previousParameters.flatMap(c => c.outputs)
+
+    val checkPresenceOfParameter = inputs match{
+      case None => ""
+      case v:Some[List[CalculationParametersIOLabels]] => {v.get.map(i =>
+    if(parameterList.contains(i)){
+      "" }
+    else {"'"+i.toString + "' to calculate '"+output.toString+"'"+EOL}).mkString("")}}
+
+    if(checkPresenceOfParameter!=""){"The follow parameter(s) are missing or not in a logical order in your model:"+EOL+checkPresenceOfParameter}else{
+    checkPresenceOfParameter}
   }
 
 }

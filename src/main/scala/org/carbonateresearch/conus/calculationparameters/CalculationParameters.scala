@@ -10,4 +10,6 @@ import scala.annotation.tailrec
 trait CalculationParameters {
   def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]] = ???
   def unit: String = ""
+  def outputs:List[CalculationParametersIOLabels]
+  def checkForError(previousParameters:List[CalculationParameters]): String = ""
 }

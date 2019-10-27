@@ -53,7 +53,7 @@ object DiageneSim extends App with NumberWrapper with StandardsParameters with P
   //val ageList = List(134, 123, 112)
 
   val initialValues:List[(CalculationParametersIOLabels,List[Number])] = List(
-    (D47i,(0.654 to  0.673 by 0.01).toList),
+    (D47i,(0.654 to  0.773 by 0.01).toList),
     (depositionalAge,ageList)
   )
 
@@ -62,30 +62,16 @@ object DiageneSim extends App with NumberWrapper with StandardsParameters with P
    InitializeValues(initialValues) next
    AgesFromMaxMinCP(110,0) next
    BurialDepthCP(List((110.0,0.0), (100.0,150.0), (50.0,3500.0),(38.0,0.0),(0.0,0.0))) next
-   InterpolatorCP(outputValueLabel = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) next
-   InterpolatorCP(outputValueLabel = SurfaceTemperature, inputValueLabel = Age, xyList = surfaceTemperatures) next
+   InterpolatorCP(output = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) next
+   InterpolatorCP(output = SurfaceTemperature, inputValueLabel = Age, xyList = surfaceTemperatures) next
    BurialTemperatureCP(geothermalGradient)  next
    CalculateStepValue(D47eq).applying(D47eqFun).withParameters(BurialTemperature)  next
-   CalculateStepValue(dT).applying(dTFun).withParameters(Previous(Age),Age) next
+   CalculateStepValue(dT).applying(dTFun).withParameters(Previous(BurialTemperature), BurialTemperature)  next
    CalculateStepValue(D47i).applying(D47iFun).withParameters(Previous(D47i,TakeCurrentStepValue),D47eq, BurialTemperature,dT) next
    CalculateStepValue(SampleTemp).applying(davies19_T).withParameters(D47i)
 
 
   val runnedModel = b.run
-  implicit val transformMe = (x:CalculationParametersIOLabels) => (x*1)
-  val push = (x:CalculationParametersIOLabels) => (2 * x - 1)/2
-
-   foo (push, dT)
-
-  def foo(fun:(CalculationParametersIOLabels) => Double, label: CalculationParametersIOLabels):Double = {
-    fun(label)
-  }
-
-
-
-
-
-
 
 
 

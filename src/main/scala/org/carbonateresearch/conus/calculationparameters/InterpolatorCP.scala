@@ -5,14 +5,16 @@ import spire.math._
 import spire.implicits._
 import spire.algebra._
 
-final case class InterpolatorCP(outputValueLabel: CalculationParametersIOLabels, inputValueLabel:CalculationParametersIOLabels, xyList: List[(Number, Number)])
+final case class InterpolatorCP(output: CalculationParametersIOLabels, inputValueLabel:CalculationParametersIOLabels, xyList: List[(Number, Number)])
 extends CalculationParameters {
+
+  val outputs=List(output)
 
   override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]] = {
 
     val xValue = previousResults(step)(inputValueLabel)
 
-    Map(step -> Map(outputValueLabel -> interpolateSingleValue(xValue, xyList)))
+    Map(step -> Map(output -> interpolateSingleValue(xValue, xyList)))
 
   }
 

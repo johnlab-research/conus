@@ -8,6 +8,7 @@ import spire.math.Number
 
 final case class CalculateValueForStep(inputs: List[CalculationParametersIOLabels], output: CalculationParametersIOLabels, functionBlock: List[Number] => Number) extends CalculationParameters {
 
+  override def outputs: List[CalculationParametersIOLabels] = List(output)
   override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
 
     val numericalInputs = inputs.map(i => findValueFromLabel(i, step, previousResults))

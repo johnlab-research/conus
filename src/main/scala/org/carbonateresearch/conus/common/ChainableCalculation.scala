@@ -1,6 +1,6 @@
 package org.carbonateresearch.conus.common
 
-import org.carbonateresearch.conus.calculationparameters.{CalculationParameters, CalculationResults, ParalleledCPs}
+import org.carbonateresearch.conus.calculationparameters.{CalculationParameters, CalculationResults}
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import spire.implicits._
 import spire.math._
@@ -25,6 +25,7 @@ final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameter
 
     ChainableCalculation(ID, steps,this.modelParameters ++ nextChainableCalculation.modelParameters)
   }
+
 
   def ==(secondChainableCalculation: ChainableCalculation): ChainableCalculation = {
 

@@ -2,8 +2,9 @@ package org.carbonateresearch.conus.common
 
 import akka.actor.Props
 import org.carbonateresearch.conus.DiageneSim.actorSystem
+import scala.compat.Platform.EOL
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import org.carbonateresearch.conus.calculationparameters.{CalculateValueForStep, CalculationParameters, ParalleledCPs}
+import org.carbonateresearch.conus.calculationparameters.{CalculateValueForStep, CalculationParameters}
 import spire.math._
 
 import scala.annotation.tailrec
@@ -41,8 +42,31 @@ final case class ModelCalculationSpace(calculations:List[ChainableCalculation], 
 
 
   def run: Unit = {
-    val modeller = actorSystem.actorOf(Props[ParrallelModellerDispatcherActor])
-    modeller ! calculations
+
+    val firstModels:List[CalculationParameters] = calculations(0).modelParameters
+    //val parameterList = firstModels.flatMap(c => c.outputs).map(label => label.toString).reverse
+    val parameterList = firstModels.map(c => c.outputs)
+    //val errorsList:String = firstModels.map(c => c.checkForError).flatten.mkString(EOL)
+
+    @tailrec
+    def checkErrors (parametersList:List[CalculationParameters], currentString: String): String = {
+      parametersList match  {
+        case Nil => currentString
+        case x::xs => checkErrors(xs,currentString+x.checkForError(xs))
+      }
+    }
+
+    val errorsList :String = checkErrors(firstModels,"")
+
+
+    if(errorsList == "") {
+      println("No errors detecting, will be computing the following model parameters in the model:" + EOL+parameterList.reverse.flatten.mkString(", "))
+      val modeller = actorSystem.actorOf(Props[ParrallelModellerDispatcherActor])
+      modeller ! calculations
+
+    }
+    else {
+      println(errorsList+EOL+"Impossible to initiate a run: Correct error(s) first")}
   }
 
 

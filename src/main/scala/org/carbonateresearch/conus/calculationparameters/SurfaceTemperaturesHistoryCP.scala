@@ -6,9 +6,10 @@ import org.carbonateresearch.conus.calculationparameters.parametersIO.{Calculati
 
 final case class SurfaceTemperaturesHistoryCP (SurfaceTemperatureAgeMap:List[(Number, Number)]) extends CalculationParameters with StandardsParameters {
 
+  override val outputs: List[CalculationParametersIOLabels] = List(SurfaceTemperature)
   override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
 
-    InterpolatorCP(inputValueLabel = Age, outputValueLabel = SurfaceTemperature, xyList = SurfaceTemperatureAgeMap).calculate(step,previousResults)
+    InterpolatorCP(inputValueLabel = Age, output = SurfaceTemperature, xyList = SurfaceTemperatureAgeMap).calculate(step,previousResults)
 
   }
 
