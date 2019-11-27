@@ -10,7 +10,7 @@ import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart*/
-import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, ParrallelModellerDispatcherActor, NewSteppedModel}
+import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, NewSteppedModel, ParrallelModellerDispatcherActor, SingleModelResults}
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import akka.actor.Actor
 import akka.actor.ActorSystem
@@ -22,7 +22,7 @@ import scala.compat.Platform.EOL
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
-import org.carbonateresearch.conus.calculationparameters.{AgesFromMaxMinCP, BurialDepthCP, BurialTemperatureCP, CalculateStepValue, CalculateValueForStep, CalculationResults, GeothermalGradientHistoryCP, InitializeValues, Initializer, InterpolatorCP, SurfaceTemperaturesHistoryCP}
+import org.carbonateresearch.conus.calculationparameters.{CalculateBurialDepthFromAgeModel, CalculateBurialTemperatureFromGeothermalGradient, CalculateStepValue, CalulateStepAges, GeothermalGradientThroughTime, InitializeValues, Initializer, InterpolateValues, SurfaceTemperaturesThroughTime}
 //import spire.implicits._
 import spire.math._
 import spire.algebra._
@@ -48,34 +48,38 @@ object DiageneSim extends App with NumberWrapper with StandardsParameters with P
   val geothermalGradient = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val surfaceTemperatures = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val numberOfSteps = 220
-  val depositionalAge = Parameter("Initial age of deposition", " Ma", Some(0))
+  val depositionalAge = Parameter("Initial age of deposition", " Ma", Some(0), precision = 3)
   val ageList:List[Number] = (50 to 75 by 1).toList.map(x=>Number(x))
   //val ageList = List(134, 123, 112)
 
   val initialValues:List[(CalculationParametersIOLabels,List[Number])] = List(
-    (D47i,(0.654 to  0.773 by 0.01).toList),
+    (D47i,(0.654 to  0.689 by 0.01).toList),
     (depositionalAge,ageList)
   )
 
 
  val b = NewSteppedModel(numberOfSteps) next
    InitializeValues(initialValues) next
-   AgesFromMaxMinCP(110,0) next
-   BurialDepthCP(List((110.0,0.0), (100.0,150.0), (50.0,3500.0),(38.0,0.0),(0.0,0.0))) next
-   InterpolatorCP(output = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) next
-   InterpolatorCP(output = SurfaceTemperature, inputValueLabel = Age, xyList = surfaceTemperatures) next
-   BurialTemperatureCP(geothermalGradient)  next
-   CalculateStepValue(D47eq).applying(D47eqFun).withParameters(BurialTemperature)  next
+   CalulateStepAges(110,0) next
+   CalculateBurialDepthFromAgeModel(List((110.0,0.0), (100.0,150.0), (50.0,3500.0),(38.0,0.0),(0.0,0.0))) next
+   InterpolateValues(output = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient) next
+   InterpolateValues(output = SurfaceTemperature, inputValueLabel = Age, xyList = surfaceTemperatures) next
+   CalculateBurialTemperatureFromGeothermalGradient(geothermalGradient)  next
    CalculateStepValue(dT).applying(dTFun).withParameters(Previous(BurialTemperature), BurialTemperature)  next
+   CalculateStepValue(D47eq).applying(D47eqFun).withParameters(BurialTemperature)  next
    CalculateStepValue(D47i).applying(D47iFun).withParameters(Previous(D47i,TakeCurrentStepValue),D47eq, BurialTemperature,dT) next
    CalculateStepValue(SampleTemp).applying(davies19_T).withParameters(D47i)
 
+  val simpleFunction = (a:Double, b:Int) => a*b
+
+  println(simpleFunction(2.3,4))
+  println(simpleFunction(3,4))
 
   val runnedModel = b.run
 
 
 
-  def handleResults(modelResults: List[CalculationResults]) = {
+  def handleResults(modelResults: List[SingleModelResults]) = {
     val tolerance = Interval(Number(35.0), Number(38.0))
 
     val validResults = modelResults.filter(p => tolerance.contains(

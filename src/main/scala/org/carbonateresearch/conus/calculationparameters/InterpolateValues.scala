@@ -5,10 +5,11 @@ import spire.math._
 import spire.implicits._
 import spire.algebra._
 
-final case class InterpolatorCP(output: CalculationParametersIOLabels, inputValueLabel:CalculationParametersIOLabels, xyList: List[(Number, Number)])
+final case class InterpolateValues(output: CalculationParametersIOLabels, inputValueLabel:CalculationParametersIOLabels, xyList: List[(Number, Number)])
 extends CalculationParameters {
 
   val outputs=List(output)
+  override val inputs = Some(List(inputValueLabel))
 
   override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]] = {
 
@@ -18,7 +19,7 @@ extends CalculationParameters {
 
   }
 
-  private[InterpolatorCP] def interpolateSingleValue(xValue: Number, pairedValues: List[(Number,Number)]): Number = {
+  private[InterpolateValues] def interpolateSingleValue(xValue: Number, pairedValues: List[(Number,Number)]): Number = {
     // This method is meant to be generic and return an interpolated value between two numbers
 
     implicit val ord = Ordering.by { foo: Number => foo.toDouble}

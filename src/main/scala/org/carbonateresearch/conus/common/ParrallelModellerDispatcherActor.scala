@@ -14,13 +14,11 @@ import akka.util.Timeout
 import org.carbonateresearch.conus.DiageneSim
 
 import scala.concurrent.duration._
-import org.carbonateresearch.conus.calculationparameters.CalculationResults
-
 import scala.concurrent.ExecutionContext.global
 
 class ParrallelModellerDispatcherActor extends Actor {
   var initialCount:Int = 0
-  var resultsList = scala.collection.mutable.ListBuffer.empty[CalculationResults]
+  var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelResults]
   val collector:ActorRef = context.actorOf(Props[ParrallelModellerCollectorActor], name="Collector")
 
   override def receive = {
@@ -40,22 +38,23 @@ class ParrallelModellerDispatcherActor extends Actor {
         f onComplete {
           case Success(model) => {
             model match {
-              case m:CalculationResults => {
+              case m:SingleModelResults => {
                 resultsList += m
                 val modelData = m.summary+EOL
 
                 val t1 = System.nanoTime()
-                val elapsedTime = ((t1 - t0)/10E9)
+                val elapsedTime:Double = ((t1 - t0)/10E9)
+                val elapsedTimeStr:String = "%1.3f" format elapsedTime
                 val percentCompleted = ((resultsList.size.toDouble/initialCount.toDouble)*100).ceil
                 val predictedTime = elapsedTime/percentCompleted*(100-percentCompleted)
 
                 if(resultsList.size == initialCount){
-                  val runStatistics = "-> 100% completed in "+elapsedTime+" seconds."+ EOL
+                  val runStatistics = "-> 100% completed in "+elapsedTimeStr+" seconds."+ EOL
                   println(modelData+runStatistics)
                   DiageneSim.handleResults(resultsList.toList)
                 }
                 else {
-                  val runStatistics = "-> "+percentCompleted+"% completed in "+elapsedTime+" seconds. Predicted time remaining: "+predictedTime+" seconds."+ EOL
+                  val runStatistics = "-> "+percentCompleted+"% completed in "+ elapsedTimeStr+" seconds. Predicted time remaining: "+predictedTime+" seconds."+ EOL
                   println(modelData+runStatistics)
                 }
 

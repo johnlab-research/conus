@@ -1,6 +1,0 @@
-package org.carbonateresearch.conus.calculationparameters
-
-import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
-import spire.math.Number
-
-trait CalculateStepValueError

@@ -1,12 +1,14 @@
 package org.carbonateresearch.conus.common
 
-import org.carbonateresearch.conus.calculationparameters.{CalculationParameters, CalculationResults}
+import org.carbonateresearch.conus.calculationparameters.CalculationParameters
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import spire.implicits._
 import spire.math._
 import spire.algebra._
+
 import scala.annotation.tailrec
-import org.carbonateresearch.conus.calculationparameters.{CalculateValueForStep}
+import org.carbonateresearch.conus.calculationparameters.CalculateStepValue
+import org.carbonateresearch.conus.common
 
 final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameters:List[CalculationParameters]) {
 
@@ -16,7 +18,6 @@ final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameter
       case 0 => this
       case _ => {
         ChainableCalculation(ID,steps,  nextModelParameters.toList:::modelParameters)
-
       }
     }
   }
@@ -32,7 +33,7 @@ final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameter
      ChainableCalculation(ID, steps,  secondChainableCalculation.modelParameters:::modelParameters)
   }
 
-    def evaluate: CalculationResults = {
+  def evaluate: SingleModelResults = {
 
     val inverseParams = modelParameters.reverse
 
@@ -44,7 +45,7 @@ final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameter
       }
     }
       val initialMap:Map[Number, Map[CalculationParametersIOLabels,Number]] = Map(Number(0) -> Map(NumberOfSteps -> (Number(steps.size))))
-    CalculationResults(ID,steps, modelParameters, traverseSteps(steps,  initialMap))
+    common.SingleModelResults(ID,steps, modelParameters, traverseSteps(steps,  initialMap))
     }
 
 

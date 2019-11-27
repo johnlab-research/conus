@@ -9,12 +9,12 @@ trait PasseyHenkesClumpedDiffusionModel {
   def ea = 197
   def r = 0.008314
 
-  val dT = Parameter("dT","˚C")
- val TKelvin = Parameter("T","˚K")
-val D47i = Parameter("Δ47","‰")
-val D47eq = Parameter("Δ47eq","‰")
-val SampleTemp = Parameter("Sample temperature","˚C")
-val TemperatureDepth = Parameter("Temperature Depth","˚C")
+  val dT = Parameter("dT","˚C",precision = 1)
+  val TKelvin = Parameter("T","˚K", precision = 1)
+  val D47i = Parameter("Δ47i"," ‰", precision = 3)
+  val D47eq = Parameter("Δ47eq"," ‰", precision = 3)
+  val SampleTemp = Parameter("Sample temperature","˚C", precision = 1)
+  val TemperatureDepth = Parameter("Temperature Depth","˚C", precision = 1)
 
   val D47eqFun = (t:Number) => Number(0.04028 * math.pow(10,6) / math.pow((t+273.15).toDouble,2) + 0.23776)
   val dTFun = (previousT: Number, currentT: Number) => abs(previousT-currentT)* 1000000 * 365 * 24 * 60 * 60

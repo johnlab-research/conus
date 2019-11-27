@@ -4,7 +4,7 @@ import akka.actor.Props
 import org.carbonateresearch.conus.DiageneSim.actorSystem
 import scala.compat.Platform.EOL
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import org.carbonateresearch.conus.calculationparameters.{CalculateValueForStep, CalculationParameters}
+import org.carbonateresearch.conus.calculationparameters.{CalculateStepValue, CalculationParameters}
 import spire.math._
 
 import scala.annotation.tailrec
@@ -28,10 +28,11 @@ final case class ModelCalculationSpace(calculations:List[ChainableCalculation], 
       ncl => cl next ncl)), Map())
   }
 
+  /*
   def next(inputs: List[CalculationParametersIOLabels], outputs:List[Parameter], function: List[Number] => List[Number]): ModelCalculationSpace ={
-      ModelCalculationSpace(calculations.map(cl => cl next CalculateValueForStep(inputs,outputs,function)),outputs.map(v => (v,Number(0))).toMap++this.parameters)
+      ModelCalculationSpace(calculations.map(cl => cl next CalculateStepValue(Some(inputs),outputs(0),function)),outputs.map(v => (v,Number(0))).toMap++this.parameters)
 
-  }
+  }*/
 
   def ==(calibration:(CalculationParametersIOLabels,List[Number])*) : Unit = {}
 
@@ -60,7 +61,7 @@ final case class ModelCalculationSpace(calculations:List[ChainableCalculation], 
 
 
     if(errorsList == "") {
-      println("No errors detecting, will be computing the following model parameters in the model:" + EOL+parameterList.reverse.flatten.mkString(", "))
+      println("No error detected, computing the following parameters in the model:" + EOL+parameterList.reverse.flatten.mkString(", ")+EOL+"----------------------------------------")
       val modeller = actorSystem.actorOf(Props[ParrallelModellerDispatcherActor])
       modeller ! calculations
 

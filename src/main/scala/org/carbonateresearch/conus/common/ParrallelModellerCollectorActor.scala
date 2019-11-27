@@ -3,15 +3,15 @@ package org.carbonateresearch.conus.common
 import akka.actor.{Actor, Props}
 import akka.util.Timeout
 import akka.pattern.ask
+
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.global
-import org.carbonateresearch.conus.calculationparameters.CalculationResults
 import scala.util.Try
 import scala.concurrent.Future
-import scala.util.{Failure,Success}
+import scala.util.{Failure, Success}
 
 class ParrallelModellerCollectorActor extends Actor {
-  var resultsList = scala.collection.mutable.ListBuffer.empty[CalculationResults]
+  var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelResults]
 
   override def receive = {
 
@@ -30,7 +30,7 @@ class ParrallelModellerCollectorActor extends Actor {
       f onComplete {
         case Success(model) => {
           model match {
-            case m:CalculationResults => {
+            case m:SingleModelResults => {
           resultsList += m
           println(resultsList)}
             }}
