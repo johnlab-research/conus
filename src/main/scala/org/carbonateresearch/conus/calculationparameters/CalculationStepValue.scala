@@ -8,14 +8,14 @@ import spire.implicits._
 import scala.annotation.tailrec
 
 // Tagging trait for model parameters case classes
-trait CalculationParameters {
+trait CalculationStepValue {
   def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]] = ???
   def unit: String = ""
   def outputs:List[CalculationParametersIOLabels]
   def inputs:Option[List[CalculationParametersIOLabels]] = None
   def functionBlock: Option[List[Number] => Number] = None
 
-  def checkForError(previousParameters:List[CalculationParameters]): String = {
+  def checkForError(previousParameters:List[CalculationStepValue]): String = {
 
     val parameterList = previousParameters.flatMap(c => c.outputs)
 

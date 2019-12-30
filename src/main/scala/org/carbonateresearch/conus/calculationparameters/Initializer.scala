@@ -5,7 +5,7 @@ import spire.implicits._
 import spire.math.Number
 
 
-final case class Initializer(inputsList: List[(CalculationParametersIOLabels,Number)]) extends CalculationParameters {
+final case class Initializer(inputsList: List[(CalculationParametersIOLabels,Number)]) extends CalculationStepValue {
 
   override def outputs:List[CalculationParametersIOLabels] = inputsList.map(i => i._1)
 

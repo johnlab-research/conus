@@ -4,7 +4,7 @@ import spire.math.Number
 import spire.implicits._
 import org.carbonateresearch.conus.calculationparameters.parametersIO.{CalculationParametersIOLabels, StandardsParameters}
 
-final case class CalculateBurialTemperatureFromGeothermalGradient(geothermalGradientsAgeMap: List[(Number,Number)]) extends CalculationParameters with StandardsParameters{
+final case class CalculateBurialTemperatureFromGeothermalGradient(geothermalGradientsAgeMap: List[(Number,Number)]) extends CalculationStepValue with StandardsParameters{
   override def outputs = List(BurialTemperature)
   override def inputs = Option(List(Depth,GeothermalGradient))
 

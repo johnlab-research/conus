@@ -8,7 +8,7 @@ class ParrallelModellerRunnerActor extends Actor {
 
   def receive = {
     case model: ChainableCalculation => {
-      val result:SingleModelResults = model.evaluate
+      val result:SingleModelWithResults = model.evaluate
       sender ! result
     }
     case _       => println("Sample type not handled by Runner")

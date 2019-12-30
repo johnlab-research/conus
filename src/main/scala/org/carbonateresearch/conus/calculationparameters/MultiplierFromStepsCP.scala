@@ -4,7 +4,7 @@ import org.carbonateresearch.conus.calculationparameters.parametersIO.{Calculati
 import spire.math.{Number, abs}
 import spire.implicits._
 
-final case class MultiplierFromStepsCP(output: CalculationParametersIOLabels, maxValue: Number, minValue: Number, increment: Number) extends CalculationParameters {
+final case class MultiplierFromStepsCP(output: CalculationParametersIOLabels, maxValue: Number, minValue: Number, increment: Number) extends CalculationStepValue {
 
   val outputs = List(output)
 

@@ -6,7 +6,7 @@ import spire.implicits._
 import spire.algebra._
 
 final case class InterpolateValues(output: CalculationParametersIOLabels, inputValueLabel:CalculationParametersIOLabels, xyList: List[(Number, Number)])
-extends CalculationParameters {
+extends CalculationStepValue {
 
   val outputs=List(output)
   override val inputs = Some(List(inputValueLabel))

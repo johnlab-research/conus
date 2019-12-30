@@ -11,7 +11,7 @@ import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
 class ParrallelModellerCollectorActor extends Actor {
-  var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelResults]
+  var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelWithResults]
 
   override def receive = {
 
@@ -30,7 +30,7 @@ class ParrallelModellerCollectorActor extends Actor {
       f onComplete {
         case Success(model) => {
           model match {
-            case m:SingleModelResults => {
+            case m:SingleModelWithResults => {
           resultsList += m
           println(resultsList)}
             }}

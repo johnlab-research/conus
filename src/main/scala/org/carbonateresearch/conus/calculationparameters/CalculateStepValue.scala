@@ -6,7 +6,7 @@ import spire.implicits._
 import spire.math.Number
 
 
-final case class CalculateStepValue(override val inputs: Option[List[CalculationParametersIOLabels]], output:CalculationParametersIOLabels, override val functionBlock: Option[List[Number] => Number]) extends CalculationParameters {
+final case class CalculateStepValue(override val inputs: Option[List[CalculationParametersIOLabels]], output:CalculationParametersIOLabels, override val functionBlock: Option[List[Number] => Number]) extends CalculationStepValue {
 
   override val outputs = List(output)
 

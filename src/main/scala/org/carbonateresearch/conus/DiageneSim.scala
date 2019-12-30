@@ -10,7 +10,7 @@ import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart*/
-import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, NewSteppedModel, ParrallelModellerDispatcherActor, SingleModelResults}
+import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, NewSteppedModel, ParrallelModellerDispatcherActor, SingleModelWithResults}
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import akka.actor.Actor
 import akka.actor.ActorSystem
@@ -79,7 +79,7 @@ object DiageneSim extends App with NumberWrapper with StandardsParameters with P
 
 
 
-  def handleResults(modelResults: List[SingleModelResults]) = {
+  def handleResults(modelResults: List[SingleModelWithResults]) = {
     val tolerance = Interval(Number(35.0), Number(38.0))
 
     val validResults = modelResults.filter(p => tolerance.contains(

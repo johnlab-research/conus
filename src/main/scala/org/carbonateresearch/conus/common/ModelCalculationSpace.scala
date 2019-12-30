@@ -4,7 +4,7 @@ import akka.actor.Props
 import org.carbonateresearch.conus.DiageneSim.actorSystem
 import scala.compat.Platform.EOL
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import org.carbonateresearch.conus.calculationparameters.{CalculateStepValue, CalculationParameters}
+import org.carbonateresearch.conus.calculationparameters.{CalculateStepValue, CalculationStepValue}
 import spire.math._
 
 import scala.annotation.tailrec
@@ -12,7 +12,7 @@ import scala.annotation.tailrec
 final case class ModelCalculationSpace(calculations:List[ChainableCalculation], parameters: Map[Parameter,Number]) {
 
 
-  def next(nextCalculationParameter: CalculationParameters): ModelCalculationSpace = {
+  def next(nextCalculationParameter: CalculationStepValue): ModelCalculationSpace = {
 
     ModelCalculationSpace(calculations.map(cl => cl next nextCalculationParameter), Map())
   }
@@ -44,13 +44,13 @@ final case class ModelCalculationSpace(calculations:List[ChainableCalculation], 
 
   def run: Unit = {
 
-    val firstModels:List[CalculationParameters] = calculations(0).modelParameters
+    val firstModels:List[CalculationStepValue] = calculations(0).modelParameters
     //val parameterList = firstModels.flatMap(c => c.outputs).map(label => label.toString).reverse
     val parameterList = firstModels.map(c => c.outputs)
     //val errorsList:String = firstModels.map(c => c.checkForError).flatten.mkString(EOL)
 
     @tailrec
-    def checkErrors (parametersList:List[CalculationParameters], currentString: String): String = {
+    def checkErrors (parametersList:List[CalculationStepValue], currentString: String): String = {
       parametersList match  {
         case Nil => currentString
         case x::xs => checkErrors(xs,currentString+x.checkForError(xs))

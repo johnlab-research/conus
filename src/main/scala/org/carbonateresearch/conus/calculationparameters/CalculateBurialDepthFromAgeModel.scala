@@ -3,7 +3,7 @@ import org.carbonateresearch.conus.calculationparameters.parametersIO.{Calculati
 import spire.math.{Number, Numeric}
 import spire.implicits._
 
-final case class CalculateBurialDepthFromAgeModel(ageModel:List[(Number, Number)]) extends CalculationParameters with StandardsParameters {
+final case class CalculateBurialDepthFromAgeModel(ageModel:List[(Number, Number)]) extends CalculationStepValue with StandardsParameters {
 
   override def outputs = List(Depth)
   override val inputs = Option(List(Age))

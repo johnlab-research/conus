@@ -18,7 +18,7 @@ import scala.concurrent.ExecutionContext.global
 
 class ParrallelModellerDispatcherActor extends Actor {
   var initialCount:Int = 0
-  var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelResults]
+  var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelWithResults]
   val collector:ActorRef = context.actorOf(Props[ParrallelModellerCollectorActor], name="Collector")
 
   override def receive = {
@@ -38,7 +38,7 @@ class ParrallelModellerDispatcherActor extends Actor {
         f onComplete {
           case Success(model) => {
             model match {
-              case m:SingleModelResults => {
+              case m:SingleModelWithResults => {
                 resultsList += m
                 val modelData = m.summary+EOL
 

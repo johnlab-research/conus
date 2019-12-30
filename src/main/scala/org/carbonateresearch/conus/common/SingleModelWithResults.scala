@@ -1,12 +1,12 @@
 package org.carbonateresearch.conus.common
 
-import org.carbonateresearch.conus.calculationparameters.CalculationParameters
+import org.carbonateresearch.conus.calculationparameters.CalculationStepValue
 import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
 import spire.math.Number
 
 import scala.compat.Platform.EOL
 
-final case class SingleModelResults(ID:Int, steps: List[Number], parameters: List[CalculationParameters], results: Map[Number, Map[CalculationParametersIOLabels,Number]]){
+final case class SingleModelWithResults(ID:Int, steps: List[Number], parameters: List[CalculationStepValue], results: Map[Number, Map[CalculationParametersIOLabels,Number]]){
 
    def valuesForAllSteps(label:CalculationParametersIOLabels): Map[Number,Number] = steps.map(s => (s,results(s)(label))).toMap
 
