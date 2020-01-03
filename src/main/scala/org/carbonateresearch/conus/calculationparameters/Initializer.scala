@@ -1,17 +1,16 @@
 package org.carbonateresearch.conus.calculationparameters
 
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import spire.implicits._
-import spire.math.Number
+import org.carbonateresearch.conus.common.{ModelResults, SingleStepResults}
 
-
-final case class Initializer(inputsList: List[(CalculationParametersIOLabels,Number)]) extends CalculationStepValue {
+final case class Initializer(inputsList: List[(CalculationParametersIOLabels,Double)]) extends CalculationStepValue {
 
   override def outputs:List[CalculationParametersIOLabels] = inputsList.map(i => i._1)
 
-  override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
+  override def calculate (step:Int,previousResults:ModelResults): ModelResults  = {
 
-    Map(step -> inputsList.toMap)
+    val newSingleStepResults: SingleStepResults = SingleStepResults(previousResults.theseResults(step).valuesForAllLabels++inputsList.toMap)
+    ModelResults(previousResults.theseResults++Map(step -> newSingleStepResults))
   }
 
 }

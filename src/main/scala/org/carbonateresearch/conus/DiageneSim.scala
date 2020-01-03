@@ -23,14 +23,10 @@ import scala.concurrent.ExecutionContext.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 import org.carbonateresearch.conus.calculationparameters.{CalculateBurialDepthFromAgeModel, CalculateBurialTemperatureFromGeothermalGradient, CalculateStepValue, CalulateStepAges, GeothermalGradientThroughTime, InitializeValues, Initializer, InterpolateValues, SurfaceTemperaturesThroughTime}
-//import spire.implicits._
-import spire.math._
-import spire.algebra._
-import org.carbonateresearch.conus.implicits.NumberWrapper
 import org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel
 
 
-object DiageneSim extends App with NumberWrapper with StandardsParameters with PasseyHenkesClumpedDiffusionModel {
+object DiageneSim extends App with StandardsParameters with PasseyHenkesClumpedDiffusionModel {
 
 
   val actorSystem = ActorSystem("Diagenesim-Akka")
@@ -40,7 +36,7 @@ object DiageneSim extends App with NumberWrapper with StandardsParameters with P
     val t0 = System.nanoTime()
     val result = block    // call-by-name
     val t1 = System.nanoTime()
-    println("Elapsed time: " + ((t1 - t0)/10E9) + " seconds")
+    println("Elapsed time: " + ((t1 - t0)/10E8) + " seconds")
     result
   }
 
@@ -49,10 +45,10 @@ object DiageneSim extends App with NumberWrapper with StandardsParameters with P
   val surfaceTemperatures = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val numberOfSteps = 220
   val depositionalAge = Parameter("Initial age of deposition", " Ma", Some(0), precision = 3)
-  val ageList:List[Number] = (50 to 75 by 1).toList.map(x=>Number(x))
-  //val ageList = List(134, 123, 112)
+  val ageList:List[Double] = (50.0 to 75.0 by 0.5).toList
 
-  val initialValues:List[(CalculationParametersIOLabels,List[Number])] = List(
+
+  val initialValues:List[(CalculationParametersIOLabels,List[Double])] = List(
     (D47i,(0.654 to  0.689 by 0.01).toList),
     (depositionalAge,ageList)
   )
@@ -70,20 +66,16 @@ object DiageneSim extends App with NumberWrapper with StandardsParameters with P
    CalculateStepValue(D47i).applying(D47iFun).withParameters(Previous(D47i,TakeCurrentStepValue),D47eq, BurialTemperature,dT) next
    CalculateStepValue(SampleTemp).applying(davies19_T).withParameters(D47i)
 
-  val simpleFunction = (a:Double, b:Int) => a*b
-
-  println(simpleFunction(2.3,4))
-  println(simpleFunction(3,4))
-
   val runnedModel = b.run
 
 
 
   def handleResults(modelResults: List[SingleModelWithResults]) = {
-    val tolerance = Interval(Number(35.0), Number(38.0))
+    val tolerance = (35.0, 38.0)
 
-    val validResults = modelResults.filter(p => tolerance.contains(
-      p.finalResult(SampleTemp)) )
+    val validResults = modelResults.filter(p => (tolerance._1<(
+      p.finalResult(SampleTemp)) && tolerance._2>(p.finalResult(SampleTemp))))
+
     println("Found "+validResults.size+" calibrated models:")
     validResults.map(r => r.summary+EOL).foreach(println)
     print("")

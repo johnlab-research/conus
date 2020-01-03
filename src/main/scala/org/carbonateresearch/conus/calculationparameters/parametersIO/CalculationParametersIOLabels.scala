@@ -1,12 +1,11 @@
 package org.carbonateresearch.conus.calculationparameters.parametersIO
-import spire.math.{Number}
 
 trait CalculationParametersIOLabels{
   override def toString: String = {
     val fullString = this.getClass.getSimpleName
   fullString.take(fullString.size-1)}
   def unit: String = ""
-  def value = Number(0.0)
+  def value = 0.0
   def precision:Int = 2
 }
 case object NumberOfSteps extends CalculationParametersIOLabels {

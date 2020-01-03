@@ -4,12 +4,10 @@ import akka.actor.Props
 import org.carbonateresearch.conus.DiageneSim.actorSystem
 import scala.compat.Platform.EOL
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import org.carbonateresearch.conus.calculationparameters.{CalculateStepValue, CalculationStepValue}
-import spire.math._
-
+import org.carbonateresearch.conus.calculationparameters.CalculationStepValue
 import scala.annotation.tailrec
 
-final case class ModelCalculationSpace(calculations:List[ChainableCalculation], parameters: Map[Parameter,Number]) {
+final case class ModelCalculationSpace(calculations:List[ChainableCalculation], parameters: Map[Parameter,Double]) {
 
 
   def next(nextCalculationParameter: CalculationStepValue): ModelCalculationSpace = {
@@ -28,13 +26,8 @@ final case class ModelCalculationSpace(calculations:List[ChainableCalculation], 
       ncl => cl next ncl)), Map())
   }
 
-  /*
-  def next(inputs: List[CalculationParametersIOLabels], outputs:List[Parameter], function: List[Number] => List[Number]): ModelCalculationSpace ={
-      ModelCalculationSpace(calculations.map(cl => cl next CalculateStepValue(Some(inputs),outputs(0),function)),outputs.map(v => (v,Number(0))).toMap++this.parameters)
 
-  }*/
-
-  def ==(calibration:(CalculationParametersIOLabels,List[Number])*) : Unit = {}
+  def ==(calibration:(CalculationParametersIOLabels,List[Double])*) : Unit = {}
 
 
   private def checkCalibratedModels: Unit = {}

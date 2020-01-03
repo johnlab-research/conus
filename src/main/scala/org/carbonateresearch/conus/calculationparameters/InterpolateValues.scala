@@ -1,33 +1,30 @@
 package org.carbonateresearch.conus.calculationparameters
-import org.carbonateresearch.conus.calculationparameters.parametersIO.{CalculationParametersIOLabels}
+import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
+import org.carbonateresearch.conus.common.{ModelResults, SingleStepResults}
 
-import spire.math._
-import spire.implicits._
-import spire.algebra._
-
-final case class InterpolateValues(output: CalculationParametersIOLabels, inputValueLabel:CalculationParametersIOLabels, xyList: List[(Number, Number)])
+final case class InterpolateValues(output: CalculationParametersIOLabels, inputValueLabel:CalculationParametersIOLabels, xyList: List[(Double, Double)])
 extends CalculationStepValue {
 
   val outputs=List(output)
   override val inputs = Some(List(inputValueLabel))
 
-  override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]] = {
+  override def calculate (step:Int,previousResults:ModelResults): ModelResults = {
 
-    val xValue = previousResults(step)(inputValueLabel)
+    val xValue = previousResults.resultsForStep(step).valueForLabel(inputValueLabel)
 
-    Map(step -> Map(output -> interpolateSingleValue(xValue, xyList)))
+    //ModelResults(Map(step -> SingleStepResults(Map(output -> interpolateSingleValue(xValue, xyList)))))
+    previousResults.addParameterResultAtStep(output,interpolateSingleValue(xValue, xyList),step)
 
   }
 
-  private[InterpolateValues] def interpolateSingleValue(xValue: Number, pairedValues: List[(Number,Number)]): Number = {
+  private[InterpolateValues] def interpolateSingleValue(xValue: Double, pairedValues: List[(Double,Double)]): Double = {
     // This method is meant to be generic and return an interpolated value between two numbers
 
-    implicit val ord = Ordering.by { foo: Number => foo.toDouble}
 
     val xs = pairedValues.sorted.map(a => a._1)
     val ys = pairedValues.sorted.map(a => a._2)
 
-    val firstNegative:Option[Number] = xs.find(x => (xValue-x)<=0)
+    val firstNegative:Option[Double] = xs.find(x => (xValue-x)<=0)
 
     var Index = 0
 

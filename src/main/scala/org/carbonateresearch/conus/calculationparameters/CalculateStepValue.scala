@@ -1,16 +1,13 @@
 package org.carbonateresearch.conus.calculationparameters
-
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import scala.compat.Platform.EOL
-import spire.implicits._
-import spire.math.Number
+import org.carbonateresearch.conus.common.{ModelResults}
 
 
-final case class CalculateStepValue(override val inputs: Option[List[CalculationParametersIOLabels]], output:CalculationParametersIOLabels, override val functionBlock: Option[List[Number] => Number]) extends CalculationStepValue {
+final case class CalculateStepValue(override val inputs: Option[List[CalculationParametersIOLabels]], output:CalculationParametersIOLabels, override val functionBlock: Option[List[Double] => Double]) extends CalculationStepValue {
 
   override val outputs = List(output)
 
-  override def calculate (step:Number,previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Map[Number,Map[CalculationParametersIOLabels ,Number]]  = {
+  override def calculate (step:Int,previousResults:ModelResults): ModelResults  = {
 
     val numericalInputs = inputs match {
       case Some(l:List[CalculationParametersIOLabels]) => l.map(i => findValueFromLabel(i, step, previousResults))
@@ -19,7 +16,7 @@ final case class CalculateStepValue(override val inputs: Option[List[Calculation
 
     val result = functionBlock match {
       case Some(f) => f(numericalInputs)
-      case None => Number(0)
+      case None => 0
     }
 
     val outputLabel = output match { // in case someone puts a Previous as an output label
@@ -27,19 +24,18 @@ final case class CalculateStepValue(override val inputs: Option[List[Calculation
       case _ => output
     }
 
-
-    Map(step -> Map(outputLabel -> result))
+    previousResults.addParameterResultAtStep(outputLabel,result.asInstanceOf[Double],step)
   }
 
 
   def applying(function: Any):CalculateStepValue = {
 
-    def newFunctionBlock(values: List[Number]) = {
+    def newFunctionBlock(values: List[Double]) = {
       function match {
-        case f:((Number) => Number) => f(values.head)
-        case f:((Number, Number) => Number) => f(values.head, values(1))
-      case f:((Number, Number, Number) => Number) => f(values.head, values(1), values(2))
-      case f:((Number, Number, Number,Number) => Number) => f(values.head, values(1), values(2), values(3))
+        case f:((Double) => Double) => f(values.head)
+        case f:((Double, Double) => Double) => f(values.head, values(1))
+      case f:((Double, Double, Double) => Double) => f(values.head, values(1), values(2))
+      case f:((Double, Double, Double,Double) => Double) => f(values.head, values(1), values(2), values(3))
       }}
     CalculateStepValue(inputs = inputs, output = output, functionBlock = Option(newFunctionBlock))
   }
@@ -50,22 +46,22 @@ final case class CalculateStepValue(override val inputs: Option[List[Calculation
 
 
 
-  private def findValueFromLabel(input:CalculationParametersIOLabels, step:Number, previousResults:Map[Number,Map[CalculationParametersIOLabels,Number]]): Number ={
+  private def findValueFromLabel(input:CalculationParametersIOLabels, step:Int, previousModelResults:ModelResults): Double ={
     input match {
       case i:Previous => {
         if (step-i.offset >=0) {
-          previousResults(step-i.offset)(i.input)
+          previousModelResults.resultsForStep(step-i.offset).valueForLabel(i.input)
         } else {
           i.rule match{
-            case TakeStepZeroValue => previousResults(Number(0))(i.input)
-            case TakeCurrentStepValue =>previousResults(step)(i.input)
+            case TakeStepZeroValue => previousModelResults.resultsForStep(0).valueForLabel(i.input)
+            case TakeCurrentStepValue =>previousModelResults.resultsForStep(step).valueForLabel(i.input)
             case TakeSpecificValue(v) => v
-            case TakeValueForLabel(l) => previousResults(step)(l)
+            case TakeValueForLabel(l) => previousModelResults.resultsForStep(step).valueForLabel(l)
           }
         }
 
       }
-      case _ => previousResults(step)(input)
+      case _ => previousModelResults.resultsForStep(step).valueForLabel(input)
     }
   }
 

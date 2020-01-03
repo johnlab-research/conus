@@ -1,45 +1,180 @@
-2019-12-30 12:05:28.124 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 152 ms.
-2019-12-30 12:05:28.196 INFO  c.t.hydra.Hydra - Loaded pickle store with 111 entries.
-2019-12-30 12:05:28.196 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
-2019-12-30 12:05:28.198 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
-2019-12-30 12:05:28.199 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
-2019-12-30 12:05:28.207 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 6 ms.
-2019-12-30 12:05:28.207 INFO  c.t.hydra.Hydra - Clean build: true
-2019-12-30 12:05:31.210 INFO  c.t.h.l.ActivatedLicenseText - ActivatedLicenseText.validate took 2979 ms.
-2019-12-30 12:05:31.211 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 172. Maximum cores: 8
-2019-12-30 12:05:31.215 INFO  c.t.h.SourcePartitioner$ - No automatically balanced partition file /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim/main/partition.hydra exist yet. Using plain partition strategy.
-2019-12-30 12:05:31.245 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 8 files.
-2019-12-30 12:05:31.246 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 7 files.
-2019-12-30 12:05:31.246 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 7 files.
-2019-12-30 12:05:31.246 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 7 files.
-2019-12-30 12:05:35.326 INFO  worker.0 - [ cache invalidate ]: org.carbonateresearch.conus.DiageneSim.simpleFunction type was: Double => Double, now: (Double, Int) => Double
-2019-12-30 12:05:35.526 INFO  worker.0 - [ cache invalidate ]: org.carbonateresearch.conus.DiageneSim.simpleFunction type was: Double => Double, now: (Double, Int) => Double
-2019-12-30 12:05:36.677 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:75: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(2.3,4))
-                             ^
-2019-12-30 12:05:36.689 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:76: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(3,4))
-                           ^
-2019-12-30 12:05:37.060 INFO  worker.2 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.simpleFunction)
-2019-12-30 12:05:37.061 INFO  worker.2 - Respawning worker because of inconsistent reads.
-2019-12-30 12:05:37.269 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:75: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(2.3,4))
-                             ^
-2019-12-30 12:05:37.293 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:76: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(3,4))
-                           ^
-2019-12-30 12:05:37.376 INFO  worker.1 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.simpleFunction)
-2019-12-30 12:05:37.376 INFO  worker.1 - Respawning worker because of inconsistent reads.
-2019-12-30 12:05:37.568 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:75: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(2.3,4))
-                             ^
-2019-12-30 12:05:37.592 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:76: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(3,4))
-                           ^
-2019-12-30 12:05:37.819 INFO  worker.3 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.simpleFunction)
-2019-12-30 12:05:37.819 INFO  worker.3 - Respawning worker because of inconsistent reads.
-2019-12-30 12:05:39.186 ERROR worker.0 - 
-Found null type during super accessors: valuesPerLabel.$plus$plus
+2020-01-01 15:35:22.528 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 15 ms.
+2020-01-01 15:35:22.577 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 15:35:22.578 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 15:35:22.578 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 15:35:22.578 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 15:35:22.579 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-01 15:35:22.579 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 15:35:22.584 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 15:35:22.585 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 15:35:22.588 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 323:1:1
+2020-01-01 15:35:22.606 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 15:35:22.606 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-01 15:35:22.606 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-01-01 15:35:23.971 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 15:35:23.971 INFO  c.t.h.WorkerThread - [worker.0]: 1362 ms 	1 sources.
+2020-01-01 15:35:24.207 INFO  worker.1 - Worker used 2 cached entries.
+2020-01-01 15:35:24.208 INFO  c.t.h.WorkerThread - [worker.1]: 1594 ms 	1 sources.
+2020-01-01 15:35:24.418 INFO  worker.2 - Worker used 5 cached entries.
+2020-01-01 15:35:24.419 INFO  c.t.h.WorkerThread - [worker.2]: 1803 ms 	1 sources.
+2020-01-01 15:35:24.419 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 161 milliseconds
+2020-01-01 15:35:24.419 INFO  c.t.hydra.Hydra - Hydra compiling: 1813 ms
+2020-01-01 15:35:24.426 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577892922578
+2020-01-01 15:49:15.834 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 18 ms.
+2020-01-01 15:49:15.843 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 15:49:15.843 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 15:49:15.844 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 15:49:15.844 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 15:49:15.845 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-01 15:49:15.845 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 15:49:15.860 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 15:49:15.860 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 15:49:15.863 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1
+2020-01-01 15:49:15.867 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 15:49:16.848 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 15:49:16.849 INFO  c.t.h.WorkerThread - [worker.0]: 978 ms 	1 sources.
+2020-01-01 15:49:16.850 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-01 15:49:16.850 INFO  c.t.hydra.Hydra - Hydra compiling: 983 ms
+2020-01-01 15:49:16.860 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577893755843
+2020-01-01 15:53:47.375 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 19 ms.
+2020-01-01 15:53:47.383 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 15:53:47.384 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 15:53:47.384 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 15:53:47.384 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 15:53:47.386 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2020-01-01 15:53:47.386 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 15:53:47.658 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 15:53:47.659 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 15:53:47.661 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-01 15:53:47.662 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 15:53:48.742 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 15:53:48.742 INFO  c.t.h.WorkerThread - [worker.0]: 1078 ms 	1 sources.
+2020-01-01 15:53:48.743 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 103 milliseconds
+2020-01-01 15:53:48.743 INFO  c.t.hydra.Hydra - Hydra compiling: 1081 ms
+2020-01-01 15:53:48.757 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577894027384
+2020-01-01 15:55:42.084 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 15 ms.
+2020-01-01 15:55:42.091 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 15:55:42.091 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 15:55:42.091 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 15:55:42.091 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 15:55:42.091 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-01 15:55:42.091 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 15:55:42.100 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 15:55:42.100 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 15:55:42.101 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-01 15:55:42.103 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 15:55:43.051 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 15:55:43.051 INFO  c.t.h.WorkerThread - [worker.0]: 947 ms 	1 sources.
+2020-01-01 15:55:43.052 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-01 15:55:43.052 INFO  c.t.hydra.Hydra - Hydra compiling: 949 ms
+2020-01-01 15:55:43.055 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577894142091
+2020-01-01 15:57:55.764 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 13 ms.
+2020-01-01 15:57:55.772 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 15:57:55.772 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 15:57:55.772 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 15:57:55.772 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 15:57:55.773 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-01 15:57:55.773 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 15:57:55.778 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 15:57:55.778 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 15:57:55.780 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-01 15:57:55.780 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 15:57:56.714 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 15:57:56.714 INFO  c.t.h.WorkerThread - [worker.0]: 933 ms 	1 sources.
+2020-01-01 15:57:56.714 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 134 milliseconds
+2020-01-01 15:57:56.714 INFO  c.t.hydra.Hydra - Hydra compiling: 934 ms
+2020-01-01 15:57:56.718 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577894275772
+2020-01-01 16:01:37.359 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 22 ms.
+2020-01-01 16:01:37.367 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 16:01:37.367 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 16:01:37.367 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 16:01:37.367 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 16:01:37.368 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-01 16:01:37.368 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 16:01:37.373 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 16:01:37.373 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 16:01:37.375 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-01 16:01:37.376 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 16:01:38.478 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 16:01:38.478 INFO  c.t.h.WorkerThread - [worker.0]: 1099 ms 	1 sources.
+2020-01-01 16:01:38.479 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-01 16:01:38.479 INFO  c.t.hydra.Hydra - Hydra compiling: 1103 ms
+2020-01-01 16:01:38.487 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577894497367
+2020-01-01 16:15:01.606 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 19 ms.
+2020-01-01 16:15:01.614 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 16:15:01.615 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 16:15:01.615 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 16:15:01.615 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 16:15:01.617 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2020-01-01 16:15:01.617 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 16:15:01.622 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 16:15:01.622 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 16:15:01.625 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-01 16:15:01.626 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 16:15:02.582 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 16:15:02.582 INFO  c.t.h.WorkerThread - [worker.0]: 953 ms 	1 sources.
+2020-01-01 16:15:02.583 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-01 16:15:02.583 INFO  c.t.hydra.Hydra - Hydra compiling: 957 ms
+2020-01-01 16:15:02.591 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577895301615
+2020-01-01 16:19:29.481 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 11 ms.
+2020-01-01 16:19:29.486 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 16:19:29.486 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 16:19:29.486 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 16:19:29.486 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 16:19:29.487 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-01 16:19:29.487 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 16:19:29.490 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 16:19:29.490 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 16:19:29.491 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526:110
+2020-01-01 16:19:29.494 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 16:19:29.494 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-01 16:19:30.079 INFO  worker.1 - Worker used 0 cached entries.
+2020-01-01 16:19:30.079 INFO  c.t.h.WorkerThread - [worker.1]: 583 ms 	1 sources.
+2020-01-01 16:19:30.753 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 16:19:30.753 INFO  c.t.h.WorkerThread - [worker.0]: 1258 ms 	1 sources.
+2020-01-01 16:19:30.754 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 131 milliseconds
+2020-01-01 16:19:30.754 INFO  c.t.hydra.Hydra - Hydra compiling: 1260 ms
+2020-01-01 16:19:30.759 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577895569486
+2020-01-01 16:23:54.438 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 10 ms.
+2020-01-01 16:23:54.449 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 16:23:54.449 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 16:23:54.449 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 16:23:54.449 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 16:23:54.450 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-01 16:23:54.450 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 16:23:54.454 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 16:23:54.454 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 16:23:54.455 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-01 16:23:54.456 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 16:23:55.331 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 16:23:55.331 INFO  c.t.h.WorkerThread - [worker.0]: 873 ms 	1 sources.
+2020-01-01 16:23:55.331 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 64 milliseconds
+2020-01-01 16:23:55.331 INFO  c.t.hydra.Hydra - Hydra compiling: 875 ms
+2020-01-01 16:23:55.339 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577895834449
+2020-01-01 16:25:39.291 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 20 ms.
+2020-01-01 16:25:39.299 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 16:25:39.300 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 16:25:39.300 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 16:25:39.300 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 16:25:39.302 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-01 16:25:39.302 INFO  c.t.hydra.Hydra - Clean build: true
+2020-01-01 16:25:39.307 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 16:25:39.307 INFO  c.t.h.SourcePartitioner$ - No automatically balanced partition file /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim/main/partition.hydra exist yet. Using plain partition strategy.
+2020-01-01 16:25:39.338 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 8 files.
+2020-01-01 16:25:39.338 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 7 files.
+2020-01-01 16:25:39.338 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 7 files.
+2020-01-01 16:25:39.338 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 7 files.
+2020-01-01 16:25:39.780 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala:4: not found: object spire
+import spire.math._
+       ^
+2020-01-01 16:25:40.612 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala:4: not found: object spire
+import spire.math._
+       ^
+2020-01-01 16:25:41.044 ERROR worker.0 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala:4: not found: object spire
+import spire.math._
+       ^
+2020-01-01 16:25:41.534 ERROR worker.3 - 
+Found null type during super accessors: Number
 
 Hydra errors so far: false
 Hydra all workers past typer: false, phase superaccessors
@@ -47,13 +182,16 @@ Late file errors: false
 
      
                  
-2019-12-30 12:05:39.202 ERROR worker.0 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala
-2019-12-30 12:05:39.203 ERROR worker.0 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala
-2019-12-30 12:05:39.230 ERROR worker.0 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala
-2019-12-30 12:05:39.253 ERROR worker.0 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala
-2019-12-30 12:05:39.262 ERROR worker.0 - TRANSFORM: null
-2019-12-30 12:05:39.428 ERROR worker.0 - 
-Exception while running phase superaccessors on  file SingleStepResults.scala
+2020-01-01 16:25:41.545 ERROR worker.3 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+2020-01-01 16:25:41.549 ERROR worker.3 - TRANSFORM: null
+2020-01-01 16:25:41.550 ERROR worker.3 - TRANSFORM: null
+2020-01-01 16:25:41.551 ERROR worker.3 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+2020-01-01 16:25:41.551 ERROR worker.3 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+2020-01-01 16:25:41.553 ERROR worker.3 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+2020-01-01 16:25:41.566 ERROR worker.3 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+2020-01-01 16:25:41.613 ERROR worker.3 - TRANSFORM: null
+2020-01-01 16:25:41.735 ERROR worker.3 - 
+Exception while running phase superaccessors on  file NumberWrapper.scala
 
 Hydra errors so far: false
 Hydra all workers past typer: false, phase superaccessors
@@ -62,34 +200,37 @@ Late file errors: false
      
                
 java.lang.AssertionError: assertion failed: 
-  valuesPerLabel.$plus$plus(Map(<label: error>, <newValue: error>))
-     while compiling: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala
+  Number(nb)
+     while compiling: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
         during phase: superaccessors
      library version: version 2.12.7
     compiler version: version 2.12.7-hydra39
-  reconstructed args: -YpartitionFile /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim -Ymetrics -YtimingsFile /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/timings.csv -sourcepath /Users/cedric/IdeaProjects/diagenesissim/src/main/scala -cpus 4 -YhydraTag diagenesissim/main -YrootDirectory /Users/cedric/IdeaProjects/diagenesissim -YhydraStore /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim/main -classpath /Users/cedric/IdeaProjects/diagenesissim/target/scala-2.12/classes:/Users/cedric/.ivy2/cache/org.typelevel/spire_2.12/jars/spire_2.12-0.14.1.jar:/Users/cedric/.ivy2/cache/org.typelevel/spire-macros_2.12/jars/spire-macros_2.12-0.14.1.jar:/Users/cedric/.ivy2/cache/org.typelevel/machinist_2.12/jars/machinist_2.12-0.6.1.jar:/Users/cedric/.ivy2/cache/org.typelevel/cats-kernel_2.12/jars/cats-kernel_2.12-0.9.0.jar:/Users/cedric/.ivy2/cache/org.typelevel/algebra_2.12/jars/algebra_2.12-0.7.0.jar:/Users/cedric/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.12/bundles/scala-java8-compat_2.12-0.8.0.jar:/Users/cedric/.sbt/boot/scala-2.12.7/lib/scala-reflect.jar:/Users/cedric/.sbt/boot/scala-2.12.7/lib/scala-library.jar:/Users/cedric/.ivy2/cache/com.typesafe.akka/akka-actor_2.12/jars/akka-actor_2.12-2.6.0-M3.jar:/Users/cedric/.ivy2/cache/com.typesafe/config/bundles/config-1.3.4.jar
+  reconstructed args: -YpartitionFile /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim -Ymetrics -YtimingsFile /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/timings.csv -sourcepath /Users/cedric/IdeaProjects/diagenesissim/src/main/scala -cpus 4 -YhydraTag diagenesissim/main -YrootDirectory /Users/cedric/IdeaProjects/diagenesissim -YhydraStore /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim/main -classpath /Users/cedric/IdeaProjects/diagenesissim/target/scala-2.12/classes:/Users/cedric/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.12/bundles/scala-java8-compat_2.12-0.8.0.jar:/Users/cedric/.ivy2/cache/com.typesafe/config/bundles/config-1.3.4.jar:/Users/cedric/.ivy2/cache/com.typesafe.akka/akka-actor_2.12/jars/akka-actor_2.12-2.6.0-M3.jar:/Users/cedric/.sbt/boot/scala-2.12.7/lib/scala-library.jar
 
   last tree to typer: Ident(x)
-       tree position: line 4 of /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/MultiStepsResults.scala
+       tree position: line 24 of /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerDispatcherActor.scala
             tree tpe: Boolean
               symbol: value x
    symbol definition: x: Boolean (a TermSymbol)
       symbol package: <none>
        symbol owners: value x
-           call site: method addValue in class SingleStepResults in package common
+           call site: value wrapSimpleListDouble in trait NumberWrapper in package implicits
 
 == Source file context for tree position ==
 
-     1 package org.carbonateresearch.conus.common
-     2 import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
-     3 
-     4 case class MultiStepsResults(results: Map[Int, SingleStepResults]){
-     5   val steps = results.keys
-     6 }
-     7 
+    21   var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelWithResults]
+    22   val collector:ActorRef = context.actorOf(Props[ParrallelModellerCollectorActor], name="Collector")
+    23 
+    24   override def receive = {
+    25     case modelsList: List[ChainableCalculation] => {
+    26       val initialCount = modelsList.size
+    27       val t0 = System.nanoTime()
 	at scala.reflect.internal.SymbolTable.throwAssertionError(SymbolTable.scala:163)
 	at scala.reflect.internal.SymbolTable.assert(SymbolTable.scala:140)
 	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:434)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.$anonfun$transform$18(SuperAccessors.scala:446)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.withInvalidOwner(SuperAccessors.scala:485)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:446)
 	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.$anonfun$transformArgs$1(SuperAccessors.scala:146)
 	at scala.reflect.internal.TreeInfo.$anonfun$mapMethodParamsAndArgs$1(TreeInfo.scala:232)
 	at scala.reflect.internal.TreeInfo.$anonfun$mapMethodParamsAndArgs$1$adapted(TreeInfo.scala:232)
@@ -100,14 +241,18 @@ java.lang.AssertionError: assertion failed:
 	at scala.reflect.internal.TreeInfo.mapMethodParamsAndArgs(TreeInfo.scala:232)
 	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transformArgs(SuperAccessors.scala:143)
 	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:441)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:441)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.$anonfun$transform$18(SuperAccessors.scala:446)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.withInvalidOwner(SuperAccessors.scala:485)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:446)
 	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:75)
-	at scala.reflect.internal.Trees.$anonfun$itransform$2(Trees.scala:1389)
+	at scala.reflect.internal.Trees.$anonfun$itransform$1(Trees.scala:1383)
 	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2600)
 	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:30)
 	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:475)
 	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:25)
 	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:17)
-	at scala.reflect.internal.Trees.itransform(Trees.scala:1387)
+	at scala.reflect.internal.Trees.itransform(Trees.scala:1382)
 	at scala.reflect.internal.Trees.itransform$(Trees.scala:1362)
 	at scala.reflect.internal.SymbolTable.itransform(SymbolTable.scala:18)
 	at scala.reflect.internal.SymbolTable.itransform(SymbolTable.scala:18)
@@ -180,85 +325,1107 @@ java.lang.AssertionError: assertion failed:
 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
 	at com.triplequote.hydra.compiler.utils.Utils$.timed(Utils.scala:34)
 	at com.triplequote.hydra.WorkerThread.run(WorkerThread.scala:42)
-2019-12-30 12:05:39.437 ERROR worker.0 - Worker crashed, potentially due to cached types.
-   Cached entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.TemperatureDepth)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.SampleTemp)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/MultiplierFromStepsCP.scala,org.carbonateresearch.conus.calculationparameters.MultiplierFromStepsCP.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/InitializeValues.scala,org.carbonateresearch.conus.calculationparameters.InitializeValues.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/InterpolateValues.scala,org.carbonateresearch.conus.calculationparameters.InterpolateValues.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/MultiplierFromStepsCP.scala,org.carbonateresearch.conus.calculationparameters.MultiplierFromStepsCP.outputs)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.TKelvin)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/MultiplierFromStepsCP.scala,org.carbonateresearch.conus.calculationparameters.MultiplierFromStepsCP.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/MultiplierFromStepsCP.scala,org.carbonateresearch.conus.calculationparameters.MultiplierFromStepsCP.copy$default$4)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/InterpolateValues.scala,org.carbonateresearch.conus.calculationparameters.InterpolateValues.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeValueForLabel.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/InterpolateValues.scala,org.carbonateresearch.conus.calculationparameters.InterpolateValues.outputs)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/NewSteppedModel.scala,org.carbonateresearch.conus.common.NewSteppedModel.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/InterpolateValues.scala,org.carbonateresearch.conus.calculationparameters.InterpolateValues.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeSpecificValue.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,org.carbonateresearch.conus.implicits.NumberWrapper.wrapTupledListDouble)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/MultiplierFromStepsCP.scala,org.carbonateresearch.conus.calculationparameters.MultiplierFromStepsCP.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.kref)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.D47eqFun)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,org.carbonateresearch.conus.implicits.NumberWrapper.wrapTupledListDoubleInt)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerDispatcherActor.scala,org.carbonateresearch.conus.common.ParrallelModellerDispatcherActor.resultsList_$eq)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.SurfaceTemperature)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculateBurialTemperatureFromGeothermalGradient.scala,org.carbonateresearch.conus.calculationparameters.CalculateBurialTemperatureFromGeothermalGradient.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.D47eq)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels.value)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,org.carbonateresearch.conus.implicits.NumberWrapper.wrapTupledListIOInt)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.r)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/InitializeValues.scala,org.carbonateresearch.conus.calculationparameters.InitializeValues.mergeTwoLists)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculateBurialTemperatureFromGeothermalGradient.scala,org.carbonateresearch.conus.calculationparameters.CalculateBurialTemperatureFromGeothermalGradient.outputs)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeSpecificValue.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculateBurialTemperatureFromGeothermalGradient.scala,org.carbonateresearch.conus.calculationparameters.CalculateBurialTemperatureFromGeothermalGradient.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.dTFun)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.ea)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.Depth)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.Age)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.D47iFun)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.GeothermalGradient)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerRunnerActor.scala,org.carbonateresearch.conus.common.ParrallelModellerRunnerActor.receive)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculateBurialTemperatureFromGeothermalGradient.scala,org.carbonateresearch.conus.calculationparameters.CalculateBurialTemperatureFromGeothermalGradient.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/InterpolateValues.scala,org.carbonateresearch.conus.calculationparameters.InterpolateValues.inputs)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,org.carbonateresearch.conus.implicits.NumberWrapper.wrapSimpleListInt)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeValueForLabel.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.D47i)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerDispatcherActor.scala,org.carbonateresearch.conus.common.ParrallelModellerDispatcherActor.initialCount_$eq)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.dT)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/InitializeValues.scala,org.carbonateresearch.conus.calculationparameters.InitializeValues.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,org.carbonateresearch.conus.implicits.NumberWrapper.wrapSimpleListDouble)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/InterpolateValues.scala,org.carbonateresearch.conus.calculationparameters.InterpolateValues.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeSpecificValue.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerDispatcherActor.scala,org.carbonateresearch.conus.common.ParrallelModellerDispatcherActor.receive)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/NewSteppedModel.scala,org.carbonateresearch.conus.common.NewSteppedModel.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/clumpedThermalModels/PasseyHenkesClumpedDiffusionModel.scala,org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel.tref)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,org.carbonateresearch.conus.implicits.NumberWrapper.wrapTupledListIntDouble)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/NewSteppedModel.scala,org.carbonateresearch.conus.common.NewSteppedModel.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.BurialTemperature)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,org.carbonateresearch.conus.implicits.NumberWrapper.wrapTupledListIODouble)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,org.carbonateresearch.conus.implicits.NumberWrapper.wrapTupledListInt)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/MultiplierFromStepsCP.scala,org.carbonateresearch.conus.calculationparameters.MultiplierFromStepsCP.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$5)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculateBurialTemperatureFromGeothermalGradient.scala,org.carbonateresearch.conus.calculationparameters.CalculateBurialTemperatureFromGeothermalGradient.inputs)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.NumberOfSteps.precision)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/InterpolateValues.scala,org.carbonateresearch.conus.calculationparameters.InterpolateValues.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeValueForLabel.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/MultiplierFromStepsCP.scala,org.carbonateresearch.conus.calculationparameters.MultiplierFromStepsCP.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$4)
-   Buffered errors: pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala,line-6,offset=447 type mismatch;
- found   : org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
- required: (?, ?) ERROR
-pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala,line-6,offset=453 type mismatch;
- found   : Double
- required: (?, ?) ERROR
-pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculateStepValue.scala,line-39,offset=1321 non-variable type argument spire.math.Number in type pattern spire.math.Number => spire.math.Number is unchecked since it is eliminated by erasure WARNING
-pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculateStepValue.scala,line-40,offset=1383 non-variable type argument spire.math.Number in type pattern (spire.math.Number, spire.math.Number) => spire.math.Number is unchecked since it is eliminated by erasure WARNING
-pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculateStepValue.scala,line-41,offset=1462 non-variable type argument spire.math.Number in type pattern (spire.math.Number, spire.math.Number, spire.math.Number) => spire.math.Number is unchecked since it is eliminated by erasure WARNING
-pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculateStepValue.scala,line-42,offset=1559 non-variable type argument spire.math.Number in type pattern (spire.math.Number, spire.math.Number, spire.math.Number, spire.math.Number) => spire.math.Number is unchecked since it is eliminated by erasure WARNING
-pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerCollectorActor.scala,line-18,offset=487 non-variable type argument org.carbonateresearch.conus.common.ChainableCalculation in type pattern List[org.carbonateresearch.conus.common.ChainableCalculation] (the underlying of List[org.carbonateresearch.conus.common.ChainableCalculation]) is unchecked since it is eliminated by erasure WARNING
-pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerCollectorActor.scala,line-30,offset=898 match may not be exhaustive.
+2020-01-01 16:25:41.737 ERROR worker.3 - Worker crashed, potentially due to cached types.
+   Cached entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelResults.scala,org.carbonateresearch.conus.common.ModelResults.steps)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.b)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerCollectorActor.scala,org.carbonateresearch.conus.common.ParrallelModellerCollectorActor.resultsList_$eq)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeValueForLabel.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeSpecificValue.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.runnedModel)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.SurfaceTemperature)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.actorSystem)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.handleResults)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.modeller)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.simpleFunction)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels.value)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeSpecificValue.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelResults.scala,org.carbonateresearch.conus.common.ModelResults.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.Depth)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.Age)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.geothermalGradient)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.numberOfSteps)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.GeothermalGradient)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.copy$default$4)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerCollectorActor.scala,org.carbonateresearch.conus.common.ParrallelModellerCollectorActor.resultsList)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.depositionalAge)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.burialHistory)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeValueForLabel.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.surfaceTemperatures)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeSpecificValue.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala,org.carbonateresearch.conus.common.SingleStepResults.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.BurialTemperature)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$5)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerCollectorActor.scala,org.carbonateresearch.conus.common.ParrallelModellerCollectorActor.receive)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeValueForLabel.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.NumberOfSteps.precision)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelResults.scala,org.carbonateresearch.conus.common.ModelResults.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$4)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala,org.carbonateresearch.conus.common.SingleStepResults.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.copy)
+   Buffered errors: pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-3,offset=54 not found: object spire ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-7,offset=280 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-8,offset=371 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-9,offset=478 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-9,offset=492 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-10,offset=593 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-10,offset=607 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-11,offset=717 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-11,offset=731 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-12,offset=841 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-12,offset=855 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-13,offset=1011 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-14,offset=1170 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-19,offset=1292 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-19,offset=1315 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-23,offset=1468 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-23,offset=1488 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-23,offset=1501 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-28,offset=1696 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-28,offset=1716 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-28,offset=1728 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-28,offset=1740 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-33,offset=1952 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-33,offset=1972 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-33,offset=1984 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-33,offset=1996 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-33,offset=2008 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2238 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2258 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2270 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2282 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2294 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2306 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2553 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2573 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2585 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2597 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2609 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2621 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2633 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2897 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2917 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2929 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2941 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2953 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2965 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2977 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2989 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3270 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3290 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3302 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3314 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3326 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3338 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3350 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3362 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3374 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3672 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3692 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3704 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3716 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3728 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3740 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3752 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3764 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3776 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3788 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4104 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4124 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4136 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4148 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4160 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4172 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4184 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4196 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4208 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4220 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4233 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala,line-4,offset=232 not found: object spire ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerDispatcherActor.scala,line-25,offset=835 non-variable type argument org.carbonateresearch.conus.common.ChainableCalculation in type pattern List[org.carbonateresearch.conus.common.ChainableCalculation] (the underlying of List[org.carbonateresearch.conus.common.ChainableCalculation]) is unchecked since it is eliminated by erasure WARNING
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerDispatcherActor.scala,line-38,offset=1277 match may not be exhaustive.
 It would fail on the following input: Failure(_) WARNING
 
-2019-12-30 12:05:39.437 INFO  worker.0 - Respawning worker because of inconsistent reads.
-2019-12-30 12:05:41.965 INFO  worker.1 - Worker used 0 cached entries.
-2019-12-30 12:05:41.967 INFO  c.t.h.WorkerThread - [worker.1]: 10628 ms 	7 sources.
-2019-12-30 12:05:42.079 INFO  worker.3 - Worker used 0 cached entries.
-2019-12-30 12:05:42.080 INFO  c.t.h.WorkerThread - [worker.3]: 10742 ms 	7 sources.
-2019-12-30 12:05:42.104 INFO  worker.2 - Worker used 0 cached entries.
-2019-12-30 12:05:42.104 INFO  c.t.h.WorkerThread - [worker.2]: 10767 ms 	7 sources.
-2019-12-30 12:05:42.758 INFO  worker.0 - Worker used 0 cached entries.
-2019-12-30 12:05:42.758 INFO  c.t.h.WorkerThread - [worker.0]: 11421 ms 	8 sources.
-2019-12-30 12:05:42.768 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 672 milliseconds
-2019-12-30 12:05:42.770 INFO  c.t.hydra.Hydra - Hydra compiling: 11525 ms
-2019-12-30 12:11:27.220 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 19 ms.
-2019-12-30 12:11:27.233 INFO  c.t.hydra.Hydra - Loaded pickle store with 111 entries.
-2019-12-30 12:11:27.234 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
-2019-12-30 12:11:27.234 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
-2019-12-30 12:11:27.234 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
-2019-12-30 12:11:27.234 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
-2019-12-30 12:11:27.234 INFO  c.t.hydra.Hydra - Clean build: true
-2019-12-30 12:11:27.237 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 172. Maximum cores: 8
-2019-12-30 12:11:27.238 INFO  c.t.h.SourcePartitioner$ - No automatically balanced partition file /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim/main/partition.hydra exist yet. Using plain partition strategy.
-2019-12-30 12:11:27.245 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 8 files.
-2019-12-30 12:11:27.246 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 7 files.
-2019-12-30 12:11:27.246 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 7 files.
-2019-12-30 12:11:27.246 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 7 files.
-2019-12-30 12:11:28.706 INFO  worker.0 - [ cache invalidate ]: org.carbonateresearch.conus.DiageneSim.simpleFunction type was: Double => Double, now: (Double, Int) => Double
-2019-12-30 12:11:28.778 INFO  worker.0 - [ cache invalidate ]: org.carbonateresearch.conus.DiageneSim.simpleFunction type was: Double => Double, now: (Double, Int) => Double
-2019-12-30 12:11:29.420 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:75: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(2.3,4))
-                             ^
-2019-12-30 12:11:29.430 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:76: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(3,4))
-                           ^
-2019-12-30 12:11:29.573 INFO  worker.2 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.simpleFunction)
-2019-12-30 12:11:29.573 INFO  worker.2 - Respawning worker because of inconsistent reads.
-2019-12-30 12:11:29.616 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:75: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(2.3,4))
-                             ^
-2019-12-30 12:11:29.644 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:76: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(3,4))
-                           ^
-2019-12-30 12:11:29.671 INFO  worker.1 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.simpleFunction)
-2019-12-30 12:11:29.671 INFO  worker.1 - Respawning worker because of inconsistent reads.
-2019-12-30 12:11:29.991 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:75: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(2.3,4))
-                             ^
-2019-12-30 12:11:30.002 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala:76: too many arguments (2) for method apply: (v1: Double)Double in trait Function1
-  println(simpleFunction(3,4))
-                           ^
-2019-12-30 12:11:30.109 INFO  worker.3 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.simpleFunction)
-2019-12-30 12:11:30.109 INFO  worker.3 - Respawning worker because of inconsistent reads.
-2019-12-30 12:11:35.462 INFO  worker.2 - Worker used 0 cached entries.
-2019-12-30 12:11:35.462 INFO  worker.0 - Worker used 82 cached entries.
-2019-12-30 12:11:35.462 INFO  c.t.h.WorkerThread - [worker.0]: 8215 ms 	8 sources.
-2019-12-30 12:11:35.463 INFO  c.t.h.WorkerThread - [worker.2]: 8215 ms 	7 sources.
-2019-12-30 12:11:35.465 INFO  worker.1 - Worker used 0 cached entries.
-2019-12-30 12:11:35.465 INFO  c.t.h.WorkerThread - [worker.1]: 8218 ms 	7 sources.
-2019-12-30 12:11:35.591 INFO  worker.3 - Worker used 0 cached entries.
-2019-12-30 12:11:35.591 INFO  c.t.h.WorkerThread - [worker.3]: 8341 ms 	7 sources.
-2019-12-30 12:11:35.591 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 780 milliseconds
-2019-12-30 12:11:35.591 INFO  c.t.hydra.Hydra - Hydra compiling: 8346 ms
-2019-12-30 12:11:35.642 INFO  worker.0 - Total time in late files: 868 ms in 17 late files
-2019-12-30 12:11:35.642 INFO  worker.1 - Total time in late files: 1456 ms in 15 late files
-2019-12-30 12:11:35.642 INFO  worker.2 - Total time in late files: 1129 ms in 14 late files
-2019-12-30 12:11:35.643 INFO  worker.3 - Total time in late files: 978 ms in 15 late files
-2019-12-30 12:11:35.645 INFO  c.t.hydra.Hydra - Compile time threshold for reporting unbalanced workers is 10215 ms.
-2019-12-30 12:11:35.674 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577707887234
+2020-01-01 16:25:41.737 INFO  worker.3 - Respawning worker because of inconsistent reads.
+2020-01-01 16:25:42.101 INFO  worker.3 - Worker used 0 cached entries.
+2020-01-01 16:25:42.104 INFO  c.t.h.WorkerThread - [worker.3]: 2734 ms 	7 sources.
+2020-01-01 16:25:42.172 INFO  worker.2 - Worker used 40 cached entries.
+2020-01-01 16:25:42.173 INFO  c.t.h.WorkerThread - [worker.2]: 2819 ms 	7 sources.
+2020-01-01 16:25:42.200 INFO  worker.0 - Worker used 73 cached entries.
+2020-01-01 16:25:42.201 INFO  c.t.h.WorkerThread - [worker.0]: 2860 ms 	8 sources.
+2020-01-01 16:25:42.214 INFO  worker.1 - Worker used 52 cached entries.
+2020-01-01 16:25:42.214 INFO  c.t.h.WorkerThread - [worker.1]: 2872 ms 	7 sources.
+2020-01-01 16:25:42.214 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 181 milliseconds
+2020-01-01 16:25:42.214 INFO  c.t.hydra.Hydra - Hydra compiling: 2876 ms
+2020-01-01 16:26:12.508 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 29 files in 1 roots took 15 ms.
+2020-01-01 16:26:12.518 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 16:26:12.518 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 16:26:12.518 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 16:26:12.518 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 16:26:12.519 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-01 16:26:12.519 INFO  c.t.hydra.Hydra - Clean build: true
+2020-01-01 16:26:12.523 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 16:26:12.523 INFO  c.t.h.SourcePartitioner$ - No automatically balanced partition file /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim/main/partition.hydra exist yet. Using plain partition strategy.
+2020-01-01 16:26:12.536 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 8 files.
+2020-01-01 16:26:12.536 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 7 files.
+2020-01-01 16:26:12.536 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 7 files.
+2020-01-01 16:26:12.536 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 7 files.
+2020-01-01 16:26:12.977 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala:4: not found: object spire
+import spire.math._
+       ^
+2020-01-01 16:26:13.691 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala:4: not found: object spire
+import spire.math._
+       ^
+2020-01-01 16:26:13.976 ERROR worker.0 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala:4: not found: object spire
+import spire.math._
+       ^
+2020-01-01 16:26:14.796 ERROR worker.3 - 
+Found null type during super accessors: Number
+
+Hydra errors so far: false
+Hydra all workers past typer: false, phase superaccessors
+Late file errors: false
+
+     
+                 
+2020-01-01 16:26:14.818 ERROR worker.3 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+2020-01-01 16:26:14.819 ERROR worker.3 - TRANSFORM: null
+2020-01-01 16:26:14.819 ERROR worker.3 - TRANSFORM: null
+2020-01-01 16:26:14.819 ERROR worker.3 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+2020-01-01 16:26:14.820 ERROR worker.3 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+2020-01-01 16:26:14.822 ERROR worker.3 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+2020-01-01 16:26:14.842 ERROR worker.3 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+2020-01-01 16:26:14.849 ERROR worker.3 - TRANSFORM: null
+2020-01-01 16:26:14.870 ERROR worker.3 - 
+Exception while running phase superaccessors on  file NumberWrapper.scala
+
+Hydra errors so far: false
+Hydra all workers past typer: true, phase superaccessors
+Late file errors: false
+
+     
+               
+java.lang.AssertionError: assertion failed: 
+  Number(nb)
+     while compiling: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala
+        during phase: superaccessors
+     library version: version 2.12.7
+    compiler version: version 2.12.7-hydra39
+  reconstructed args: -YpartitionFile /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim -Ymetrics -YtimingsFile /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/timings.csv -sourcepath /Users/cedric/IdeaProjects/diagenesissim/src/main/scala -cpus 4 -YhydraTag diagenesissim/main -YrootDirectory /Users/cedric/IdeaProjects/diagenesissim -YhydraStore /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim/main -classpath /Users/cedric/IdeaProjects/diagenesissim/target/scala-2.12/classes:/Users/cedric/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.12/bundles/scala-java8-compat_2.12-0.8.0.jar:/Users/cedric/.ivy2/cache/com.typesafe/config/bundles/config-1.3.4.jar:/Users/cedric/.ivy2/cache/com.typesafe.akka/akka-actor_2.12/jars/akka-actor_2.12-2.6.0-M3.jar:/Users/cedric/.sbt/boot/scala-2.12.7/lib/scala-library.jar
+
+  last tree to typer: Ident(x)
+       tree position: line 24 of /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerDispatcherActor.scala
+            tree tpe: Boolean
+              symbol: value x
+   symbol definition: x: Boolean (a TermSymbol)
+      symbol package: <none>
+       symbol owners: value x
+           call site: value wrapSimpleListDouble in trait NumberWrapper in package implicits
+
+== Source file context for tree position ==
+
+    21   var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelWithResults]
+    22   val collector:ActorRef = context.actorOf(Props[ParrallelModellerCollectorActor], name="Collector")
+    23 
+    24   override def receive = {
+    25     case modelsList: List[ChainableCalculation] => {
+    26       val initialCount = modelsList.size
+    27       val t0 = System.nanoTime()
+	at scala.reflect.internal.SymbolTable.throwAssertionError(SymbolTable.scala:163)
+	at scala.reflect.internal.SymbolTable.assert(SymbolTable.scala:140)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:434)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.$anonfun$transform$18(SuperAccessors.scala:446)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.withInvalidOwner(SuperAccessors.scala:485)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:446)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.$anonfun$transformArgs$1(SuperAccessors.scala:146)
+	at scala.reflect.internal.TreeInfo.$anonfun$mapMethodParamsAndArgs$1(TreeInfo.scala:232)
+	at scala.reflect.internal.TreeInfo.$anonfun$mapMethodParamsAndArgs$1$adapted(TreeInfo.scala:232)
+	at scala.reflect.internal.util.Collections.foreach2(Collections.scala:234)
+	at scala.reflect.internal.util.Collections.foreach2$(Collections.scala:230)
+	at scala.reflect.internal.SymbolTable.foreach2(SymbolTable.scala:18)
+	at scala.reflect.internal.TreeInfo.foreachMethodParamAndArg(TreeInfo.scala:246)
+	at scala.reflect.internal.TreeInfo.mapMethodParamsAndArgs(TreeInfo.scala:232)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transformArgs(SuperAccessors.scala:143)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:441)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:441)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.$anonfun$transform$18(SuperAccessors.scala:446)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.withInvalidOwner(SuperAccessors.scala:485)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:446)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:75)
+	at scala.reflect.internal.Trees.$anonfun$itransform$1(Trees.scala:1383)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2600)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:30)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:475)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:25)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:17)
+	at scala.reflect.internal.Trees.itransform(Trees.scala:1382)
+	at scala.reflect.internal.Trees.itransform$(Trees.scala:1362)
+	at scala.reflect.internal.SymbolTable.itransform(SymbolTable.scala:18)
+	at scala.reflect.internal.SymbolTable.itransform(SymbolTable.scala:18)
+	at scala.reflect.api.Trees$Transformer.transform(Trees.scala:2555)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.transform(TypingTransformers.scala:44)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:450)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:75)
+	at scala.reflect.api.Trees$Transformer.$anonfun$transformTrees$1(Trees.scala:2559)
+	at scala.collection.immutable.List.mapConserve(List.scala:175)
+	at scala.reflect.api.Trees$Transformer.transformTrees(Trees.scala:2559)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.$anonfun$transform$4(SuperAccessors.scala:290)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2600)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:30)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:475)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:25)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transformTemplate$1(SuperAccessors.scala:290)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:295)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:75)
+	at scala.reflect.api.Trees$Transformer.transformTemplate(Trees.scala:2563)
+	at scala.reflect.internal.Trees.$anonfun$itransform$4(Trees.scala:1434)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2600)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:30)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:475)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:25)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:17)
+	at scala.reflect.internal.Trees.itransform(Trees.scala:1433)
+	at scala.reflect.internal.Trees.itransform$(Trees.scala:1362)
+	at scala.reflect.internal.SymbolTable.itransform(SymbolTable.scala:18)
+	at scala.reflect.internal.SymbolTable.itransform(SymbolTable.scala:18)
+	at scala.reflect.api.Trees$Transformer.transform(Trees.scala:2555)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.transform(TypingTransformers.scala:44)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transformClassDef$1(SuperAccessors.scala:272)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:274)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:75)
+	at scala.reflect.api.Trees$Transformer.$anonfun$transformStats$1(Trees.scala:2589)
+	at scala.collection.immutable.List.mapConserve(List.scala:175)
+	at scala.reflect.api.Trees$Transformer.transformStats(Trees.scala:2587)
+	at scala.reflect.internal.Trees.$anonfun$itransform$7(Trees.scala:1452)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2600)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:30)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:475)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:25)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:17)
+	at scala.reflect.internal.Trees.itransform(Trees.scala:1452)
+	at scala.reflect.internal.Trees.itransform$(Trees.scala:1362)
+	at scala.reflect.internal.SymbolTable.itransform(SymbolTable.scala:18)
+	at scala.reflect.internal.SymbolTable.itransform(SymbolTable.scala:18)
+	at scala.reflect.api.Trees$Transformer.transform(Trees.scala:2555)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.super$transform(TypingTransformers.scala:40)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.$anonfun$transform$2(TypingTransformers.scala:42)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2600)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:30)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:475)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:25)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.transform(TypingTransformers.scala:42)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:450)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:75)
+	at scala.tools.nsc.ast.Trees$Transformer.transformUnit(Trees.scala:140)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transformUnit(SuperAccessors.scala:88)
+	at scala.tools.nsc.transform.Transform$Phase.apply(Transform.scala:30)
+	at scala.tools.nsc.Global$GlobalPhase.applyPhase(Global.scala:549)
+	at scala.tools.nsc.Global$GlobalPhase.run(Global.scala:493)
+	at scala.tools.nsc.Global$Run.compileUnitsInternal(Global.scala:1635)
+	at scala.tools.nsc.Global$Run.compileUnits(Global.scala:1609)
+	at scala.tools.nsc.Global$Run.compileSources(Global.scala:1602)
+	at scala.tools.nsc.Global$Run.compile(Global.scala:1838)
+	at com.triplequote.hydra.compiler.ScalaWorker$ScalaCompilationRound.compile(ScalaWorker.scala:124)
+	at com.triplequote.hydra.compiler.ScalaWorker.compile(ScalaWorker.scala:72)
+	at com.triplequote.hydra.WorkerThread.$anonfun$run$1(WorkerThread.scala:42)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at com.triplequote.hydra.compiler.utils.Utils$.timed(Utils.scala:34)
+	at com.triplequote.hydra.WorkerThread.run(WorkerThread.scala:42)
+2020-01-01 16:26:14.872 ERROR worker.3 - Worker crashed, potentially due to cached types.
+   Cached entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelResults.scala,org.carbonateresearch.conus.common.ModelResults.steps)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.b)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerCollectorActor.scala,org.carbonateresearch.conus.common.ParrallelModellerCollectorActor.resultsList_$eq)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeValueForLabel.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeSpecificValue.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.runnedModel)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.SurfaceTemperature)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.actorSystem)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.handleResults)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.modeller)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.simpleFunction)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels.value)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeSpecificValue.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelResults.scala,org.carbonateresearch.conus.common.ModelResults.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.Depth)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.Age)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.geothermalGradient)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.numberOfSteps)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.GeothermalGradient)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.copy$default$4)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerCollectorActor.scala,org.carbonateresearch.conus.common.ParrallelModellerCollectorActor.resultsList)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.depositionalAge)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.burialHistory)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeValueForLabel.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/DiageneSim.scala,org.carbonateresearch.conus.DiageneSim.surfaceTemperatures)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/Previous.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Previous.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeSpecificValue.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala,org.carbonateresearch.conus.common.SingleStepResults.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/StandardsParameters.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.StandardsParameters.BurialTemperature)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ChainableCalculation.scala,org.carbonateresearch.conus.common.ChainableCalculation.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$5)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerCollectorActor.scala,org.carbonateresearch.conus.common.ParrallelModellerCollectorActor.receive)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/PreviousZeroHandle.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.TakeValueForLabel.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.NumberOfSteps.precision)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelResults.scala,org.carbonateresearch.conus.common.ModelResults.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/parametersIO/CalculationParametersIOLabels.scala,org.carbonateresearch.conus.calculationparameters.parametersIO.Parameter.copy$default$4)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleStepResults.scala,org.carbonateresearch.conus.common.SingleStepResults.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SingleModelWithResults.scala,org.carbonateresearch.conus.common.SingleModelWithResults.copy)
+   Buffered errors: pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-3,offset=54 not found: object spire ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-7,offset=280 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-8,offset=371 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-9,offset=478 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-9,offset=492 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-10,offset=593 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-10,offset=607 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-11,offset=717 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-11,offset=731 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-12,offset=841 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-12,offset=855 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-13,offset=1011 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-14,offset=1170 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-19,offset=1292 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-19,offset=1315 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-23,offset=1468 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-23,offset=1488 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-23,offset=1501 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-28,offset=1696 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-28,offset=1716 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-28,offset=1728 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-28,offset=1740 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-33,offset=1952 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-33,offset=1972 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-33,offset=1984 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-33,offset=1996 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-33,offset=2008 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2238 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2258 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2270 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2282 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2294 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-38,offset=2306 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2553 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2573 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2585 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2597 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2609 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2621 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-43,offset=2633 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2897 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2917 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2929 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2941 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2953 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2965 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2977 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-48,offset=2989 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3270 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3290 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3302 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3314 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3326 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3338 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3350 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3362 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-53,offset=3374 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3672 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3692 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3704 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3716 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3728 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3740 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3752 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3764 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3776 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-58,offset=3788 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4104 class java.lang.Number is not a value ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4124 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4136 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4148 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4160 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4172 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4184 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4196 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4208 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4220 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/implicits/NumberWrapper.scala,line-63,offset=4233 value toDouble is not a member of Number ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala,line-4,offset=232 not found: object spire ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerDispatcherActor.scala,line-25,offset=835 non-variable type argument org.carbonateresearch.conus.common.ChainableCalculation in type pattern List[org.carbonateresearch.conus.common.ChainableCalculation] (the underlying of List[org.carbonateresearch.conus.common.ChainableCalculation]) is unchecked since it is eliminated by erasure WARNING
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ParrallelModellerDispatcherActor.scala,line-38,offset=1277 match may not be exhaustive.
+It would fail on the following input: Failure(_) WARNING
+
+2020-01-01 16:26:14.872 INFO  worker.3 - Respawning worker because of inconsistent reads.
+2020-01-01 16:26:15.923 INFO  worker.1 - Worker used 52 cached entries.
+2020-01-01 16:26:15.937 INFO  c.t.h.WorkerThread - [worker.1]: 3388 ms 	7 sources.
+2020-01-01 16:26:16.183 INFO  worker.0 - Worker used 73 cached entries.
+2020-01-01 16:26:16.185 INFO  c.t.h.WorkerThread - [worker.0]: 3649 ms 	8 sources.
+2020-01-01 16:26:16.221 INFO  worker.2 - Worker used 40 cached entries.
+2020-01-01 16:26:16.222 INFO  c.t.h.WorkerThread - [worker.2]: 3685 ms 	7 sources.
+2020-01-01 16:26:17.050 INFO  worker.3 - Worker used 0 cached entries.
+2020-01-01 16:26:17.050 INFO  c.t.h.WorkerThread - [worker.3]: 4513 ms 	7 sources.
+2020-01-01 16:26:17.050 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 382 milliseconds
+2020-01-01 16:26:17.050 INFO  c.t.hydra.Hydra - Hydra compiling: 4514 ms
+2020-01-01 16:27:04.756 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 12 ms.
+2020-01-01 16:27:04.762 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 16:27:04.762 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 16:27:04.762 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 16:27:04.762 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 16:27:04.762 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-01 16:27:04.762 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 16:27:04.765 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 16:27:04.765 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 16:27:04.766 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 4344:4379:4366:4344
+2020-01-01 16:27:04.773 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 5 files.
+2020-01-01 16:27:04.773 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 8 files.
+2020-01-01 16:27:04.773 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 7 files.
+2020-01-01 16:27:04.773 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 8 files.
+2020-01-01 16:27:04.980 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala:4: not found: object spire
+import spire.math._
+       ^
+2020-01-01 16:27:05.030 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala:4: not found: object spire
+import spire.math._
+       ^
+2020-01-01 16:27:05.828 ERROR worker.0 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/calculationparameters/CalculationStepValue.scala:4: not found: object spire
+import spire.math._
+       ^
+2020-01-01 16:27:06.337 INFO  worker.0 - Worker used 27 cached entries.
+2020-01-01 16:27:06.338 INFO  c.t.h.WorkerThread - [worker.0]: 1564 ms 	5 sources.
+2020-01-01 16:27:06.393 INFO  worker.3 - Worker used 31 cached entries.
+2020-01-01 16:27:06.398 INFO  c.t.h.WorkerThread - [worker.3]: 1612 ms 	8 sources.
+2020-01-01 16:27:06.399 INFO  worker.1 - Worker used 15 cached entries.
+2020-01-01 16:27:06.399 INFO  c.t.h.WorkerThread - [worker.1]: 1625 ms 	8 sources.
+2020-01-01 16:27:06.468 INFO  worker.2 - Worker used 12 cached entries.
+2020-01-01 16:27:06.468 INFO  c.t.h.WorkerThread - [worker.2]: 1688 ms 	7 sources.
+2020-01-01 16:27:06.469 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 199 milliseconds
+2020-01-01 16:27:06.469 INFO  c.t.hydra.Hydra - Hydra compiling: 1696 ms
+2020-01-01 16:27:34.378 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 12 ms.
+2020-01-01 16:27:34.390 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 16:27:34.390 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 16:27:34.390 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 16:27:34.390 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 16:27:34.391 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-01 16:27:34.391 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 16:27:34.394 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 16:27:34.394 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 16:27:34.396 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 4344:4379:4366:4344
+2020-01-01 16:27:34.403 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 5 files.
+2020-01-01 16:27:34.403 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 8 files.
+2020-01-01 16:27:34.403 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 7 files.
+2020-01-01 16:27:34.403 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 8 files.
+2020-01-01 16:27:36.992 INFO  worker.2 - Worker used 12 cached entries.
+2020-01-01 16:27:37.004 INFO  c.t.h.WorkerThread - [worker.2]: 2587 ms 	7 sources.
+2020-01-01 16:27:37.198 INFO  worker.0 - Worker used 27 cached entries.
+2020-01-01 16:27:37.198 INFO  c.t.h.WorkerThread - [worker.0]: 2794 ms 	5 sources.
+2020-01-01 16:27:37.395 INFO  worker.1 - Worker used 15 cached entries.
+2020-01-01 16:27:37.395 INFO  c.t.h.WorkerThread - [worker.1]: 2991 ms 	8 sources.
+2020-01-01 16:27:37.432 INFO  worker.3 - Worker used 31 cached entries.
+2020-01-01 16:27:37.432 INFO  c.t.h.WorkerThread - [worker.3]: 3015 ms 	8 sources.
+2020-01-01 16:27:37.433 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 407 milliseconds
+2020-01-01 16:27:37.433 INFO  c.t.hydra.Hydra - Hydra compiling: 3030 ms
+2020-01-01 16:27:37.441 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577896054390
+2020-01-01 16:29:43.863 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 8 ms.
+2020-01-01 16:29:43.868 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 16:29:43.868 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 16:29:43.868 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 16:29:43.868 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 16:29:43.868 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-01 16:29:43.868 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 16:29:43.877 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 16:29:43.877 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 16:29:43.878 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 3711
+2020-01-01 16:29:43.878 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 16:29:44.516 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 16:29:44.516 INFO  c.t.h.WorkerThread - [worker.0]: 637 ms 	1 sources.
+2020-01-01 16:29:44.517 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-01 16:29:44.517 INFO  c.t.hydra.Hydra - Hydra compiling: 639 ms
+2020-01-01 16:29:44.521 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577896183868
+2020-01-01 16:39:18.869 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 17 ms.
+2020-01-01 16:39:18.876 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-01 16:39:18.877 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-01 16:39:18.877 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-01 16:39:18.877 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-01 16:39:18.878 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-01 16:39:18.878 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-01 16:39:18.888 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-01 16:39:18.889 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-01 16:39:18.890 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 3711
+2020-01-01 16:39:18.890 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-01 16:39:19.774 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-01 16:39:19.785 INFO  c.t.h.WorkerThread - [worker.0]: 894 ms 	1 sources.
+2020-01-01 16:39:19.787 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-01 16:39:19.787 INFO  c.t.hydra.Hydra - Hydra compiling: 897 ms
+2020-01-01 16:39:19.810 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577896758877
+2020-01-02 11:10:18.835 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 21 ms.
+2020-01-02 11:10:18.844 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 11:10:18.844 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 11:10:18.844 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 11:10:18.844 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 11:10:18.846 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2020-01-02 11:10:18.846 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 11:10:18.858 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 11:10:18.859 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 11:10:18.862 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-02 11:10:18.864 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 11:10:19.835 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 11:10:19.835 INFO  c.t.h.WorkerThread - [worker.0]: 969 ms 	1 sources.
+2020-01-02 11:10:19.836 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-02 11:10:19.836 INFO  c.t.hydra.Hydra - Hydra compiling: 973 ms
+2020-01-02 11:10:19.844 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577963418844
+2020-01-02 11:14:05.361 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 21 ms.
+2020-01-02 11:14:05.373 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 11:14:05.373 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 11:14:05.373 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 11:14:05.373 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 11:14:05.373 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-02 11:14:05.373 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 11:14:05.384 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 11:14:05.384 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 11:14:05.385 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-02 11:14:05.386 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 11:14:06.255 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 11:14:06.255 INFO  c.t.h.WorkerThread - [worker.0]: 869 ms 	1 sources.
+2020-01-02 11:14:06.256 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 184 milliseconds
+2020-01-02 11:14:06.256 INFO  c.t.hydra.Hydra - Hydra compiling: 870 ms
+2020-01-02 11:14:06.260 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577963645373
+2020-01-02 11:20:44.939 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 13 ms.
+2020-01-02 11:20:44.945 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 11:20:44.945 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 11:20:44.945 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 11:20:44.945 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 11:20:44.946 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 11:20:44.946 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 11:20:44.955 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 11:20:44.955 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 11:20:44.956 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-02 11:20:44.958 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 11:20:45.927 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 11:20:45.927 INFO  c.t.h.WorkerThread - [worker.0]: 968 ms 	1 sources.
+2020-01-02 11:20:45.927 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-02 11:20:45.927 INFO  c.t.hydra.Hydra - Hydra compiling: 969 ms
+2020-01-02 11:20:45.931 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577964044945
+2020-01-02 11:25:54.832 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 18 ms.
+2020-01-02 11:25:54.846 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 11:25:54.846 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 11:25:54.846 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 11:25:54.846 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 11:25:54.848 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2020-01-02 11:25:54.848 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 11:25:54.856 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 11:25:54.856 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 11:25:54.859 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-02 11:25:54.861 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 11:25:55.757 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 11:25:55.757 INFO  c.t.h.WorkerThread - [worker.0]: 891 ms 	1 sources.
+2020-01-02 11:25:55.758 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-02 11:25:55.758 INFO  c.t.hydra.Hydra - Hydra compiling: 897 ms
+2020-01-02 11:25:55.765 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577964354846
+2020-01-02 11:35:02.055 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 24 ms.
+2020-01-02 11:35:02.070 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 11:35:02.070 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 11:35:02.070 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 11:35:02.070 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 11:35:02.072 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2020-01-02 11:35:02.072 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 11:35:02.087 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 11:35:02.087 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 11:35:02.090 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-02 11:35:02.091 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 11:35:03.148 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 11:35:03.148 INFO  c.t.h.WorkerThread - [worker.0]: 1054 ms 	1 sources.
+2020-01-02 11:35:03.149 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-02 11:35:03.149 INFO  c.t.hydra.Hydra - Hydra compiling: 1058 ms
+2020-01-02 11:35:03.159 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577964902070
+2020-01-02 11:39:37.790 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 14 ms.
+2020-01-02 11:39:37.796 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 11:39:37.796 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 11:39:37.796 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 11:39:37.796 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 11:39:37.801 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 5 ms.
+2020-01-02 11:39:37.801 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 11:39:37.813 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 11:39:37.813 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 11:39:37.814 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-02 11:39:37.814 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 11:39:38.535 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 11:39:38.536 INFO  c.t.h.WorkerThread - [worker.0]: 721 ms 	1 sources.
+2020-01-02 11:39:38.538 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 48 milliseconds
+2020-01-02 11:39:38.539 INFO  c.t.hydra.Hydra - Hydra compiling: 725 ms
+2020-01-02 11:39:38.553 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577965177796
+2020-01-02 11:40:58.955 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 7 ms.
+2020-01-02 11:40:58.958 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 11:40:58.959 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 11:40:58.959 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 11:40:58.959 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 11:40:58.959 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-02 11:40:58.959 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 11:40:58.961 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 11:40:58.961 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 11:40:58.962 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-02 11:40:58.962 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 11:40:59.633 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 11:40:59.633 INFO  c.t.h.WorkerThread - [worker.0]: 670 ms 	1 sources.
+2020-01-02 11:40:59.633 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 24 milliseconds
+2020-01-02 11:40:59.633 INFO  c.t.hydra.Hydra - Hydra compiling: 671 ms
+2020-01-02 11:40:59.636 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577965258959
+2020-01-02 11:56:30.219 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 21 ms.
+2020-01-02 11:56:30.228 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 11:56:30.228 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 11:56:30.228 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 11:56:30.228 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 11:56:30.230 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2020-01-02 11:56:30.230 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 11:56:30.237 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 11:56:30.238 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 11:56:30.240 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 526
+2020-01-02 11:56:30.242 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 11:56:31.020 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 11:56:31.020 INFO  c.t.h.WorkerThread - [worker.0]: 775 ms 	1 sources.
+2020-01-02 11:56:31.022 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-02 11:56:31.022 INFO  c.t.hydra.Hydra - Hydra compiling: 780 ms
+2020-01-02 11:56:31.037 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577966190228
+2020-01-02 12:10:22.187 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 12 ms.
+2020-01-02 12:10:22.192 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:10:22.193 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:10:22.193 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:10:22.193 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:10:22.193 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-02 12:10:22.193 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:10:22.198 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:10:22.198 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:10:22.199 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-02 12:10:22.199 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:10:22.788 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 12:10:22.788 INFO  c.t.h.WorkerThread - [worker.0]: 588 ms 	1 sources.
+2020-01-02 12:10:22.788 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-02 12:10:22.788 INFO  c.t.hydra.Hydra - Hydra compiling: 589 ms
+2020-01-02 12:10:22.791 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577967022193
+2020-01-02 12:12:51.483 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 9 ms.
+2020-01-02 12:12:51.488 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:12:51.489 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:12:51.489 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:12:51.489 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:12:51.489 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-02 12:12:51.489 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:12:51.493 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:12:51.493 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:12:51.494 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070:1
+2020-01-02 12:12:51.497 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:12:51.497 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-02 12:12:52.250 INFO  worker.0 - Worker used 3 cached entries.
+2020-01-02 12:12:52.250 INFO  c.t.h.WorkerThread - [worker.0]: 753 ms 	1 sources.
+2020-01-02 12:12:52.263 INFO  worker.1 - Worker used 0 cached entries.
+2020-01-02 12:12:52.263 INFO  c.t.h.WorkerThread - [worker.1]: 766 ms 	1 sources.
+2020-01-02 12:12:52.264 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-02 12:12:52.264 INFO  c.t.hydra.Hydra - Hydra compiling: 767 ms
+2020-01-02 12:12:52.267 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577967171489
+2020-01-02 12:14:05.997 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 28 ms.
+2020-01-02 12:14:06.006 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:14:06.006 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:14:06.006 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:14:06.006 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:14:06.007 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 12:14:06.007 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:14:06.017 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:14:06.018 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:14:06.019 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1
+2020-01-02 12:14:06.019 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:14:06.796 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 12:14:06.796 INFO  c.t.h.WorkerThread - [worker.0]: 775 ms 	1 sources.
+2020-01-02 12:14:06.796 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 32 milliseconds
+2020-01-02 12:14:06.797 INFO  c.t.hydra.Hydra - Hydra compiling: 777 ms
+2020-01-02 12:14:06.801 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577967246006
+2020-01-02 12:18:11.695 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 19 ms.
+2020-01-02 12:18:11.705 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:18:11.706 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:18:11.706 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:18:11.706 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:18:11.706 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-02 12:18:11.706 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:18:11.718 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:18:11.718 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:18:11.720 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-02 12:18:11.720 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:18:12.479 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 12:18:12.479 INFO  c.t.h.WorkerThread - [worker.0]: 757 ms 	1 sources.
+2020-01-02 12:18:12.479 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 38 milliseconds
+2020-01-02 12:18:12.479 INFO  c.t.hydra.Hydra - Hydra compiling: 759 ms
+2020-01-02 12:18:12.484 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577967491705
+2020-01-02 12:20:47.333 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 17 ms.
+2020-01-02 12:20:47.340 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:20:47.340 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:20:47.340 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:20:47.340 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:20:47.341 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 12:20:47.341 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:20:47.346 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:20:47.346 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:20:47.348 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-02 12:20:47.348 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:20:47.470 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 12:20:47.470 INFO  c.t.h.WorkerThread - [worker.0]: 121 ms 	1 sources.
+2020-01-02 12:20:47.470 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 19 milliseconds
+2020-01-02 12:20:47.470 INFO  c.t.hydra.Hydra - Hydra compiling: 122 ms
+2020-01-02 12:21:02.971 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 10 ms.
+2020-01-02 12:21:02.977 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:21:02.977 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:21:02.977 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:21:02.977 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:21:02.978 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 12:21:02.978 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:21:02.981 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:21:02.981 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:21:02.981 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-02 12:21:02.982 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:21:03.564 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 12:21:03.564 INFO  c.t.h.WorkerThread - [worker.0]: 582 ms 	1 sources.
+2020-01-02 12:21:03.564 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 32 milliseconds
+2020-01-02 12:21:03.564 INFO  c.t.hydra.Hydra - Hydra compiling: 582 ms
+2020-01-02 12:21:03.568 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577967662977
+2020-01-02 12:32:06.182 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 8 ms.
+2020-01-02 12:32:06.186 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:32:06.186 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:32:06.186 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:32:06.186 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:32:06.187 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 12:32:06.187 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:32:06.196 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:32:06.196 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:32:06.197 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-02 12:32:06.197 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:32:06.661 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 12:32:06.661 INFO  c.t.h.WorkerThread - [worker.0]: 463 ms 	1 sources.
+2020-01-02 12:32:06.661 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 59 milliseconds
+2020-01-02 12:32:06.661 INFO  c.t.hydra.Hydra - Hydra compiling: 464 ms
+2020-01-02 12:32:06.665 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577968326186
+2020-01-02 12:33:20.357 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 13 ms.
+2020-01-02 12:33:20.364 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:33:20.364 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:33:20.364 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:33:20.364 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:33:20.365 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 12:33:20.365 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:33:20.369 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:33:20.369 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:33:20.370 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-02 12:33:20.372 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:33:21.034 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 12:33:21.034 INFO  c.t.h.WorkerThread - [worker.0]: 660 ms 	1 sources.
+2020-01-02 12:33:21.035 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 75 milliseconds
+2020-01-02 12:33:21.035 INFO  c.t.hydra.Hydra - Hydra compiling: 663 ms
+2020-01-02 12:33:21.041 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577968400364
+2020-01-02 12:49:17.043 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 14 ms.
+2020-01-02 12:49:17.048 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:49:17.048 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:49:17.048 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:49:17.048 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:49:17.049 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 12:49:17.049 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:49:17.059 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:49:17.059 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:49:17.061 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1529:1512:1260:416
+2020-01-02 12:49:17.072 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:49:17.072 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-02 12:49:17.072 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-01-02 12:49:17.072 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 2 files.
+2020-01-02 12:49:18.185 INFO  worker.1 - Worker used 3 cached entries.
+2020-01-02 12:49:18.185 INFO  c.t.h.WorkerThread - [worker.1]: 1112 ms 	1 sources.
+2020-01-02 12:49:18.466 INFO  worker.0 - Worker used 3 cached entries.
+2020-01-02 12:49:18.466 INFO  c.t.h.WorkerThread - [worker.0]: 1394 ms 	1 sources.
+2020-01-02 12:49:18.508 INFO  worker.3 - Worker used 0 cached entries.
+2020-01-02 12:49:18.508 INFO  c.t.h.WorkerThread - [worker.3]: 1431 ms 	2 sources.
+2020-01-02 12:49:18.539 INFO  worker.2 - Worker used 3 cached entries.
+2020-01-02 12:49:18.539 INFO  c.t.h.WorkerThread - [worker.2]: 1466 ms 	1 sources.
+2020-01-02 12:49:18.539 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-02 12:49:18.539 INFO  c.t.hydra.Hydra - Hydra compiling: 1467 ms
+2020-01-02 12:49:18.547 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577969357048
+2020-01-02 12:57:12.144 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 14 ms.
+2020-01-02 12:57:12.156 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:57:12.156 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:57:12.156 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:57:12.156 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:57:12.156 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-02 12:57:12.156 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:57:12.166 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:57:12.166 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:57:12.168 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1
+2020-01-02 12:57:12.168 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:57:13.133 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 12:57:13.133 INFO  c.t.h.WorkerThread - [worker.0]: 963 ms 	1 sources.
+2020-01-02 12:57:13.134 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 86 milliseconds
+2020-01-02 12:57:13.134 INFO  c.t.hydra.Hydra - Hydra compiling: 966 ms
+2020-01-02 12:57:13.144 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577969832156
+2020-01-02 12:58:26.581 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 13 ms.
+2020-01-02 12:58:26.585 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 12:58:26.585 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 12:58:26.585 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 12:58:26.585 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 12:58:26.586 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 12:58:26.586 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 12:58:26.588 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 169. Maximum cores: 8
+2020-01-02 12:58:26.588 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 12:58:26.589 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-02 12:58:26.589 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 12:58:27.356 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 12:58:27.357 INFO  c.t.h.WorkerThread - [worker.0]: 767 ms 	1 sources.
+2020-01-02 12:58:27.358 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 46 milliseconds
+2020-01-02 12:58:27.358 INFO  c.t.hydra.Hydra - Hydra compiling: 769 ms
+2020-01-02 12:58:27.362 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577969906585
+2020-01-02 17:21:08.402 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 22 ms.
+2020-01-02 17:21:08.411 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 17:21:08.411 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 17:21:08.411 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 17:21:08.411 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 17:21:08.414 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2020-01-02 17:21:08.414 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 17:21:08.419 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-02 17:21:08.419 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 17:21:08.422 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 541
+2020-01-02 17:21:08.423 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 17:21:09.033 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 17:21:09.033 INFO  c.t.h.WorkerThread - [worker.0]: 607 ms 	1 sources.
+2020-01-02 17:21:09.036 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-02 17:21:09.036 INFO  c.t.hydra.Hydra - Hydra compiling: 613 ms
+2020-01-02 17:21:09.044 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577985668411
+2020-01-02 17:24:07.610 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 12 ms.
+2020-01-02 17:24:07.617 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 17:24:07.617 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 17:24:07.617 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 17:24:07.617 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 17:24:07.618 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 17:24:07.618 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 17:24:07.623 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-02 17:24:07.623 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 17:24:07.624 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 3711
+2020-01-02 17:24:07.624 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 17:24:08.197 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 17:24:08.197 INFO  c.t.h.WorkerThread - [worker.0]: 572 ms 	1 sources.
+2020-01-02 17:24:08.198 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 38 milliseconds
+2020-01-02 17:24:08.198 INFO  c.t.hydra.Hydra - Hydra compiling: 574 ms
+2020-01-02 17:24:08.200 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577985847617
+2020-01-02 17:29:36.281 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 12 ms.
+2020-01-02 17:29:36.286 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 17:29:36.286 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 17:29:36.286 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 17:29:36.286 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 17:29:36.287 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 17:29:36.287 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 17:29:36.304 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-02 17:29:36.305 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 17:29:36.306 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-02 17:29:36.308 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 17:29:36.800 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 17:29:36.800 INFO  c.t.h.WorkerThread - [worker.0]: 492 ms 	1 sources.
+2020-01-02 17:29:36.801 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-02 17:29:36.801 INFO  c.t.hydra.Hydra - Hydra compiling: 493 ms
+2020-01-02 17:29:36.805 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577986176286
+2020-01-02 17:31:05.341 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 8 ms.
+2020-01-02 17:31:05.347 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 17:31:05.347 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 17:31:05.347 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 17:31:05.347 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 17:31:05.348 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 17:31:05.348 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 17:31:05.351 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-02 17:31:05.351 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 17:31:05.358 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-02 17:31:05.358 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 17:31:05.959 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 17:31:05.959 INFO  c.t.h.WorkerThread - [worker.0]: 594 ms 	1 sources.
+2020-01-02 17:31:05.959 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 80 milliseconds
+2020-01-02 17:31:05.959 INFO  c.t.hydra.Hydra - Hydra compiling: 601 ms
+2020-01-02 17:31:05.965 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577986265347
+2020-01-02 17:32:26.126 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 10 ms.
+2020-01-02 17:32:26.131 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-02 17:32:26.131 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-02 17:32:26.131 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-02 17:32:26.131 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-02 17:32:26.132 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-02 17:32:26.132 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-02 17:32:26.135 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-02 17:32:26.135 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-02 17:32:26.136 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 378
+2020-01-02 17:32:26.136 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-02 17:32:26.716 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-02 17:32:26.716 INFO  c.t.h.WorkerThread - [worker.0]: 579 ms 	1 sources.
+2020-01-02 17:32:26.716 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 33 milliseconds
+2020-01-02 17:32:26.716 INFO  c.t.hydra.Hydra - Hydra compiling: 580 ms
+2020-01-02 17:32:26.721 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1577986346131
+2020-01-03 10:50:55.413 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 40 ms.
+2020-01-03 10:50:55.424 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 10:50:55.424 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 10:50:55.424 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 10:50:55.424 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 10:50:55.426 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2020-01-03 10:50:55.426 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 10:50:55.441 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 10:50:55.441 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 10:50:55.450 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 378
+2020-01-03 10:50:55.452 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 10:50:56.339 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 10:50:56.340 INFO  c.t.h.WorkerThread - [worker.0]: 885 ms 	1 sources.
+2020-01-03 10:50:56.341 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-03 10:50:56.341 INFO  c.t.hydra.Hydra - Hydra compiling: 890 ms
+2020-01-03 10:50:56.358 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578048655424
+2020-01-03 10:52:17.273 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 15 ms.
+2020-01-03 10:52:17.279 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 10:52:17.279 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 10:52:17.279 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 10:52:17.279 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 10:52:17.280 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-03 10:52:17.280 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 10:52:17.285 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 10:52:17.285 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 10:52:17.286 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 378
+2020-01-03 10:52:17.286 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 10:52:17.824 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 10:52:17.824 INFO  c.t.h.WorkerThread - [worker.0]: 537 ms 	1 sources.
+2020-01-03 10:52:17.825 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-03 10:52:17.827 INFO  c.t.hydra.Hydra - Hydra compiling: 541 ms
+2020-01-03 10:52:17.838 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578048737279
+2020-01-03 10:57:09.509 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 15 ms.
+2020-01-03 10:57:09.513 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 10:57:09.514 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 10:57:09.514 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 10:57:09.514 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 10:57:09.514 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-03 10:57:09.514 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 10:57:09.527 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 10:57:09.527 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 10:57:09.528 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 378:182
+2020-01-03 10:57:09.531 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 10:57:09.531 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-03 10:57:10.224 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 10:57:10.224 INFO  c.t.h.WorkerThread - [worker.0]: 693 ms 	1 sources.
+2020-01-03 10:57:10.369 INFO  worker.1 - Worker used 0 cached entries.
+2020-01-03 10:57:10.369 INFO  c.t.h.WorkerThread - [worker.1]: 837 ms 	1 sources.
+2020-01-03 10:57:10.369 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-03 10:57:10.369 INFO  c.t.hydra.Hydra - Hydra compiling: 838 ms
+2020-01-03 10:57:10.377 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578049029513
+2020-01-03 11:05:54.197 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 12 ms.
+2020-01-03 11:05:54.204 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:05:54.204 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:05:54.204 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:05:54.204 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:05:54.206 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-03 11:05:54.206 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:05:54.217 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:05:54.217 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:05:54.218 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070:1
+2020-01-03 11:05:54.224 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:05:54.224 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-03 11:05:55.298 INFO  worker.0 - Worker used 3 cached entries.
+2020-01-03 11:05:55.298 INFO  c.t.h.WorkerThread - [worker.0]: 1074 ms 	1 sources.
+2020-01-03 11:05:55.351 INFO  worker.1 - Worker used 0 cached entries.
+2020-01-03 11:05:55.352 INFO  c.t.h.WorkerThread - [worker.1]: 1128 ms 	1 sources.
+2020-01-03 11:05:55.352 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 102 milliseconds
+2020-01-03 11:05:55.352 INFO  c.t.hydra.Hydra - Hydra compiling: 1128 ms
+2020-01-03 11:05:55.371 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578049554204
+2020-01-03 11:10:08.773 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 14 ms.
+2020-01-03 11:10:08.780 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:10:08.780 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:10:08.780 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:10:08.780 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:10:08.780 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-03 11:10:08.780 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:10:08.789 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:10:08.789 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:10:08.790 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1
+2020-01-03 11:10:08.792 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:10:09.527 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 11:10:09.527 INFO  c.t.h.WorkerThread - [worker.0]: 734 ms 	1 sources.
+2020-01-03 11:10:09.527 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 140 milliseconds
+2020-01-03 11:10:09.527 INFO  c.t.hydra.Hydra - Hydra compiling: 735 ms
+2020-01-03 11:10:09.530 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578049808780
+2020-01-03 11:11:52.192 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 10 ms.
+2020-01-03 11:11:52.196 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:11:52.196 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:11:52.196 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:11:52.196 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:11:52.197 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-03 11:11:52.197 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:11:52.200 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:11:52.200 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:11:52.201 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-03 11:11:52.201 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:11:52.693 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 11:11:52.693 INFO  c.t.h.WorkerThread - [worker.0]: 491 ms 	1 sources.
+2020-01-03 11:11:52.693 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 26 milliseconds
+2020-01-03 11:11:52.693 INFO  c.t.hydra.Hydra - Hydra compiling: 492 ms
+2020-01-03 11:11:52.705 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578049912196
+2020-01-03 11:13:08.699 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 8 ms.
+2020-01-03 11:13:08.705 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:13:08.705 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:13:08.705 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:13:08.705 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:13:08.706 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-03 11:13:08.706 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:13:08.708 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:13:08.708 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:13:08.709 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1070
+2020-01-03 11:13:08.709 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:13:09.067 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 11:13:09.067 INFO  c.t.h.WorkerThread - [worker.0]: 358 ms 	1 sources.
+2020-01-03 11:13:09.067 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-03 11:13:09.067 INFO  c.t.hydra.Hydra - Hydra compiling: 358 ms
+2020-01-03 11:13:09.074 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578049988705
+2020-01-03 11:18:42.321 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 8 ms.
+2020-01-03 11:18:42.326 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:18:42.326 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:18:42.326 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:18:42.326 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:18:42.326 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-03 11:18:42.326 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:18:42.335 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:18:42.335 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:18:42.336 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1260:1070
+2020-01-03 11:18:42.339 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:18:42.339 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-03 11:18:43.040 INFO  worker.1 - Worker used 0 cached entries.
+2020-01-03 11:18:43.048 INFO  c.t.h.WorkerThread - [worker.1]: 700 ms 	1 sources.
+2020-01-03 11:18:43.187 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 11:18:43.187 INFO  c.t.h.WorkerThread - [worker.0]: 847 ms 	1 sources.
+2020-01-03 11:18:43.188 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-03 11:18:43.188 INFO  c.t.hydra.Hydra - Hydra compiling: 849 ms
+2020-01-03 11:18:43.193 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578050322326
+2020-01-03 11:20:52.079 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 8 ms.
+2020-01-03 11:20:52.083 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:20:52.084 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:20:52.084 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:20:52.084 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:20:52.084 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-03 11:20:52.084 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:20:52.087 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:20:52.087 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:20:52.088 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1260:1070
+2020-01-03 11:20:52.091 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:20:52.091 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-03 11:20:52.974 INFO  worker.1 - Worker used 0 cached entries.
+2020-01-03 11:20:52.976 INFO  c.t.h.WorkerThread - [worker.1]: 881 ms 	1 sources.
+2020-01-03 11:20:53.154 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 11:20:53.166 INFO  c.t.h.WorkerThread - [worker.0]: 1074 ms 	1 sources.
+2020-01-03 11:20:53.169 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 169 milliseconds
+2020-01-03 11:20:53.169 INFO  c.t.hydra.Hydra - Hydra compiling: 1078 ms
+2020-01-03 11:20:53.172 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578050452084
+2020-01-03 11:23:11.736 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 18 ms.
+2020-01-03 11:23:11.744 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:23:11.745 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:23:11.745 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:23:11.745 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:23:11.747 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2020-01-03 11:23:11.747 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:23:11.753 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:23:11.753 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:23:11.756 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1260:1070
+2020-01-03 11:23:11.760 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:23:11.761 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-03 11:23:12.117 INFO  worker.1 - Worker used 0 cached entries.
+2020-01-03 11:23:12.118 INFO  c.t.h.WorkerThread - [worker.1]: 354 ms 	1 sources.
+2020-01-03 11:23:12.134 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 11:23:12.134 INFO  c.t.h.WorkerThread - [worker.0]: 371 ms 	1 sources.
+2020-01-03 11:23:12.135 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-01-03 11:23:12.135 INFO  c.t.hydra.Hydra - Hydra compiling: 375 ms
+2020-01-03 11:23:54.826 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 14 ms.
+2020-01-03 11:23:54.832 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:23:54.832 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:23:54.832 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:23:54.832 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:23:54.832 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-01-03 11:23:54.832 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:23:54.837 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:23:54.837 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:23:54.838 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1260:1070
+2020-01-03 11:23:54.841 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:23:54.841 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-03 11:23:55.980 INFO  worker.1 - Worker used 0 cached entries.
+2020-01-03 11:23:55.982 INFO  c.t.h.WorkerThread - [worker.1]: 1140 ms 	1 sources.
+2020-01-03 11:23:56.063 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 11:23:56.063 INFO  c.t.h.WorkerThread - [worker.0]: 1221 ms 	1 sources.
+2020-01-03 11:23:56.064 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 261 milliseconds
+2020-01-03 11:23:56.064 INFO  c.t.hydra.Hydra - Hydra compiling: 1223 ms
+2020-01-03 11:23:56.069 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578050634832
+2020-01-03 11:28:37.655 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 20 ms.
+2020-01-03 11:28:37.676 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:28:37.676 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:28:37.676 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:28:37.676 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:28:37.678 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 2 ms.
+2020-01-03 11:28:37.678 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:28:37.683 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:28:37.683 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:28:37.686 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 3711:1260:1070
+2020-01-03 11:28:37.696 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:28:37.696 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-03 11:28:37.696 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-01-03 11:28:38.901 INFO  worker.2 - Worker used 0 cached entries.
+2020-01-03 11:28:38.904 INFO  c.t.h.WorkerThread - [worker.2]: 1202 ms 	1 sources.
+2020-01-03 11:28:39.045 INFO  worker.1 - Worker used 0 cached entries.
+2020-01-03 11:28:39.046 INFO  c.t.h.WorkerThread - [worker.1]: 1346 ms 	1 sources.
+2020-01-03 11:28:39.169 INFO  worker.0 - Worker used 10 cached entries.
+2020-01-03 11:28:39.169 INFO  c.t.h.WorkerThread - [worker.0]: 1470 ms 	1 sources.
+2020-01-03 11:28:39.170 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 161 milliseconds
+2020-01-03 11:28:39.170 INFO  c.t.hydra.Hydra - Hydra compiling: 1474 ms
+2020-01-03 11:28:39.177 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578050917676
+2020-01-03 11:32:04.586 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 12 ms.
+2020-01-03 11:32:04.591 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:32:04.591 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:32:04.591 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:32:04.591 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:32:04.592 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-01-03 11:32:04.592 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:32:04.595 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:32:04.595 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:32:04.596 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 182
+2020-01-03 11:32:04.597 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:32:05.146 INFO  worker.0 - Worker used 0 cached entries.
+2020-01-03 11:32:05.146 INFO  c.t.h.WorkerThread - [worker.0]: 549 ms 	1 sources.
+2020-01-03 11:32:05.146 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 94 milliseconds
+2020-01-03 11:32:05.146 INFO  c.t.hydra.Hydra - Hydra compiling: 549 ms
+2020-01-03 11:32:05.149 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578051124591
+2020-01-03 11:33:12.856 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 28 files in 1 roots took 13 ms.
+2020-01-03 11:33:12.862 INFO  c.t.hydra.Hydra - Loaded pickle store with 117 entries.
+2020-01-03 11:33:12.862 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.12.7-hydra39
+2020-01-03 11:33:12.862 INFO  c.t.hydra.Hydra - Hydra version:       2.1.13
+2020-01-03 11:33:12.862 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-01-03 11:33:12.872 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 10 ms.
+2020-01-03 11:33:12.872 INFO  c.t.hydra.Hydra - Clean build: false
+2020-01-03 11:33:12.876 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 168. Maximum cores: 8
+2020-01-03 11:33:12.876 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-01-03 11:33:12.877 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 3711:1260:1070
+2020-01-03 11:33:12.881 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-01-03 11:33:12.881 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-01-03 11:33:12.881 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-01-03 11:33:13.685 INFO  worker.2 - Worker used 0 cached entries.
+2020-01-03 11:33:13.687 INFO  c.t.h.WorkerThread - [worker.2]: 803 ms 	1 sources.
+2020-01-03 11:33:13.776 INFO  worker.1 - Worker used 0 cached entries.
+2020-01-03 11:33:13.780 INFO  c.t.h.WorkerThread - [worker.1]: 895 ms 	1 sources.
+2020-01-03 11:33:14.037 INFO  worker.0 - Worker used 10 cached entries.
+2020-01-03 11:33:14.037 INFO  c.t.h.WorkerThread - [worker.0]: 1156 ms 	1 sources.
+2020-01-03 11:33:14.037 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 125 milliseconds
+2020-01-03 11:33:14.037 INFO  c.t.hydra.Hydra - Hydra compiling: 1156 ms
+2020-01-03 11:33:14.041 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1578051192862

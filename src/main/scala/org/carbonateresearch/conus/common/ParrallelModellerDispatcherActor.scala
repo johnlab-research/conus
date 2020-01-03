@@ -43,18 +43,20 @@ class ParrallelModellerDispatcherActor extends Actor {
                 val modelData = m.summary+EOL
 
                 val t1 = System.nanoTime()
-                val elapsedTime:Double = ((t1 - t0)/10E9)
-                val elapsedTimeStr:String = "%1.3f" format elapsedTime
+                val elapsedTime:Double = (t1 - t0)
+
+                val elapsedTimeStr:String = getHoursMinuteSeconds(elapsedTime)
                 val percentCompleted = ((resultsList.size.toDouble/initialCount.toDouble)*100).ceil
                 val predictedTime = elapsedTime/percentCompleted*(100-percentCompleted)
+                val predictedTimeStr:String = getHoursMinuteSeconds(predictedTime)
 
                 if(resultsList.size == initialCount){
-                  val runStatistics = "-> 100% completed in "+elapsedTimeStr+" seconds."+ EOL
+                  val runStatistics = "-> 100% completed in "+elapsedTimeStr+"."+ EOL
                   println(modelData+runStatistics)
                   DiageneSim.handleResults(resultsList.toList)
                 }
                 else {
-                  val runStatistics = "-> "+percentCompleted+"% completed in "+ elapsedTimeStr+" seconds. Predicted time remaining: "+predictedTime+" seconds."+ EOL
+                  val runStatistics = "-> "+percentCompleted+"% completed in "+ elapsedTimeStr+". Predicted time remaining: "+predictedTimeStr+"."+ EOL
                   println(modelData+runStatistics)
                 }
 
@@ -64,5 +66,18 @@ class ParrallelModellerDispatcherActor extends Actor {
 
     }
     case _       => println("Sample type not handled by Modeler")
+  }
+
+  def getHoursMinuteSeconds(nannoseconds:Double): String = {
+    val totalTimeInSeconds:Double = nannoseconds/10E8
+    val hours:Int = (totalTimeInSeconds/(60*60)).toInt
+    val secondsRemainingForMinutes =  (totalTimeInSeconds % (60*60)).toInt
+    val minutes:Int =(secondsRemainingForMinutes/60).toInt
+    val seconds:Int =(secondsRemainingForMinutes % 60).toInt
+
+   val  timeString:String = if(hours>0 && minutes>0){hours+" hours, " + minutes + " minutes, and " + seconds + " seconds"}
+   else if(hours==0 && minutes>0){ minutes + " minutes, and " + seconds + " seconds"}
+   else {seconds + " seconds"}
+    timeString
   }
 }

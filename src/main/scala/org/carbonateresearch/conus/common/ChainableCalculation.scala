@@ -1,16 +1,11 @@
 package org.carbonateresearch.conus.common
-
 import org.carbonateresearch.conus.calculationparameters.CalculationStepValue
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import spire.implicits._
-import spire.math._
-import spire.algebra._
-
 import scala.annotation.tailrec
 import org.carbonateresearch.conus.calculationparameters.CalculateStepValue
 import org.carbonateresearch.conus.common
 
-final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameters:List[CalculationStepValue]) {
+final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:List[CalculationStepValue]) {
 
   def next(nextModelParameters: CalculationStepValue*): ChainableCalculation = {
 
@@ -38,31 +33,28 @@ final case class ChainableCalculation(ID:Int, steps:List[Number], modelParameter
     val inverseParams = modelParameters.reverse
 
     @tailrec
-    def traverseSteps (stepsCounter:List[Number], currentResults: Map[Number, Map[CalculationParametersIOLabels,Number]]): Map[Number, Map[CalculationParametersIOLabels,Number]] = {
+    def traverseSteps (stepsCounter:List[Int], currentResults: ModelResults): ModelResults = {
       stepsCounter match  {
         case Nil => currentResults
-        case x::xs => traverseSteps(xs,currentResults++evaluateSingleStep(x,inverseParams, currentResults))
+        case x::xs => traverseSteps(xs,evaluateSingleStep(x,inverseParams, currentResults))
       }
     }
-      val initialMap:Map[Number, Map[CalculationParametersIOLabels,Number]] = Map(Number(0) -> Map(NumberOfSteps -> (Number(steps.size))))
-    common.SingleModelWithResults(ID,steps, modelParameters, traverseSteps(steps,  initialMap))
+      val initialModelResults:ModelResults = ModelResults(Map(0 -> SingleStepResults(Map(NumberOfSteps -> steps.size))))
+    SingleModelWithResults(ID,steps, modelParameters, traverseSteps(steps,  initialModelResults))
     }
 
 
-  def evaluateSingleStep(step:Number, parameters: List[CalculationStepValue], currentResults: Map[Number, Map[CalculationParametersIOLabels,Number]]): Map[Number, Map[CalculationParametersIOLabels,Number]] = {
+  def evaluateSingleStep(step:Int, parameters: List[CalculationStepValue], currentResults: ModelResults): ModelResults = {
 
     @tailrec
-    def evaluateSingleStepWithCounter (params: List[CalculationStepValue], thisCurrentResults: Map[Number, Map[CalculationParametersIOLabels,Number]]): Map[Number, Map[CalculationParametersIOLabels,Number]] = {
+    def evaluateSingleStepWithCounter (params: List[CalculationStepValue], thisCurrentResults: ModelResults): ModelResults = {
       params match  {
         case Nil => thisCurrentResults
-        case x::xs => evaluateSingleStepWithCounter(xs,thisCurrentResults ++ Map(step -> (thisCurrentResults(step) ++ (x.calculate(step,thisCurrentResults))(step))))
+        case x::xs => evaluateSingleStepWithCounter(xs,x.calculate(step,thisCurrentResults))
       }
     }
-
-    val newStepResult:Map[Number, Map[CalculationParametersIOLabels,Number]] = Map(step -> Map(NumberOfSteps -> (Number(steps.size))))
-
-     evaluateSingleStepWithCounter(parameters, currentResults ++ newStepResult)
-
+    val newModelResults = currentResults.addParameterResultAtNewStep(NumberOfSteps,steps.size,step)
+    evaluateSingleStepWithCounter(parameters, newModelResults)
   }
 
 }

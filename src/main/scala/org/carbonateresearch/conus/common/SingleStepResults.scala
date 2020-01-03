@@ -1,9 +1,12 @@
 package org.carbonateresearch.conus.common
 import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
 
-case class SingleStepResults(valuesPerLabel:Map[CalculationParametersIOLabels,Double]){
-  def retrieveValue(label:CalculationParametersIOLabels):Double = valuesPerLabel(label)
-  def addValue(label:CalculationParametersIOLabels, newValue:Double):SingleStepResults = SingleStepResults(valuesPerLabel++Map((label,newValue)))
+case class SingleStepResults(valuesForAllLabels:Map[CalculationParametersIOLabels,Double]){
+  def valueForLabel(label:CalculationParametersIOLabels):Double = valuesForAllLabels(label)
+  def addValue(label:CalculationParametersIOLabels, newValue:Double):SingleStepResults = SingleStepResults(valuesForAllLabels++Map((label,newValue)))
+  def merge(otherResult: SingleStepResults): SingleStepResults = {
+    SingleStepResults(valuesForAllLabels++otherResult.valuesForAllLabels)
+  }
 }
 
 object SingleStepResults {

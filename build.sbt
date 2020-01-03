@@ -22,6 +22,4 @@ libraryDependencies += "org.scalafx" %% "scalafx-extras" % "0.3.0" */
 
 libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.0-M3"
 
-libraryDependencies += "org.typelevel" %% "spire" % "0.14.1"
-
 

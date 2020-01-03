@@ -1,7 +1,5 @@
 package org.carbonateresearch.measurementvalues
-import spire.implicits._
-import spire.math._
-import spire.algebra._
+
 
 final case class NumberWithErrors (value: Double, error: Double)  {
   override def toString: String = value.toString + " ± " + error.toString
