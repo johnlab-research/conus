@@ -1,21 +1,30 @@
 package org.carbonateresearch.conus.common
 import org.carbonateresearch.conus.calculationparameters.parametersIO.{CalculationParametersIOLabels, NumberOfSteps}
-import org.carbonateresearch.conus.common
+
 
 case class ModelResults(theseResults: Map[Int, SingleStepResults]){
+
   val steps = theseResults.keys
+
   def resultsForStep(step: Int): SingleStepResults = {
     theseResults(step)
   }
 
-  def ++ (otherModelResults:ModelResults):ModelResults = {
+  def getStepResult(myStep:Int, label:CalculationParametersIOLabels):Double ={
+    theseResults(myStep).valuesForAllLabels(label)
+  }
+
+  def mergeWith(otherModelResults:ModelResults):ModelResults = {
     val otherResults: Map[Int, SingleStepResults] = otherModelResults.theseResults
     val allKeys: Iterable[Int] = theseResults.keys++otherResults.keys
     type MapType = Map[Int, SingleStepResults]
 
     val mergedResultMap:Map[Int,SingleStepResults] = allKeys.map{k => {
         if(theseResults.isDefinedAt(k) && otherResults.isDefinedAt(k)){
-          (k,theseResults(k).merge(otherResults(k)))
+          val theseSingleStepResults: SingleStepResults = theseResults(k)
+          val otherSingleStepResults: SingleStepResults = otherResults(k)
+          val newSingleStepResults:SingleStepResults = SingleStepResults(theseSingleStepResults.valuesForAllLabels++otherSingleStepResults.valuesForAllLabels)
+          (k,newSingleStepResults)
         }
         else if(theseResults.isDefinedAt(k)){
           (k,theseResults(k))
@@ -37,8 +46,9 @@ case class ModelResults(theseResults: Map[Int, SingleStepResults]){
     }
 
   def addParameterResultAtStep(label:CalculationParametersIOLabels,value:Double,atStep:Int): ModelResults = {
-    val modifiedStepResult: SingleStepResults = theseResults(atStep).addValue(label,value)
-    ModelResults(theseResults++Map(atStep -> modifiedStepResult))
+    val oldSingleStepResults: SingleStepResults = theseResults(atStep)
+    val newSingleStepResults: SingleStepResults = SingleStepResults(oldSingleStepResults.valuesForAllLabels++Map(label -> value))
+    ModelResults(theseResults++Map(atStep -> newSingleStepResults))
   }
 
   def addResult(value:Double): ResultFactory = {

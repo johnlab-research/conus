@@ -4,7 +4,7 @@ import org.carbonateresearch.conus.calculationparameters.parametersIO.{Calculati
 import org.carbonateresearch.conus.common.ModelResults
 
 
-final case class GeothermalGradientThroughTime(geothermalGradientsAgeMap:List[(Double, Double)]) extends CalculationStepValue with StandardsParameters{
+final case class GeothermalGradientThroughTime(geothermalGradientsAgeMap:List[(Double, Double)]) extends Calculator with StandardsParameters{
 
   override val outputs  = List(GeothermalGradient)
   override def calculate (step:Int,previousResults:ModelResults): ModelResults  = {

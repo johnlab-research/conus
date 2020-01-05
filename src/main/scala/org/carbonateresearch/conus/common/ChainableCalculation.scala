@@ -1,13 +1,13 @@
 package org.carbonateresearch.conus.common
-import org.carbonateresearch.conus.calculationparameters.CalculationStepValue
+import org.carbonateresearch.conus.calculationparameters.Calculator
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import scala.annotation.tailrec
 import org.carbonateresearch.conus.calculationparameters.CalculateStepValue
 import org.carbonateresearch.conus.common
 
-final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:List[CalculationStepValue]) {
+final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:List[Calculator]) {
 
-  def next(nextModelParameters: CalculationStepValue*): ChainableCalculation = {
+  def next(nextModelParameters: Calculator*): ChainableCalculation = {
 
     nextModelParameters.size match {
       case 0 => this
@@ -44,10 +44,10 @@ final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:L
     }
 
 
-  def evaluateSingleStep(step:Int, parameters: List[CalculationStepValue], currentResults: ModelResults): ModelResults = {
+  def evaluateSingleStep(step:Int, parameters: List[Calculator], currentResults: ModelResults): ModelResults = {
 
     @tailrec
-    def evaluateSingleStepWithCounter (params: List[CalculationStepValue], thisCurrentResults: ModelResults): ModelResults = {
+    def evaluateSingleStepWithCounter (params: List[Calculator], thisCurrentResults: ModelResults): ModelResults = {
       params match  {
         case Nil => thisCurrentResults
         case x::xs => evaluateSingleStepWithCounter(xs,x.calculate(step,thisCurrentResults))

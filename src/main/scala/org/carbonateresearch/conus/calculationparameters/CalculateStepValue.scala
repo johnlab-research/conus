@@ -3,7 +3,7 @@ import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import org.carbonateresearch.conus.common.{ModelResults}
 
 
-final case class CalculateStepValue(override val inputs: Option[List[CalculationParametersIOLabels]], output:CalculationParametersIOLabels, override val functionBlock: Option[List[Double] => Double]) extends CalculationStepValue {
+final case class CalculateStepValue(override val inputs: Option[List[CalculationParametersIOLabels]], output:CalculationParametersIOLabels, override val functionBlock: Option[List[Double] => Double]) extends Calculator {
 
   override val outputs = List(output)
 
@@ -28,7 +28,7 @@ final case class CalculateStepValue(override val inputs: Option[List[Calculation
   }
 
 
-  def applying(function: Any):CalculateStepValue = {
+  def applyingFunction(function: Any):CalculateStepValue = {
 
     def newFunctionBlock(values: List[Double]) = {
       function match {
@@ -50,18 +50,18 @@ final case class CalculateStepValue(override val inputs: Option[List[Calculation
     input match {
       case i:Previous => {
         if (step-i.offset >=0) {
-          previousModelResults.resultsForStep(step-i.offset).valueForLabel(i.input)
+          previousModelResults.getStepResult(step-i.offset,i.input)
         } else {
           i.rule match{
-            case TakeStepZeroValue => previousModelResults.resultsForStep(0).valueForLabel(i.input)
-            case TakeCurrentStepValue =>previousModelResults.resultsForStep(step).valueForLabel(i.input)
+            case TakeStepZeroValue => previousModelResults.getStepResult(0,i.input)
+            case TakeCurrentStepValue => previousModelResults.getStepResult(step,i.input)
             case TakeSpecificValue(v) => v
-            case TakeValueForLabel(l) => previousModelResults.resultsForStep(step).valueForLabel(l)
+            case TakeValueForLabel(l) => previousModelResults.getStepResult(step,l)
           }
         }
 
       }
-      case _ => previousModelResults.resultsForStep(step).valueForLabel(input)
+      case _ => previousModelResults.getStepResult(step,input)
     }
   }
 

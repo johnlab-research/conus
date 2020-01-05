@@ -2,7 +2,7 @@ package org.carbonateresearch.conus.calculationparameters
 import org.carbonateresearch.conus.calculationparameters.parametersIO.{CalculationParametersIOLabels, Depth, StandardsParameters}
 import org.carbonateresearch.conus.common.ModelResults
 
-final case class CalculateBurialDepthFromAgeModel(ageModel:List[(Double, Double)]) extends CalculationStepValue with StandardsParameters {
+final case class CalculateBurialDepthFromAgeModel(ageModel:List[(Double, Double)]) extends Calculator with StandardsParameters {
 
   override def outputs = List(Depth)
   override val inputs = Option(List(Age))

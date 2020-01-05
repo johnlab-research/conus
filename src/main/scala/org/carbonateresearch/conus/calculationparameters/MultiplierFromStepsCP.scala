@@ -4,7 +4,7 @@ import org.carbonateresearch.conus.calculationparameters.parametersIO.Calculatio
 import org.carbonateresearch.conus.common.ModelResults
 
 
-final case class MultiplierFromStepsCP(output: CalculationParametersIOLabels, maxValue: Double, minValue: Double, increment: Double) extends CalculationStepValue {
+final case class MultiplierFromStepsCP(output: CalculationParametersIOLabels, maxValue: Double, minValue: Double, increment: Double) extends Calculator {
 
   val outputs = List(output)
 

@@ -3,16 +3,14 @@ import org.carbonateresearch.conus.calculationparameters.parametersIO.Calculatio
 import org.carbonateresearch.conus.common.{ModelResults, SingleStepResults}
 
 final case class InterpolateValues(output: CalculationParametersIOLabels, inputValueLabel:CalculationParametersIOLabels, xyList: List[(Double, Double)])
-extends CalculationStepValue {
+extends Calculator {
 
   val outputs=List(output)
   override val inputs = Some(List(inputValueLabel))
 
   override def calculate (step:Int,previousResults:ModelResults): ModelResults = {
 
-    val xValue = previousResults.resultsForStep(step).valueForLabel(inputValueLabel)
-
-    //ModelResults(Map(step -> SingleStepResults(Map(output -> interpolateSingleValue(xValue, xyList)))))
+    val xValue = previousResults.getStepResult(step,inputValueLabel)
     previousResults.addParameterResultAtStep(output,interpolateSingleValue(xValue, xyList),step)
 
   }

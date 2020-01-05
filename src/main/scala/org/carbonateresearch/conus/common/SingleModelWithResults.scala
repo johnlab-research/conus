@@ -1,14 +1,14 @@
 package org.carbonateresearch.conus.common
 
-import org.carbonateresearch.conus.calculationparameters.CalculationStepValue
+import org.carbonateresearch.conus.calculationparameters.Calculator
 import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
 import scala.compat.Platform.EOL
 
-final case class SingleModelWithResults(ID:Int, steps: List[Int], parameters: List[CalculationStepValue], results: ModelResults){
+final case class SingleModelWithResults(ID:Int, steps: List[Int], parameters: List[Calculator], results: ModelResults){
 
-   def valuesForAllSteps(label:CalculationParametersIOLabels): Map[Int,Double] = steps.map(s => (s,results.resultsForStep(s).valueForLabel(label))).toMap
+   def valuesForAllSteps(label:CalculationParametersIOLabels): Map[Int,Double] = steps.map(s => (s,results.getStepResult(s,label))).toMap
 
-   def valueForStep(label: CalculationParametersIOLabels, step:Int): Double = results.resultsForStep(step).valueForLabel(label)
+   def valueForStep(label: CalculationParametersIOLabels, step:Int): Double = results.getStepResult(step,label)
 
    def finalResult: Map[CalculationParametersIOLabels, Double] =  results.resultsForStep(steps.size-1).valuesForAllLabels
 
