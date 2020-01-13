@@ -10,19 +10,21 @@ import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart*/
-import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, SteppedModel, ParrallelModellerDispatcherActor, SingleModelWithResults}
+import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, ModelCalibrationSet, ParrallelModellerDispatcherActor, SingleModelWithResults, SteppedModel}
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import akka.actor.Actor
 import akka.actor.ActorSystem
 import akka.actor.Props
 import akka.pattern.ask
 import akka.util.Timeout
+
 import scala.compat.Platform.EOL
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
-import org.carbonateresearch.conus.calculationparameters.{CalculateBurialDepthFromAgeModel, CalculateBurialTemperatureFromGeothermalGradient, CalculateStepValue, CalculateStepAges, GeothermalGradientThroughTime, InitializeValues, Initializer, InterpolateValues, SurfaceTemperaturesThroughTime}
+import org.carbonateresearch.conus.calculationparameters.{CalculateBurialDepthFromAgeModel, CalculateBurialTemperatureFromGeothermalGradient, CalculateStepAges, CalculateStepValue, GeothermalGradientThroughTime, InitializeValues, Initializer, InterpolateValues, SurfaceTemperaturesThroughTime}
 import org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel
+import org.carbonateresearch.conus.util._
 
 
 object DiageneSim extends App with StandardsParameters with PasseyHenkesClumpedDiffusionModel {
@@ -44,30 +46,52 @@ object DiageneSim extends App with StandardsParameters with PasseyHenkesClumpedD
   val surfaceTemperatures = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val numberOfSteps = 220
   val depositionalAge = Parameter("Initial age of deposition", " Ma", Some(0), precision = 3)
-  val ageList:List[Double] = (50.0 to 75.0 by 0.09).toList
+  val ageList:List[Double] = List(50,60)
 
+  val number1 = Parameter("Number 1", "", Some(0), precision = 1)
+  val number2 = Parameter("Number 2", "", Some(0), precision = 1)
+  val number3 = Parameter("Number 3", "", Some(0), precision = 1)
 
-  val initialValues:List[(CalculationParametersIOLabels,List[Double])] = List(
-    (D47i,(0.654 to  0.689 by 0.01).toList),
-    (depositionalAge,ageList)
+  val valuesForNumbers = List(
+    (number1,List(1.0,2.0,3.0)),
+    (number2,List(0.0,1.0,4.0))
   )
 
+  val initialValues:List[(CalculationParametersIOLabels,List[Double])] = List(
+    (D47i,(0.6000 to 0.7003 by 0.0001).toList),
+    (depositionalAge,ageList),
+    (GeothermalGradient,(0.0 to 100.0 by 1).toList)
+  )
+ val myDoubleList: List[Double] = (0.600 to 0.603 by 0.001).toList
+  println(Interval(600, 603).toListWithNumberOfItem(4))
+println(myDoubleList)
 
- val b = new SteppedModel(numberOfSteps)
-   .defineInitialModelConditions(InitializeValues(initialValues))
+ val b:ModelCalculationSpace = new SteppedModel(numberOfSteps)
+   .defineInitialModelConditions(
+     InitializeValues(initialValues))
    .defineMathematicalModelPerCell(
     CalculateStepAges(110,0),
     CalculateBurialDepthFromAgeModel(List((110.0,0.0), (100.0,150.0), (50.0,3500.0),(38.0,0.0),(0.0,0.0))),
-    InterpolateValues(output = GeothermalGradient, inputValueLabel = Age, xyList =geothermalGradient),
     InterpolateValues(output = SurfaceTemperature, inputValueLabel = Age, xyList = surfaceTemperatures),
     CalculateBurialTemperatureFromGeothermalGradient(geothermalGradient),
     CalculateStepValue(dT).applyingFunction(dTFun).withParameters(Previous(BurialTemperature), BurialTemperature),
     CalculateStepValue(D47eq).applyingFunction(D47eqFun).withParameters(BurialTemperature),
     CalculateStepValue(D47i).applyingFunction(D47iFun).withParameters(Previous(D47i,TakeCurrentStepValue),D47eq, BurialTemperature,dT),
     CalculateStepValue(SampleTemp).applyingFunction(davies19_T).withParameters(D47i))
+   .calibrationParameters(
+     ModelCalibrationSet(SampleTemp,35.0,38.0))
+/*
+  val addNumber: (Double, Double) => Double = (x:Double, y:Double) => x+y
 
-  val runnedModel: Unit = b.run
+  val a:ModelCalculationSpace = new SteppedModel(1)
+    .defineInitialModelConditions(
+      InitializeValues(valuesForNumbers))
+    .defineMathematicalModelPerCell(
+      CalculateStepValue(number3).applyingFunction(addNumber).withParameters(number1, number2))
+    .calibrationParameters(
+      ModelCalibrationSet(number3,0.0,5.0))*/
 
+  val runnedModel = b.run
 
 
   def handleResults(modelResults: List[SingleModelWithResults]) = {

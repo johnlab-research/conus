@@ -5,7 +5,7 @@ import org.carbonateresearch.conus.calculationparameters.parametersIO.Calculatio
 final case class InitializeValues(inputs: List[(CalculationParametersIOLabels,List[Double])]) {
 
     private val pairedIOLabelValues:List[List[(CalculationParametersIOLabels,Double)]] = {
-inputs.map(x => x match {
+      inputs.map(x => x match {
         case (p:CalculationParametersIOLabels,ln:List[Double]) => ln.map(v => (p,v))
       })}
 

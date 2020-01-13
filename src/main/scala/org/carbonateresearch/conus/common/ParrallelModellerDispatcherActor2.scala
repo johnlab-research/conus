@@ -1,34 +1,31 @@
 package org.carbonateresearch.conus.common
-import scala.compat.Platform.EOL
-import akka.actor.Actor
-import akka.actor.ActorSystem
-import akka.actor.Props
-import akka.actor._
+
+import akka.actor.{Actor, Props, _}
 import akka.pattern.ask
-
-import scala.concurrent.ExecutionContext.global
-import scala.concurrent.{Await, ExecutionContext, Future}
-import scala.util.{Failure, Success}
-import akka.util._
 import akka.util.Timeout
-import org.carbonateresearch.conus.DiageneSim
+import org.carbonateresearch.conus.DiageneSim.actorSystem
 
-import scala.concurrent.duration._
+import scala.compat.Platform.EOL
 import scala.concurrent.ExecutionContext.global
+import scala.concurrent.Future
+import scala.concurrent.duration._
+import scala.util.Success
 
-class ParrallelModellerDispatcherActor extends Actor {
+class ParrallelModellerDispatcherActor2 extends Actor {
   var initialCount:Int = 0
   var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelWithResults]
   val collector:ActorRef = context.actorOf(Props[ParrallelModellerCollectorActor], name="Collector")
 
   override def receive = {
-    case modelsList: List[ChainableCalculation] => {
+    case modelSpace: ModelCalculationSpace => {
+      val modelsList: List[ChainableCalculation] = modelSpace.calculations
       val initialCount = modelsList.size
-      val t0 = System.nanoTime()
+
       println("Initiating a run on " + modelsList.size.toString+ " models.")
 
       implicit val timeout = Timeout(30 minutes)
 
+      val t0 = System.nanoTime()
       val future:List[Future[Any]] = modelsList.map(m =>
         context.actorOf(Props(new ParrallelModellerRunnerActor)) ? m )
 
@@ -53,7 +50,9 @@ class ParrallelModellerDispatcherActor extends Actor {
                 if(resultsList.size == initialCount){
                   val runStatistics = "-> 100% completed in "+elapsedTimeStr+"."+ EOL
                   println(modelData+runStatistics)
-                  sender ! resultsList.toList
+                  modelSpace.resultsList = resultsList.toList
+                  modelSpace.calibrated()
+                  actorSystem.terminate()
                 }
                 else {
                   val runStatistics = "-> "+percentCompleted+"% completed in "+ elapsedTimeStr+". Predicted time remaining: "+predictedTimeStr+"."+ EOL

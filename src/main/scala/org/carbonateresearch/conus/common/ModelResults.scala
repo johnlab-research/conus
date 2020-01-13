@@ -4,7 +4,7 @@ import org.carbonateresearch.conus.calculationparameters.parametersIO.{Calculati
 
 case class ModelResults(theseResults: Map[Int, SingleStepResults]){
 
-  val steps = theseResults.keys
+  private val steps = theseResults.keys
 
   def resultsForStep(step: Int): SingleStepResults = {
     theseResults(step)
