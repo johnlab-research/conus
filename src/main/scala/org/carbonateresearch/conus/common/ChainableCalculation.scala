@@ -2,8 +2,7 @@ package org.carbonateresearch.conus.common
 import org.carbonateresearch.conus.calculationparameters.Calculator
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import scala.annotation.tailrec
-import org.carbonateresearch.conus.calculationparameters.CalculateStepValue
-import org.carbonateresearch.conus.common
+import org.carbonateresearch.conus.util.TimeUtils
 
 final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:List[Calculator]) {
 
@@ -28,8 +27,7 @@ final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:L
      ChainableCalculation(ID, steps,  secondChainableCalculation.modelParameters:::modelParameters)
   }
 
-  def evaluate: SingleModelWithResults = {
-
+  def evaluate(startTime:Double): SingleModelWithResults = {
     val inverseParams = modelParameters.reverse
 
     @tailrec
@@ -40,7 +38,10 @@ final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:L
       }
     }
       val initialModelResults:ModelResults = ModelResults(Map(0 -> SingleStepResults(Map(NumberOfSteps -> steps.size))))
-    SingleModelWithResults(ID,steps, modelParameters, traverseSteps(steps,  initialModelResults))
+    val evaluatedModel = SingleModelWithResults(ID,steps, modelParameters, traverseSteps(steps,  initialModelResults))
+    val currentTime = System.nanoTime()
+    printOutputString(currentTime-startTime)
+    evaluatedModel
     }
 
 
@@ -55,6 +56,15 @@ final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:L
     }
     val newModelResults = currentResults.addParameterResultAtNewStep(NumberOfSteps,steps.size,step)
     evaluateSingleStepWithCounter(parameters, newModelResults)
+  }
+
+  private def printOutputString(time:Double): Unit = {
+
+    val timeTaken:String = TimeUtils.formatHoursMinuteSeconds(time)
+    val nbChar = timeTaken.length + ID.toString.length + 25
+    val deleteSequence:String = "\b"*nbChar
+
+    print(deleteSequence+"Model #"+this.ID+" completed in "+timeTaken)
   }
 
 }

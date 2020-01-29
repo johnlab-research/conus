@@ -7,6 +7,7 @@ osName := (System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 })
 
+scalaVersion:="2.13.1"
 /*
 libraryDependencies += "org.openjfx" % "javafx-base" % "11-ea+25" classifier osName.value
 
@@ -20,6 +21,10 @@ libraryDependencies += "org.scalafx" %% "scalafx" % "11-R16"
 
 libraryDependencies += "org.scalafx" %% "scalafx-extras" % "0.3.0" */
 
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.0-M3"
+libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.1"
+
+libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0"
+
+libraryDependencies += "io.monix" %% "monix" % "3.1.0-2156c0e"
 
 

@@ -19,10 +19,10 @@ class ParrallelModellerCollectorActor extends Actor {
       val initialCount = modelsList.size
       println("Now dispatching a modelsList of size " + modelsList.size.toString)
 
-      implicit val timeout = Timeout(5 seconds)
+      implicit val timeout = Timeout(5.seconds)
 
       val future:List[Future[Any]] = modelsList.map(m =>
-        context.actorOf(Props(new ParrallelModellerRunnerActor)) ? m )
+        context.actorOf(Props(new ParrallelSingleModelRunnerActor)) ? m )
 
       implicit val ec = global
 

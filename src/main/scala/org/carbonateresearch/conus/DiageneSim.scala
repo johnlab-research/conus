@@ -10,43 +10,27 @@ import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart*/
-import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, ModelCalibrationSet, ParrallelModellerDispatcherActor, SingleModelWithResults, SteppedModel}
-import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import akka.actor.Actor
-import akka.actor.ActorSystem
-import akka.actor.Props
-import akka.pattern.ask
 import akka.util.Timeout
+import scala.concurrent.duration._
+import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, ModelCalibrationSet, SingleModelWithResults, SteppedModel}
+import org.carbonateresearch.conus.calculationparameters.parametersIO._
 
 import scala.compat.Platform.EOL
-import scala.concurrent.ExecutionContext.global
-import scala.concurrent.{Await, Future}
-import scala.concurrent.duration._
 import org.carbonateresearch.conus.calculationparameters.{CalculateBurialDepthFromAgeModel, CalculateBurialTemperatureFromGeothermalGradient, CalculateStepAges, CalculateStepValue, GeothermalGradientThroughTime, InitializeValues, Initializer, InterpolateValues, SurfaceTemperaturesThroughTime}
 import org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel
-import org.carbonateresearch.conus.util._
+
 
 
 object DiageneSim extends App with StandardsParameters with PasseyHenkesClumpedDiffusionModel {
 
 
-  val actorSystem = ActorSystem("Diagenesim-Akka")
-  private val modeller = actorSystem.actorOf(Props[ParrallelModellerDispatcherActor])
-
-  def time[R](block: => R): R = {
-    val t0 = System.nanoTime()
-    val result = block    // call-by-name
-    val t1 = System.nanoTime()
-    println("Elapsed time: " + ((t1 - t0)/10E8) + " seconds")
-    result
-  }
 
   val burialHistory = List((110.0,0.0), (100.0,150.0), (50.0,4766.0),(38.0,0.0),(0.0,0.0))
   val geothermalGradient = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val surfaceTemperatures = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
-  val numberOfSteps = 220
+  val numberOfSteps = 1
   val depositionalAge = Parameter("Initial age of deposition", " Ma", Some(0), precision = 3)
-  val ageList:List[Double] = List(50,60)
+  val ageList:List[Double] = List(50,51,52,53,54,55,56,57.58,59,60)
 
   val number1 = Parameter("Number 1", "", Some(0), precision = 1)
   val number2 = Parameter("Number 2", "", Some(0), precision = 1)
@@ -58,13 +42,11 @@ object DiageneSim extends App with StandardsParameters with PasseyHenkesClumpedD
   )
 
   val initialValues:List[(CalculationParametersIOLabels,List[Double])] = List(
-    (D47i,(0.6000 to 0.7003 by 0.0001).toList),
+    (D47i,List(0.60,0.607,0.610,0.612,0.613,0.615,0.616)),
     (depositionalAge,ageList),
-    (GeothermalGradient,(0.0 to 100.0 by 1).toList)
+    (GeothermalGradient,List(30.0,31.0,33.5,33.6,33.7,33.8,33.9,34.0))
   )
- val myDoubleList: List[Double] = (0.600 to 0.603 by 0.001).toList
-  println(Interval(600, 603).toListWithNumberOfItem(4))
-println(myDoubleList)
+ val myDoubleList: List[Double] = List(0.600,0.607,0.612)
 
  val b:ModelCalculationSpace = new SteppedModel(numberOfSteps)
    .defineInitialModelConditions(
@@ -90,10 +72,10 @@ println(myDoubleList)
       CalculateStepValue(number3).applyingFunction(addNumber).withParameters(number1, number2))
     .calibrationParameters(
       ModelCalibrationSet(number3,0.0,5.0))*/
-
+val timeout = Timeout(5.minutes)
   val runnedModel = b.run
 
-
+Thread.sleep(1000000000)
   def handleResults(modelResults: List[SingleModelWithResults]) = {
     val tolerance = (35.0, 38.0)
 

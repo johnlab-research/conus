@@ -12,8 +12,6 @@ class SteppedModel(nbSteps:Int)  {
   def defineInitialModelConditions(initializer: InitializeValues): ModelCalculationSpace = {
 
     val initialValues = initializer.ModelCalculationSpace
-    println(initialValues)
-    println(initialValues.size)
     val modelsList:List[ChainableCalculation] = initialValues.map(x => ChainableCalculation(initialValues.indexOf(x)+1, prepareSteps, List(Initializer(x))))
 
     ModelCalculationSpace(modelsList,List())}

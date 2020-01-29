@@ -2,20 +2,22 @@ package org.carbonateresearch.conus.common
 
 import akka.actor.{Props}
 import scala.concurrent.{Await, Future}
+import scala.concurrent.duration._
 import akka.pattern.ask
 import akka.util.Timeout
-import org.carbonateresearch.conus.DiageneSim.{SampleTemp, actorSystem}
 import org.carbonateresearch.conus.calculationparameters.Calculator
-
+import scala.collection.parallel.CollectionConverters._
 import scala.annotation.tailrec
-import scala.compat.Platform.EOL
+import java.lang.System.lineSeparator
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.duration._
 import scala.util.{Success, Failure}
 
-final case class ModelCalculationSpace(calculations:List[ChainableCalculation], calibrationSets: List[ModelCalibrationSet], results: List[SingleModelWithResults] = List()) {
+
+final case class ModelCalculationSpace(calculations:List[ChainableCalculation], calibrationSets: List[ModelCalibrationSet], var results: List[SingleModelWithResults] = List()) {
 
   var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelWithResults].toList
+  val EOL = lineSeparator()
 
   def next(nextCalculationParameter: Calculator): ModelCalculationSpace = {
     ModelCalculationSpace(calculations.map(cl => cl next nextCalculationParameter), List())
@@ -51,7 +53,7 @@ final case class ModelCalculationSpace(calculations:List[ChainableCalculation], 
   def run: ModelCalculationSpace = {
     val firstModels:List[Calculator] = calculations(0).modelParameters
     val parameterList = firstModels.map(c => c.outputs)
-    var returnedModel:ModelCalculationSpace = this
+    println("----------------------------------------"+EOL+"RUN STARTED"+EOL+"----------------------------------------")
 
     @tailrec
     def checkErrors (parametersList:List[Calculator], currentString: String): String = {
@@ -61,27 +63,44 @@ final case class ModelCalculationSpace(calculations:List[ChainableCalculation], 
       }
     }
     val errorsList :String = checkErrors(firstModels,"")
-    if(errorsList == "") {
+
+   if(errorsList == "") {
       println("No error detected, computing the following parameters in the model:" + EOL + parameterList.reverse.flatten.mkString(", ")+EOL+"----------------------------------------")
-      val modeller = actorSystem.actorOf(Props[ParrallelModellerDispatcherActor2])
-
-      implicit val timeout = Timeout(20 seconds)
       implicit val ec = global
-      modeller ! this
+      val dispatcher = new ParallelCalculatorWithFuture
+      //val dispatcher = new ParallelCalculatorWithMonix
+      //val dispatcher = new ParallelCalculatorWithParCollection
+      val newResults:Future[List[SingleModelWithResults]] = dispatcher.calculateModelsList(calculations)
 
-      /*
-      val future:Future[List[SingleModelWithResults]] = (modeller ? calculations).asInstanceOf[Future[List[SingleModelWithResults]]]
-
-      future.onComplete {
-        case Success(newModelResults) => returnedModel = ModelCalculationSpace(calculations, calibrationSets, newModelResults)
-        case Failure(t) => println("An error has occurred: " + t.getMessage)
-      }
-  */
+      newResults.onComplete{case Success(results) => {
+        this.results = results
+        println(EOL+"----------------------------------------"+ EOL + "END OF RUN"+EOL+"----------------------------------------")
+      }}
     }
     else {
-      println(errorsList+EOL+"Impossible to initiate a run: Correct error(s) first")}
+      println(errorsList+EOL+"Impossible to initiate a run: Correct error(s) first")
+    }
+    //sequential
+    this
+  }
 
-    returnedModel
+
+
+  def sequential = {
+
+    val initialCount = calculations.size
+
+    println("Now running sequentially for comparison")
+
+    val t0 = System.nanoTime()
+    val newResults = calculations.map(c => c.evaluate(t0))
+
+    println(" ")
+    println("-----------------------------------------")
+    println("RUN TERMINATED")
+    println("-----------------------------------------")
+
+
   }
 
   def handleResults(modelResults: List[SingleModelWithResults]): ModelCalculationSpace = {
