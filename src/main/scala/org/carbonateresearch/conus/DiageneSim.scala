@@ -28,18 +28,10 @@ object DiageneSim extends App with StandardsParameters with PasseyHenkesClumpedD
   val burialHistory = List((110.0,0.0), (100.0,150.0), (50.0,4766.0),(38.0,0.0),(0.0,0.0))
   val geothermalGradient = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val surfaceTemperatures = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
-  val numberOfSteps = 1
+  val numberOfSteps = 200
   val depositionalAge = Parameter("Initial age of deposition", " Ma", Some(0), precision = 3)
-  val ageList:List[Double] = List(50,51,52,53,54,55,56,57.58,59,60)
+  val ageList:List[Double] = List(50,51,52,53,54,55,56,57.58,59,60,64)
 
-  val number1 = Parameter("Number 1", "", Some(0), precision = 1)
-  val number2 = Parameter("Number 2", "", Some(0), precision = 1)
-  val number3 = Parameter("Number 3", "", Some(0), precision = 1)
-
-  val valuesForNumbers = List(
-    (number1,List(1.0,2.0,3.0)),
-    (number2,List(0.0,1.0,4.0))
-  )
 
   val initialValues:List[(CalculationParametersIOLabels,List[Double])] = List(
     (D47i,List(0.60,0.607,0.610,0.612,0.613,0.615,0.616)),
@@ -62,16 +54,7 @@ object DiageneSim extends App with StandardsParameters with PasseyHenkesClumpedD
     CalculateStepValue(SampleTemp).applyingFunction(davies19_T).withParameters(D47i))
    .calibrationParameters(
      ModelCalibrationSet(SampleTemp,35.0,38.0))
-/*
-  val addNumber: (Double, Double) => Double = (x:Double, y:Double) => x+y
 
-  val a:ModelCalculationSpace = new SteppedModel(1)
-    .defineInitialModelConditions(
-      InitializeValues(valuesForNumbers))
-    .defineMathematicalModelPerCell(
-      CalculateStepValue(number3).applyingFunction(addNumber).withParameters(number1, number2))
-    .calibrationParameters(
-      ModelCalibrationSet(number3,0.0,5.0))*/
 val timeout = Timeout(5.minutes)
   val runnedModel = b.run
 
