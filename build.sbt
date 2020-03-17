@@ -8,6 +8,12 @@ osName := (System.getProperty("os.name") match {
 })
 
 scalaVersion:="2.13.1"
+
+resolvers ++= Seq(
+  Resolver.sonatypeRepo("releases"),
+  Resolver.sonatypeRepo("snapshots")
+)
+
 /*
 libraryDependencies += "org.openjfx" % "javafx-base" % "11-ea+25" classifier osName.value
 
@@ -26,5 +32,8 @@ libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.1"
 libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0"
 
 libraryDependencies += "io.monix" %% "monix" % "3.1.0-2156c0e"
+
+libraryDependencies += "com.chuusai" %% "shapeless" % "2.3.3"
+
 
 

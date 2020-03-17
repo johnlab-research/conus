@@ -16,7 +16,7 @@ case class CalculatedValues[T](values:Map[String,T]) {
   def get(thisKey: Parameter[Double]):Double = {
     values(thisKey.key).asInstanceOf[Double]}*/
 
-  def get(thisParameter: Parameter[T]): T = {
+  def get(thisParameter: ModelVariable[T]): T = {
 
     values(thisParameter.key) match
     {

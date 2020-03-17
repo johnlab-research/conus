@@ -1,10 +1,14 @@
 package org.carbonateresearch.test
+import org.carbonateresearch.conus.util.StepFunctions.Step
 
-trait CalculationParametersIOLabelsT
+trait CalculationParametersIOLabelsT {
+  def get[A](s:Step):A = ???
+}
 
 trait DataContainerT
 final case class DataContainer[T](value: T)  extends DataContainerT {
-  def typeSafe[B](param:Parameter[B]): B = value.asInstanceOf[B]
+  def typeSafe[B](param:ModelVariable[B]): B = value.asInstanceOf[B]
+
 }
 object DataContainer{
   def apply(value:Int) = new DataContainer[Int](value)

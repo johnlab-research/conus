@@ -11,17 +11,18 @@ import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.ScatterChart
 import scalafx.scene.chart.XYChart*/
 import akka.util.Timeout
+
 import scala.concurrent.duration._
 import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, ModelCalibrationSet, SingleModelWithResults, SteppedModel}
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 
 import scala.compat.Platform.EOL
 import org.carbonateresearch.conus.calculationparameters.{CalculateBurialDepthFromAgeModel, CalculateBurialTemperatureFromGeothermalGradient, CalculateStepAges, CalculateStepValue, GeothermalGradientThroughTime, InitializeValues, Initializer, InterpolateValues, SurfaceTemperaturesThroughTime}
-import org.carbonateresearch.conus.clumpedThermalModels.PasseyHenkesClumpedDiffusionModel
+import org.carbonateresearch.domainespecific.Geology.PasseyHenkesClumpedDiffusionModel
+import org.carbonateresearch.domainespecific.Geology.PasseyHenkesClumpedDiffusionModel._
 
 
-
-object DiageneSim extends App with StandardsParameters with PasseyHenkesClumpedDiffusionModel {
+object DiageneSim extends App with StandardsParameters {
 
 
 
@@ -29,7 +30,7 @@ object DiageneSim extends App with StandardsParameters with PasseyHenkesClumpedD
   val geothermalGradient = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val surfaceTemperatures = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val numberOfSteps = 200
-  val depositionalAge = Parameter("Initial age of deposition", " Ma", Some(0), precision = 3)
+  val depositionalAge = SimulationVariable("Initial age of deposition", " Ma", Some(0), precision = 3)
   val ageList:List[Double] = List(50,51,52,53,54,55,56,57.58,59,60,64)
 
 

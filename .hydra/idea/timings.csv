@@ -507,3 +507,17 @@ Time, Tag, Workers, Files, Compilation Duration (ms), GC Duration (ms)
 2020/02/16 18:11:14,        diagenesissim/main,   1,     1,       419,         0
 2020/02/16 18:12:26,        diagenesissim/main,   1,     1,       253,         0
 2020/02/16 18:12:48,        diagenesissim/main,   1,     1,       412,        56
+2020/03/01 07:25:44,        diagenesissim/main,   4,     5,      2394,       124
+2020/03/09 16:55:45,        diagenesissim/main,   4,    13,      2436,       107
+2020/03/09 16:55:48,        diagenesissim/main,   4,     5,       948,        79
+2020/03/09 16:56:08,        diagenesissim/main,   1,     1,       619,        29
+2020/03/09 16:56:18,        diagenesissim/main,   1,     1,       687,        45
+2020/03/10 18:35:36,        diagenesissim/main,   4,    53,      7677,       299
+2020/03/10 18:36:01,        diagenesissim/main,   1,     1,       792,        58
+2020/03/17 17:28:59,        diagenesissim/main,   4,    53,      2694,        87
+2020/03/17 17:29:30,        diagenesissim/main,   1,     1,       339,         0
+2020/03/17 17:30:16,        diagenesissim/main,   1,     1,       263,         0
+2020/03/17 17:30:23,        diagenesissim/main,   1,     1,       197,         1
+2020/03/17 17:31:37,        diagenesissim/main,   1,     1,       187,         0
+2020/03/17 17:32:46,        diagenesissim/main,   1,     1,       171,         0
+2020/03/17 17:34:21,        diagenesissim/main,   1,     1,       203,         2
