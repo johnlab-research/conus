@@ -5,7 +5,7 @@ import shapeless.ops.function._
 import shapeless.HMap
 import org.carbonateresearch.conus.Implicits.BiMapIS
 import org.carbonateresearch.test.implicits._
-import org.carbonateresearch.conus.util.StepFunctions._
+import org.carbonateresearch.conus.util.StepFunctionUtils._
 
 object RunTest extends App {
 
@@ -34,8 +34,6 @@ object RunTest extends App {
 
   implicit val intToString = new BiMapIS[Int, String]
   implicit val stringToInt = new BiMapIS[String, Int]
- // implicit val IntToInt = new BiMapIS[Int, Int]
- //implicit val ModelVariabletoDouble = new BiMapIS[ModelVariable[Double],Double]
  implicit def ModifyMyImplicit[T](myVar:ModelVariable[T]):BiMapIS[ModelVariable[T],T] = myVar.implicitBiMapIS
 
 

@@ -3,8 +3,9 @@ import org.carbonateresearch.conus.calculationparameters.Calculator
 import org.carbonateresearch.conus.calculationparameters.parametersIO._
 import scala.annotation.tailrec
 import org.carbonateresearch.conus.util.TimeUtils
+import org.carbonateresearch.conus.util.StepFunctionUtils._
 
-final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:List[Calculator]) {
+final case class ChainableCalculation(ID:Int, steps:List[Step], modelParameters:List[Calculator]) {
 
   def next(nextModelParameters: Calculator*): ChainableCalculation = {
 

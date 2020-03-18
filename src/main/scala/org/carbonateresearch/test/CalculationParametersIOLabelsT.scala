@@ -1,5 +1,5 @@
 package org.carbonateresearch.test
-import org.carbonateresearch.conus.util.StepFunctions.Step
+import org.carbonateresearch.conus.util.StepFunctionUtils.Step
 
 trait CalculationParametersIOLabelsT {
   def get[A](s:Step):A = ???

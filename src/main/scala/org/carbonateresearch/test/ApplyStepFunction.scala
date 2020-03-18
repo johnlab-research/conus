@@ -1,6 +1,6 @@
 package org.carbonateresearch.test
 
-import org.carbonateresearch.conus.util.StepFunctions.Step
+import org.carbonateresearch.conus.util.StepFunctionUtils.Step
 
 import org.carbonateresearch.conus.calculationparameters.CalculateStepValue
 

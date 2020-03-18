@@ -1,6 +1,6 @@
 package org.carbonateresearch.conus.calculationparameters.parametersIO
 
-import org.carbonateresearch.conus.util.StepFunctions.Step
+import org.carbonateresearch.conus.util.StepFunctionUtils.Step
 
 final case class SimulationVariable[T](name: String,
                                        unitName:String = "", defaultValue:Option[Number] = None,

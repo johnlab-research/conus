@@ -1,5 +1,5 @@
 package org.carbonateresearch.conus.calculationparameters
-import org.carbonateresearch.conus.util.StepFunctions.Step
+import org.carbonateresearch.conus.util.StepFunctionUtils.Step
 import org.carbonateresearch.conus.calculationparameters.parametersIO.SimulationVariable
 
 case class ApplyEquation[T](equation:Step=>T){

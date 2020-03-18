@@ -1,5 +1,5 @@
 package org.carbonateresearch.test
-import org.carbonateresearch.conus.util.StepFunctions.Step
+import org.carbonateresearch.conus.util.StepFunctionUtils.Step
 import org.carbonateresearch.conus.Implicits.BiMapIS
 
 final case class ModelVariable[T](name: String, data:Map[Step,T]= Map[Step,T]()) extends CalculationParametersIOLabelsT {
