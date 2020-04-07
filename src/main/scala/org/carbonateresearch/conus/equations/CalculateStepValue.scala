@@ -1,13 +1,14 @@
-package org.carbonateresearch.conus.calculationparameters
-import org.carbonateresearch.conus.calculationparameters.parametersIO._
-import org.carbonateresearch.conus.common.{ModelResults}
+package org.carbonateresearch.conus.equations
+import org.carbonateresearch.conus.equations.parametersIO._
+import org.carbonateresearch.conus.oldies.OldModelResults
+import org.carbonateresearch.conus.util.{TakeCurrentStepValue, TakeSpecificValue, TakeStepZeroValue, TakeValueForLabel}
 
 
 final case class CalculateStepValue(override val inputs: Option[List[CalculationParametersIOLabels]], output:CalculationParametersIOLabels, override val functionBlock: Option[List[Double] => Double]) extends Calculator {
 
   override val outputs = List(output)
 
-  override def calculate (step:Int,previousResults:ModelResults): ModelResults  = {
+  override def calculate (step:Int,previousResults:OldModelResults): OldModelResults  = {
 
     val numericalInputs = inputs match {
       case Some(l:List[CalculationParametersIOLabels]) => l.map(i => findValueFromLabel(i, step, previousResults))
@@ -46,7 +47,7 @@ final case class CalculateStepValue(override val inputs: Option[List[Calculation
 
 
 
-  private def findValueFromLabel(input:CalculationParametersIOLabels, step:Int, previousModelResults:ModelResults): Double ={
+  private def findValueFromLabel(input:CalculationParametersIOLabels, step:Int, previousModelResults:OldModelResults): Double ={
     input match {
       case i:Previous => {
         if (step-i.offset >=0) {

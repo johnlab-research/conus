@@ -1,6 +1,7 @@
-package org.carbonateresearch.conus.calculationparameters
-import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
-import org.carbonateresearch.conus.common.{ModelResults, SingleStepResults}
+package org.carbonateresearch.conus.equations
+import org.carbonateresearch.conus.equations.parametersIO.CalculationParametersIOLabels
+import org.carbonateresearch.conus.common.SingleStepResults
+import org.carbonateresearch.conus.oldies.OldModelResults
 
 final case class InterpolateValues(output: CalculationParametersIOLabels, inputValueLabel:CalculationParametersIOLabels, xyList: List[(Double, Double)])
 extends Calculator {
@@ -8,7 +9,7 @@ extends Calculator {
   val outputs=List(output)
   override val inputs = Some(List(inputValueLabel))
 
-  override def calculate (step:Int,previousResults:ModelResults): ModelResults = {
+  override def calculate (step:Int,previousResults:OldModelResults): OldModelResults = {
 
     val xValue = previousResults.getStepResult(step,inputValueLabel)
     previousResults.addParameterResultAtStep(output,interpolateSingleValue(xValue, xyList),step)

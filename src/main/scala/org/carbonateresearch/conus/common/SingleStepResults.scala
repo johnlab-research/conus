@@ -1,5 +1,5 @@
 package org.carbonateresearch.conus.common
-import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
+import org.carbonateresearch.conus.equations.parametersIO.CalculationParametersIOLabels
 
 case class SingleStepResults(valuesForAllLabels:Map[CalculationParametersIOLabels,Double])
 

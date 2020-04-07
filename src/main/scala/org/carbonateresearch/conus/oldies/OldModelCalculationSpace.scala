@@ -1,61 +1,52 @@
-package org.carbonateresearch.conus.common
+package org.carbonateresearch.conus.oldies
 
-import akka.actor.Props
-
-import scala.concurrent.{Await, Future}
-import scala.concurrent.duration._
-import akka.pattern.ask
-import akka.util.Timeout
-import org.carbonateresearch.conus.equations.Calculator
-
-import scala.collection.parallel.CollectionConverters._
-import scala.annotation.tailrec
 import java.lang.System.lineSeparator
 
-import org.carbonateresearch.conus.oldies.{OldChainableCalculation, OldSingleModelWithResults}
+import org.carbonateresearch.conus.common.{ModelCalibrationSet, ParallelCalculatorWithFuture}
+import org.carbonateresearch.conus.equations.Calculator
 
+import scala.annotation.tailrec
 import scala.concurrent.ExecutionContext.global
-import scala.concurrent.duration._
-import scala.util.{Failure, Success}
+import scala.concurrent.Future
+import scala.util.Success
 
-
-final case class ModelCalculationSpace(calculations:List[OldChainableCalculation], calibrationSets: List[ModelCalibrationSet], var results: List[OldSingleModelWithResults] = List()) {
+final case class OldModelCalculationSpace(calculations:List[OldChainableCalculation], calibrationSets: List[ModelCalibrationSet], var results: List[OldSingleModelWithResults] = List()) {
 
   var resultsList = scala.collection.mutable.ListBuffer.empty[OldSingleModelWithResults].toList
   val EOL = lineSeparator()
 
-  def next(nextCalculationParameter: Calculator): ModelCalculationSpace = {
-    ModelCalculationSpace(calculations.map(cl => cl next nextCalculationParameter), List())
+  def next(nextCalculationParameter: Calculator): OldModelCalculationSpace = {
+    OldModelCalculationSpace(calculations.map(cl => cl next nextCalculationParameter), List())
   }
 
-  def defineMathematicalModelPerCell(calculationList: Calculator*): ModelCalculationSpace = {
+  def defineMathematicalModelPerCell(calculationList: Calculator*): OldModelCalculationSpace = {
     val newCalculators:List[Calculator] = calculationList.toList
     val newChainableCalculations: List[OldChainableCalculation] = calculations.map(cl =>
       OldChainableCalculation(cl.ID, cl.steps, (cl.modelParameters++newCalculators).reverse))
 
-    ModelCalculationSpace(newChainableCalculations, List())
+    OldModelCalculationSpace(newChainableCalculations, List())
   }
 
-  def calculationForEachCell(nextChainableCalculation: OldChainableCalculation): ModelCalculationSpace = {
-    ModelCalculationSpace(calculations.map(cl => cl next nextChainableCalculation), List())
+  def calculationForEachCell(nextChainableCalculation: OldChainableCalculation): OldModelCalculationSpace = {
+    OldModelCalculationSpace(calculations.map(cl => cl next nextChainableCalculation), List())
   }
 
-  def next(nextModelCalculationSpace: ModelCalculationSpace): ModelCalculationSpace = {
-    ModelCalculationSpace(calculations.flatMap(cl => nextModelCalculationSpace.calculations.map(
+  def next(nextModelCalculationSpace: OldModelCalculationSpace): OldModelCalculationSpace = {
+    OldModelCalculationSpace(calculations.flatMap(cl => nextModelCalculationSpace.calculations.map(
       ncl => cl next ncl)), List())
   }
 
-  def calibrationParameters(set:List[ModelCalibrationSet]) : ModelCalculationSpace = {
-    ModelCalculationSpace(this.calculations,set)
+  def calibrationParameters(set:List[ModelCalibrationSet]) : OldModelCalculationSpace = {
+    OldModelCalculationSpace(this.calculations,set)
   }
 
-  def calibrationParameters(set:ModelCalibrationSet*) : ModelCalculationSpace = {
+  def calibrationParameters(set:ModelCalibrationSet*) : OldModelCalculationSpace = {
     this.calibrationParameters(set.toList)
   }
 
   def size : Int = calculations.size
 
-  def run: ModelCalculationSpace = {
+  def run: OldModelCalculationSpace = {
     val firstModels:List[Calculator] = calculations(0).modelParameters
     val parameterList = firstModels.map(c => c.outputs)
     println("----------------------------------------"+EOL+"RUN STARTED"+EOL+"----------------------------------------")
@@ -108,8 +99,8 @@ final case class ModelCalculationSpace(calculations:List[OldChainableCalculation
 
   }
 
-  def handleResults(modelResults: List[OldSingleModelWithResults]): ModelCalculationSpace = {
-    ModelCalculationSpace(calculations, calibrationSets, modelResults)
+  def handleResults(modelResults: List[OldSingleModelWithResults]): OldModelCalculationSpace = {
+    OldModelCalculationSpace(calculations, calibrationSets, modelResults)
   }
 
   def calibrated():List[OldSingleModelWithResults] = {
@@ -132,5 +123,3 @@ final case class ModelCalculationSpace(calculations:List[OldChainableCalculation
   }
 
 }
-
-

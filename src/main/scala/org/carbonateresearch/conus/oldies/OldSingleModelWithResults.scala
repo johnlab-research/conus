@@ -1,0 +1,39 @@
+package org.carbonateresearch.conus.oldies
+
+import org.carbonateresearch.conus.equations.Calculator
+import org.carbonateresearch.conus.equations.parametersIO.CalculationParametersIOLabels
+
+import scala.compat.Platform.EOL
+
+final case class OldSingleModelWithResults(ID:Int, steps: List[Int], parameters: List[Calculator], results: OldModelResults){
+
+   def valuesForAllSteps(label:CalculationParametersIOLabels): Map[Int,Double] = steps.map(s => (s,results.getStepResult(s,label))).toMap
+
+   def valueForStep(label: CalculationParametersIOLabels, step:Int): Double = results.getStepResult(step,label)
+
+   def finalResult: Map[CalculationParametersIOLabels, Double] =  results.resultsForStep(steps.size-1).valuesForAllLabels
+
+   def resultsPerLabel: Map[CalculationParametersIOLabels,Map[Int, Double]] = {
+      val IOLabels:List[CalculationParametersIOLabels] = results.theseResults.last._2.valuesForAllLabels.map(x => x._1).toList
+        IOLabels.map(l => (l,steps.map(s => (s,results.resultsForStep(s).valuesForAllLabels(l))).toMap)).toMap
+   }
+
+   def formatNumbers(precision:Int, value:Double, culprit:String): String = {
+
+      val pValue:Double =  1+precision.toDouble/10
+
+      val formatString:String = "%"+ pValue.toString + "f"
+
+      formatString format value
+   }
+
+   def summary: String = {
+      val step = steps.last
+      "Model # " + ID + " ->" + results.resultsForStep(step).valuesForAllLabels.map(k =>  k._1.toString + ": " + formatNumbers(k._1.precision,k._2,k._1.toString) + k._1.unit + " | ").foldLeft("| ")(_+_)
+   }
+
+   override def toString: String = {
+
+      "Model # " + ID + " :" + EOL + steps.map(step => "Step: "+ step + results.resultsForStep(step).valuesForAllLabels.map(k => k._1.toString + ": " + k._2.toString + " | " ).foldLeft(" -> ")(_+_) + EOL).foldLeft(EOL)(_+_)
+   }
+}

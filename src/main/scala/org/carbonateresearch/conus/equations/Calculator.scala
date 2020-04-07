@@ -1,14 +1,14 @@
-package org.carbonateresearch.conus.calculationparameters
+package org.carbonateresearch.conus.equations
 
-import org.carbonateresearch.conus.calculationparameters.parametersIO.{CalculationParametersIOLabels, Previous}
-import org.carbonateresearch.conus.common.{ModelCalculationSpace, ModelResults}
+import org.carbonateresearch.conus.equations.parametersIO.{CalculationParametersIOLabels, Previous}
+import org.carbonateresearch.conus.oldies.OldModelResults
 
 import scala.compat.Platform.EOL
 
 // Tagging trait for model parameters case classes
 trait Calculator {
 
-  def calculate (step:Int,previousResults:ModelResults): ModelResults = ???
+  def calculate (step:Int,previousResults:OldModelResults): OldModelResults = ???
   def unit: String = ""
   def outputs:List[CalculationParametersIOLabels]
   def inputs:Option[List[CalculationParametersIOLabels]] = None

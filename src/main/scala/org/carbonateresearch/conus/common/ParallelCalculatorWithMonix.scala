@@ -4,10 +4,12 @@ import monix.execution.Scheduler
 import monix.execution.Scheduler.Implicits.global
 import monix.execution.CancelableFuture
 import monix.eval.Task
-import scala.util.{Success,Failure}
+import org.carbonateresearch.conus.oldies.{OldChainableCalculation, OldSingleModelWithResults}
+
+import scala.util.{Failure, Success}
 
 class ParallelCalculatorWithMonix extends ParallelCalculator {
-  override def calculateModelsList(models: List[ChainableCalculation]): Future[List[SingleModelWithResults]] = {
+  override def calculateModelsList(models: List[OldChainableCalculation]): Future[List[OldSingleModelWithResults]] = {
 
     val initialCount = models.size
 

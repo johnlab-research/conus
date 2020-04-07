@@ -1,6 +1,6 @@
 package org.carbonateresearch.domainespecific.Geology
 
-import org.carbonateresearch.conus.calculationparameters.parametersIO.SimulationVariable
+import org.carbonateresearch.conus.equations.parametersIO.SimulationVariable
 import org.carbonateresearch.conus.util.StepFunctionUtils._
 import org.carbonateresearch.domainespecific.Geology.GeneralGeology._
 import scala.math.{abs, exp, pow}

@@ -1,4 +1,4 @@
-package org.carbonateresearch.conus.calculationparameters.parametersIO
+package org.carbonateresearch.conus.equations.parametersIO
 
 trait StandardsParameters {
 val Depth = SimulationVariable("Burial depth"," m", precision = 1)

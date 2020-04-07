@@ -3,6 +3,7 @@ package org.carbonateresearch.conus.common
 import akka.actor.{Actor, Props}
 import akka.util.Timeout
 import akka.pattern.ask
+import org.carbonateresearch.conus.oldies.{OldChainableCalculation, OldSingleModelWithResults}
 
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.global
@@ -11,11 +12,11 @@ import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
 class ParrallelModellerCollectorActor extends Actor {
-  var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelWithResults]
+  var resultsList = scala.collection.mutable.ListBuffer.empty[OldSingleModelWithResults]
 
   override def receive = {
 
-    case modelsList: List[ChainableCalculation] => {
+    case modelsList: List[OldChainableCalculation] => {
       val initialCount = modelsList.size
       println("Now dispatching a modelsList of size " + modelsList.size.toString)
 
@@ -30,7 +31,7 @@ class ParrallelModellerCollectorActor extends Actor {
       f onComplete {
         case Success(model) => {
           model match {
-            case m:SingleModelWithResults => {
+            case m:OldSingleModelWithResults => {
           resultsList += m
           println(resultsList)}
             }}

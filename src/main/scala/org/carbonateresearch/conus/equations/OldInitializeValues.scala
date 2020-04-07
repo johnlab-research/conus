@@ -1,8 +1,8 @@
-package org.carbonateresearch.conus.calculationparameters
+package org.carbonateresearch.conus.equations
 
-import org.carbonateresearch.conus.calculationparameters.parametersIO.CalculationParametersIOLabels
+import org.carbonateresearch.conus.equations.parametersIO.CalculationParametersIOLabels
 
-final case class InitializeValues(inputs: List[(CalculationParametersIOLabels,List[Double])]) {
+final case class OldInitializeValues(inputs: List[(CalculationParametersIOLabels,List[Double])]) {
 
     private val pairedIOLabelValues:List[List[(CalculationParametersIOLabels,Double)]] = {
       inputs.map(x => x match {
@@ -21,10 +21,10 @@ final case class InitializeValues(inputs: List[(CalculationParametersIOLabels,Li
 }
 
 
-object InitializeValues {
+object OldInitializeValues {
   def apply(input: (CalculationParametersIOLabels,Double)*) = {
 
-    new InitializeValues(input.toList.map( x => x match {
+    new OldInitializeValues(input.toList.map(x => x match {
       case (p:CalculationParametersIOLabels,ln:Double) => (p,List(ln))}))
     }
 }

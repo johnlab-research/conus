@@ -1,11 +1,14 @@
 package org.carbonateresearch.conus.common
-import org.carbonateresearch.conus.calculationparameters.Calculator
-import org.carbonateresearch.conus.calculationparameters.parametersIO._
+
+import org.carbonateresearch.conus.common.Calculator
+//import org.carbonateresearch.conus.equations.parametersIO._
 import scala.annotation.tailrec
 import org.carbonateresearch.conus.util.TimeUtils
-import org.carbonateresearch.conus.util.StepFunctionUtils._
+import org.carbonateresearch.conus.util.Implicits._
+import org.carbonateresearch.conus.util.CommonModelVariables.NumberOfSteps
+import shapeless.HMap
 
-final case class ChainableCalculation(ID:Int, steps:List[Step], modelParameters:List[Calculator]) {
+final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:List[Calculator]) {
 
   def next(nextModelParameters: Calculator*): ChainableCalculation = {
 
@@ -25,20 +28,22 @@ final case class ChainableCalculation(ID:Int, steps:List[Step], modelParameters:
 
   def ==(secondChainableCalculation: ChainableCalculation): ChainableCalculation = {
 
-     ChainableCalculation(ID, steps,  secondChainableCalculation.modelParameters:::modelParameters)
+    ChainableCalculation(ID, steps,  secondChainableCalculation.modelParameters:::modelParameters)
   }
 
   def evaluate(startTime:Double): SingleModelWithResults = {
     val inverseParams = modelParameters.reverse
 
     @tailrec
-    def traverseSteps (stepsCounter:List[Int], currentResults: ModelResults): ModelResults = {
+    def traverseSteps (stepsCounter:List[Int], currentResults: NumericalResults): NumericalResults = {
       stepsCounter match  {
         case Nil => currentResults
         case x::xs => traverseSteps(xs,evaluateSingleStep(x,inverseParams, currentResults))
       }
     }
-      val initialModelResults:ModelResults = ModelResults(Map(0 -> SingleStepResults(Map(NumberOfSteps -> steps.size))))
+
+    val dataContainer =  HMap[BiMapIS](NumberOfSteps -> steps.size)
+    val initialModelResults:NumericalResults = NumericalResults(Map(0 -> StepResults(dataContainer)))
     val evaluatedModel = SingleModelWithResults(ID,steps, modelParameters, traverseSteps(steps,  initialModelResults))
     val currentTime = System.nanoTime()
     printOutputString(currentTime-startTime)
@@ -46,17 +51,19 @@ final case class ChainableCalculation(ID:Int, steps:List[Step], modelParameters:
     }
 
 
-  def evaluateSingleStep(step:Int, parameters: List[Calculator], currentResults: ModelResults): ModelResults = {
+  def evaluateSingleStep(stepID:Int, parameters: List[Calculator], previousResults:NumericalResults): NumericalResults = {
+
+    val newModelResults = previousResults.addParameterResultAtNewStep(NumberOfSteps,steps.size,stepID)
+    val initialStep = Step(stepID,newModelResults,"")
 
     @tailrec
-    def evaluateSingleStepWithCounter (params: List[Calculator], thisCurrentResults: ModelResults): ModelResults = {
+    def evaluateSingleStepWithCounter (params: List[Calculator], currentStep: Step): Step = {
       params match  {
-        case Nil => thisCurrentResults
-        case x::xs => evaluateSingleStepWithCounter(xs,x.calculate(step,thisCurrentResults))
+        case Nil => currentStep
+        case x::xs => evaluateSingleStepWithCounter(xs,x.calculate(currentStep))
       }
     }
-    val newModelResults = currentResults.addParameterResultAtNewStep(NumberOfSteps,steps.size,step)
-    evaluateSingleStepWithCounter(parameters, newModelResults)
+    evaluateSingleStepWithCounter(parameters,initialStep).currentResults
   }
 
   private def printOutputString(time:Double): Unit = {

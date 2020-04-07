@@ -1,4 +1,4 @@
-package org.carbonateresearch.conus.calculationparameters.parametersIO
+package org.carbonateresearch.conus.equations.parametersIO
 
 trait CalculationParametersIOLabels{
   override def toString: String = {

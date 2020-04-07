@@ -1,4 +1,6 @@
-package org.carbonateresearch.conus.calculationparameters.parametersIO
+package org.carbonateresearch.conus.equations.parametersIO
+
+import org.carbonateresearch.conus.util.{PreviousZeroHandle, TakeStepZeroValue}
 
 final case class Previous(input:CalculationParametersIOLabels, offset:Int, rule:PreviousZeroHandle) extends CalculationParametersIOLabels
 object Previous {

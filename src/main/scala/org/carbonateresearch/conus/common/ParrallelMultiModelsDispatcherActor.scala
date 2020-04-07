@@ -3,6 +3,7 @@ package org.carbonateresearch.conus.common
 import akka.actor.{Actor, Props, _}
 import akka.pattern.ask
 import akka.util.Timeout
+import org.carbonateresearch.conus.oldies.{OldChainableCalculation, OldModelCalculationSpace, OldSingleModelWithResults}
 
 import scala.compat.Platform.EOL
 import scala.concurrent.ExecutionContext.global
@@ -13,14 +14,14 @@ import scala.util.Success
 class ParrallelModellerDispatcherActor extends Actor {
   var initialCount:Int = 0
   var t0 = System.nanoTime()
-  var owner:ModelCalculationSpace = null
-  var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelWithResults]
+  var owner:OldModelCalculationSpace = null
+  var resultsList = scala.collection.mutable.ListBuffer.empty[OldSingleModelWithResults]
   val collector:ActorRef = context.actorOf(Props[ParrallelModellerCollectorActor], name="Collector")
 
   override def receive = {
-    case modelSpace: ModelCalculationSpace => {
+    case modelSpace: OldModelCalculationSpace => {
       owner = modelSpace
-      val modelsList: List[ChainableCalculation] = modelSpace.calculations
+      val modelsList: List[OldChainableCalculation] = modelSpace.calculations
       initialCount = modelsList.size
 
       println("Initiating a run on " + modelsList.size.toString + " models.")
@@ -30,7 +31,7 @@ class ParrallelModellerDispatcherActor extends Actor {
       t0 = System.nanoTime()
       modelsList.map(m => context.actorOf(Props(new ParrallelSingleModelRunnerActor)) ! m)
     }
-    case newResult: SingleModelWithResults => {
+    case newResult: OldSingleModelWithResults => {
       implicit val ec = global
       resultsList += newResult
       val modelData = newResult.summary + EOL

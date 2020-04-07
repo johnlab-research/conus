@@ -13,11 +13,13 @@ import scalafx.scene.chart.XYChart*/
 import akka.util.Timeout
 
 import scala.concurrent.duration._
-import org.carbonateresearch.conus.common.{ChainableCalculation, ModelCalculationSpace, ModelCalibrationSet, SingleModelWithResults, SteppedModel}
-import org.carbonateresearch.conus.calculationparameters.parametersIO._
+import org.carbonateresearch.conus.common.{ModelCalibrationSet, SteppedModel}
+import org.carbonateresearch.conus.equations.parametersIO._
 
 import scala.compat.Platform.EOL
-import org.carbonateresearch.conus.calculationparameters.{CalculateBurialDepthFromAgeModel, CalculateBurialTemperatureFromGeothermalGradient, CalculateStepAges, CalculateStepValue, GeothermalGradientThroughTime, InitializeValues, Initializer, InterpolateValues, SurfaceTemperaturesThroughTime}
+import org.carbonateresearch.conus.equations.{CalculateBurialDepthFromAgeModel, CalculateBurialTemperatureFromGeothermalGradient, CalculateStepAges, CalculateStepValue, GeothermalGradientThroughTime, OldInitializeValues, Initializer, InterpolateValues, SurfaceTemperaturesThroughTime}
+import org.carbonateresearch.conus.oldies.{OldModelCalculationSpace, OldSingleModelWithResults}
+import org.carbonateresearch.conus.util.TakeCurrentStepValue
 import org.carbonateresearch.domainespecific.Geology.PasseyHenkesClumpedDiffusionModel
 import org.carbonateresearch.domainespecific.Geology.PasseyHenkesClumpedDiffusionModel._
 
@@ -41,9 +43,9 @@ object DiageneSim extends App with StandardsParameters {
   )
  val myDoubleList: List[Double] = List(0.600,0.607,0.612)
 
- val b:ModelCalculationSpace = new SteppedModel(numberOfSteps)
+ val b:OldModelCalculationSpace = new SteppedModel(numberOfSteps)
    .defineInitialModelConditions(
-     InitializeValues(initialValues))
+     OldInitializeValues(initialValues))
    .defineMathematicalModelPerCell(
     CalculateStepAges(110,0),
     CalculateBurialDepthFromAgeModel(List((110.0,0.0), (100.0,150.0), (50.0,3500.0),(38.0,0.0),(0.0,0.0))),
@@ -60,7 +62,7 @@ val timeout = Timeout(5.minutes)
   val runnedModel = b.run
 
 Thread.sleep(1000000000)
-  def handleResults(modelResults: List[SingleModelWithResults]) = {
+  def handleResults(modelResults: List[OldSingleModelWithResults]) = {
     val tolerance = (35.0, 38.0)
 
     val validResults = modelResults.filter(p => (tolerance._1<(

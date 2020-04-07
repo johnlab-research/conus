@@ -1,4 +1,6 @@
-package org.carbonateresearch.conus.calculationparameters.parametersIO
+package org.carbonateresearch.conus.util
+
+import org.carbonateresearch.conus.equations.parametersIO.CalculationParametersIOLabels
 
 sealed trait PreviousZeroHandle
 case object TakeStepZeroValue extends PreviousZeroHandle

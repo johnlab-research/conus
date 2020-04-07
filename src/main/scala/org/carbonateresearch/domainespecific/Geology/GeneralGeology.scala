@@ -1,6 +1,6 @@
 package org.carbonateresearch.domainespecific.Geology
 
-import org.carbonateresearch.conus.calculationparameters.parametersIO.SimulationVariable
+import org.carbonateresearch.conus.equations.parametersIO.SimulationVariable
 
 object GeneralGeology {
   val Depth = SimulationVariable[Double]("Burial depth"," m", precision = 1)
