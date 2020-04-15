@@ -3,7 +3,6 @@ package org.carbonateresearch.conus.common
 import akka.actor.{Actor, Props}
 import akka.util.Timeout
 import akka.pattern.ask
-import org.carbonateresearch.conus.oldies.{OldChainableCalculation, OldSingleModelWithResults}
 
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.global
@@ -11,7 +10,8 @@ import scala.util.Try
 import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
-class ParrallelModellerCollectorActor extends Actor {
+abstract class ParrallelModellerCollectorActor extends Actor {
+  /*
   var resultsList = scala.collection.mutable.ListBuffer.empty[OldSingleModelWithResults]
 
   override def receive = {
@@ -48,4 +48,5 @@ class ParrallelModellerCollectorActor extends Actor {
     }
     case _       => println("Sample type not handled by Modeler")
   }
+  */
 }

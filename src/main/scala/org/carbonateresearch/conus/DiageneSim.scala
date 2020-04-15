@@ -13,37 +13,53 @@ import scalafx.scene.chart.XYChart*/
 import akka.util.Timeout
 
 import scala.concurrent.duration._
-import org.carbonateresearch.conus.common.{ModelCalibrationSet, SteppedModel}
-import org.carbonateresearch.conus.equations.parametersIO._
-
-import scala.compat.Platform.EOL
-import org.carbonateresearch.conus.equations.{CalculateBurialDepthFromAgeModel, CalculateBurialTemperatureFromGeothermalGradient, CalculateStepAges, CalculateStepValue, GeothermalGradientThroughTime, OldInitializeValues, Initializer, InterpolateValues, SurfaceTemperaturesThroughTime}
-import org.carbonateresearch.conus.oldies.{OldModelCalculationSpace, OldSingleModelWithResults}
-import org.carbonateresearch.conus.util.TakeCurrentStepValue
-import org.carbonateresearch.domainespecific.Geology.PasseyHenkesClumpedDiffusionModel
+import org.carbonateresearch.conus.common._
 import org.carbonateresearch.domainespecific.Geology.PasseyHenkesClumpedDiffusionModel._
+import org.carbonateresearch.domainespecific.Geology.GeneralGeology._
+
+import scala.math.{abs, exp, pow}
 
 
-object DiageneSim extends App with StandardsParameters {
+object DiageneSim extends App {
 
-
-
-  val burialHistory = List((110.0,0.0), (100.0,150.0), (50.0,4766.0),(38.0,0.0),(0.0,0.0))
-  val geothermalGradient = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
-  val surfaceTemperatures = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
+  val burialHistory = List((110.0,0.0), (100.0,150.0), (50.0,4766.0),(38.0,0.0),(0.0,10.0))
+  val geothermalGradientHistory= List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
+  val surfaceTemperaturesHistory = List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val numberOfSteps = 200
-  val depositionalAge = SimulationVariable("Initial age of deposition", " Ma", Some(0), precision = 3)
   val ageList:List[Double] = List(50,51,52,53,54,55,56,57.58,59,60,64)
+  val initialAge:ModelVariable[Double] = ModelVariable("Initial age",110.0,"Ma")
+  val finalAge:ModelVariable[Double] = ModelVariable("Final age",0.0,"Ma")
+
+  val initialModelConditions = InitializeValues(List((initialAge,List(110.0,112.0)),
+    (finalAge,List(110.0,112.0)),
+    (D47i,List(0.731))))
+
+  val myFirstModel = new SteppedModel(numberOfSteps)
+    .defineInitialModelConditions(initialModelConditions)
+    .defineMathematicalModelPerCell(
+      age =>> ageAtStepFunction(numberOfSteps,110.0,0.0),
+  depth =>> burialDepthFromAgeModel(age,burialHistory),
+  surfaceTemperature =>> surfaceTemperaturesAtAge(age, surfaceTemperaturesHistory),
+  geothermalGradient =>> geothermalGradientAtAge(age,geothermalGradientHistory),
+  burialTemperature =>> burialTemperatureFromGeothermalGradient(surfaceTemperature,depth,geothermalGradient),
+  dT =>> { (s:Step) => abs(burialTemperature(s)-burialTemperature(s-1))* 1000000 * 365 * 24 * 60 * 60},
+      D47eq =>> D47eqFun,
+  D47i =>> D47iFun,
+  SampleTemp =>> davies19_T)
 
 
-  val initialValues:List[(CalculationParametersIOLabels,List[Double])] = List(
+  val timeout = Timeout(5.minutes)
+  val runnedModel = myFirstModel.run
+  /*
+
+  val initialValues:List[(CalculationParametersIOLabels,List[Any])] = List(
     (D47i,List(0.60,0.607,0.610,0.612,0.613,0.615,0.616)),
     (depositionalAge,ageList),
     (GeothermalGradient,List(30.0,31.0,33.5,33.6,33.7,33.8,33.9,34.0))
   )
  val myDoubleList: List[Double] = List(0.600,0.607,0.612)
 
- val b:OldModelCalculationSpace = new SteppedModel(numberOfSteps)
+ val b:OldModelCalculationSpace = new OldSteppedModel(numberOfSteps)
    .defineInitialModelConditions(
      OldInitializeValues(initialValues))
    .defineMathematicalModelPerCell(
@@ -72,7 +88,7 @@ Thread.sleep(1000000000)
     validResults.map(r => r.summary+EOL).foreach(println)
     print("")
   }
-
+*/
 
 
 /*

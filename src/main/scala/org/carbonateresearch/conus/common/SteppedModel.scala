@@ -1,20 +1,16 @@
 package org.carbonateresearch.conus.common
 
-import org.carbonateresearch.conus.equations.{Calculator, OldInitializeValues, Initializer}
-import org.carbonateresearch.conus.oldies.{OldChainableCalculation, OldModelCalculationSpace}
-
-
 class SteppedModel(nbSteps:Int)  {
 
   val prepareSteps:  List[Int] = (0 to nbSteps).toList
 
-  def next(parameter: Calculator): OldModelCalculationSpace = OldModelCalculationSpace(List(OldChainableCalculation(1,prepareSteps, List(parameter))),List())
+  def next(parameter: Calculator): ModelCalculationSpace = ModelCalculationSpace(List(ChainableCalculation(1,prepareSteps, List(parameter))),List())
 
-  def defineInitialModelConditions(initializer: OldInitializeValues): OldModelCalculationSpace = {
+  def defineInitialModelConditions(initializer: InitializeValues): ModelCalculationSpace = {
 
     val initialValues = initializer.ModelCalculationSpace
-    val modelsList:List[OldChainableCalculation] = initialValues.map(x => OldChainableCalculation(initialValues.indexOf(x)+1, prepareSteps, List(Initializer(x))))
+    val modelsList:List[ChainableCalculation] = initialValues.map(x => ChainableCalculation(initialValues.indexOf(x)+1, prepareSteps, List(Initializer(x))))
 
-    OldModelCalculationSpace(modelsList,List())}
+    ModelCalculationSpace(modelsList,List())}
 
 }

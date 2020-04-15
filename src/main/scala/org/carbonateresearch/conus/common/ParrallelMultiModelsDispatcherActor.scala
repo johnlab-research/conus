@@ -3,7 +3,6 @@ package org.carbonateresearch.conus.common
 import akka.actor.{Actor, Props, _}
 import akka.pattern.ask
 import akka.util.Timeout
-import org.carbonateresearch.conus.oldies.{OldChainableCalculation, OldModelCalculationSpace, OldSingleModelWithResults}
 
 import scala.compat.Platform.EOL
 import scala.concurrent.ExecutionContext.global
@@ -11,7 +10,8 @@ import scala.concurrent.Future
 import scala.concurrent.duration._
 import scala.util.Success
 
-class ParrallelModellerDispatcherActor extends Actor {
+abstract class ParrallelModellerDispatcherActor extends Actor {
+  /*
   var initialCount:Int = 0
   var t0 = System.nanoTime()
   var owner:OldModelCalculationSpace = null
@@ -70,4 +70,6 @@ class ParrallelModellerDispatcherActor extends Actor {
    else {seconds + " seconds"}
     timeString
   }
+
+   */
 }

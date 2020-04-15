@@ -1,15 +1,13 @@
 package org.carbonateresearch.conus.common
 import java.lang.System.lineSeparator
 
-import org.carbonateresearch.conus.oldies.{OldChainableCalculation, OldSingleModelWithResults}
-
 import Console.{BLUE, CYAN, GREEN, MAGENTA, RED, RESET, UNDERLINED, WHITE, YELLOW, YELLOW_B}
 import scala.concurrent.Future
 
-trait ParallelCalculator {
-def calculateModelsList(models:List[OldChainableCalculation]):Future[List[OldSingleModelWithResults]] = {???}
+trait CalculationDispatcher {
+def calculateModelsList(models:List[ChainableCalculation]):Future[List[RunnedModel]] = {???}
 
-  def outputString(models:List[OldChainableCalculation]):String = {
+  def outputString(models:List[ChainableCalculation]):String = {
     val EOL = lineSeparator()
     val nbModels = models.size
     val model = models.head

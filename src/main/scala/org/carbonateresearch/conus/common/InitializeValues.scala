@@ -1,22 +1,20 @@
 package org.carbonateresearch.conus.common
 
-import org.carbonateresearch.conus.equations.parametersIO.CalculationParametersIOLabels
+final case class InitializeValues(inputs: List[(CalculationParametersIOLabels,List[Any])]) {
 
-final case class InitializeValues(inputs: List[(CalculationParametersIOLabels,List[Double])]) {
-
-    private val pairedIOLabelValues:List[List[(CalculationParametersIOLabels,Double)]] = {
+    private val pairedIOLabelValues:List[List[(CalculationParametersIOLabels,Any)]] = {
       inputs.map(x => x match {
-        case (p:CalculationParametersIOLabels,ln:List[Double]) => ln.map(v => (p,v))
+        case (p:CalculationParametersIOLabels,ln:List[Any]) => ln.map(v => (p,v))
       })}
 
- private val mergeTwoLists = (listA:List[List[(CalculationParametersIOLabels,Double)]],listB:List[(CalculationParametersIOLabels,Double)])
+ private val mergeTwoLists = (listA:List[List[(CalculationParametersIOLabels,Any)]],listB:List[(CalculationParametersIOLabels,Any)])
  => listB.flatMap(x => listA.map(y => x::y))
 
-  private val headOfList:List[List[(CalculationParametersIOLabels,Double)]] = pairedIOLabelValues.head.map(x => List(x))
-  private val tailOfList:List[List[(CalculationParametersIOLabels,Double)]] = pairedIOLabelValues.tail
+  private val headOfList:List[List[(CalculationParametersIOLabels,Any)]] = pairedIOLabelValues.head.map(x => List(x))
+  private val tailOfList:List[List[(CalculationParametersIOLabels,Any)]] = pairedIOLabelValues.tail
 
 
-  val ModelCalculationSpace: List[List[(CalculationParametersIOLabels, Double)]] = tailOfList.foldLeft(headOfList)(mergeTwoLists)
+  val ModelCalculationSpace: List[List[(CalculationParametersIOLabels, Any)]] = tailOfList.foldLeft(headOfList)(mergeTwoLists)
 
 }
 
