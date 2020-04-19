@@ -5,7 +5,7 @@ import org.carbonateresearch.conus.common.{ ModelVariable, ReturnDefaultValue}
 object CommonModelVariables {
   val NumberOfSteps: ModelVariable[Int] = ModelVariable("Number of steps",
     defaultValue = 0,
-    silent = false,
+    silent = true,
     ifNoValue = ReturnDefaultValue,
     precision = 0)
 

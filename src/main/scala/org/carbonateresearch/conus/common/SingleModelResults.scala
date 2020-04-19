@@ -1,5 +1,6 @@
 package org.carbonateresearch.conus.common
 import java.lang.System.lineSeparator
+import org.carbonateresearch.conus.util.CommonModelVariables.NumberOfSteps
 
 case class SingleModelResults(private val dataContainer: Map[Int,StepResults]) extends SimulationResults {
 val EOL = lineSeparator()
@@ -9,10 +10,12 @@ val EOL = lineSeparator()
   }
 
   def printStepResults(step:Int):String = {
-    dataContainer(step).printAllStepValues}
+    "Step #"+step+""+dataContainer(step).allStepResultsString+EOL
+  }
 
-  def printAllModelValues: String = {
-    dataContainer.map(k => printStepResults(k._1)).foldLeft("")(_ + _) + "Did it do something?"
+  def completeModelResultsString: String = {
+    val mySteps:List[Int] = (0 until resultsForStep(0).get(NumberOfSteps).getOrElse(0)).toList
+    mySteps.map(k => printStepResults(k)).foldLeft("")(_ + _)
   }
 
   def isDefinedAt(step:Int):Boolean = {
@@ -29,6 +32,12 @@ val EOL = lineSeparator()
     dataContainer(stepNumber).get(k)
   }
 
+  def getStepResult(stepNumber:Int, k:CalculationParametersIOLabels): Any = {
+    dataContainer(stepNumber).get(k)
+  }
+
+  def  getModelVariablesForStep(step:Int):List[CalculationParametersIOLabels] = dataContainer(step).getAllKeys
+
   def mergeWith(otherModelResults:SingleModelResults): SingleModelResults = SingleModelResults(this.dataContainer ++ otherModelResults.dataContainer)
 
   def addParameterResultAtLastStep[T](k:ModelVariable[T],v:T): SingleModelResults = {
@@ -42,11 +51,14 @@ val EOL = lineSeparator()
   }
 
   def addParameterResultAtStep[T](k:ModelVariable[T],v:T,atStepNumber:Int): SingleModelResults = {
-    addDataAtStepLevel(atStepNumber,k,v)
+    if(atStepNumber<dataContainer.size){
+    addDataAtStepLevel(atStepNumber,k,v)} else {
+      addParameterResultAtNewStep(k,v)
+    }
   }
 
   def addParameterResultsAtStep[T](m:Map[CalculationParametersIOLabels,Any],atStepNumber:Int): SingleModelResults = {
-    SingleModelResults(dataContainer ++ Map(lastStepNumber->lastStep.add(m)))
+    SingleModelResults(dataContainer ++ Map(lastStepNumber->dataContainer(atStepNumber).add(m)))
   }
 
   def addStepResultAtStep[T](stepResult:StepResults,atStepNumber:Int): SingleModelResults = {
@@ -54,7 +66,6 @@ val EOL = lineSeparator()
   }
 
   private def addDataAtStepLevel[T](stepNumber:Int, k:ModelVariable[T],v:T):SingleModelResults = {
-    val lastStep:StepResults = dataContainer(stepNumber)
     val newStepResults:StepResults = lastStep.add(k,v)
     SingleModelResults(dataContainer ++ Map(stepNumber -> newStepResults))
   }

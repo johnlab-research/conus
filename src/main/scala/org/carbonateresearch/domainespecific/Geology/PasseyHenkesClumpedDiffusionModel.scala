@@ -10,7 +10,7 @@ object PasseyHenkesClumpedDiffusionModel {
   def ea = 197
   def r = 0.008314
 
-  val dT:ModelVariable[Double] = ModelVariable("dT",0,"˚C",precision = 1)
+  val dT:ModelVariable[Double] = ModelVariable("dT",0,"˚C",silent=true, precision = 1)
   val TKelvin:ModelVariable[Double] = ModelVariable("T",0,"˚K", precision = 1)
   val D47i:ModelVariable[Double] = ModelVariable("Δ47i",0.731," ‰", precision = 3)
   val D47eq:ModelVariable[Double] = ModelVariable("Δ47eq",0," ‰", precision = 3)

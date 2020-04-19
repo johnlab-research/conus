@@ -5,14 +5,14 @@ import Console.{BLUE, CYAN, GREEN, MAGENTA, RED, RESET, UNDERLINED, WHITE, YELLO
 import scala.concurrent.Future
 
 trait CalculationDispatcher {
-def calculateModelsList(models:List[ChainableCalculation]):Future[List[RunnedModel]] = {???}
-
+def calculateModelsList(models:List[ChainableCalculation]):Future[List[EvaluatedModel]] = {???}
+val typeOfDispatcher:String = "Not specified"
   def outputString(models:List[ChainableCalculation]):String = {
     val EOL = lineSeparator()
     val nbModels = models.size
     val model = models.head
     val nbOperation = model.modelParameters.size
-    val nbSteps = model.steps.size - 1
+    val nbSteps = model.steps.size
     val totalNumberOperations = (nbModels*nbSteps*nbOperation)
     val totNbOperationString:String = totalNumberOperations.toString()
     val strLen = totNbOperationString.length
@@ -35,6 +35,7 @@ def calculateModelsList(models:List[ChainableCalculation]):Future[List[RunnedMod
       s"${RESET}${YELLOW}Number of steps per model:${RESET}${WHITE} " + nbSteps + EOL +
       s"${RESET}${YELLOW}Number of operation per step:${RESET}${WHITE} " + nbOperation + EOL +
       s"${RESET}${YELLOW}Total number of operations:${RESET}${WHITE} "+ totNbOperationStringFormatted + EOL +
+      s"${RESET}${YELLOW}Available CPU cores:${RESET}${WHITE} "+ typeOfDispatcher + EOL +
       s"${RESET}${BLUE}----------------------------------------${RESET}" + EOL + s"${RESET}${MAGENTA}${UNDERLINED}RUN PROGRESS${RESET}"
 
   }

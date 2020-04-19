@@ -8,7 +8,7 @@ def get[T](k:ModelVariable[T]): Option[T]
 def get[T](k:CalculationParametersIOLabels): Any
 def getAllKeys: List[CalculationParametersIOLabels]
   def prettyPrint[T](k:ModelVariable[T]):String
-  def printAllStepValues: String
+  def allStepResultsString: String
   def add[T](k:ModelVariable[T],v:T):StepResults
   def add(m:Map[CalculationParametersIOLabels,Any]):StepResults
 }

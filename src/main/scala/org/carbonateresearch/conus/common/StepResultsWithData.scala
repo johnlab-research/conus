@@ -13,12 +13,10 @@ case class StepResultsWithData(private val dataContainer:Map[CalculationParamete
   }
 
   override def get[T](k: CalculationParametersIOLabels): Any = {
-
     k match {
       case v: ModelVariable[T] => getAnOption(v).getOrElse(v.defaultValue)
       case _ => None
     }
-
   }
 
   def apply[T](k: ModelVariable[T]): Option[T] = {
@@ -38,8 +36,8 @@ case class StepResultsWithData(private val dataContainer:Map[CalculationParamete
     }
   }
 
-  override def printAllStepValues: String = {
-    dataContainer.map(k => (k._2).descriptiveString).foldLeft(" -> ")(_ + _)
+  override def allStepResultsString: String = {
+    dataContainer.map(k => (k._2).descriptiveString).foldLeft(" | ")(_ + _)
   }
 
   override def add[T](k: ModelVariable[T], v: T): StepResultsWithData = {
@@ -49,7 +47,7 @@ case class StepResultsWithData(private val dataContainer:Map[CalculationParamete
 
   def add(m: Map[CalculationParametersIOLabels, Any]): StepResults = {
     val theData: Map[CalculationParametersIOLabels, Data] = m.flatMap(i => Map(i._1 -> Data(i._2, (i._1).getValueAsString(i._2), (i._1).labelToValueFormattedString(i._2))))
-    StepResultsWithData(theData)
+    StepResultsWithData(dataContainer++theData)
   }
 
   private def getAnOption[T](k: ModelVariable[T]): Option[T] = {

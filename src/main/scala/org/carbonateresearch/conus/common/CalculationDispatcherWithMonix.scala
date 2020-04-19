@@ -8,7 +8,8 @@ import monix.eval.Task
 import scala.util.{Failure, Success}
 
 class CalculationDispatcherWithMonix extends CalculationDispatcher {
-  override def calculateModelsList(models: List[ChainableCalculation]): Future[List[RunnedModel]] = {
+  override val typeOfDispatcher: String = java.lang.Runtime.getRuntime.availableProcessors.toString
+  override def calculateModelsList(models: List[ChainableCalculation]): Future[List[EvaluatedModel]] = {
 
     val initialCount = models.size
 

@@ -10,8 +10,12 @@ object GeneralGeology {
   val burialTemperature = ModelVariable[Double]("Burial Temperature",0,"˚C", precision =1)
   val geothermalGradient = ModelVariable[Double]("Geothermal gradient",25,"˚C/km", precision =1)
 
-  def ageAtStepFunction[T](nbSteps:Int,maxAge: T, minAge:T)(implicit num:Fractional[T]):StepFunction[T] = {
-    scaleFromMinToMaxByStep(nbSteps,maxAge,minAge)}
+  def ageOfStep[T](oldestAge: T, youngestAge:T)(implicit num:Fractional[T]):StepFunction[T] = {
+    scaleFromMinToMaxByStep(youngestAge,oldestAge)}
+
+  def ageOfStep[T](oldestAge: ModelVariable[T], youngestAge:ModelVariable[T])(implicit num:Fractional[T]):StepFunction[T] = {
+
+    (s:Step) => (scaleFromMinToMaxByStep(youngestAge(s.i),oldestAge(s.i))).apply(s)}
 
   def burialDepthFromAgeModel[T](age:ModelVariable[T], ageModel:List[(T,T)])(implicit num:Fractional[T]):StepFunction[T] =  interpolatedValue(age,ageModel)
 
@@ -19,7 +23,7 @@ object GeneralGeology {
                                                  depth:ModelVariable[T],
                                                  geothermalGradient:ModelVariable[T])
                                                 (implicit num:Fractional[T]):StepFunction[T] =  {
-    (s:Step) => num.plus(num.times(depth(s),geothermalGradient(s)),surfaceTemperature(s))
+    (s:Step) => num.plus(num.times(depth(s),num.div(geothermalGradient(s),1000.0.asInstanceOf[T])),surfaceTemperature(s))
   }
 
   def geothermalGradientAtAge[T](age:ModelVariable[T],

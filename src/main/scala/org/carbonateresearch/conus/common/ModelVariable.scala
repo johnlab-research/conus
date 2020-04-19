@@ -5,8 +5,8 @@ import org.carbonateresearch.conus.util.StepFunctionUtils.StepFunction
 
 final case class ModelVariable[T](override val name: String,
                                   defaultValue:T,
-                                  unitName:String = "",
-                                  silent: Boolean = false,
+                                  override val unitName:String = "",
+                                  override val silent: Boolean = false,
                                   override val precision:Int = 2,
                                   ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
 
