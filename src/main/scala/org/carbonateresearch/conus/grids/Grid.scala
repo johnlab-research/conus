@@ -1,34 +1,26 @@
 package org.carbonateresearch.conus.grids
 
-import scala.annotation.tailrec
+import org.carbonateresearch.conus.common.CalculationParametersIOLabels
 
-case class Grid(theGrid:Map[Int,GridElement],gridGeometry:List[Int]) {
+trait Grid {
+  type TimeStep = Int
+  type Dimensions = Seq[Int]
+  def gridGeometry:Dimensions
+  def variableMap:Map[CalculationParametersIOLabels,Int]
+  def nbSteps: Int
+  def numberOfCells:Int = gridGeometry.product * nbSteps
+
   override def toString: String = {
     "Grid with "+numberOfCells+" cells in "+gridGeometry.size+" dimensions"
   }
-  def numberOfCells:Int = gridGeometry.product
-}
-object Grid {
-  def apply(myGrids: List[Int]): Grid = {
+  def toString(timeStep:TimeStep):String
+  def toString(timeStep:TimeStep,keys:CalculationParametersIOLabels*):String
 
-    val thisDimension = myGrids.size match {
-      case 1 => {
-        val thisDimension: Int = myGrids.head
-        val cells = (0 until thisDimension)
-        cells.map(c => (c, Cell())).toMap
-      }
-      case _ => {
-        val thisDimension: Int = myGrids.head
-        val cells = (0 until thisDimension)
-        cells.map(c => (c, GridDimension(myGrids.tail))).toMap
-      }
-    }
-    new Grid(thisDimension,myGrids)
-  }
-
-  def apply(gridGeometry: Int*): Grid = {
-    Grid(gridGeometry.toList)
-  }
-
-
+  def getVariableAtCellForTimeStep[T](key:CalculationParametersIOLabels, coordinates:Dimensions)(implicit timeStep: TimeStep):T
+  def getVariableForTimeStep(key:CalculationParametersIOLabels)(implicit timeStep: TimeStep):GridElement
+  def getTimeStep(timeStep:TimeStep):GridElement
+  def setAtCell[T](key:CalculationParametersIOLabels,value:T, coordinates:Dimensions)(implicit timeStep: TimeStep):Unit
+  def setManyAtCell(keys:Seq[CalculationParametersIOLabels],values:Seq[Any], coordinates:Dimensions)(implicit timeStep: TimeStep):Unit
+  def setManyForTimeStep(keys:Seq[CalculationParametersIOLabels],value:Seq[Any])(implicit timeStep: TimeStep):Unit
+  def initializeGrid(keys:Seq[CalculationParametersIOLabels],values:Seq[Any]):Unit
 }

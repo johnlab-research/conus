@@ -12,38 +12,22 @@ import scala.collection.parallel.CollectionConverters._
 import scala.annotation.tailrec
 import java.lang.System.lineSeparator
 
-import org.carbonateresearch.conus.grids.Grid
+import org.carbonateresearch.conus.grids.GridFactory
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
+import org.carbonateresearch.conus.grids._
 
-
-final case class ModelCalculationSpace(grid:Grid, calculations:List[ChainableCalculation], calibrationSets: List[Calibrator], var results: List[EvaluatedModel] = List()) {
+final case class ModelCalculationSpace(grid:Grid, calculations:List[ChainableCalculation],
+                                       calibrationSets: List[Calibrator],
+                                       var results: List[EvaluatedModel] = List()) {
 
   var resultsList = scala.collection.mutable.ListBuffer.empty[EvaluatedModel].toList
   val EOL = lineSeparator()
+  val allModelVariables:List[Calculator] = calculations.head.modelParameters
+  val dataIndex:Map[CalculationParametersIOLabels,Int] = allModelVariables.map(c => (c.outputs,allModelVariables.indexOf(c))).toMap
 
-  def next(nextCalculationParameter: Calculator): ModelCalculationSpace = {
-    ModelCalculationSpace(grid,calculations.map(cl => cl next nextCalculationParameter), List())
-  }
 
-  def defineMathematicalModelPerCell(calculationList: Calculator*): ModelCalculationSpace = {
-    val newCalculators:List[Calculator] = calculationList.toList
-    val newChainableCalculations: List[ChainableCalculation] = calculations.map(cl =>
-      ChainableCalculation(cl.ID, cl.steps, (cl.modelParameters++newCalculators).reverse))
-
-    ModelCalculationSpace(grid,newChainableCalculations, List())
-  }
-
-  // Is the below still needed?
-  def calculationForEachCell(nextChainableCalculation: ChainableCalculation): ModelCalculationSpace = {
-    ModelCalculationSpace(grid,calculations.map(cl => cl next nextChainableCalculation), List())
-  }
-
-  def next(nextModelCalculationSpace: ModelCalculationSpace): ModelCalculationSpace = {
-    ModelCalculationSpace(grid,calculations.flatMap(cl => nextModelCalculationSpace.calculations.map(
-      ncl => cl next ncl)), List())
-  }
 
   def calibrationParameters(set:List[Calibrator]) : ModelCalculationSpace = {
     ModelCalculationSpace(grid,this.calculations,set)

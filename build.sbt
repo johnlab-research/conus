@@ -15,6 +15,7 @@ resolvers ++= Seq(
 )
 
 /*
+
 libraryDependencies += "org.openjfx" % "javafx-base" % "11-ea+25" classifier osName.value
 
 libraryDependencies += "org.openjfx" % "javafx-controls" % "11-ea+25" classifier osName.value
@@ -23,9 +24,9 @@ libraryDependencies += "org.openjfx" % "javafx-fxml" % "11-ea+25" classifier osN
 
 libraryDependencies += "org.openjfx" % "javafx-graphics" % "11-ea+25" classifier osName.value
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "11-R16"
+libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.2-R18"
 
-libraryDependencies += "org.scalafx" %% "scalafx-extras" % "0.3.0" */
+libraryDependencies += "org.scalafx" %% "scalafx-extras" % "0.3.3"*/
 
 libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.1"
 
@@ -35,11 +36,23 @@ libraryDependencies += "io.monix" %% "monix" % "3.1.0-2156c0e"
 
 libraryDependencies += "com.chuusai" %% "shapeless" % "2.3.3"
 
+
+
 libraryDependencies ++= Seq(
   "org.apache.poi" % "poi" % "4.1.2",
   "org.apache.poi" % "poi-ooxml" % "4.1.2",
   "org.apache.poi" % "poi-ooxml-schemas" % "4.1.2"
 )
+
+libraryDependencies  ++= Seq(
+  "org.scalanlp" %% "breeze" % "1.0",
+  "org.scalanlp" %% "breeze-natives" % "1.0",
+  "org.scalanlp" %% "breeze-viz" % "1.0"
+)
+
+libraryDependencies += "org.ojalgo" % "ojalgo" % "48.1.0"
+
+libraryDependencies += "org.ujmp" % "ujmp-core" % "0.3.0"
 
 
 

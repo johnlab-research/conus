@@ -29,7 +29,7 @@ final case class ModelVariable[T](override val name: String,
     }
   }
 
-  def apply(step:Step): T = {
+  def apply(step:Step, coordinates:Seq[Int]=Seq(0)): T = {
     val calculatedStep = step.stepNumber+step.stepOffset
     val stepNumber:Int = if(calculatedStep<0){0}else{calculatedStep}
     val modelData = step.currentResults
@@ -45,6 +45,7 @@ final case class ModelVariable[T](override val name: String,
       handleMissingValue(step)
     }
   }
+
 
   private def handleMissingValue(step:Step):T = {
     {
