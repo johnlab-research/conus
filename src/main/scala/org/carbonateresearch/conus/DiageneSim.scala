@@ -39,7 +39,6 @@ object DiageneSim extends App {
     (D47i,List(0.731))))
 
   val myFirstModel = new SteppedModel(numberOfSteps)
-    .setGrid(1,1)
     .defineInitialModelConditions(initialModelConditions)
     .defineMathematicalModelPerCell(
       age =>> ageOfStep(initialAge,finalAge),
@@ -54,8 +53,11 @@ object DiageneSim extends App {
 
   val runnedModel = myFirstModel.run
 
+  println(myFirstModel.grid.toString())
+
   Thread.sleep(10000000)
 
       }
+
 
 

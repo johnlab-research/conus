@@ -5,7 +5,6 @@ import org.carbonateresearch.conus.grids.universal.UniversalGrid1D
 
 trait GridElement {
   val vecSize:Int
-  val nbOfVariables:Int
   def toString(timeStep:Int):String
   def toString(timeStep:Int,keys:CalculationParametersIOLabels*):String
   def setAtCell[T](key:Int,value:T, coordinates:Seq[Int]):Unit

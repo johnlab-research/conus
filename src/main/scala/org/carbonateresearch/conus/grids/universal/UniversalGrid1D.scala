@@ -5,9 +5,13 @@ import breeze.linalg._
 import breeze.numerics._
 
 case class UniversalGrid1D(gridGeometry:Seq[Int],
-                           private val underlyingGrid:DenseVector[DataVector]) extends GridElement {
+                           private val underlyingGrid:DenseVector[DataVector],
+                           coordinates:Seq[Int]) extends GridElement {
   override val vecSize:Int = gridGeometry.head
-  override val nbOfVariables:Int = gridGeometry.tail.head
+
+  override def toString():String = {
+    (0 until gridGeometry.head).map(i => underlyingGrid(i).toString()).foldLeft("")(_+_)
+  }
   override def toString(timeStep:Int):String = {"TODO"}
   override def toString(timeStep:Int,keys:CalculationParametersIOLabels*):String = {"TODO"}
 
@@ -36,17 +40,16 @@ case class UniversalGrid1D(gridGeometry:Seq[Int],
   }
 
   private def reduceToOneVariable(key:Int):UniversalGrid1D = {
-    val updatedVec = new DenseVector[DataVector](vecSize).map(i => {DataVector(1)})
+    val updatedVec = new DenseVector[DataVector](vecSize).map(i => {DataVector(1,coordinates:+0)})
     (0 until vecSize).foreach(i => updatedVec(i).set(0,this.getValueAtCell(key,Seq(i))))
-    new UniversalGrid1D(gridGeometry,updatedVec)
+    new UniversalGrid1D(gridGeometry,updatedVec,coordinates)
   }
 }
 
 object UniversalGrid1D {
-  def apply(gridGeometry:Seq[Int]):UniversalGrid1D = {
+  def apply(gridGeometry:Seq[Int], nbVariables:Int, coordinates:Seq[Int]):UniversalGrid1D = {
     val vecSize = gridGeometry.head
-    val nbOfVariables = gridGeometry.tail.head
-    val underlyingGrid = new DenseVector[DataVector](vecSize).map(i => {DataVector(nbOfVariables)})
-    new UniversalGrid1D(gridGeometry,underlyingGrid)
+    val underlyingGrid = DenseVector.tabulate[DataVector](vecSize) {i => DataVector(nbVariables,coordinates:+i)}
+    new UniversalGrid1D(gridGeometry,underlyingGrid,coordinates)
   }
 }

@@ -1,17 +1,13 @@
 package org.carbonateresearch.conus.grids.universal
 import org.carbonateresearch.conus.common.CalculationParametersIOLabels
 import org.carbonateresearch.conus.grids.{Grid, GridElement}
+import java.lang.System.lineSeparator
 import breeze.linalg._
 
 case class UniversalGrid(override val gridGeometry:Seq[Int],
                          override val nbSteps:Int,
                          override val variableMap:Map[CalculationParametersIOLabels,Int],
                         private val underlyingGrid:DenseVector[GridElement]) extends Grid {
-
-  underlyingGrid.map(i => UniversalGrid1D(gridGeometry))
-
-  def toString(timeStep:TimeStep):String = underlyingGrid(timeStep).toString()
-  def toString(timeStep:TimeStep,keys:CalculationParametersIOLabels*):String = underlyingGrid(timeStep).toString()
 
   def getVariableAtCellForTimeStep[T](key:CalculationParametersIOLabels, coordinates:Seq[Int])(implicit timeStep: TimeStep):T = {
     val index:Int = variableMap(key)
@@ -43,17 +39,31 @@ case class UniversalGrid(override val gridGeometry:Seq[Int],
     (0 until nbSteps).foreach(t => setManyForTimeStep(keys,values)(t))
   }
 
-
   private def reduceToOneVariable(key:Int):UniversalGrid = {
     val updatedGrid = this.copy(gridGeometry, nbSteps, variableMap,underlyingGrid)
     (0 until nbSteps).foreach(i => updatedGrid.underlyingGrid(i).getValueForAllCells(key))
     updatedGrid
   }
+
+  override def toString:String = {
+    val cString = gridGeometry.size match {
+      case 1 => ",X-Coordinate"
+      case 2 => ",X-Coordinate,Y-Coordinate"
+      case _ => ",X-Coordinate,Y-Coordinate,Z-Coordinate"
+    }
+    "Step"+cString+variableMap.map(x => ","+x._1.toString).foldLeft("")(_+_)+lineSeparator()+
+    (0 until nbSteps).map(s => {
+      underlyingGrid(s).toString()
+    }).foldLeft("")(_+_)
+  }
+  def toString(timeStep:TimeStep):String = underlyingGrid(timeStep).toString()
+  def toString(timeStep:TimeStep,keys:CalculationParametersIOLabels*):String = underlyingGrid(timeStep).toString()
+
 }
 
 object UniversalGrid {
   def apply(gridGeometry:Seq[Int], nbSteps:Int, variableMap:Map[CalculationParametersIOLabels,Int]):UniversalGrid = {
-     val underlyingGrid = new DenseVector[GridElement](nbSteps)
+     val underlyingGrid = DenseVector.tabulate[GridElement](nbSteps){i => UniversalGrid1D(gridGeometry,variableMap.size,Seq(i))}
     new UniversalGrid(gridGeometry, nbSteps, variableMap, underlyingGrid)
   }
 }
