@@ -2,17 +2,20 @@ package org.carbonateresearch.conus.common
 import shapeless.HMap
 import org.carbonateresearch.conus.common.Step
 import org.carbonateresearch.conus.util.StepFunctionUtils.StepFunction
+import java.lang.System.lineSeparator
+import scala.util.{Try, Success,Failure}
 
 final case class ModelVariable[T](override val name: String,
-                                  defaultValue:T,
+                                  initialValue:T,
                                   override val unitName:String = "",
                                   override val silent: Boolean = false,
                                   override val precision:Int = 2,
                                   ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
-
+val EOL = lineSeparator()
   override def toString: String = name
+  override def defaultValue:Any = initialValue.asInstanceOf[Any]
 
-  override def getValueAsString(value:Any):String = {
+  override def formatValueAsString(value:Any):String = {
     val typedValue:T = value.asInstanceOf[T]
     formatValue(precision,typedValue)
   }
@@ -29,41 +32,34 @@ final case class ModelVariable[T](override val name: String,
     }
   }
 
-  def apply(step:Step, coordinates:Seq[Int]=Seq(0)): T = {
-    val calculatedStep = step.stepNumber+step.stepOffset
+  def apply(step:Step): T = {
+    val calculatedStep = step.stepNumber-step.stepOffset
     val stepNumber:Int = if(calculatedStep<0){0}else{calculatedStep}
-    val modelData = step.currentResults
-    if (modelData.isDefinedAt(stepNumber)) {
-      val optionWrappedData: Option[T] = modelData.getStepResult(stepNumber,this)
 
-      optionWrappedData match {
-        case v: Some[T] => v.get
-        case None => handleMissingValue(step)
+    val returnedValue:T = tryAccess(step,stepNumber) match {
+      case Success(t:T) => t
+      case Failure(e: Throwable) => {
+        println("Exception "+e.toString+" reached in variable "+name+" at step "+step.stepNumber)
+        tryAccess(step,0) match {
+        case Success(z:T) => {
+          println("Returning initial value instead"+EOL)
+          z}
+        case _ => {
+          println("Returning default value instead"+EOL)
+          initialValue}
       }
     }
-    else {
-      handleMissingValue(step)
     }
+    returnedValue
   }
 
 
-  private def handleMissingValue(step:Step):T = {
-    {
-      val stepNumber = step.stepNumber
 
-      this.ifNoValue match {
-        case ReturnDefaultValue => defaultValue
-        case ReturnInitialConditions => {
-          if (stepNumber != 0) {
-            this.apply(Step(0,step.totalSteps, step.currentResults, step.stepErrors))
-          } else {
-            defaultValue
-          }
-        }
-        case v: ReturnSpecificValue[T] => v.value
+  private def tryAccess(step:Step,stepNumber:Int):Try[T] = {
+     Try {
+        step.grid.getVariableAtCellForTimeStep(this,step.coordinates)(stepNumber).asInstanceOf[T]
       }
     }
-  }
 
   def =>>(f: StepFunction[T]):CalculationDescription[T] = {
     ApplyStepFunction(f).storeResultAs(this)

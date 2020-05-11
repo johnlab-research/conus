@@ -5,16 +5,17 @@ import Console.{BLUE, CYAN, GREEN, MAGENTA, RED, RESET, UNDERLINED, WHITE, YELLO
 import scala.concurrent.Future
 
 trait CalculationDispatcher {
-def calculateModelsList(models:List[ChainableCalculation]):Future[List[EvaluatedModel]] = {???}
+def calculateModelsList(models:List[SingleModel]):Future[List[SingleModelResults]] = {???}
 val typeOfDispatcher:String = "Not specified"
-  def outputString(models:List[ChainableCalculation]):String = {
+  def outputString(models:List[SingleModel]):String = {
     val EOL = lineSeparator()
     val nbModels = models.size
     val model = models.head
-    val nbOperation = model.modelParameters.size
-    val nbSteps = model.steps.size
+    val gridSize:Int = model.grid.gridGeometry.product
+    val nbOperation = model.calculations.size*gridSize
+    val nbSteps = model.nbSteps
     val totalNumberOperations = (nbModels*nbSteps*nbOperation)
-    val totNbOperationString:String = totalNumberOperations.toString()
+    val totNbOperationString:String = totalNumberOperations.toString
     val strLen = totNbOperationString.length
     val remainingChar = strLen%3
     val groupsOfThrees:Int = ((strLen-remainingChar)/3) - {if(remainingChar == 0){1}else{0}}
@@ -32,6 +33,7 @@ val typeOfDispatcher:String = "Not specified"
 
     s"${RESET}${MAGENTA}${UNDERLINED}RUN DATA${RESET}" + EOL +
       s"${RESET}${YELLOW}Total number of models:${RESET} ${WHITE}" + nbModels.toString + EOL +
+      s"${RESET}${YELLOW}Number of cell per grid:${RESET}${WHITE} " + gridSize + EOL +
       s"${RESET}${YELLOW}Number of steps per model:${RESET}${WHITE} " + nbSteps + EOL +
       s"${RESET}${YELLOW}Number of operation per step:${RESET}${WHITE} " + nbOperation + EOL +
       s"${RESET}${YELLOW}Total number of operations:${RESET}${WHITE} "+ totNbOperationStringFormatted + EOL +

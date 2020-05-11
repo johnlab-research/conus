@@ -29,17 +29,13 @@ object DiageneSim extends App {
   //val burialHistory = List((110.0,0.0), (50.0,1000.0),(0.0,100.0))
   val geothermalGradientHistory= List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
   val surfaceTemperaturesHistory = List((110.0,30.0),(38.0, 30.0),(0.0,30.0))
-  val numberOfSteps = 150
+  val numberOfSteps = 2
   val ageList:List[Double] = List(50,51,52,53,54,55,56,57.58,59,60,64)
   val initialAge:ModelVariable[Double] = ModelVariable("Initial age",110.0,"Ma")
   val finalAge:ModelVariable[Double] = ModelVariable("Final age",0.0,"Ma")
 
-  val initialModelConditions = InitializeValues(List((initialAge,List(110.0,112.0)),
-    (finalAge,List(0.0,10.0)),
-    (D47i,List(0.731))))
-
   val myFirstModel = new SteppedModel(numberOfSteps)
-    .defineInitialModelConditions(initialModelConditions)
+    .setGrid(5)
     .defineMathematicalModelPerCell(
       age =>> ageOfStep(initialAge,finalAge),
   depth =>> burialDepthFromAgeModel(age,burialHistory),
@@ -50,10 +46,13 @@ object DiageneSim extends App {
       D47eq =>> D47eqFun,
   D47i =>> D47iFun,
   SampleTemp =>> davies19_T)
+    .defineInitialModelConditions(InitialConditions(initialAge,List(110.0)),
+      InitialConditions(finalAge,List(10.0)),
+      InitialConditions(D47i,List(0.731))
+    )
 
-  val runnedModel = myFirstModel.run
+ val runnedModel = myFirstModel.run
 
-  println(myFirstModel.grid.toString())
 
   Thread.sleep(10000000)
 

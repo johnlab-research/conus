@@ -1,14 +1,18 @@
 package org.carbonateresearch.conus.common
 
-case class Step(stepNumber:Int, totalSteps: Int, currentResults:SingleModelResults, stepErrors:String,stepOffset:Int=0){
-  def - (offset:Int):Step = Step(this.stepNumber,this.totalSteps,this.currentResults,this.stepErrors,offset * -1)
-  def i: Step = Step(this.stepNumber,this.totalSteps,this.currentResults,this.stepErrors,this.stepNumber)
+import org.carbonateresearch.conus.grids.{Grid, GridFactory}
+
+case class Step(stepNumber:Int, coordinates:Seq[Int], grid:Grid, stepErrors:String, stepOffset:Int=0){
+  def - (offset:Int):Step = Step(this.stepNumber,this.coordinates,this.grid,this.stepErrors,offset)
+  def i: Step = Step(this.stepNumber,this.coordinates,this.grid,this.stepErrors,this.stepNumber)
 }
 
 object Step {
   def apply[T](k:ModelVariable[T],v:T):Step = {
     val sr = StepResultsWithData(k,v)
-    val modelResults = SingleModelResults(Map(0->sr))
-    Step(0,1,modelResults,"")
+    val mv = ModelVariable[Int]("Dummy",0)
+    val varMap = Map(mv.asInstanceOf[CalculationParametersIOLabels]->0)
+    val grid = GridFactory(Seq(1),1,varMap)
+    Step(0,Seq(0),grid,"")
   }
 }

@@ -5,11 +5,11 @@ import java.io.{File, FileOutputStream}
 import scala.jdk.CollectionConverters
 
 case object ExcelIO{
-  def writeExcel(models: List[EvaluatedModel],filename:String): Unit ={
+  def writeExcel(models: List[SingleModelResults],filename:String): Unit ={
     models.foreach(m => writeIndividualModel(m,filename+"/Model"+m.ID+".xlsx"))
   }
 
-  private def writeIndividualModel(model:EvaluatedModel,filename:String):Unit = {
+  private def writeIndividualModel(model:SingleModelResults,filename:String):Unit = {
     val workbook = new XSSFWorkbook
     val formatter = new DataFormatter()
 
@@ -28,9 +28,9 @@ case object ExcelIO{
     cell3.setAsActiveCell()
     cell3.setCellValue("UNIT")
 
-    val headers:List[CalculationParametersIOLabels] = model.results.getModelVariablesForStep(0)
+    val headers:List[CalculationParametersIOLabels] = model.theGrid.variableMap.keys.toList
 
-    val numberOfRows = (0 until headers.size)
+    val numberOfRows = headers.indices
 
     numberOfRows.foreach(r => {
     val row = sheet2.createRow(r+1)
@@ -40,7 +40,7 @@ case object ExcelIO{
 
       val cell2 = row.createCell(1)
       cell2.setAsActiveCell()
-      cell2.setCellValue(model.results.getStepResult(0,headers(r)).toString)
+      cell2.setCellValue(model.initialConditions(r).toString)
 
       val cell3 = row.createCell(2)
       cell3.setAsActiveCell()

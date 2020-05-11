@@ -1,82 +1,54 @@
 package org.carbonateresearch.conus.common
 import java.lang.System.lineSeparator
+
+import org.carbonateresearch.conus.grids.{Grid, GridElement}
 import org.carbonateresearch.conus.util.CommonModelVariables.NumberOfSteps
 
-case class SingleModelResults(private val dataContainer: Map[Int,StepResults]) extends SimulationResults {
+case class SingleModelResults(ID:Int,
+                              nbSteps:Int,
+                              theGrid:Grid,
+                              initialConditions:List[InitialCondition]) extends SimulationResults {
 val EOL = lineSeparator()
-  def size:Int = dataContainer.size
-  def prettyPrint[T](k:ModelVariable[T],step:Int):String = {
-    dataContainer(step).prettyPrint(k)
-  }
+  def size:Int = theGrid.size
 
-  def printStepResults(step:Int):String = {
-    "Step #"+step+""+dataContainer(step).allStepResultsString+EOL
+  def prettyPrint[T](k:ModelVariable[T],step:Int, coordinate:Seq[Int]):String = {
+    theGrid.getVariableForTimeStep(k)(step).toString()
   }
 
   def completeModelResultsString: String = {
-    val mySteps:List[Int] = (0 until resultsForStep(0).get(NumberOfSteps).getOrElse(0)).toList
-    mySteps.map(k => printStepResults(k)).foldLeft("")(_ + _)
+    theGrid.summary
   }
 
   def isDefinedAt(step:Int):Boolean = {
-    dataContainer.isDefinedAt(step)
+   // if(Option(theGrid.getTimeStep(step)) == Some[GridElement])
+    true
   }
 
-  def variableIsDefinedAt[T](k:ModelVariable[T],step:Int):Boolean = {
-    dataContainer(step).isDefinedAt(k)
+  def isDefinedAt(step:Int, coordinates:Seq[Int]):Boolean = {
+    // if(Option(theGrid.getTimeStep(step)) == Some[GridElement])
+    true
   }
 
-  def resultsForStep(stepNumber: Int): StepResults = dataContainer(stepNumber)
-
-  def getStepResult[T](stepNumber:Int, k:ModelVariable[T]): Option[T] = {
-    dataContainer(stepNumber).get(k)
+  def variableIsDefinedAt[T](k:ModelVariable[T],step:Int, coordinates:Seq[Int]):Boolean = {
+   // theGrid(step).isDefinedAt(k)
+    true
   }
 
-  def getStepResult(stepNumber:Int, k:CalculationParametersIOLabels): Any = {
-    dataContainer(stepNumber).get(k)
+  def resultsForStep(stepNumber: Int): GridElement = theGrid.getTimeStep(stepNumber)
+
+  def getStepResult[T](stepNumber:Int, k:ModelVariable[T]): GridElement= {
+    theGrid.getVariableForTimeStep(k)(stepNumber)
   }
 
-  def  getModelVariablesForStep(step:Int):List[CalculationParametersIOLabels] = dataContainer(step).getAllKeys
-
-  def mergeWith(otherModelResults:SingleModelResults): SingleModelResults = SingleModelResults(this.dataContainer ++ otherModelResults.dataContainer)
-
-  def addParameterResultAtLastStep[T](k:ModelVariable[T],v:T): SingleModelResults = {
-    addDataAtStepLevel(lastStepNumber,k,v)
+  def getStepResult(stepNumber:Int, k:CalculationParametersIOLabels): GridElement = {
+    theGrid.getVariableForTimeStep(k)(stepNumber)
   }
 
-  def addParameterResultAtNewStep[T](k:ModelVariable[T],v:T): SingleModelResults ={
-    val newStepNumber:Int = dataContainer.size
-    val newStep = StepResultsWithData(k, v)
-    SingleModelResults(dataContainer++Map(newStepNumber->newStep))
-  }
+  def  getModelVariablesForStep(step:Int):List[CalculationParametersIOLabels] = theGrid.variableMap.keys.toList
 
-  def addParameterResultAtStep[T](k:ModelVariable[T],v:T,atStepNumber:Int): SingleModelResults = {
-    if(atStepNumber<dataContainer.size){
-    addDataAtStepLevel(atStepNumber,k,v)} else {
-      addParameterResultAtNewStep(k,v)
-    }
-  }
+  private def lastStepNumber:Int = theGrid.nbSteps
+  private def lastStep:GridElement = theGrid.getTimeStep(lastStepNumber)
 
-  def addParameterResultsAtStep[T](m:Map[CalculationParametersIOLabels,Any],atStepNumber:Int): SingleModelResults = {
-    SingleModelResults(dataContainer ++ Map(lastStepNumber->dataContainer(atStepNumber).add(m)))
-  }
+  def summary: String = "Model summary"
 
-  def addStepResultAtStep[T](stepResult:StepResults,atStepNumber:Int): SingleModelResults = {
-    SingleModelResults(dataContainer++Map(atStepNumber->stepResult))
-  }
-
-  private def addDataAtStepLevel[T](stepNumber:Int, k:ModelVariable[T],v:T):SingleModelResults = {
-    val newStepResults:StepResults = lastStep.add(k,v)
-    SingleModelResults(dataContainer ++ Map(stepNumber -> newStepResults))
-  }
-
-  private def lastStepNumber:Int = dataContainer.size-1
-  private def lastStep:StepResults = dataContainer(lastStepNumber)
-
-  def resultsPerLabel: ResultsPerModelVariable = {
-      val keys:List[CalculationParametersIOLabels] = dataContainer(lastStepNumber).getAllKeys
-    val steps:List[Int] = dataContainer.keys.toList
-
-    ResultsPerModelVariable(keys.zip(keys.map(k => steps.zip(dataContainer.map(s => s._2.get(k)).toList).toMap)).toMap)
-  }
 }

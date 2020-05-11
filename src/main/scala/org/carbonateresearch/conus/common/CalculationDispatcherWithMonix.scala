@@ -9,7 +9,7 @@ import scala.util.{Failure, Success}
 
 class CalculationDispatcherWithMonix extends CalculationDispatcher {
   override val typeOfDispatcher: String = java.lang.Runtime.getRuntime.availableProcessors.toString
-  override def calculateModelsList(models: List[ChainableCalculation]): Future[List[EvaluatedModel]] = {
+  override def calculateModelsList(models: List[SingleModel]): Future[List[SingleModelResults]] = {
 
     val initialCount = models.size
 

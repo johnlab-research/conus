@@ -8,7 +8,7 @@ import breeze.linalg._
 case class DataVector(vectorSize:Int,
                       coordinates:Seq[Int]) {
   private val EOL:String = lineSeparator()
-  val underlyingVector:DenseVector[Any] = DenseVector.tabulate[Any](vectorSize) {i => 0}
+  val underlyingVector:DenseVector[Any] = DenseVector.tabulate[Any](vectorSize){x => 0.asInstanceOf[Any]}
 
   def get[T](key:Int):T = {
     underlyingVector(key).asInstanceOf[T]

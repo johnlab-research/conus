@@ -24,7 +24,7 @@ case class UniversalGrid1D(gridGeometry:Seq[Int],
   }
 
   override def setForAllCells[T](key:Int,value:T):Unit = {
-    gridGeometry.foreach(c => underlyingGrid(c).set(key,value))
+    (0 until gridGeometry.head).foreach(c => underlyingGrid(c).set(key,value))
   }
 
   override def setManyForAllCells[T](keys:Seq[Int],values:Seq[T]):Unit = {

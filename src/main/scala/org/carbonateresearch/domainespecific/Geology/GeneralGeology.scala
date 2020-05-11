@@ -14,7 +14,6 @@ object GeneralGeology {
     scaleFromMinToMaxByStep(youngestAge,oldestAge)}
 
   def ageOfStep[T](oldestAge: ModelVariable[T], youngestAge:ModelVariable[T])(implicit num:Fractional[T]):StepFunction[T] = {
-
     (s:Step) => (scaleFromMinToMaxByStep(youngestAge(s.i),oldestAge(s.i))).apply(s)}
 
   def burialDepthFromAgeModel[T](age:ModelVariable[T], ageModel:List[(T,T)])(implicit num:Fractional[T]):StepFunction[T] =  interpolatedValue(age,ageModel)

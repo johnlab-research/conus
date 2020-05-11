@@ -14,7 +14,7 @@ case class StepResultsWithData(private val dataContainer:Map[CalculationParamete
 
   override def get[T](k: CalculationParametersIOLabels): Any = {
     k match {
-      case v: ModelVariable[T] => getAnOption(v).getOrElse(v.defaultValue)
+      case v: ModelVariable[T] => getAnOption(v).getOrElse(v.initialValue)
       case _ => None
     }
   }
@@ -41,12 +41,12 @@ case class StepResultsWithData(private val dataContainer:Map[CalculationParamete
   }
 
   override def add[T](k: ModelVariable[T], v: T): StepResultsWithData = {
-    val data = Data(v, k.getValueAsString(v), k.labelToValueFormattedString(v))
+    val data = Data(v, k.formatValueAsString(v), k.labelToValueFormattedString(v))
     StepResultsWithData(this.dataContainer ++ Map(k -> data))
   }
 
   def add(m: Map[CalculationParametersIOLabels, Any]): StepResults = {
-    val theData: Map[CalculationParametersIOLabels, Data] = m.flatMap(i => Map(i._1 -> Data(i._2, (i._1).getValueAsString(i._2), (i._1).labelToValueFormattedString(i._2))))
+    val theData: Map[CalculationParametersIOLabels, Data] = m.flatMap(i => Map(i._1 -> Data(i._2, (i._1).formatValueAsString(i._2), (i._1).labelToValueFormattedString(i._2))))
     StepResultsWithData(dataContainer++theData)
   }
 

@@ -1,13 +1,17 @@
 package org.carbonateresearch.conus.grids.universal
 import org.carbonateresearch.conus.common.CalculationParametersIOLabels
-import org.carbonateresearch.conus.grids.{Grid, GridElement}
+import org.carbonateresearch.conus.grids.{Grid, GridElement, GridStringFormatter}
 import java.lang.System.lineSeparator
+
+import scala.collection.immutable.ListMap
 import breeze.linalg._
 
 case class UniversalGrid(override val gridGeometry:Seq[Int],
                          override val nbSteps:Int,
                          override val variableMap:Map[CalculationParametersIOLabels,Int],
                         private val underlyingGrid:DenseVector[GridElement]) extends Grid {
+
+  private val EOL = lineSeparator()
 
   def getVariableAtCellForTimeStep[T](key:CalculationParametersIOLabels, coordinates:Seq[Int])(implicit timeStep: TimeStep):T = {
     val index:Int = variableMap(key)
@@ -23,7 +27,10 @@ case class UniversalGrid(override val gridGeometry:Seq[Int],
   }
 
   def setAtCell[T](key:CalculationParametersIOLabels,value:T, coordinates:Dimensions)(implicit timeStep: TimeStep):Unit = {
-    underlyingGrid(timeStep).setAtCell(variableMap(key),value,coordinates)
+    coordinates.size match {
+      case 0 => initializeGrid(Seq(key),Seq(value))
+      case _ => underlyingGrid (timeStep).setAtCell (variableMap (key), value, coordinates)
+    }
   }
 
   def setManyAtCell(keys:Seq[CalculationParametersIOLabels],values:Seq[Any], coordinates:Dimensions)(implicit timeStep: TimeStep):Unit = {
@@ -47,23 +54,28 @@ case class UniversalGrid(override val gridGeometry:Seq[Int],
 
   override def toString:String = {
     val cString = gridGeometry.size match {
-      case 1 => ",X-Coordinate"
-      case 2 => ",X-Coordinate,Y-Coordinate"
-      case _ => ",X-Coordinate,Y-Coordinate,Z-Coordinate"
+      case 1 => ",X"
+      case 2 => ",X,Y"
+      case _ => ",X,Y,Z"
     }
-    "Step"+cString+variableMap.map(x => ","+x._1.toString).foldLeft("")(_+_)+lineSeparator()+
+    "Timestep"+cString+ListMap(variableMap.toSeq.sortBy(_._2):_*).map(x => ","+x._1.toString).foldLeft("")(_+_)+lineSeparator()+
     (0 until nbSteps).map(s => {
       underlyingGrid(s).toString()
     }).foldLeft("")(_+_)
   }
-  def toString(timeStep:TimeStep):String = underlyingGrid(timeStep).toString()
-  def toString(timeStep:TimeStep,keys:CalculationParametersIOLabels*):String = underlyingGrid(timeStep).toString()
 
+  def printGridResults:String = {
+    val formatter = new GridStringFormatter
+    formatter.printAsGrid(this.toString)
+  }
+
+  def summary:String = printGridResults
 }
 
 object UniversalGrid {
   def apply(gridGeometry:Seq[Int], nbSteps:Int, variableMap:Map[CalculationParametersIOLabels,Int]):UniversalGrid = {
      val underlyingGrid = DenseVector.tabulate[GridElement](nbSteps){i => UniversalGrid1D(gridGeometry,variableMap.size,Seq(i))}
+
     new UniversalGrid(gridGeometry, nbSteps, variableMap, underlyingGrid)
   }
 }

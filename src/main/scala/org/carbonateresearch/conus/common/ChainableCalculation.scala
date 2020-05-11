@@ -4,11 +4,10 @@ import org.carbonateresearch.conus.common.Calculator
 //import org.carbonateresearch.conus.equations.parametersIO._
 import scala.annotation.tailrec
 import org.carbonateresearch.conus.util.TimeUtils
-import org.carbonateresearch.conus.util.Implicits._
 import org.carbonateresearch.conus.util.CommonModelVariables._
 import java.lang.System.lineSeparator
 
-final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:List[Calculator]) {
+abstract final case class ChainableCalculation(ID:Int, steps:List[Int], modelParameters:List[Calculator]) { /*
 val EOL = lineSeparator()
   def next(nextModelParameters: Calculator*): ChainableCalculation = {
     nextModelParameters.size match {
@@ -56,7 +55,7 @@ val EOL = lineSeparator()
           evaluateSingleStepWithCounter(xs,x.calculate(currentStep))}
       }
     }
-    evaluateSingleStepWithCounter(parameters,initialStep).currentResults
+    evaluateSingleStepWithCounter(parameters,initialStep).grid
   }
 
   private def printOutputString(time:Double,model:EvaluatedModel): Unit = {
@@ -77,7 +76,7 @@ val EOL = lineSeparator()
     else {seconds + " seconds"}
     timeString
   }
-
+*/
 }
 
 
