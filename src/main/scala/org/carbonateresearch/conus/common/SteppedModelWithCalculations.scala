@@ -25,7 +25,7 @@ case class SteppedModelWithCalculations(nbSteps:Int,
       iv.foreach(ic => theGrid.setAtCell(ic.variable,ic.value,ic.coordinates)(0))
      theGrid
     })
-    grids.map(g => SingleModel(ID = grids.indexOf(g),nbSteps=nbSteps,grid = g,calculations=mathematicalModel,initialConditions=initialValues(grids.indexOf(g))))
+    grids.map(g => SingleModel(ID = grids.indexOf(g)+1,nbSteps=nbSteps,grid = g,calculations=mathematicalModel,initialConditions=initialValues(grids.indexOf(g))))
   }
 
   private def defineVariableMap(initialValues:List[List[InitialCondition]]):Map[CalculationParametersIOLabels,Int] = {

@@ -1434,3 +1434,5 @@ Time, Tag, Workers, Files, Compilation Duration (ms), GC Duration (ms)
 2020/05/10 20:11:44,        diagenesissim/main,   4,     4,      1702,        71
 2020/05/10 20:11:47,        diagenesissim/main,   1,     1,       722,        13
 2020/05/10 20:13:50,        diagenesissim/main,   1,     1,      1405,        27
+2020/05/14 11:41:12,        diagenesissim/main,   1,     1,      1500,         9
+2020/05/14 11:42:20,        diagenesissim/main,   1,     1,       796,         0
