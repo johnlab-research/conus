@@ -8311,3 +8311,103 @@ def calculateModelsList(models:List[SingleModel]):Future[List[EvaluatedModel]] =
 2020-05-19 13:34:09.102 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 21 milliseconds
 2020-05-19 13:34:09.102 INFO  c.t.hydra.Hydra - Hydra compiling: 404 ms
 2020-05-19 13:34:09.104 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589891648692
+2020-05-19 13:38:53.594 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 53 files in 1 roots took 28 ms.
+2020-05-19 13:38:53.603 INFO  c.t.hydra.Hydra - Loaded pickle store with 182 entries.
+2020-05-19 13:38:53.603 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 13:38:53.603 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 13:38:53.603 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 13:38:53.604 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 13:38:53.604 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 13:38:53.606 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 31. Maximum cores: 8
+2020-05-19 13:38:53.607 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 13:38:53.607 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 13:38:53.609 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 886:452:84:1:1
+2020-05-19 13:38:53.618 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 13:38:53.618 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 13:38:53.618 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-05-19 13:38:53.618 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 1 files.
+2020-05-19 13:38:53.618 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 1 files.
+2020-05-19 13:38:53.808 INFO  worker.3 - [ cache invalidate ]: org.carbonateresearch.conus.common.InitialConditions.copy$default$2 type was: List[Any] @scala.annotation.unchecked.uncheckedVariance, now: List[List[Any]] @scala.annotation.unchecked.uncheckedVariance
+2020-05-19 13:38:53.881 INFO  worker.1 - [ cache invalidate ]: org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$2 type was: List[org.carbonateresearch.conus.common.Calibrator] @scala.annotation.unchecked.uncheckedVariance, now: String @scala.annotation.unchecked.uncheckedVariance
+2020-05-19 13:38:53.882 INFO  worker.1 - [ cache invalidate ]: org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$3 type was: List[org.carbonateresearch.conus.common.SingleModelResults] @scala.annotation.unchecked.uncheckedVariance, now: List[org.carbonateresearch.conus.common.Calibrator] @scala.annotation.unchecked.uncheckedVariance
+2020-05-19 13:38:53.883 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala:7: type mismatch;
+ found   : String
+ required: Seq[Int] @scala.annotation.unchecked.uncheckedVariance
+                                        modelName:String,
+                                        ^
+2020-05-19 13:38:53.890 INFO  worker.4 - [ cache invalidate ]: org.carbonateresearch.conus.common.SteppedModelWithCalculations.copy$default$2 type was: Seq[Int] @scala.annotation.unchecked.uncheckedVariance, now: String @scala.annotation.unchecked.uncheckedVariance
+2020-05-19 13:38:53.890 INFO  worker.4 - [ cache invalidate ]: org.carbonateresearch.conus.common.SteppedModelWithCalculations.copy$default$3 type was: List[org.carbonateresearch.conus.common.Calculator] @scala.annotation.unchecked.uncheckedVariance, now: Seq[Int] @scala.annotation.unchecked.uncheckedVariance
+2020-05-19 13:38:53.900 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala:8: type mismatch;
+ found   : Seq[Int]
+ required: List[org.carbonateresearch.conus.common.Calculator] @scala.annotation.unchecked.uncheckedVariance
+                                        gridGeometry:Seq[Int],
+                                        ^
+2020-05-19 13:38:53.920 ERROR worker.0 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala:7: type mismatch;
+ found   : String
+ required: Seq[Int] @scala.annotation.unchecked.uncheckedVariance
+                                        modelName:String,
+                                        ^
+2020-05-19 13:38:53.939 ERROR worker.0 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala:8: type mismatch;
+ found   : Seq[Int]
+ required: List[org.carbonateresearch.conus.common.Calculator] @scala.annotation.unchecked.uncheckedVariance
+                                        gridGeometry:Seq[Int],
+                                        ^
+2020-05-19 13:38:53.968 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala:22: type mismatch;
+ found   : String
+ required: List[org.carbonateresearch.conus.common.Calibrator] @scala.annotation.unchecked.uncheckedVariance
+                                       modelName:String,
+                                       ^
+2020-05-19 13:38:53.982 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala:22: type mismatch;
+ found   : String
+ required: List[org.carbonateresearch.conus.common.Calibrator] @scala.annotation.unchecked.uncheckedVariance
+                                       modelName:String,
+                                       ^
+2020-05-19 13:38:53.986 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala:23: type mismatch;
+ found   : List[org.carbonateresearch.conus.common.Calibrator]
+ required: List[org.carbonateresearch.conus.common.SingleModelResults] @scala.annotation.unchecked.uncheckedVariance
+                                       calibrationSets: List[Calibrator] = List(),
+                                       ^
+2020-05-19 13:38:53.986 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala:23: type mismatch;
+ found   : List[org.carbonateresearch.conus.common.Calibrator]
+ required: List[org.carbonateresearch.conus.common.SingleModelResults] @scala.annotation.unchecked.uncheckedVariance
+                                       calibrationSets: List[Calibrator] = List(),
+                                       ^
+2020-05-19 13:38:54.010 ERROR worker.0 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala:22: type mismatch;
+ found   : String
+ required: List[org.carbonateresearch.conus.common.Calibrator] @scala.annotation.unchecked.uncheckedVariance
+                                       modelName:String,
+                                       ^
+2020-05-19 13:38:54.015 ERROR worker.0 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala:23: type mismatch;
+ found   : List[org.carbonateresearch.conus.common.Calibrator]
+ required: List[org.carbonateresearch.conus.common.SingleModelResults] @scala.annotation.unchecked.uncheckedVariance
+                                       calibrationSets: List[Calibrator] = List(),
+                                       ^
+2020-05-19 13:38:54.026 INFO  worker.2 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala,org.carbonateresearch.conus.common.SteppedModelWithCalculations.copy$default$3)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialConditions.scala,org.carbonateresearch.conus.common.InitialConditions.copy$default$2)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala,org.carbonateresearch.conus.common.SteppedModelWithCalculations.copy$default$2)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$3)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$2)
+2020-05-19 13:38:54.026 INFO  worker.2 - Respawning worker because of inconsistent reads.
+2020-05-19 13:38:54.027 INFO  worker.4 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialConditions.scala,org.carbonateresearch.conus.common.InitialConditions.copy$default$2)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$3)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$2)
+2020-05-19 13:38:54.027 INFO  worker.4 - Respawning worker because of inconsistent reads.
+2020-05-19 13:38:54.052 INFO  worker.0 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala,org.carbonateresearch.conus.common.SteppedModelWithCalculations.copy$default$3)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialConditions.scala,org.carbonateresearch.conus.common.InitialConditions.copy$default$2)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala,org.carbonateresearch.conus.common.SteppedModelWithCalculations.copy$default$2)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$3)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelCalculationSpace.scala,org.carbonateresearch.conus.common.ModelCalculationSpace.copy$default$2)
+2020-05-19 13:38:54.052 INFO  worker.0 - Respawning worker because of inconsistent reads.
+2020-05-19 13:38:54.095 INFO  worker.3 - Worker used 0 cached entries.
+2020-05-19 13:38:54.096 INFO  c.t.h.WorkerThread - [worker.3]: 476 ms 	1 sources.
+2020-05-19 13:38:54.139 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-19 13:38:54.141 INFO  c.t.h.WorkerThread - [worker.1]: 521 ms 	1 sources.
+2020-05-19 13:38:54.455 INFO  worker.2 - Worker used 0 cached entries.
+2020-05-19 13:38:54.455 INFO  c.t.h.WorkerThread - [worker.2]: 836 ms 	1 sources.
+2020-05-19 13:38:54.523 INFO  worker.4 - Worker used 0 cached entries.
+2020-05-19 13:38:54.523 INFO  c.t.h.WorkerThread - [worker.4]: 902 ms 	1 sources.
+2020-05-19 13:38:54.568 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 13:38:54.568 INFO  c.t.h.WorkerThread - [worker.0]: 949 ms 	1 sources.
+2020-05-19 13:38:54.569 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 82 milliseconds
+2020-05-19 13:38:54.569 INFO  c.t.hydra.Hydra - Hydra compiling: 951 ms
+2020-05-19 13:38:54.573 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589891933603

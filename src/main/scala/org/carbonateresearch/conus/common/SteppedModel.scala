@@ -1,21 +1,18 @@
 package org.carbonateresearch.conus.common
 
-import org.carbonateresearch.conus.grids.{Grid, GridFactory}
-
-class SteppedModel(nbSteps:Int, gridGeometry:Seq[Int]=Seq(1))  {
-
+class SteppedModel (nbSteps:Int, modelName:String="no name",gridGeometry:Seq[Int]=Seq(1))  {
   val prepareSteps:  List[Int] = (0 until nbSteps+1).toList
 
-  //def next(parameter: Calculator): ModelCalculationSpace = ModelCalculationSpace(List(ChainableCalculation(1,prepareSteps, List(parameter))),List())
   def setGrid(gridDimensions:Int*):SteppedModel = {
-    new SteppedModel(nbSteps,gridDimensions)
+    new SteppedModel(nbSteps,modelName,gridDimensions)
   }
 
   def defineMathematicalModelPerCell(calculationList: Calculator*): SteppedModelWithCalculations = {
     val mathematicalModel:List[Calculator] = calculationList.toList
-
-    SteppedModelWithCalculations(nbSteps:Int, gridGeometry:Seq[Int],mathematicalModel:List[Calculator])
+println("this far")
+    SteppedModelWithCalculations(nbSteps:Int, modelName:String, gridGeometry:Seq[Int],mathematicalModel:List[Calculator])
   }
 
 
 }
+

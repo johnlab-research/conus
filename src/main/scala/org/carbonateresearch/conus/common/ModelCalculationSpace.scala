@@ -19,11 +19,13 @@ import scala.util.{Failure, Success}
 import org.carbonateresearch.conus.grids._
 
 final case class ModelCalculationSpace(models: List[SingleModel] = List(),
+                                       modelName:String,
                                        calibrationSets: List[Calibrator] = List(),
                                        var results: List[SingleModelResults] = List()) {
 
   var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelResults].toList
-  val EOL = lineSeparator()
+  private val EOL = lineSeparator()
+  private val modelFolder:String = System.getProperty("user.home")+"/Conus/"+modelName
 
   def calibrationParameters(set:List[Calibrator]) : ModelCalculationSpace = {
     this.copy(calibrationSets=set)
@@ -38,7 +40,7 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
   def run: ModelCalculationSpace = {
     val timeout = Timeout(35.minutes)
     val firstModels:List[Calculator] = models(0).calculations
-    //val parameterList = firstModels.map(c => c.outputs)
+    models.foreach(m=> println(m.ID))
     println("----------------------------------------"+EOL+"RUN STARTED"+EOL+"----------------------------------------")
 
      implicit val ec = global
@@ -52,9 +54,7 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
         case Success(results) => {
         this.results = results
         println(EOL+"----------------------------------------"+ EOL + "END OF RUN"+EOL+"----------------------------------------")
-          println("DETAILED RESULTS:")
-          results.map(r => println(r.completeModelResultsString))
-         // ExcelIO.writeExcel(results,"Users/cedric/CONUS/")
+         ExcelIO.writeExcel(results,modelFolder)
       }
         case Failure(failure) => {
           println("Model has failed to run: "+failure.getMessage)}
@@ -64,7 +64,7 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
   }
 
   def handleResults(modelResults: List[SingleModelResults]): ModelCalculationSpace = {
-    ModelCalculationSpace(models, calibrationSets, modelResults)
+    ModelCalculationSpace(models, modelName,calibrationSets, modelResults)
   }
 
   def calibrated():List[SingleModelResults] = {

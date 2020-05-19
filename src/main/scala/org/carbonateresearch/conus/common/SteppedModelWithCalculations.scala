@@ -4,6 +4,7 @@ import org.carbonateresearch.conus.grids.{Grid,GridFactory}
 import org.carbonateresearch.conus.util.CommonModelVariables.NumberOfSteps
 
 case class SteppedModelWithCalculations(nbSteps:Int,
+                                        modelName:String,
                                         gridGeometry:Seq[Int],
                                         mathematicalModel:List[Calculator]) extends Combinatorial {
 
@@ -12,7 +13,7 @@ case class SteppedModelWithCalculations(nbSteps:Int,
     val fullInitialValues = initConditions.map(ic => List(InitialCondition(NumberOfSteps,nbSteps,Seq())) ++ ic)
     val singleModels:List[SingleModel] = createInitialGriddedModels(fullInitialValues)
 
-    ModelCalculationSpace(models = singleModels)
+    ModelCalculationSpace(models = singleModels,modelName)
   }
 
   private def createInitialGriddedModels(initialValues:List[List[InitialCondition]]):List[SingleModel] = {
@@ -25,7 +26,10 @@ case class SteppedModelWithCalculations(nbSteps:Int,
       iv.foreach(ic => theGrid.setAtCell(ic.variable,ic.value,ic.coordinates)(0))
      theGrid
     })
-    grids.map(g => SingleModel(ID = grids.indexOf(g)+1,nbSteps=nbSteps,grid = g,calculations=mathematicalModel,initialConditions=initialValues(grids.indexOf(g))))
+    grids.indices.map(i => {
+      val g =grids(i)
+      SingleModel(ID = i+1,nbSteps=nbSteps,grid = g,calculations=mathematicalModel,initialConditions=initialValues(grids.indexOf(g)))
+    }).toList
   }
 
   private def defineVariableMap(initialValues:List[List[InitialCondition]]):Map[CalculationParametersIOLabels,Int] = {
