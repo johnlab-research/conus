@@ -1,120 +1,81 @@
 package org.carbonateresearch.conus.common
 
-import akka.actor.{Props}
+import akka.actor.Props
+
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 import akka.pattern.ask
 import akka.util.Timeout
-import org.carbonateresearch.conus.calculationparameters.Calculator
+import org.carbonateresearch.conus.common.Calculator
+
 import scala.collection.parallel.CollectionConverters._
 import scala.annotation.tailrec
 import java.lang.System.lineSeparator
+
+import org.carbonateresearch.conus.grids.GridFactory
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.duration._
-import scala.util.{Success, Failure}
+import scala.util.{Failure, Success}
+import org.carbonateresearch.conus.grids._
 
+final case class ModelCalculationSpace(models: List[SingleModel] = List(),
+                                       calibrationSets: List[Calibrator] = List(),
+                                       var results: List[SingleModelResults] = List()) {
 
-final case class ModelCalculationSpace(calculations:List[ChainableCalculation], calibrationSets: List[ModelCalibrationSet], var results: List[SingleModelWithResults] = List()) {
-
-  var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelWithResults].toList
+  var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelResults].toList
   val EOL = lineSeparator()
 
-  def next(nextCalculationParameter: Calculator): ModelCalculationSpace = {
-    ModelCalculationSpace(calculations.map(cl => cl next nextCalculationParameter), List())
+  def calibrationParameters(set:List[Calibrator]) : ModelCalculationSpace = {
+    this.copy(calibrationSets=set)
   }
 
-  def defineMathematicalModelPerCell(calculationList: Calculator*): ModelCalculationSpace = {
-    val newCalculators:List[Calculator] = calculationList.toList
-    val newChainableCalculations: List[ChainableCalculation] = calculations.map(cl =>
-      ChainableCalculation(cl.ID, cl.steps, (cl.modelParameters++newCalculators).reverse))
-
-    ModelCalculationSpace(newChainableCalculations, List())
-  }
-
-  def calculationForEachCell(nextChainableCalculation: ChainableCalculation): ModelCalculationSpace = {
-    ModelCalculationSpace(calculations.map(cl => cl next nextChainableCalculation), List())
-  }
-
-  def next(nextModelCalculationSpace: ModelCalculationSpace): ModelCalculationSpace = {
-    ModelCalculationSpace(calculations.flatMap(cl => nextModelCalculationSpace.calculations.map(
-      ncl => cl next ncl)), List())
-  }
-
-  def calibrationParameters(set:List[ModelCalibrationSet]) : ModelCalculationSpace = {
-    ModelCalculationSpace(this.calculations,set)
-  }
-
-  def calibrationParameters(set:ModelCalibrationSet*) : ModelCalculationSpace = {
+  def calibrationParameters(set:Calibrator*) : ModelCalculationSpace = {
     this.calibrationParameters(set.toList)
   }
 
-  def size : Int = calculations.size
+  def size : Int = models.size
 
   def run: ModelCalculationSpace = {
-    val firstModels:List[Calculator] = calculations(0).modelParameters
-    val parameterList = firstModels.map(c => c.outputs)
+    val timeout = Timeout(35.minutes)
+    val firstModels:List[Calculator] = models(0).calculations
+    //val parameterList = firstModels.map(c => c.outputs)
     println("----------------------------------------"+EOL+"RUN STARTED"+EOL+"----------------------------------------")
 
-    @tailrec
-    def checkErrors (parametersList:List[Calculator], currentString: String): String = {
-      parametersList match  {
-        case Nil => currentString
-        case x::xs => checkErrors(xs,currentString+x.checkForError(xs))
-      }
-    }
-    val errorsList :String = checkErrors(firstModels,"")
-
-   if(errorsList == "") {
-      println("No error detected, computing the following parameters in the model:" + EOL + parameterList.reverse.flatten.mkString(", ")+EOL+"----------------------------------------")
-      implicit val ec = global
-      val dispatcher = new ParallelCalculatorWithFuture
+     implicit val ec = global
+      val dispatcher = new CalculationDispatcherWithFuture
       //val dispatcher = new ParallelCalculatorWithMonix
-      //val dispatcher = new ParallelCalculatorWithParCollection
-      val newResults:Future[List[SingleModelWithResults]] = dispatcher.calculateModelsList(calculations)
+      //val dispatcher = new CalculationDispatcherWithParCollection
+     //val dispatcher = new CalculationDispatcherSequential
+      val newResults:Future[List[SingleModelResults]] = dispatcher.calculateModelsList(models)
 
-      newResults.onComplete{case Success(results) => {
+      newResults.onComplete{
+        case Success(results) => {
         this.results = results
         println(EOL+"----------------------------------------"+ EOL + "END OF RUN"+EOL+"----------------------------------------")
-      }}
-    }
-    else {
-      println(errorsList+EOL+"Impossible to initiate a run: Correct error(s) first")
-    }
-    //sequential
+          println("DETAILED RESULTS:")
+          results.map(r => println(r.completeModelResultsString))
+         // ExcelIO.writeExcel(results,"Users/cedric/CONUS/")
+      }
+        case Failure(failure) => {
+          println("Model has failed to run: "+failure.getMessage)}
+      }
+
     this
   }
 
-
-
-  def sequential = {
-
-    val initialCount = calculations.size
-
-    println("Now running sequentially for comparison")
-
-    val t0 = System.nanoTime()
-    val newResults = calculations.map(c => c.evaluate(t0))
-
-    println(" ")
-    println("-----------------------------------------")
-    println("RUN TERMINATED")
-    println("-----------------------------------------")
-
-
+  def handleResults(modelResults: List[SingleModelResults]): ModelCalculationSpace = {
+    ModelCalculationSpace(models, calibrationSets, modelResults)
   }
 
-  def handleResults(modelResults: List[SingleModelWithResults]): ModelCalculationSpace = {
-    ModelCalculationSpace(calculations, calibrationSets, modelResults)
-  }
-
-  def calibrated():List[SingleModelWithResults] = {
-    lazy val calibratedModelList:List[SingleModelWithResults] = if (calibrationSets.isEmpty) {
+  def calibrated():List[SingleModelResults] = {
+    lazy val calibratedModelList:List[SingleModelResults] = if (calibrationSets.isEmpty) {
       resultsList
     } else {resultsList.filter(p => checkAllConditions(p))}
 
-    def checkAllConditions(thisModel: SingleModelWithResults):Boolean = {
+    def checkAllConditions(thisModel: SingleModelResults):Boolean = {
       val conditions:List[Boolean] = this.calibrationSets.map(cs => {
-        cs.interval.contains(thisModel.finalResult(cs.calibrationParameters))
+        //cs.interval.contains(thisModel.finalResult(cs.calibrationParameters))
+        false
       })
       !conditions.contains(false)
     }

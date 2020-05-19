@@ -1,8 +1,0 @@
-package org.carbonateresearch.conus.calculationparameters.parametersIO
-
-sealed trait PreviousZeroHandle
-case object TakeStepZeroValue extends PreviousZeroHandle
-case object TakeCurrentStepValue extends PreviousZeroHandle
-case class TakeSpecificValue(value:Double) extends PreviousZeroHandle
-case class TakeValueForLabel(label:CalculationParametersIOLabels) extends PreviousZeroHandle
-
