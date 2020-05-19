@@ -8258,3 +8258,56 @@ def calculateModelsList(models:List[SingleModel]):Future[List[EvaluatedModel]] =
 2020-05-14 11:42:20.917 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
 2020-05-14 11:42:20.917 INFO  c.t.hydra.Hydra - Hydra compiling: 796 ms
 2020-05-14 11:42:20.921 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589452940116
+2020-05-19 13:30:57.332 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 53 files in 1 roots took 119 ms.
+2020-05-19 13:30:57.363 INFO  c.t.hydra.Hydra - Loaded pickle store with 182 entries.
+2020-05-19 13:30:57.364 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 13:30:57.365 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 13:30:57.365 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 13:30:57.372 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 6 ms.
+2020-05-19 13:30:57.372 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 13:30:57.674 INFO  c.t.h.l.ActivatedLicenseText - ActivatedLicenseText.validate took 283 ms.
+2020-05-19 13:30:57.675 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 31. Maximum cores: 8
+2020-05-19 13:30:57.679 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 13:30:57.683 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 13:30:57.694 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 886:452:180:84:1:1:1
+2020-05-19 13:30:57.717 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 13:30:57.717 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 13:30:57.717 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-05-19 13:30:57.718 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 1 files.
+2020-05-19 13:30:57.718 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 1 files.
+2020-05-19 13:30:57.718 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 1 files.
+2020-05-19 13:30:57.718 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 1 files.
+2020-05-19 13:30:59.516 INFO  worker.1 - Worker used 7 cached entries.
+2020-05-19 13:30:59.516 INFO  worker.2 - Worker used 0 cached entries.
+2020-05-19 13:30:59.516 INFO  worker.4 - Worker used 0 cached entries.
+2020-05-19 13:30:59.516 INFO  worker.3 - Worker used 26 cached entries.
+2020-05-19 13:30:59.516 INFO  worker.0 - Worker used 26 cached entries.
+2020-05-19 13:30:59.518 INFO  c.t.h.WorkerThread - [worker.0]: 1781 ms 	1 sources.
+2020-05-19 13:30:59.520 INFO  c.t.h.WorkerThread - [worker.2]: 1779 ms 	1 sources.
+2020-05-19 13:30:59.516 INFO  worker.6 - Worker used 21 cached entries.
+2020-05-19 13:30:59.520 INFO  c.t.h.WorkerThread - [worker.1]: 1779 ms 	1 sources.
+2020-05-19 13:30:59.527 INFO  c.t.h.WorkerThread - [worker.4]: 1779 ms 	1 sources.
+2020-05-19 13:30:59.528 INFO  c.t.h.WorkerThread - [worker.3]: 1779 ms 	1 sources.
+2020-05-19 13:30:59.528 INFO  c.t.h.WorkerThread - [worker.6]: 1783 ms 	1 sources.
+2020-05-19 13:30:59.535 INFO  worker.5 - Worker used 0 cached entries.
+2020-05-19 13:30:59.536 INFO  c.t.h.WorkerThread - [worker.5]: 1799 ms 	1 sources.
+2020-05-19 13:30:59.542 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 89 milliseconds
+2020-05-19 13:30:59.546 INFO  c.t.hydra.Hydra - Hydra compiling: 1829 ms
+2020-05-19 13:30:59.619 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589891457364
+2020-05-19 13:34:08.680 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 53 files in 1 roots took 22 ms.
+2020-05-19 13:34:08.692 INFO  c.t.hydra.Hydra - Loaded pickle store with 182 entries.
+2020-05-19 13:34:08.692 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 13:34:08.692 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 13:34:08.692 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 13:34:08.693 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 13:34:08.693 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 13:34:08.696 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 31. Maximum cores: 8
+2020-05-19 13:34:08.696 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 13:34:08.696 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 13:34:08.698 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180
+2020-05-19 13:34:08.698 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 13:34:09.102 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 13:34:09.102 INFO  c.t.h.WorkerThread - [worker.0]: 403 ms 	1 sources.
+2020-05-19 13:34:09.102 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 21 milliseconds
+2020-05-19 13:34:09.102 INFO  c.t.hydra.Hydra - Hydra compiling: 404 ms
+2020-05-19 13:34:09.104 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589891648692
