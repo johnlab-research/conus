@@ -7,7 +7,7 @@ class SteppedModel (nbSteps:Int, modelName:String="no name",gridGeometry:Seq[Int
     new SteppedModel(nbSteps,modelName,gridDimensions)
   }
 
-  def defineMathematicalModelPerCell(calculationList: Calculator*): SteppedModelWithCalculations = {
+  def defineMathematicalModel(calculationList: Calculator*): SteppedModelWithCalculations = {
     val mathematicalModel:List[Calculator] = calculationList.toList
     SteppedModelWithCalculations(nbSteps:Int, modelName:String, gridGeometry:Seq[Int],mathematicalModel:List[Calculator])
   }
