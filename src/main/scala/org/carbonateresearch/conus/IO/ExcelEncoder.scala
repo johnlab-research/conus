@@ -9,7 +9,7 @@ import org.apache.poi.ss.usermodel.DataFormatter
 import org.apache.poi.xssf.usermodel.{XSSFSheet, XSSFWorkbook}
 import org.carbonateresearch.conus.common.{CalculationParametersIOLabels, SingleModelResults}
 
-case object ExcelIO{
+case object ExcelEncoder{
 
   private val EOL = lineSeparator()
 

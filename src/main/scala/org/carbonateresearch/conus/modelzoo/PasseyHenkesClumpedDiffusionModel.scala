@@ -1,7 +1,7 @@
-package org.carbonateresearch.domainespecific.Geology
+package org.carbonateresearch.conus.modelzoo
 
 import org.carbonateresearch.conus.common._
-import org.carbonateresearch.domainespecific.Geology.GeneralGeology._
+import GeneralGeology._
 import scala.math.{abs, exp, pow}
 
 object PasseyHenkesClumpedDiffusionModel {

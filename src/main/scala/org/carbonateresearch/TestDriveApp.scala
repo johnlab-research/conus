@@ -1,29 +1,9 @@
-package org.carbonateresearch.conus
-import breeze.linalg._
-import breeze.numerics._
-import org.ojalgo.array.Array2D
-/*
-import scala.collection.mutable.ListBuffer
-import scala.collection.Map
-import scalafx.application.JFXApp
-import scalafx.collections.ObservableBuffer
-import scalafx.geometry.Side
-import scalafx.scene.Scene
-import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.LineChart
-import scalafx.scene.chart.ScatterChart
-import scalafx.scene.chart.XYChart
-import akka.util.Timeout*/
+package org.carbonateresearch
 
-import scala.concurrent.duration._
-import org.carbonateresearch.conus.common._
-import org.carbonateresearch.conus.grids._
-import org.carbonateresearch.domainespecific.Geology.PasseyHenkesClumpedDiffusionModel._
-import org.carbonateresearch.domainespecific.Geology.GeneralGeology._
-import org.carbonateresearch.conus.grids.GridFactory
-
-import scala.math.{abs, exp, pow}
-
+import org.carbonateresearch.conus.common.{ModelVariable, SteppedModel}
+import org.carbonateresearch.conus.grids.{AllCells, PerCell}
+import org.carbonateresearch.conus.modelzoo.PasseyHenkesClumpedDiffusionModel._
+import org.carbonateresearch.conus.modelzoo.GeneralGeology._
 
 object TestDriveApp extends App {
   val burialHistory = List((110.0,0.0), (75.0,25.0), (50.0,5000.0),(38.0,0.0),(0.0,10.0))
@@ -64,6 +44,3 @@ object TestDriveApp extends App {
   Thread.sleep(10000000)
 
       }
-
-
-

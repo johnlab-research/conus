@@ -1,4 +1,5 @@
-package org.carbonateresearch.domainespecific.Geology
+package org.carbonateresearch.conus.modelzoo
+
 import org.carbonateresearch.conus.util.CommonFunctions.{interpolatedValue, scaleFromMinToMaxByStep}
 import org.carbonateresearch.conus.common.{ModelVariable, Step}
 import org.carbonateresearch.conus.util.StepFunctionUtils.StepFunction

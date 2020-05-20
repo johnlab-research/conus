@@ -12,7 +12,7 @@ import scala.collection.parallel.CollectionConverters._
 import scala.annotation.tailrec
 import java.lang.System.lineSeparator
 
-import org.carbonateresearch.conus.IO.ExcelIO
+import org.carbonateresearch.conus.IO.ExcelEncoder
 import org.carbonateresearch.conus.dispatchers.CalculationDispatcherWithFuture
 import org.carbonateresearch.conus.grids.GridFactory
 
@@ -56,7 +56,7 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
         case Success(results) => {
         this.results = results
         println(EOL+"----------------------------------------"+ EOL + "END OF RUN"+EOL+"----------------------------------------")
-         ExcelIO.writeExcel(results,modelFolder)
+         ExcelEncoder.writeExcel(results,modelFolder)
       }
         case Failure(failure) => {
           println("Model has failed to run: "+failure.getMessage)}
