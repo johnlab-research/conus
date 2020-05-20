@@ -9340,3 +9340,438 @@ pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonat
 2020-05-20 09:56:53.715 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
 2020-05-20 09:56:53.715 INFO  c.t.hydra.Hydra - Hydra compiling: 123 ms
 2020-05-20 09:56:53.718 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589965013589
+2020-05-20 09:57:59.617 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 51 files in 1 roots took 8 ms.
+2020-05-20 09:57:59.622 INFO  c.t.hydra.Hydra - Loaded pickle store with 195 entries.
+2020-05-20 09:57:59.622 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-20 09:57:59.622 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-20 09:57:59.622 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-20 09:57:59.623 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-20 09:57:59.623 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-20 09:57:59.624 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-20 09:57:59.624 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-20 09:57:59.624 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-20 09:57:59.625 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 452:1
+2020-05-20 09:57:59.626 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-20 09:57:59.626 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-20 09:57:59.855 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-20 09:57:59.855 INFO  c.t.h.WorkerThread - [worker.1]: 229 ms 	1 sources.
+2020-05-20 09:57:59.872 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-20 09:57:59.872 INFO  c.t.h.WorkerThread - [worker.0]: 246 ms 	1 sources.
+2020-05-20 09:57:59.873 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 22 milliseconds
+2020-05-20 09:57:59.873 INFO  c.t.hydra.Hydra - Hydra compiling: 247 ms
+2020-05-20 09:57:59.875 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589965079622
+2020-05-20 10:09:14.955 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 49 files in 1 roots took 5 ms.
+2020-05-20 10:09:14.961 INFO  c.t.hydra.Hydra - Loaded pickle store with 196 entries.
+2020-05-20 10:09:14.961 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-20 10:09:14.961 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-20 10:09:14.961 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-20 10:09:14.961 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-05-20 10:09:14.961 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-20 10:09:14.963 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-20 10:09:14.963 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-20 10:09:14.963 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-20 10:09:14.964 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 896:534:169:100:57:32:1
+2020-05-20 10:09:14.969 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-20 10:09:14.969 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-20 10:09:14.969 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-05-20 10:09:14.969 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 1 files.
+2020-05-20 10:09:14.969 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 1 files.
+2020-05-20 10:09:14.969 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 1 files.
+2020-05-20 10:09:14.969 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 1 files.
+2020-05-20 10:09:15.048 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.055 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.056 ERROR worker.5 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.056 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.068 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.069 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.070 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.091 ERROR worker.5 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.092 ERROR worker.5 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.093 ERROR worker.5 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.100 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.105 ERROR worker.6 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.124 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.124 ERROR worker.5 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.124 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.125 ERROR worker.5 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.126 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.126 ERROR worker.5 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.126 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.127 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.127 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.128 ERROR worker.5 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.128 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.128 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.129 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.130 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.131 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.131 ERROR worker.5 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.132 ERROR worker.5 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.132 ERROR worker.4 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.134 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.151 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.152 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.162 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.163 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.164 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.164 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.164 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.165 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.166 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.166 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.167 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.167 ERROR worker.3 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.169 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.170 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.170 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.171 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.171 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.172 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.177 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.178 ERROR worker.2 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.178 INFO  worker.5 - Worker used 14 cached entries.
+2020-05-20 10:09:15.179 INFO  c.t.h.WorkerThread - [worker.5]: 208 ms 	1 sources.
+2020-05-20 10:09:15.180 INFO  worker.4 - Worker used 14 cached entries.
+2020-05-20 10:09:15.181 INFO  c.t.h.WorkerThread - [worker.4]: 211 ms 	1 sources.
+2020-05-20 10:09:15.201 INFO  worker.1 - Worker used 14 cached entries.
+2020-05-20 10:09:15.201 INFO  c.t.h.WorkerThread - [worker.1]: 232 ms 	1 sources.
+2020-05-20 10:09:15.205 INFO  worker.2 - Worker used 19 cached entries.
+2020-05-20 10:09:15.209 INFO  c.t.h.WorkerThread - [worker.2]: 235 ms 	1 sources.
+2020-05-20 10:09:15.213 ERROR worker.6 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.214 ERROR worker.6 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.215 ERROR worker.6 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.223 INFO  worker.0 - Worker used 6 cached entries.
+2020-05-20 10:09:15.223 INFO  c.t.h.WorkerThread - [worker.0]: 254 ms 	1 sources.
+2020-05-20 10:09:15.232 ERROR worker.6 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.253 ERROR worker.6 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.253 ERROR worker.6 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.254 ERROR worker.6 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.255 ERROR worker.6 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+2020-05-20 10:09:15.256 ERROR worker.6 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+2020-05-20 10:09:15.262 ERROR worker.3 - 
+Exception while running phase refchecks on  file Step.scala
+
+Hydra errors so far: true
+Hydra all workers past typer: false, phase refchecks
+Late file errors: true
+/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: type NoValueHandler
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                            ^
+/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/ModelVariable.scala:13: not found: value ReturnDefaultValue
+                                  ifNoValue:NoValueHandler = ReturnDefaultValue) extends CalculationParametersIOLabels {
+                                                             ^
+     
+               
+java.util.NoSuchElementException: head of empty list
+	at scala.collection.immutable.Nil$.head(List.scala:592)
+	at scala.collection.immutable.Nil$.head(List.scala:591)
+	at scala.tools.nsc.typechecker.ContextErrors$InferencerContextErrors$InferErrorGen$.NotWithinBoundsErrorMessage(ContextErrors.scala:1209)
+	at scala.tools.nsc.typechecker.ContextErrors$InferencerContextErrors$InferErrorGen$.NotWithinBounds(ContextErrors.scala:1216)
+	at scala.tools.nsc.typechecker.Infer$Inferencer.issueBoundsError$1(Infer.scala:976)
+	at scala.tools.nsc.typechecker.Infer$Inferencer.check$1(Infer.scala:982)
+	at scala.tools.nsc.typechecker.Infer$Inferencer.checkBounds(Infer.scala:986)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.checkBounds(RefChecks.scala:1215)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1721)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$Select.transform(Trees.scala:832)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$Apply.transform(Trees.scala:766)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.api.Trees$Transformer.$anonfun$transformTrees$1(Trees.scala:2583)
+	at scala.collection.immutable.List.mapConserve(List.scala:444)
+	at scala.reflect.api.Trees$Transformer.transformTrees(Trees.scala:2583)
+	at scala.reflect.internal.Trees$Apply.transform(Trees.scala:766)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$ValDef.$anonfun$transform$4(Trees.scala:414)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.reflect.internal.Trees$ValDef.transform(Trees.scala:413)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStat(RefChecks.scala:1198)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.$anonfun$transformStats$1(RefChecks.scala:1181)
+	at scala.collection.immutable.List.flatMap(List.scala:265)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:1181)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$Block.transform(Trees.scala:536)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$DefDef.$anonfun$transform$5(Trees.scala:434)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.reflect.internal.Trees$DefDef.transform(Trees.scala:432)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStat(RefChecks.scala:1210)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.$anonfun$transformStats$1(RefChecks.scala:1181)
+	at scala.collection.immutable.List.flatMap(List.scala:265)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:1181)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$Template.transform(Trees.scala:524)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.api.Trees$Transformer.transformTemplate(Trees.scala:2587)
+	at scala.reflect.internal.Trees$ModuleDef.$anonfun$transform$3(Trees.scala:377)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.reflect.internal.Trees$ModuleDef.transform(Trees.scala:376)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStat(RefChecks.scala:1210)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.$anonfun$transformStats$1(RefChecks.scala:1181)
+	at scala.collection.immutable.List.flatMap(List.scala:265)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:1181)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$PackageDef.$anonfun$transform$1(Trees.scala:323)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.reflect.internal.Trees$PackageDef.transform(Trees.scala:323)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.ast.Trees$Transformer.transformUnit(Trees.scala:162)
+	at scala.tools.nsc.transform.Transform$Phase.apply(Transform.scala:36)
+	at scala.tools.nsc.Global$GlobalPhase.applyPhase(Global.scala:568)
+	at scala.tools.nsc.Global$GlobalPhase.run(Global.scala:506)
+	at scala.tools.nsc.Global$Run.compileUnitsInternal(Global.scala:1683)
+	at scala.tools.nsc.Global$Run.compileUnits(Global.scala:1657)
+	at scala.tools.nsc.Global$Run.compileSources(Global.scala:1649)
+	at scala.tools.nsc.Global$Run.compile(Global.scala:1894)
+	at com.triplequote.hydra.compiler.ScalaWorker$ScalaCompilationRound.compile(ScalaWorker.scala:124)
+	at com.triplequote.hydra.compiler.ScalaWorker.compile(ScalaWorker.scala:72)
+	at com.triplequote.hydra.WorkerThread.$anonfun$run$1(WorkerThread.scala:43)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at com.triplequote.hydra.compiler.utils.Utils$.timed(Utils.scala:34)
+	at com.triplequote.hydra.WorkerThread.run(WorkerThread.scala:43)
+2020-05-20 10:09:15.306 INFO  worker.6 - Worker used 23 cached entries.
+2020-05-20 10:09:15.306 INFO  c.t.h.WorkerThread - [worker.6]: 336 ms 	1 sources.
+2020-05-20 10:09:15.307 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 59 milliseconds
+2020-05-20 10:09:15.309 ERROR c.t.h.WorkerThread - [worker.3]: Worker has crashed. In case there are legitimate compilation errors in this run, this crash can be safely ignored.
+java.util.NoSuchElementException: head of empty list
+	at scala.collection.immutable.Nil$.head(List.scala:592)
+	at scala.collection.immutable.Nil$.head(List.scala:591)
+	at scala.tools.nsc.typechecker.ContextErrors$InferencerContextErrors$InferErrorGen$.NotWithinBoundsErrorMessage(ContextErrors.scala:1209)
+	at scala.tools.nsc.typechecker.ContextErrors$InferencerContextErrors$InferErrorGen$.NotWithinBounds(ContextErrors.scala:1216)
+	at scala.tools.nsc.typechecker.Infer$Inferencer.issueBoundsError$1(Infer.scala:976)
+	at scala.tools.nsc.typechecker.Infer$Inferencer.check$1(Infer.scala:982)
+	at scala.tools.nsc.typechecker.Infer$Inferencer.checkBounds(Infer.scala:986)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.checkBounds(RefChecks.scala:1215)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1721)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$Select.transform(Trees.scala:832)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$Apply.transform(Trees.scala:766)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.api.Trees$Transformer.$anonfun$transformTrees$1(Trees.scala:2583)
+	at scala.collection.immutable.List.mapConserve(List.scala:444)
+	at scala.reflect.api.Trees$Transformer.transformTrees(Trees.scala:2583)
+	at scala.reflect.internal.Trees$Apply.transform(Trees.scala:766)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$ValDef.$anonfun$transform$4(Trees.scala:414)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.reflect.internal.Trees$ValDef.transform(Trees.scala:413)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStat(RefChecks.scala:1198)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.$anonfun$transformStats$1(RefChecks.scala:1181)
+	at scala.collection.immutable.List.flatMap(List.scala:265)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:1181)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$Block.transform(Trees.scala:536)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$DefDef.$anonfun$transform$5(Trees.scala:434)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.reflect.internal.Trees$DefDef.transform(Trees.scala:432)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStat(RefChecks.scala:1210)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.$anonfun$transformStats$1(RefChecks.scala:1181)
+	at scala.collection.immutable.List.flatMap(List.scala:265)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:1181)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$Template.transform(Trees.scala:524)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:116)
+	at scala.reflect.api.Trees$Transformer.transformTemplate(Trees.scala:2587)
+	at scala.reflect.internal.Trees$ModuleDef.$anonfun$transform$3(Trees.scala:377)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.reflect.internal.Trees$ModuleDef.transform(Trees.scala:376)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStat(RefChecks.scala:1210)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.$anonfun$transformStats$1(RefChecks.scala:1181)
+	at scala.collection.immutable.List.flatMap(List.scala:265)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:1181)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transformStats(RefChecks.scala:116)
+	at scala.reflect.internal.Trees$PackageDef.$anonfun$transform$1(Trees.scala:323)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.reflect.internal.Trees$PackageDef.transform(Trees.scala:323)
+	at scala.tools.nsc.typechecker.RefChecks$RefCheckTransformer.transform(RefChecks.scala:1772)
+	at scala.tools.nsc.ast.Trees$Transformer.transformUnit(Trees.scala:162)
+	at scala.tools.nsc.transform.Transform$Phase.apply(Transform.scala:36)
+	at scala.tools.nsc.Global$GlobalPhase.applyPhase(Global.scala:568)
+	at scala.tools.nsc.Global$GlobalPhase.run(Global.scala:506)
+	at scala.tools.nsc.Global$Run.compileUnitsInternal(Global.scala:1683)
+	at scala.tools.nsc.Global$Run.compileUnits(Global.scala:1657)
+	at scala.tools.nsc.Global$Run.compileSources(Global.scala:1649)
+	at scala.tools.nsc.Global$Run.compile(Global.scala:1894)
+	at com.triplequote.hydra.compiler.ScalaWorker$ScalaCompilationRound.compile(ScalaWorker.scala:124)
+	at com.triplequote.hydra.compiler.ScalaWorker.compile(ScalaWorker.scala:72)
+	at com.triplequote.hydra.WorkerThread.$anonfun$run$1(WorkerThread.scala:43)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at com.triplequote.hydra.compiler.utils.Utils$.timed(Utils.scala:34)
+	at com.triplequote.hydra.WorkerThread.run(WorkerThread.scala:43)
+2020-05-20 10:09:15.309 INFO  c.t.hydra.Hydra - Hydra compiling: 338 ms
+2020-05-20 10:10:16.027 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 51 files in 1 roots took 11 ms.
+2020-05-20 10:10:16.033 INFO  c.t.hydra.Hydra - Loaded pickle store with 196 entries.
+2020-05-20 10:10:16.033 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-20 10:10:16.033 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-20 10:10:16.033 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-20 10:10:16.034 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-20 10:10:16.034 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-20 10:10:16.036 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-20 10:10:16.036 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-20 10:10:16.036 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-20 10:10:16.037 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 896:534:307:169:100:80:57:33
+2020-05-20 10:10:16.042 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-20 10:10:16.042 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-20 10:10:16.042 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-05-20 10:10:16.042 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 1 files.
+2020-05-20 10:10:16.042 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 1 files.
+2020-05-20 10:10:16.042 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 1 files.
+2020-05-20 10:10:16.042 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 1 files.
+2020-05-20 10:10:16.042 INFO  c.t.hydra.Hydra - [worker.7]: Starting worker with 2 files.
+2020-05-20 10:10:16.451 INFO  worker.2 - Worker used 0 cached entries.
+2020-05-20 10:10:16.452 INFO  c.t.h.WorkerThread - [worker.2]: 408 ms 	1 sources.
+2020-05-20 10:10:16.482 INFO  worker.6 - Worker used 18 cached entries.
+2020-05-20 10:10:16.483 INFO  c.t.h.WorkerThread - [worker.6]: 438 ms 	1 sources.
+2020-05-20 10:10:16.517 INFO  worker.5 - Worker used 18 cached entries.
+2020-05-20 10:10:16.519 INFO  c.t.h.WorkerThread - [worker.5]: 474 ms 	1 sources.
+2020-05-20 10:10:16.535 INFO  worker.4 - Worker used 12 cached entries.
+2020-05-20 10:10:16.538 INFO  c.t.h.WorkerThread - [worker.4]: 492 ms 	1 sources.
+2020-05-20 10:10:16.564 INFO  worker.1 - Worker used 18 cached entries.
+2020-05-20 10:10:16.567 INFO  c.t.h.WorkerThread - [worker.1]: 521 ms 	1 sources.
+2020-05-20 10:10:16.572 INFO  worker.3 - Worker used 23 cached entries.
+2020-05-20 10:10:16.572 INFO  c.t.h.WorkerThread - [worker.3]: 528 ms 	1 sources.
+2020-05-20 10:10:16.642 INFO  worker.0 - Worker used 9 cached entries.
+2020-05-20 10:10:16.643 INFO  c.t.h.WorkerThread - [worker.0]: 600 ms 	1 sources.
+2020-05-20 10:10:16.703 INFO  worker.7 - Worker used 27 cached entries.
+2020-05-20 10:10:16.703 INFO  c.t.h.WorkerThread - [worker.7]: 659 ms 	2 sources.
+2020-05-20 10:10:16.703 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 77 milliseconds
+2020-05-20 10:10:16.703 INFO  c.t.hydra.Hydra - Hydra compiling: 661 ms
+2020-05-20 10:10:16.710 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589965816033

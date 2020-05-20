@@ -1,12 +1,13 @@
-package org.carbonateresearch.conus.common
-import org.apache.poi.ss.usermodel.{DataFormatter, WorkbookFactory}
-import org.apache.poi.xssf.usermodel.{XSSFSheet, XSSFWorkbook}
-import java.io.{File, FileOutputStream}
-import java.text.SimpleDateFormat
+package org.carbonateresearch.conus.IO
 
-import scala.jdk.CollectionConverters
+import java.io.{File, FileOutputStream}
 import java.lang.System.lineSeparator
-import java.util.{Calendar, Date}
+import java.text.SimpleDateFormat
+import java.util.Date
+
+import org.apache.poi.ss.usermodel.DataFormatter
+import org.apache.poi.xssf.usermodel.{XSSFSheet, XSSFWorkbook}
+import org.carbonateresearch.conus.common.{CalculationParametersIOLabels, SingleModelResults}
 
 case object ExcelIO{
 
