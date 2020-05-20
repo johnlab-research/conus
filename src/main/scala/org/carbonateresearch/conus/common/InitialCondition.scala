@@ -1,3 +1,3 @@
 package org.carbonateresearch.conus.common
 
-case class InitialCondition(variable:CalculationParametersIOLabels,value:Any, coordinates:Seq[Int])
+case class InitialCondition(variable:CalculationParametersIOLabels,values:List[(Any, Seq[Int])])

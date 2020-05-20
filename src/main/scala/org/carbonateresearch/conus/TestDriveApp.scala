@@ -17,6 +17,7 @@ import akka.util.Timeout*/
 
 import scala.concurrent.duration._
 import org.carbonateresearch.conus.common._
+import org.carbonateresearch.conus.grids._
 import org.carbonateresearch.domainespecific.Geology.PasseyHenkesClumpedDiffusionModel._
 import org.carbonateresearch.domainespecific.Geology.GeneralGeology._
 import org.carbonateresearch.conus.grids.GridFactory
@@ -24,7 +25,7 @@ import org.carbonateresearch.conus.grids.GridFactory
 import scala.math.{abs, exp, pow}
 
 
-object DiageneSim extends App {
+object TestDriveApp extends App {
   val burialHistory = List((110.0,0.0), (75.0,25.0), (50.0,5000.0),(38.0,0.0),(0.0,10.0))
   //val burialHistory = List((110.0,0.0), (50.0,1000.0),(0.0,100.0))
   val geothermalGradientHistory= List((105.0,30.0),(38.0, 30.0),(0.0,30.0))
@@ -46,10 +47,15 @@ object DiageneSim extends App {
       D47eq =>> D47eqFun,
   D47i =>> D47iFun,
   SampleTemp =>> davies19_T)
-    .defineInitialModelConditions(InitialConditions(initialAge,List(List(110.0))),
-      InitialConditions(finalAge,List(List(10.0))),
-      InitialConditions(D47i,List(List(0.731, 0.455), List(0.756), List(0.456),List(0.566),List(0.676)),List(Seq(0),Seq(1),Seq(2),Seq(3),Seq(4)))
-    )
+    .defineInitialModelConditions(AllCells(initialAge,110.0),
+      AllCells(finalAge,10.0),
+      PerCell(D47i,List(
+        (List(0.731, 0.455),Seq(0)),
+        (List(0.756),Seq(1)),
+        (List(0.456),Seq(2)),
+        (List(0.566),Seq(3)),
+        (List(0.676),Seq(4)))
+    ))
 
  val runnedModel = myFirstModel.run
 

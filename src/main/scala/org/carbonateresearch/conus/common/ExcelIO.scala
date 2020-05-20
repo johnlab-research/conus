@@ -47,13 +47,18 @@ case object ExcelIO{
     val cell2 = row.createCell(1)
     cell2.setAsActiveCell()
     cell2.setCellValue("VALUE")
-    val cell3 = row.createCell(2)
+    val cell3 = row.createCell(1)
     cell3.setAsActiveCell()
-    cell3.setCellValue("UNIT")
+    cell3.setCellValue("UNITS")
+    val cell4 = row.createCell(2)
+    cell4.setAsActiveCell()
+    cell4.setCellValue("COORDINATES")
 
-    val initialConditions:List[(CalculationParametersIOLabels,Any)] = model.initialConditions.map(ic => (ic.variable,ic.value))
+    val initialConditions:List[(CalculationParametersIOLabels, Any, Seq[Int])] =
+      model.initialConditions.flatMap(ic => ic.values.map(icv => (ic.variable,icv._1,icv._2)))
     val numberOfRows = initialConditions.indices
-
+    val modelID = model.ID
+    println(s"Initial conditions for model $modelID : $initialConditions")
     numberOfRows.foreach(r => {
       val row = icSheet.createRow(r+1)
       val cell1 = row.createCell(0)
@@ -67,6 +72,10 @@ case object ExcelIO{
       val cell3 = row.createCell(2)
       cell3.setAsActiveCell()
       cell3.setCellValue(initialConditions(r)._1.unitName)
+
+      val cell4 = row.createCell(3)
+      cell4.setAsActiveCell()
+      cell4.setCellValue(initialConditions(r)._3.toString())
     })
   }
 

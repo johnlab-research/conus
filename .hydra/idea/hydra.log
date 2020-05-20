@@ -8411,3 +8411,570 @@ def calculateModelsList(models:List[SingleModel]):Future[List[EvaluatedModel]] =
 2020-05-19 13:38:54.569 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 82 milliseconds
 2020-05-19 13:38:54.569 INFO  c.t.hydra.Hydra - Hydra compiling: 951 ms
 2020-05-19 13:38:54.573 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589891933603
+2020-05-19 13:43:47.166 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 53 files in 1 roots took 19 ms.
+2020-05-19 13:43:47.175 INFO  c.t.hydra.Hydra - Loaded pickle store with 182 entries.
+2020-05-19 13:43:47.176 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 13:43:47.176 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 13:43:47.176 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 13:43:47.176 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-05-19 13:43:47.176 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 13:43:47.178 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 31. Maximum cores: 8
+2020-05-19 13:43:47.179 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 13:43:47.179 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 13:43:47.181 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 84:1
+2020-05-19 13:43:47.183 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 13:43:47.183 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 13:43:47.493 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 13:43:47.493 INFO  c.t.h.WorkerThread - [worker.0]: 309 ms 	1 sources.
+2020-05-19 13:43:47.605 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-19 13:43:47.605 INFO  c.t.h.WorkerThread - [worker.1]: 421 ms 	1 sources.
+2020-05-19 13:43:47.606 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 18 milliseconds
+2020-05-19 13:43:47.606 INFO  c.t.hydra.Hydra - Hydra compiling: 423 ms
+2020-05-19 13:43:47.609 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589892227176
+2020-05-19 14:13:09.208 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 53 files in 1 roots took 10 ms.
+2020-05-19 14:13:09.215 INFO  c.t.hydra.Hydra - Loaded pickle store with 183 entries.
+2020-05-19 14:13:09.215 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 14:13:09.215 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 14:13:09.215 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 14:13:09.215 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-05-19 14:13:09.215 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 14:13:09.217 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 31. Maximum cores: 8
+2020-05-19 14:13:09.217 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 14:13:09.217 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 14:13:09.219 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 458
+2020-05-19 14:13:09.219 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 14:13:09.380 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 14:13:09.380 INFO  c.t.h.WorkerThread - [worker.0]: 160 ms 	1 sources.
+2020-05-19 14:13:09.380 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-05-19 14:13:09.380 INFO  c.t.hydra.Hydra - Hydra compiling: 161 ms
+2020-05-19 14:13:09.397 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589893989215
+2020-05-19 14:26:23.903 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 53 files in 1 roots took 8 ms.
+2020-05-19 14:26:23.910 INFO  c.t.hydra.Hydra - Loaded pickle store with 183 entries.
+2020-05-19 14:26:23.910 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 14:26:23.910 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 14:26:23.910 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 14:26:23.911 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 14:26:23.911 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 14:26:23.912 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 14:26:23.913 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 14:26:23.913 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 14:26:23.914 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1:1
+2020-05-19 14:26:23.915 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 14:26:23.915 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 14:26:23.968 INFO  worker.0 - [ cache invalidate ]: org.carbonateresearch.conus.common.InitialCondition.copy$default$2 type was: Any @scala.annotation.unchecked.uncheckedVariance, now: List[Any] @scala.annotation.unchecked.uncheckedVariance
+2020-05-19 14:26:23.968 INFO  worker.0 - [ cache invalidate ]: org.carbonateresearch.conus.common.InitialCondition.copy$default$3 type was: Seq[Int] @scala.annotation.unchecked.uncheckedVariance, now: List[Seq[Int]] @scala.annotation.unchecked.uncheckedVariance
+2020-05-19 14:26:24.044 ERROR worker.1 - /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala:3: type mismatch;
+ found   : List[Seq[Int]]
+ required: Seq[Int] @scala.annotation.unchecked.uncheckedVariance
+case class InitialCondition(variable:CalculationParametersIOLabels,value:List[Any], coordinates:List[Seq[Int]])
+                                                                                    ^
+2020-05-19 14:26:24.049 INFO  worker.1 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala,org.carbonateresearch.conus.common.InitialCondition.copy$default$2)
+(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala,org.carbonateresearch.conus.common.InitialCondition.copy$default$3)
+2020-05-19 14:26:24.049 INFO  worker.1 - Respawning worker because of inconsistent reads.
+2020-05-19 14:26:24.071 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 14:26:24.071 INFO  c.t.h.WorkerThread - [worker.0]: 155 ms 	1 sources.
+2020-05-19 14:26:24.137 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-19 14:26:24.137 INFO  c.t.h.WorkerThread - [worker.1]: 221 ms 	1 sources.
+2020-05-19 14:26:24.138 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 15 milliseconds
+2020-05-19 14:26:24.138 INFO  c.t.hydra.Hydra - Hydra compiling: 223 ms
+2020-05-19 14:26:51.480 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 53 files in 1 roots took 7 ms.
+2020-05-19 14:26:51.488 INFO  c.t.hydra.Hydra - Loaded pickle store with 183 entries.
+2020-05-19 14:26:51.488 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 14:26:51.488 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 14:26:51.488 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 14:26:51.488 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-05-19 14:26:51.488 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 14:26:51.490 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 14:26:51.490 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 14:26:51.490 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 14:26:51.491 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1:1
+2020-05-19 14:26:51.493 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 14:26:51.493 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 14:26:51.635 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 14:26:51.635 INFO  c.t.h.WorkerThread - [worker.0]: 142 ms 	1 sources.
+2020-05-19 14:26:51.708 INFO  worker.1 - Worker used 5 cached entries.
+2020-05-19 14:26:51.708 INFO  c.t.h.WorkerThread - [worker.1]: 215 ms 	1 sources.
+2020-05-19 14:26:51.709 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 14 milliseconds
+2020-05-19 14:26:51.709 INFO  c.t.hydra.Hydra - Hydra compiling: 216 ms
+2020-05-19 14:26:51.711 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589894811488
+2020-05-19 14:26:51.983 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 53 files in 1 roots took 9 ms.
+2020-05-19 14:26:51.991 INFO  c.t.hydra.Hydra - Loaded pickle store with 183 entries.
+2020-05-19 14:26:51.991 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 14:26:51.991 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 14:26:51.991 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 14:26:51.991 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-05-19 14:26:51.991 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 14:26:51.993 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 14:26:51.993 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 14:26:51.993 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 14:26:51.993 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180:1
+2020-05-19 14:26:51.995 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 14:26:51.995 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 14:26:52.150 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 14:26:52.151 INFO  c.t.h.WorkerThread - [worker.0]: 156 ms 	1 sources.
+2020-05-19 14:26:52.153 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-19 14:26:52.153 INFO  c.t.h.WorkerThread - [worker.1]: 158 ms 	1 sources.
+2020-05-19 14:26:52.153 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 25 milliseconds
+2020-05-19 14:26:52.153 INFO  c.t.hydra.Hydra - Hydra compiling: 158 ms
+2020-05-19 14:34:24.042 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 54 files in 1 roots took 8 ms.
+2020-05-19 14:34:24.049 INFO  c.t.hydra.Hydra - Loaded pickle store with 183 entries.
+2020-05-19 14:34:24.050 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 14:34:24.050 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 14:34:24.050 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 14:34:24.050 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-05-19 14:34:24.050 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 14:34:24.052 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 14:34:24.052 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 14:34:24.052 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 14:34:24.053 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180:1:1:1:1
+2020-05-19 14:34:24.057 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 14:34:24.057 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 14:34:24.057 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-05-19 14:34:24.057 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 1 files.
+2020-05-19 14:34:24.057 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 1 files.
+2020-05-19 14:34:24.241 INFO  worker.2 - Worker used 0 cached entries.
+2020-05-19 14:34:24.242 INFO  c.t.h.WorkerThread - [worker.2]: 183 ms 	1 sources.
+2020-05-19 14:34:24.242 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-19 14:34:24.242 INFO  c.t.h.WorkerThread - [worker.1]: 184 ms 	1 sources.
+2020-05-19 14:34:24.291 ERROR worker.4 - 
+Found null type during super accessors: List
+
+Hydra errors so far: false
+Hydra all workers past typer: true, phase superaccessors
+Late file errors: false
+
+     
+                 
+2020-05-19 14:34:24.298 ERROR worker.4 - TRANSFORM: null
+2020-05-19 14:34:24.298 ERROR worker.4 - TRANSFORM: null
+2020-05-19 14:34:24.299 ERROR worker.4 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala
+2020-05-19 14:34:24.301 ERROR worker.4 - TRANSFORM: null
+2020-05-19 14:34:24.302 ERROR worker.4 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala
+2020-05-19 14:34:24.307 ERROR worker.4 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala
+2020-05-19 14:34:24.311 ERROR worker.4 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala
+2020-05-19 14:34:24.321 ERROR worker.4 - TRANSFORM: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala
+2020-05-19 14:34:24.326 ERROR worker.4 - TRANSFORM: null
+2020-05-19 14:34:24.329 INFO  worker.3 - Worker used 5 cached entries.
+2020-05-19 14:34:24.329 INFO  c.t.h.WorkerThread - [worker.3]: 270 ms 	1 sources.
+2020-05-19 14:34:24.368 ERROR worker.4 - 
+Exception while running phase superaccessors on  file SteppedModelWithCalculations.scala
+
+Hydra errors so far: false
+Hydra all workers past typer: true, phase superaccessors
+Late file errors: false
+
+     
+               
+java.lang.AssertionError: assertion failed: 
+  List(InitialCondition(NumberOfSteps, List(nbSteps), Seq()))
+     while compiling: /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala
+        during phase: superaccessors
+     library version: version 2.13.1
+    compiler version: version 2.13.1-hydra41
+  reconstructed args: -sourcepath /Users/cedric/IdeaProjects/diagenesissim/src/main/scala -classpath /Users/cedric/IdeaProjects/diagenesissim/target/scala-2.13/classes:/Users/cedric/.ivy2/cache/bouncycastle/bcmail-jdk14/jars/bcmail-jdk14-138.jar:/Users/cedric/.ivy2/cache/bouncycastle/bcprov-jdk14/jars/bcprov-jdk14-138.jar:/Users/cedric/.ivy2/cache/com.chuusai/shapeless_2.13/bundles/shapeless_2.13-2.3.3.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/core/jars/core-1.1.2.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/native_ref-java/jars/native_ref-java-1.1.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/native_system-java/jars/native_system-java-1.1.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_ref-linux-armhf/jars/netlib-native_ref-linux-armhf-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_ref-linux-i686/jars/netlib-native_ref-linux-i686-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_ref-linux-x86_64/jars/netlib-native_ref-linux-x86_64-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_ref-osx-x86_64/jars/netlib-native_ref-osx-x86_64-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_ref-win-i686/jars/netlib-native_ref-win-i686-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_ref-win-x86_64/jars/netlib-native_ref-win-x86_64-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_system-linux-armhf/jars/netlib-native_system-linux-armhf-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_system-linux-i686/jars/netlib-native_system-linux-i686-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_system-linux-x86_64/jars/netlib-native_system-linux-x86_64-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_system-osx-x86_64/jars/netlib-native_system-osx-x86_64-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_system-win-i686/jars/netlib-native_system-win-i686-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil.netlib/netlib-native_system-win-x86_64/jars/netlib-native_system-win-x86_64-1.1-natives.jar:/Users/cedric/.ivy2/cache/com.github.fommil/jniloader/jars/jniloader-1.1.jar:/Users/cedric/.ivy2/cache/com.github.virtuald/curvesapi/jars/curvesapi-1.06.jar:/Users/cedric/.ivy2/cache/com.github.wendykierp/JTransforms/jars/JTransforms-3.1.jar:/Users/cedric/.ivy2/cache/com.lowagie/itext/jars/itext-2.1.5.jar:/Users/cedric/.ivy2/cache/com.typesafe.akka/akka-actor_2.13/jars/akka-actor_2.13-2.6.1.jar:/Users/cedric/.ivy2/cache/com.typesafe/config/bundles/config-1.4.0.jar:/Users/cedric/.ivy2/cache/com.zaxxer/SparseBitSet/jars/SparseBitSet-1.2.jar:/Users/cedric/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.13.jar:/Users/cedric/.ivy2/cache/commons-io/commons-io/jars/commons-io-1.3.1.jar:/Users/cedric/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.0.4.jar:/Users/cedric/.ivy2/cache/io.monix/implicitbox_2.13/jars/implicitbox_2.13-0.1.0.jar:/Users/cedric/.ivy2/cache/io.monix/monix-catnap_2.13/jars/monix-catnap_2.13-3.1.0-2156c0e.jar:/Users/cedric/.ivy2/cache/io.monix/monix-eval_2.13/jars/monix-eval_2.13-3.1.0-2156c0e.jar:/Users/cedric/.ivy2/cache/io.monix/monix-execution_2.13/jars/monix-execution_2.13-3.1.0-2156c0e.jar:/Users/cedric/.ivy2/cache/io.monix/monix-java_2.13/jars/monix-java_2.13-3.1.0-2156c0e.jar:/Users/cedric/.ivy2/cache/io.monix/monix-reactive_2.13/jars/monix-reactive_2.13-3.1.0-2156c0e.jar:/Users/cedric/.ivy2/cache/io.monix/monix-tail_2.13/jars/monix-tail_2.13-3.1.0-2156c0e.jar:/Users/cedric/.ivy2/cache/io.monix/monix_2.13/jars/monix_2.13-3.1.0-2156c0e.jar:/Users/cedric/.ivy2/cache/net.sf.opencsv/opencsv/jars/opencsv-2.3.jar:/Users/cedric/.ivy2/cache/net.sourceforge.f2j/arpack_combined_all/jars/arpack_combined_all-0.1.jar:/Users/cedric/.ivy2/cache/org.apache.commons/commons-collections4/jars/commons-collections4-4.4.jar:/Users/cedric/.ivy2/cache/org.apache.commons/commons-compress/jars/commons-compress-1.19.jar:/Users/cedric/.ivy2/cache/org.apache.commons/commons-math3/jars/commons-math3-3.6.1.jar:/Users/cedric/.ivy2/cache/org.apache.poi/poi-ooxml-schemas/jars/poi-ooxml-schemas-4.1.2.jar:/Users/cedric/.ivy2/cache/org.apache.poi/poi-ooxml/jars/poi-ooxml-4.1.2.jar:/Users/cedric/.ivy2/cache/org.apache.poi/poi/jars/poi-4.1.2.jar:/Users/cedric/.ivy2/cache/org.apache.xmlbeans/xmlbeans/jars/xmlbeans-3.1.0.jar:/Users/cedric/.ivy2/cache/org.apache.xmlgraphics/xmlgraphics-commons/jars/xmlgraphics-commons-1.3.1.jar:/Users/cedric/.ivy2/cache/org.jctools/jctools-core/bundles/jctools-core-2.1.2.jar:/Users/cedric/.ivy2/cache/org.jfree/jfreechart/jars/jfreechart-1.5.0.jar:/Users/cedric/.ivy2/cache/org.json/json/jars/json-20141113.jar:/Users/cedric/.ivy2/cache/org.ojalgo/ojalgo/jars/ojalgo-48.1.0.jar:/Users/cedric/.ivy2/cache/org.reactivestreams/reactive-streams/jars/reactive-streams-1.0.3.jar:/Users/cedric/.ivy2/cache/org.scala-lang.modules/scala-collection-compat_2.13/bundles/scala-collection-compat_2.13-2.1.1.jar:/Users/cedric/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.13/jars/scala-java8-compat_2.13-0.9.0.jar:/Users/cedric/.ivy2/cache/org.scala-lang.modules/scala-parallel-collections_2.13/jars/scala-parallel-collections_2.13-0.2.0.jar:/Users/cedric/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.13.1.jar:/Users/cedric/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.13.1.jar:/Users/cedric/.ivy2/cache/org.scalanlp/breeze-macros_2.13/jars/breeze-macros_2.13-1.0.jar:/Users/cedric/.ivy2/cache/org.scalanlp/breeze-natives_2.13/jars/breeze-natives_2.13-1.0.jar:/Users/cedric/.ivy2/cache/org.scalanlp/breeze-viz_2.13/jars/breeze-viz_2.13-1.0.jar:/Users/cedric/.ivy2/cache/org.scalanlp/breeze_2.13/jars/breeze_2.13-1.0.jar:/Users/cedric/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.5.jar:/Users/cedric/.ivy2/cache/org.typelevel/algebra_2.13/jars/algebra_2.13-2.0.0-M2.jar:/Users/cedric/.ivy2/cache/org.typelevel/cats-core_2.13/jars/cats-core_2.13-2.0.0.jar:/Users/cedric/.ivy2/cache/org.typelevel/cats-effect_2.13/jars/cats-effect_2.13-2.0.0.jar:/Users/cedric/.ivy2/cache/org.typelevel/cats-kernel_2.13/jars/cats-kernel_2.13-2.0.0.jar:/Users/cedric/.ivy2/cache/org.typelevel/cats-macros_2.13/jars/cats-macros_2.13-2.0.0.jar:/Users/cedric/.ivy2/cache/org.typelevel/machinist_2.13/jars/machinist_2.13-0.6.8.jar:/Users/cedric/.ivy2/cache/org.typelevel/spire-macros_2.13/jars/spire-macros_2.13-0.17.0-M1.jar:/Users/cedric/.ivy2/cache/org.typelevel/spire-platform_2.13/jars/spire-platform_2.13-0.17.0-M1.jar:/Users/cedric/.ivy2/cache/org.typelevel/spire-util_2.13/jars/spire-util_2.13-0.17.0-M1.jar:/Users/cedric/.ivy2/cache/org.typelevel/spire_2.13/jars/spire_2.13-0.17.0-M1.jar:/Users/cedric/.ivy2/cache/org.ujmp/ujmp-core/jars/ujmp-core-0.3.0.jar:/Users/cedric/.ivy2/cache/pl.edu.icm/JLargeArrays/jars/JLargeArrays-1.5.jar -cpus 8 -YtimingsFile /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/timings.csv -YhydraTag diagenesissim/main -YpartitionFile /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim -YrootDirectory /Users/cedric/IdeaProjects/diagenesissim -YhydraStore /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim/main
+
+  last tree to typer: Literal(Constant(org.carbonateresearch.conus.common.InitialCondition.type))
+       tree position: line 3 of /Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala
+            tree tpe: Class[org.carbonateresearch.conus.common.InitialCondition.type](classOf[org.carbonateresearch.conus.common.InitialCondition$])
+              symbol: null
+           call site: method defineInitialModelConditions in class SteppedModelWithCalculations in package common
+
+== Source file context for tree position ==
+
+     1 package org.carbonateresearch.conus.common
+     2 
+     3 case class InitialCondition(variable:CalculationParametersIOLabels,value:List[Any], coordinates:List[Seq[Int]])
+     4 
+	at scala.reflect.internal.SymbolTable.throwAssertionError(SymbolTable.scala:170)
+	at scala.reflect.internal.SymbolTable.assert(SymbolTable.scala:156)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:451)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:92)
+	at scala.reflect.internal.Trees$Select.transform(Trees.scala:832)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.transform(TypingTransformers.scala:51)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.mayNeedProtectedAccessor$1(SuperAccessors.scala:267)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transformSelect$1(SuperAccessors.scala:414)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:417)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:458)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.$anonfun$transform$18(SuperAccessors.scala:463)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.withInvalidOwner(SuperAccessors.scala:502)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:463)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.$anonfun$transformArgs$1(SuperAccessors.scala:163)
+	at scala.reflect.internal.TreeInfo.$anonfun$mapMethodParamsAndArgs$1(TreeInfo.scala:240)
+	at scala.reflect.internal.TreeInfo.$anonfun$mapMethodParamsAndArgs$1$adapted(TreeInfo.scala:240)
+	at scala.reflect.internal.util.Collections.foreach2(Collections.scala:259)
+	at scala.reflect.internal.util.Collections.foreach2$(Collections.scala:255)
+	at scala.reflect.internal.SymbolTable.foreach2(SymbolTable.scala:28)
+	at scala.reflect.internal.TreeInfo.foreachMethodParamAndArg(TreeInfo.scala:254)
+	at scala.reflect.internal.TreeInfo.mapMethodParamsAndArgs(TreeInfo.scala:240)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transformArgs(SuperAccessors.scala:160)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:458)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:92)
+	at scala.reflect.internal.Trees$ValDef.$anonfun$transform$4(Trees.scala:414)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:37)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:492)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:32)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:24)
+	at scala.reflect.internal.Trees$ValDef.transform(Trees.scala:413)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.transform(TypingTransformers.scala:51)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:467)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:92)
+	at scala.reflect.api.Trees$Transformer.$anonfun$transformStats$1(Trees.scala:2614)
+	at scala.collection.immutable.List.mapConserve(List.scala:444)
+	at scala.reflect.api.Trees$Transformer.transformStats(Trees.scala:2612)
+	at scala.reflect.internal.Trees$Block.transform(Trees.scala:536)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.transform(TypingTransformers.scala:51)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:467)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:92)
+	at scala.reflect.internal.Trees$DefDef.$anonfun$transform$5(Trees.scala:434)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:37)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:492)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:32)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:24)
+	at scala.reflect.internal.Trees$DefDef.transform(Trees.scala:432)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.transform(TypingTransformers.scala:51)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:467)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:92)
+	at scala.reflect.api.Trees$Transformer.$anonfun$transformTrees$1(Trees.scala:2583)
+	at scala.collection.immutable.List.mapConserve(List.scala:444)
+	at scala.reflect.api.Trees$Transformer.transformTrees(Trees.scala:2583)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.$anonfun$transform$4(SuperAccessors.scala:308)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:37)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:492)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:32)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transformTemplate$1(SuperAccessors.scala:308)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:313)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:92)
+	at scala.reflect.api.Trees$Transformer.transformTemplate(Trees.scala:2587)
+	at scala.reflect.internal.Trees$ClassDef.$anonfun$transform$2(Trees.scala:342)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:37)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:492)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:32)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:24)
+	at scala.reflect.internal.Trees$ClassDef.transform(Trees.scala:341)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.transform(TypingTransformers.scala:51)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transformClassDef$1(SuperAccessors.scala:290)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:292)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:92)
+	at scala.reflect.api.Trees$Transformer.$anonfun$transformStats$1(Trees.scala:2614)
+	at scala.collection.immutable.List.mapConserve(List.scala:444)
+	at scala.reflect.api.Trees$Transformer.transformStats(Trees.scala:2612)
+	at scala.reflect.internal.Trees$PackageDef.$anonfun$transform$1(Trees.scala:323)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:37)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:492)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:32)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:24)
+	at scala.reflect.internal.Trees$PackageDef.transform(Trees.scala:323)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.$anonfun$transform$2(TypingTransformers.scala:49)
+	at scala.reflect.api.Trees$Transformer.atOwner(Trees.scala:2625)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:37)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.atOwner(SuperAccessors.scala:492)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.atOwner(TypingTransformers.scala:32)
+	at scala.tools.nsc.transform.TypingTransformers$TypingTransformer.transform(TypingTransformers.scala:49)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transform(SuperAccessors.scala:467)
+	at scala.tools.nsc.ast.Trees$Transformer.transformUnit(Trees.scala:162)
+	at scala.tools.nsc.typechecker.SuperAccessors$SuperAccTransformer.transformUnit(SuperAccessors.scala:105)
+	at scala.tools.nsc.transform.Transform$Phase.apply(Transform.scala:36)
+	at scala.tools.nsc.Global$GlobalPhase.applyPhase(Global.scala:568)
+	at scala.tools.nsc.Global$GlobalPhase.run(Global.scala:506)
+	at scala.tools.nsc.Global$Run.compileUnitsInternal(Global.scala:1683)
+	at scala.tools.nsc.Global$Run.compileUnits(Global.scala:1657)
+	at scala.tools.nsc.Global$Run.compileSources(Global.scala:1649)
+	at scala.tools.nsc.Global$Run.compile(Global.scala:1894)
+	at com.triplequote.hydra.compiler.ScalaWorker$ScalaCompilationRound.compile(ScalaWorker.scala:124)
+	at com.triplequote.hydra.compiler.ScalaWorker.compile(ScalaWorker.scala:72)
+	at com.triplequote.hydra.WorkerThread.$anonfun$run$1(WorkerThread.scala:43)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at com.triplequote.hydra.compiler.utils.Utils$.timed(Utils.scala:34)
+	at com.triplequote.hydra.WorkerThread.run(WorkerThread.scala:43)
+2020-05-19 14:34:24.369 ERROR worker.4 - Worker crashed, potentially due to cached types.
+   Cached entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialConditions.scala,org.carbonateresearch.conus.common.InitialConditions.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialConditions.scala,org.carbonateresearch.conus.common.InitialConditions.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala,org.carbonateresearch.conus.common.InitialCondition.copy$default$2)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala,org.carbonateresearch.conus.common.InitialCondition.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala,org.carbonateresearch.conus.common.InitialCondition.copy)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialConditions.scala,org.carbonateresearch.conus.common.InitialConditions.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialConditions.scala,org.carbonateresearch.conus.common.InitialConditions.copy$default$1)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala,org.carbonateresearch.conus.common.InitialCondition.toString)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala,org.carbonateresearch.conus.common.InitialCondition.copy$default$3)(/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialConditions.scala,org.carbonateresearch.conus.common.InitialConditions.copy$default$2)
+   Buffered errors: pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala,line-13,offset=787 type mismatch;
+ found   : Seq[Nothing]
+ required: List[Seq[Int]] ERROR
+pos: source-/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/SteppedModelWithCalculations.scala,line-26,offset=1494 type mismatch;
+ found   : List[Seq[Int]]
+ required: theGrid.Dimensions
+    (which expands to)  Seq[Int] ERROR
+
+2020-05-19 14:34:24.369 INFO  worker.4 - Respawning worker because of inconsistent reads.
+2020-05-19 14:34:24.390 INFO  worker.0 - Worker used 5 cached entries.
+2020-05-19 14:34:24.390 INFO  c.t.h.WorkerThread - [worker.0]: 332 ms 	1 sources.
+2020-05-19 14:34:24.499 INFO  worker.4 - Worker used 0 cached entries.
+2020-05-19 14:34:24.499 INFO  c.t.h.WorkerThread - [worker.4]: 440 ms 	1 sources.
+2020-05-19 14:34:24.499 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 27 milliseconds
+2020-05-19 14:34:24.499 INFO  c.t.hydra.Hydra - Hydra compiling: 442 ms
+2020-05-19 16:29:59.551 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 110 ms.
+2020-05-19 16:29:59.583 INFO  c.t.hydra.Hydra - Loaded pickle store with 184 entries.
+2020-05-19 16:29:59.584 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 16:29:59.584 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 16:29:59.584 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 16:29:59.591 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 6 ms.
+2020-05-19 16:29:59.591 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 16:29:59.777 INFO  c.t.h.l.ActivatedLicenseText - ActivatedLicenseText.validate took 169 ms.
+2020-05-19 16:29:59.778 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 16:29:59.782 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 16:29:59.796 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 16:29:59.811 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180:1:1:1:1:1:1
+2020-05-19 16:29:59.838 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 16:29:59.839 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 16:29:59.839 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-05-19 16:29:59.839 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 1 files.
+2020-05-19 16:29:59.839 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 1 files.
+2020-05-19 16:29:59.839 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 1 files.
+2020-05-19 16:29:59.839 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 1 files.
+2020-05-19 16:30:00.394 INFO  worker.1 - [ cache invalidate ]: org.carbonateresearch.conus.common.InitialCondition.copy$default$2 type was: List[Any] @scala.annotation.unchecked.uncheckedVariance, now: List[(Any, Seq[Int])] @scala.annotation.unchecked.uncheckedVariance
+2020-05-19 16:30:00.635 INFO  worker.2 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala,org.carbonateresearch.conus.common.InitialCondition.copy$default$2)
+2020-05-19 16:30:00.636 INFO  worker.2 - Respawning worker because of inconsistent reads.
+2020-05-19 16:30:00.926 INFO  worker.3 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala,org.carbonateresearch.conus.common.InitialCondition.copy$default$2)
+2020-05-19 16:30:00.926 INFO  worker.3 - Respawning worker because of inconsistent reads.
+2020-05-19 16:30:01.070 INFO  worker.0 - Invalidating this worker because of dirty cache entries: (/Users/cedric/IdeaProjects/diagenesissim/src/main/scala/org/carbonateresearch/conus/common/InitialCondition.scala,org.carbonateresearch.conus.common.InitialCondition.copy$default$2)
+2020-05-19 16:30:01.070 INFO  worker.0 - Respawning worker because of inconsistent reads.
+2020-05-19 16:30:01.315 INFO  worker.5 - Worker used 0 cached entries.
+2020-05-19 16:30:01.316 INFO  c.t.h.WorkerThread - [worker.5]: 1452 ms 	1 sources.
+2020-05-19 16:30:01.325 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-19 16:30:01.325 INFO  c.t.h.WorkerThread - [worker.1]: 1462 ms 	1 sources.
+2020-05-19 16:30:01.342 INFO  worker.4 - Worker used 0 cached entries.
+2020-05-19 16:30:01.343 INFO  c.t.h.WorkerThread - [worker.4]: 1479 ms 	1 sources.
+2020-05-19 16:30:01.347 INFO  worker.2 - Worker used 0 cached entries.
+2020-05-19 16:30:01.348 INFO  c.t.h.WorkerThread - [worker.2]: 1485 ms 	1 sources.
+2020-05-19 16:30:01.349 INFO  worker.6 - Worker used 0 cached entries.
+2020-05-19 16:30:01.349 INFO  c.t.h.WorkerThread - [worker.6]: 1486 ms 	1 sources.
+2020-05-19 16:30:01.399 INFO  worker.3 - Worker used 0 cached entries.
+2020-05-19 16:30:01.399 INFO  c.t.h.WorkerThread - [worker.3]: 1536 ms 	1 sources.
+2020-05-19 16:30:01.477 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 16:30:01.477 INFO  c.t.h.WorkerThread - [worker.0]: 1614 ms 	1 sources.
+2020-05-19 16:30:01.482 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 74 milliseconds
+2020-05-19 16:30:01.483 INFO  c.t.hydra.Hydra - Hydra compiling: 1646 ms
+2020-05-19 16:35:17.537 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 27 ms.
+2020-05-19 16:35:17.547 INFO  c.t.hydra.Hydra - Loaded pickle store with 187 entries.
+2020-05-19 16:35:17.547 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 16:35:17.547 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 16:35:17.547 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 16:35:17.548 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 16:35:17.548 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 16:35:17.550 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 16:35:17.550 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 16:35:17.551 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 16:35:17.552 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180:1:1:1:1:1:1
+2020-05-19 16:35:17.563 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 16:35:17.563 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 16:35:17.563 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-05-19 16:35:17.563 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 1 files.
+2020-05-19 16:35:17.563 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 1 files.
+2020-05-19 16:35:17.563 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 1 files.
+2020-05-19 16:35:17.563 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 1 files.
+2020-05-19 16:35:17.868 INFO  worker.5 - Worker used 0 cached entries.
+2020-05-19 16:35:17.868 INFO  c.t.h.WorkerThread - [worker.5]: 303 ms 	1 sources.
+2020-05-19 16:35:17.959 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-19 16:35:17.960 INFO  c.t.h.WorkerThread - [worker.1]: 394 ms 	1 sources.
+2020-05-19 16:35:17.962 INFO  worker.4 - Worker used 0 cached entries.
+2020-05-19 16:35:17.963 INFO  c.t.h.WorkerThread - [worker.4]: 397 ms 	1 sources.
+2020-05-19 16:35:17.976 INFO  worker.2 - Worker used 4 cached entries.
+2020-05-19 16:35:17.976 INFO  c.t.h.WorkerThread - [worker.2]: 412 ms 	1 sources.
+2020-05-19 16:35:17.983 INFO  worker.3 - Worker used 5 cached entries.
+2020-05-19 16:35:17.983 INFO  c.t.h.WorkerThread - [worker.3]: 418 ms 	1 sources.
+2020-05-19 16:35:17.988 INFO  worker.0 - Worker used 4 cached entries.
+2020-05-19 16:35:17.988 INFO  c.t.h.WorkerThread - [worker.0]: 424 ms 	1 sources.
+2020-05-19 16:35:18.009 INFO  worker.6 - Worker used 0 cached entries.
+2020-05-19 16:35:18.009 INFO  c.t.h.WorkerThread - [worker.6]: 443 ms 	1 sources.
+2020-05-19 16:35:18.009 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 55 milliseconds
+2020-05-19 16:35:18.009 INFO  c.t.hydra.Hydra - Hydra compiling: 446 ms
+2020-05-19 16:45:21.841 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 25 ms.
+2020-05-19 16:45:21.851 INFO  c.t.hydra.Hydra - Loaded pickle store with 187 entries.
+2020-05-19 16:45:21.851 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 16:45:21.851 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 16:45:21.851 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 16:45:21.852 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 16:45:21.852 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 16:45:21.855 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 16:45:21.855 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 16:45:21.855 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 16:45:21.857 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180:1:1:1:1:1:1
+2020-05-19 16:45:21.871 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 16:45:21.871 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 16:45:21.871 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-05-19 16:45:21.871 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 1 files.
+2020-05-19 16:45:21.871 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 1 files.
+2020-05-19 16:45:21.871 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 1 files.
+2020-05-19 16:45:21.871 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 1 files.
+2020-05-19 16:45:22.146 INFO  worker.5 - Worker used 0 cached entries.
+2020-05-19 16:45:22.147 INFO  c.t.h.WorkerThread - [worker.5]: 273 ms 	1 sources.
+2020-05-19 16:45:22.280 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-19 16:45:22.280 INFO  c.t.h.WorkerThread - [worker.1]: 408 ms 	1 sources.
+2020-05-19 16:45:22.286 INFO  worker.4 - Worker used 0 cached entries.
+2020-05-19 16:45:22.288 INFO  c.t.h.WorkerThread - [worker.4]: 415 ms 	1 sources.
+2020-05-19 16:45:22.327 INFO  worker.2 - Worker used 4 cached entries.
+2020-05-19 16:45:22.328 INFO  c.t.h.WorkerThread - [worker.2]: 455 ms 	1 sources.
+2020-05-19 16:45:22.362 INFO  worker.6 - Worker used 0 cached entries.
+2020-05-19 16:45:22.363 INFO  c.t.h.WorkerThread - [worker.6]: 489 ms 	1 sources.
+2020-05-19 16:45:22.484 INFO  worker.3 - Worker used 5 cached entries.
+2020-05-19 16:45:22.484 INFO  c.t.h.WorkerThread - [worker.3]: 612 ms 	1 sources.
+2020-05-19 16:45:22.506 INFO  worker.0 - Worker used 4 cached entries.
+2020-05-19 16:45:22.506 INFO  c.t.h.WorkerThread - [worker.0]: 634 ms 	1 sources.
+2020-05-19 16:45:22.506 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 72 milliseconds
+2020-05-19 16:45:22.506 INFO  c.t.hydra.Hydra - Hydra compiling: 635 ms
+2020-05-19 16:45:22.553 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589903121851
+2020-05-19 16:45:23.019 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 15 ms.
+2020-05-19 16:45:23.029 INFO  c.t.hydra.Hydra - Loaded pickle store with 187 entries.
+2020-05-19 16:45:23.029 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 16:45:23.029 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 16:45:23.029 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 16:45:23.030 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 16:45:23.030 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 16:45:23.031 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 16:45:23.031 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 16:45:23.032 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 16:45:23.033 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1
+2020-05-19 16:45:23.033 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 16:45:23.241 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 16:45:23.241 INFO  c.t.h.WorkerThread - [worker.0]: 207 ms 	1 sources.
+2020-05-19 16:45:23.241 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-05-19 16:45:23.241 INFO  c.t.hydra.Hydra - Hydra compiling: 208 ms
+2020-05-19 17:04:35.428 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 11 ms.
+2020-05-19 17:04:35.436 INFO  c.t.hydra.Hydra - Loaded pickle store with 187 entries.
+2020-05-19 17:04:35.436 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 17:04:35.436 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 17:04:35.436 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 17:04:35.437 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 17:04:35.437 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 17:04:35.440 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 17:04:35.440 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 17:04:35.440 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 17:04:35.441 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180:1:1:1:1:1:1:1
+2020-05-19 17:04:35.451 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 17:04:35.451 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 17:04:35.451 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-05-19 17:04:35.451 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 1 files.
+2020-05-19 17:04:35.451 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 1 files.
+2020-05-19 17:04:35.451 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 1 files.
+2020-05-19 17:04:35.451 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 1 files.
+2020-05-19 17:04:35.451 INFO  c.t.hydra.Hydra - [worker.7]: Starting worker with 1 files.
+2020-05-19 17:04:35.760 INFO  worker.6 - Worker used 0 cached entries.
+2020-05-19 17:04:35.761 INFO  c.t.h.WorkerThread - [worker.6]: 308 ms 	1 sources.
+2020-05-19 17:04:35.868 INFO  worker.5 - Worker used 0 cached entries.
+2020-05-19 17:04:35.869 INFO  c.t.h.WorkerThread - [worker.5]: 416 ms 	1 sources.
+2020-05-19 17:04:35.878 INFO  worker.2 - Worker used 0 cached entries.
+2020-05-19 17:04:35.878 INFO  c.t.h.WorkerThread - [worker.2]: 426 ms 	1 sources.
+2020-05-19 17:04:35.887 INFO  worker.3 - Worker used 4 cached entries.
+2020-05-19 17:04:35.893 INFO  c.t.h.WorkerThread - [worker.3]: 434 ms 	1 sources.
+2020-05-19 17:04:35.945 INFO  worker.7 - Worker used 0 cached entries.
+2020-05-19 17:04:35.945 INFO  c.t.h.WorkerThread - [worker.7]: 492 ms 	1 sources.
+2020-05-19 17:04:36.048 INFO  worker.0 - Worker used 4 cached entries.
+2020-05-19 17:04:36.048 INFO  c.t.h.WorkerThread - [worker.0]: 596 ms 	1 sources.
+2020-05-19 17:04:36.049 INFO  worker.4 - Worker used 5 cached entries.
+2020-05-19 17:04:36.049 INFO  c.t.h.WorkerThread - [worker.4]: 597 ms 	1 sources.
+2020-05-19 17:04:36.122 INFO  worker.1 - Worker used 18 cached entries.
+2020-05-19 17:04:36.122 INFO  c.t.h.WorkerThread - [worker.1]: 670 ms 	1 sources.
+2020-05-19 17:04:36.123 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 73 milliseconds
+2020-05-19 17:04:36.123 INFO  c.t.hydra.Hydra - Hydra compiling: 672 ms
+2020-05-19 17:04:36.136 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589904275436
+2020-05-19 17:19:30.933 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 10 ms.
+2020-05-19 17:19:30.940 INFO  c.t.hydra.Hydra - Loaded pickle store with 187 entries.
+2020-05-19 17:19:30.940 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 17:19:30.940 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 17:19:30.940 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 17:19:30.941 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 17:19:30.941 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 17:19:30.943 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 17:19:30.943 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 17:19:30.943 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 17:19:30.944 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1:1
+2020-05-19 17:19:30.946 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 17:19:30.946 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-19 17:19:31.260 INFO  worker.0 - Worker used 6 cached entries.
+2020-05-19 17:19:31.260 INFO  c.t.h.WorkerThread - [worker.0]: 313 ms 	1 sources.
+2020-05-19 17:19:31.265 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-19 17:19:31.265 INFO  c.t.h.WorkerThread - [worker.1]: 318 ms 	1 sources.
+2020-05-19 17:19:31.265 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 11 milliseconds
+2020-05-19 17:19:31.265 INFO  c.t.hydra.Hydra - Hydra compiling: 319 ms
+2020-05-19 17:19:31.268 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589905170940
+2020-05-19 17:31:51.927 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 8 ms.
+2020-05-19 17:31:51.948 INFO  c.t.hydra.Hydra - Loaded pickle store with 187 entries.
+2020-05-19 17:31:51.948 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 17:31:51.948 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 17:31:51.948 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 17:31:51.948 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-05-19 17:31:51.948 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 17:31:51.950 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 17:31:51.950 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 17:31:51.950 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 17:31:51.951 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180
+2020-05-19 17:31:51.951 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 17:31:52.223 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 17:31:52.224 INFO  c.t.h.WorkerThread - [worker.0]: 272 ms 	1 sources.
+2020-05-19 17:31:52.224 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-05-19 17:31:52.224 INFO  c.t.hydra.Hydra - Hydra compiling: 273 ms
+2020-05-19 17:31:52.226 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589905911948
+2020-05-19 17:32:08.219 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 14 ms.
+2020-05-19 17:32:08.226 INFO  c.t.hydra.Hydra - Loaded pickle store with 187 entries.
+2020-05-19 17:32:08.226 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 17:32:08.226 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 17:32:08.226 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 17:32:08.226 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 0 ms.
+2020-05-19 17:32:08.226 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 17:32:08.228 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 17:32:08.228 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 17:32:08.228 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 17:32:08.228 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180
+2020-05-19 17:32:08.228 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 17:32:08.420 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 17:32:08.420 INFO  c.t.h.WorkerThread - [worker.0]: 191 ms 	1 sources.
+2020-05-19 17:32:08.420 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-05-19 17:32:08.420 INFO  c.t.hydra.Hydra - Hydra compiling: 192 ms
+2020-05-19 17:32:08.422 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589905928226
+2020-05-19 17:32:48.709 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 8 ms.
+2020-05-19 17:32:48.714 INFO  c.t.hydra.Hydra - Loaded pickle store with 187 entries.
+2020-05-19 17:32:48.714 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 17:32:48.714 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 17:32:48.714 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 17:32:48.715 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 17:32:48.715 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 17:32:48.716 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 17:32:48.716 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 17:32:48.716 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 17:32:48.717 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180
+2020-05-19 17:32:48.717 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 17:32:48.940 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 17:32:48.940 INFO  c.t.h.WorkerThread - [worker.0]: 223 ms 	1 sources.
+2020-05-19 17:32:48.940 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-05-19 17:32:48.940 INFO  c.t.hydra.Hydra - Hydra compiling: 223 ms
+2020-05-19 17:32:48.941 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589905968714
+2020-05-19 17:34:15.513 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 10 ms.
+2020-05-19 17:34:15.519 INFO  c.t.hydra.Hydra - Loaded pickle store with 187 entries.
+2020-05-19 17:34:15.519 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 17:34:15.519 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 17:34:15.519 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 17:34:15.520 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 17:34:15.520 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 17:34:15.521 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 17:34:15.521 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 17:34:15.521 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 17:34:15.521 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 180
+2020-05-19 17:34:15.521 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 17:34:15.709 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 17:34:15.709 INFO  c.t.h.WorkerThread - [worker.0]: 187 ms 	1 sources.
+2020-05-19 17:34:15.709 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
+2020-05-19 17:34:15.709 INFO  c.t.hydra.Hydra - Hydra compiling: 188 ms
+2020-05-19 17:34:15.711 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589906055519
+2020-05-19 17:38:56.900 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 56 files in 1 roots took 6 ms.
+2020-05-19 17:38:56.905 INFO  c.t.hydra.Hydra - Loaded pickle store with 187 entries.
+2020-05-19 17:38:56.905 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-19 17:38:56.905 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-19 17:38:56.905 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-19 17:38:56.906 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-19 17:38:56.906 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-19 17:38:56.907 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 30. Maximum cores: 8
+2020-05-19 17:38:56.907 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-19 17:38:56.907 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-19 17:38:56.908 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 1
+2020-05-19 17:38:56.908 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-19 17:38:57.081 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-19 17:38:57.081 INFO  c.t.h.WorkerThread - [worker.0]: 172 ms 	1 sources.
+2020-05-19 17:38:57.082 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 2 milliseconds
+2020-05-19 17:38:57.082 INFO  c.t.hydra.Hydra - Hydra compiling: 174 ms
+2020-05-19 17:38:57.083 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1589906336905
