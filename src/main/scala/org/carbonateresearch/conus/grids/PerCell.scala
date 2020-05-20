@@ -14,7 +14,6 @@ case class PerCell(variableName:CalculationParametersIOLabels, value:List[(Any,S
 
     val nestedList:List[List[Any]] = combineListOfLists(valueAsLists.map(x => x._1))
     val allPossibleValues: List[List[(Any,Seq[Int])]] = nestedList.map(nl => nl.zip(valueAsLists.unzip._2))
-      println("nested lists: $nestedLists")
 
       allPossibleValues
     }

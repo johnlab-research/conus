@@ -58,7 +58,7 @@ case class SingleModel(ID:Int,nbSteps:Int,grid:Grid,
     val timeTaken:String = TimeUtils.formatHoursMinuteSeconds(time)
     val nbChar = timeTaken.length + ID.toString.length + 25
     val deleteSequence:String = "\b"*nbChar
-    print("Model #"+model.ID+" completed in "+timeTaken+":"+EOL + model.summary)
+    print("Model #"+model.ID+" completed in "+timeTaken+EOL)
   }
 
   def formatHoursMinuteSeconds(nannoseconds:Double): String = {

@@ -47,10 +47,10 @@ case object ExcelIO{
     val cell2 = row.createCell(1)
     cell2.setAsActiveCell()
     cell2.setCellValue("VALUE")
-    val cell3 = row.createCell(1)
+    val cell3 = row.createCell(2)
     cell3.setAsActiveCell()
     cell3.setCellValue("UNITS")
-    val cell4 = row.createCell(2)
+    val cell4 = row.createCell(3)
     cell4.setAsActiveCell()
     cell4.setCellValue("COORDINATES")
 
@@ -58,7 +58,7 @@ case object ExcelIO{
       model.initialConditions.flatMap(ic => ic.values.map(icv => (ic.variable,icv._1,icv._2)))
     val numberOfRows = initialConditions.indices
     val modelID = model.ID
-    println(s"Initial conditions for model $modelID : $initialConditions")
+
     numberOfRows.foreach(r => {
       val row = icSheet.createRow(r+1)
       val cell1 = row.createCell(0)
@@ -75,16 +75,24 @@ case object ExcelIO{
 
       val cell4 = row.createCell(3)
       cell4.setAsActiveCell()
-      cell4.setCellValue(initialConditions(r)._3.toString())
+      cell4.setCellValue(coordinatesAsString(initialConditions(r)._3))
     })
   }
+
+  private def coordinatesAsString(coord:Seq[Int]):String ={
+      coord.length match {
+        case 0 => "All cells"
+        case _ => {
+          coord.map(c => c.toString+",").foldLeft("")(_+_).dropRight(1)
+        }
+      }
+    }
 
   private def formatModelData(model:SingleModelResults, dataSheet:XSSFSheet):Unit ={
     val rawString = model.theGrid.toString
     val rows:Array[String] = rawString.split(EOL)
     val nbRows:Int = rows.length
     val data:Array[Array[String]] = rows.map(str => str.split(","))
-    println(data(0)(0).toString)
     val rowIndex = rows.indices
     val colIndex = data(0).indices
 

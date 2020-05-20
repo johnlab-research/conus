@@ -49,6 +49,6 @@ val EOL = lineSeparator()
   private def lastStepNumber:Int = theGrid.nbSteps
   private def lastStep:GridElement = theGrid.getTimeStep(lastStepNumber)
 
-  def summary: String = "Model summary"
+  def summary: String = ""
 
 }

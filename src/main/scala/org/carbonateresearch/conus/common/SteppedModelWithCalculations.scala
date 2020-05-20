@@ -32,10 +32,7 @@ case class SteppedModelWithCalculations(nbSteps:Int,
     })
     grids.indices.map(i => {
       val g =grids(i)
-      val icond = initialValues(grids.indexOf(g))
-      val icond = initialValues(grids.indexOf(g))
-      println("Model "+i+1+s" initial conditions:$icond")
-      SingleModel(ID = i+1,nbSteps=nbSteps,grid = g,calculations=mathematicalModel,initialConditions=initialValues(grids.indexOf(g)))
+      SingleModel(ID = i+1,nbSteps=nbSteps,grid = g,calculations=mathematicalModel,initialConditions=initialValues(i))
     }).toList
   }
 

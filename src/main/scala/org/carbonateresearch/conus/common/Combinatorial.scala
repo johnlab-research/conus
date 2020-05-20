@@ -28,6 +28,8 @@ trait Combinatorial {
        val headOfList:List[List[A]] = nestedLists.head.map(x => List(x))
        val tailOfList:List[List[A]] = nestedLists.tail
 
-      tailOfList.foldLeft(headOfList)(mergeTwoLists)
+      val returnList = tailOfList.foldLeft(headOfList)(mergeTwoLists)
+
+    returnList.map(rl => rl.reverse)
   }
 }

@@ -47,14 +47,15 @@ object TestDriveApp extends App {
       D47eq =>> D47eqFun,
   D47i =>> D47iFun,
   SampleTemp =>> davies19_T)
-    .defineInitialModelConditions(AllCells(initialAge,110.0),
+    .defineInitialModelConditions(
+      AllCells(initialAge,110.0),
       AllCells(finalAge,10.0),
       PerCell(D47i,List(
-        (List(0.731, 0.455),Seq(0)),
-        (List(0.756),Seq(1)),
+        (List(0.731, 0.455,0.677),Seq(0)),
+        (List(0.756,0.766),Seq(1)),
         (List(0.456),Seq(2)),
         (List(0.566),Seq(3)),
-        (List(0.676),Seq(4)))
+        (List(0.676,0.677),Seq(4)))
     ))
 
  val runnedModel = myFirstModel.run

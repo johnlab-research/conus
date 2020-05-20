@@ -40,7 +40,6 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
   def run: ModelCalculationSpace = {
     val timeout = Timeout(35.minutes)
     val firstModels:List[Calculator] = models(0).calculations
-    models.foreach(m=> println(m.ID))
     println("----------------------------------------"+EOL+"RUN STARTED"+EOL+"----------------------------------------")
 
      implicit val ec = global
