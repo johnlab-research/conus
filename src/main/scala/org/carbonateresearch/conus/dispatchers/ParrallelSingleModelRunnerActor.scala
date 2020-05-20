@@ -1,4 +1,4 @@
-package org.carbonateresearch.conus.common
+package org.carbonateresearch.conus.dispatchers
 
 import akka.actor.Actor
 

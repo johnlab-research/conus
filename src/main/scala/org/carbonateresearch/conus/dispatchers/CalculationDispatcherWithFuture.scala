@@ -1,9 +1,9 @@
-package org.carbonateresearch.conus.common
+package org.carbonateresearch.conus.dispatchers
+
+import org.carbonateresearch.conus.common.{SingleModel, SingleModelResults}
+
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.Future
-import java.lang.Runtime._
-import Console.{GREEN, RED, RESET, UNDERLINED, YELLOW_B}
-import java.lang.System.lineSeparator
 
 
 class CalculationDispatcherWithFuture extends CalculationDispatcher {

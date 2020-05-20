@@ -1,7 +1,10 @@
-package org.carbonateresearch.conus.common
+package org.carbonateresearch.conus.dispatchers
+
 import java.lang.System.lineSeparator
 
-import Console.{BLUE, CYAN, GREEN, MAGENTA, RED, RESET, UNDERLINED, WHITE, YELLOW, YELLOW_B}
+import org.carbonateresearch.conus.common.{SingleModel, SingleModelResults}
+
+import scala.Console._
 import scala.concurrent.Future
 
 trait CalculationDispatcher {

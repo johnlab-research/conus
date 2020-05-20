@@ -1,14 +1,6 @@
-package org.carbonateresearch.conus.common
+package org.carbonateresearch.conus.dispatchers
 
-import akka.actor.{Actor, Props}
-import akka.util.Timeout
-import akka.pattern.ask
-
-import scala.concurrent.duration._
-import scala.concurrent.ExecutionContext.global
-import scala.util.Try
-import scala.concurrent.Future
-import scala.util.{Failure, Success}
+import akka.actor.Actor
 
 abstract class ParrallelModellerCollectorActor extends Actor {
   /*

@@ -1,7 +1,9 @@
-package org.carbonateresearch.conus.common
+package org.carbonateresearch.conus.dispatchers
+
+import org.carbonateresearch.conus.common.{SingleModel, SingleModelResults}
+
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.Future
-import scala.util.Success
 
 class CalculationDispatcherSequential extends CalculationDispatcher{
   override val typeOfDispatcher: String = 1.toString

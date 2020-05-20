@@ -12,7 +12,9 @@ import scala.collection.parallel.CollectionConverters._
 import scala.annotation.tailrec
 import java.lang.System.lineSeparator
 
+import org.carbonateresearch.conus.dispatchers.CalculationDispatcherWithFuture
 import org.carbonateresearch.conus.grids.GridFactory
+
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
