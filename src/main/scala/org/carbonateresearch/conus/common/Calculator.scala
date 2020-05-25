@@ -1,29 +1,25 @@
+/*
+ * Copyright © 2020 by Cédric John.
+ *
+ * This file is part of CoNuS.
+ *
+ * CoNuS is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3 of the License.
+ *
+ * CoNuS is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with CoNuS. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package org.carbonateresearch.conus.common
 
-// Tagging trait for model parameters case classes
 trait Calculator {
-
   def calculate (step:Step): Step = ???
-  //def unit: String = ""
   def outputs:CalculationParametersIOLabels
-  /*def inputs:Option[List[CalculationParametersIOLabels]] = None
-  def functionBlock: Option[List[Double] => Double] = None
 
-  def checkForError(previousParameters:List[Calculator]): String = {
-    val parameterList = previousParameters.flatMap(c => c.outputs)
-
-    val checkPresenceOfParameter:String = inputs match{
-      case None => ""
-      case v:Some[List[CalculationParametersIOLabels]] => {v.get.map(i => {
-        val j = i match {
-          case j:Previous => j.input
-          case _ => i
-        }
-        if(parameterList.contains(j)){
-          "" }
-        else {"Parameter '"+j.toString + "' missing or out of sequence when calculating '"+outputs.map(o => o.toString).mkString(", ")+"'"+EOL}}).mkString("")}}
-
-    checkPresenceOfParameter
-
-  }*/
 }

@@ -1,25 +1,32 @@
+/*
+ * Copyright © 2020 by Cédric John.
+ *
+ * This file is part of CoNuS.
+ *
+ * CoNuS is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3 of the License.
+ *
+ * CoNuS is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with CoNuS. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package org.carbonateresearch.conus.common
 
-import akka.actor.Props
 
-import scala.concurrent.{Await, Future}
-import scala.concurrent.duration._
-import akka.pattern.ask
+import scala.concurrent.{Future}
 import akka.util.Timeout
-import org.carbonateresearch.conus.common.Calculator
-
-import scala.collection.parallel.CollectionConverters._
-import scala.annotation.tailrec
 import java.lang.System.lineSeparator
-
 import org.carbonateresearch.conus.IO.ExcelEncoder
 import org.carbonateresearch.conus.dispatchers.CalculationDispatcherWithFuture
-import org.carbonateresearch.conus.grids.GridFactory
-
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
-import org.carbonateresearch.conus.grids._
 
 final case class ModelCalculationSpace(models: List[SingleModel] = List(),
                                        modelName:String,
@@ -47,9 +54,6 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
 
      implicit val ec = global
       val dispatcher = new CalculationDispatcherWithFuture
-      //val dispatcher = new ParallelCalculatorWithMonix
-      //val dispatcher = new CalculationDispatcherWithParCollection
-     //val dispatcher = new CalculationDispatcherSequential
       val newResults:Future[List[SingleModelResults]] = dispatcher.calculateModelsList(models)
 
       newResults.onComplete{

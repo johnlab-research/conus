@@ -1,16 +1,27 @@
-package org.carbonateresearch.conus.grids
+/*
+ * Copyright © 2020 by Cédric John.
+ *
+ * This file is part of CoNuS.
+ *
+ * CoNuS is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3 of the License.
+ *
+ * CoNuS is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with CoNuS. If not, see <http://www.gnu.org/licenses/>.
+ */
 
-import org.carbonateresearch.conus.common.CalculationParametersIOLabels
-import org.carbonateresearch.conus.grids.universal.UniversalGrid1D
+package org.carbonateresearch.conus.grids
 
 trait GridElement {
   val vecSize:Int
-  def toString(timeStep:Int):String
-  def toString(timeStep:Int,keys:CalculationParametersIOLabels*):String
-  def setAtCell[T](key:Int,value:T, coordinates:Seq[Int]):Unit
-  def setManyAtCell[T](keys:Seq[Int],values:Seq[T],coordinates:Seq[Int]):Unit
-  def setForAllCells[T](key:Int,value:T):Unit
-  def setManyForAllCells[T](keys:Seq[Int],values:Seq[T]):Unit
-  def getValueAtCell[T](key:Int,coordinates:Seq[Int]):T
-  def getValueForAllCells[T](key:Int):UniversalGrid1D
+  def toString:String
+  def setAtCell(value:Any, coordinates:Seq[Int]):Unit
+  def setForAllCells(value:Any):Unit
+  def getValueAtCell(coordinates:Seq[Int]):Any
 }

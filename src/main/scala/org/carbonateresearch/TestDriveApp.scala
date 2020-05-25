@@ -1,3 +1,21 @@
+/*
+ * Copyright © 2020 by Cédric John.
+ *
+ * This file is part of CoNuS.
+ *
+ * CoNuS is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3 of the License.
+ *
+ * CoNuS is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with CoNuS. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package org.carbonateresearch
 
 import org.carbonateresearch.conus.common.{ModelVariable, SteppedModel}
@@ -11,11 +29,12 @@ object TestDriveApp extends App {
   val surfaceTemperaturesHistory = List((110.0,30.0),(38.0, 30.0),(0.0,30.0))
   val numberOfSteps = 150
   val ageList:List[Double] = List(110.0,111.0,99.0)
+  val finalAgeList:List[Double] = List(10.0,1.0,11.5)
   val initialAge:ModelVariable[Double] = ModelVariable("Initial age",110.0,"Ma")
   val finalAge:ModelVariable[Double] = ModelVariable("Final age",0.0,"Ma")
 
   val myFirstModel = new SteppedModel(numberOfSteps,"Eagleford recrystallization")
-    .setGrid(5)
+    .setGrid(2,2)
     .defineMathematicalModel(
       age =>> ageOfStep(initialAge,finalAge),
   depth =>> burialDepthFromAgeModel(age,burialHistory),
@@ -29,13 +48,12 @@ object TestDriveApp extends App {
     )
     .defineInitialModelConditions(
       AllCells(initialAge,ageList),
-      AllCells(finalAge,10.0),
+      AllCells(finalAge,finalAgeList),
       PerCell(D47i,List(
-        (List(0.731),Seq(0)),
-        (List(0.756),Seq(1)),
-        (List(0.456),Seq(2)),
-        (List(0.566),Seq(3)),
-        (List(0.676),Seq(4)))
+        (List(0.756),Seq(1,0)),
+        (List(0.456),Seq(0,0)),
+        (List(0.566),Seq(1,1)),
+        (List(0.676),Seq(0,1)))
     ))
 
  val runnedModel = myFirstModel.run

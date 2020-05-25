@@ -1,3 +1,21 @@
+/*
+ * Copyright © 2020 by Cédric John.
+ *
+ * This file is part of CoNuS.
+ *
+ * CoNuS is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3 of the License.
+ *
+ * CoNuS is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with CoNuS. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package org.carbonateresearch.conus.common
 import java.lang.System.lineSeparator
 
@@ -34,7 +52,7 @@ val EOL = lineSeparator()
     true
   }
 
-  def resultsForStep(stepNumber: Int): GridElement = theGrid.getTimeStep(stepNumber)
+  //def resultsForStep(stepNumber: Int): GridElement = theGrid.getTimeStep(stepNumber)
 
   def getStepResult[T](stepNumber:Int, k:ModelVariable[T]): GridElement= {
     theGrid.getVariableForTimeStep(k)(stepNumber)
@@ -47,7 +65,7 @@ val EOL = lineSeparator()
   def  getModelVariablesForStep(step:Int):List[CalculationParametersIOLabels] = theGrid.variableMap.keys.toList
 
   private def lastStepNumber:Int = theGrid.nbSteps
-  private def lastStep:GridElement = theGrid.getTimeStep(lastStepNumber)
+  //private def lastStep:GridElement = theGrid.getTimeStep(lastStepNumber)
 
   def summary: String = ""
 

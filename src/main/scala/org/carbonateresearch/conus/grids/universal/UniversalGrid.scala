@@ -1,55 +1,54 @@
+/*
+ * Copyright © 2020 by Cédric John.
+ *
+ * This file is part of CoNuS.
+ *
+ * CoNuS is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3 of the License.
+ *
+ * CoNuS is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with CoNuS. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package org.carbonateresearch.conus.grids.universal
 import org.carbonateresearch.conus.common.CalculationParametersIOLabels
 import org.carbonateresearch.conus.grids.{Grid, GridElement, GridStringFormatter}
 import java.lang.System.lineSeparator
-
+import scala.reflect.{ClassTag}
 import scala.collection.immutable.ListMap
-import breeze.linalg._
 
 case class UniversalGrid(override val gridGeometry:Seq[Int],
                          override val nbSteps:Int,
                          override val variableMap:Map[CalculationParametersIOLabels,Int],
-                        private val underlyingGrid:DenseVector[GridElement]) extends Grid {
+                         private val underlyingGrid:Map[CalculationParametersIOLabels,TimeStepVector]) extends Grid {
 
   private val EOL = lineSeparator()
 
-  def getVariableAtCellForTimeStep[T](key:CalculationParametersIOLabels, coordinates:Seq[Int])(implicit timeStep: TimeStep):T = {
-    val index:Int = variableMap(key)
-    underlyingGrid(timeStep).getValueAtCell(index,coordinates)
+  def getVariableAtCellForTimeStep(key:CalculationParametersIOLabels, coordinates:Seq[Int])(implicit timeStep: TimeStep):Any = {
+    underlyingGrid(key).timestep(timeStep).getValueAtCell(coordinates)
   }
 
   def getVariableForTimeStep(key:CalculationParametersIOLabels)(implicit timeStep: TimeStep):GridElement = {
-    reduceToOneVariable(variableMap(key)).getTimeStep(timeStep)
-  }
-
-  def getTimeStep(timeStep:TimeStep):GridElement = {
-    underlyingGrid(timeStep)
+    underlyingGrid(key).timestep(timeStep)
   }
 
   def setAtCell[T](key:CalculationParametersIOLabels,value:T, coordinates:Dimensions)(implicit timeStep: TimeStep):Unit = {
     coordinates.size match {
       case 0 => initializeGrid(Seq(key),Seq(value))
-      case _ => underlyingGrid (timeStep).setAtCell (variableMap (key), value, coordinates)
+      case _ => underlyingGrid(key).timestep(timeStep).setAtCell(value,coordinates)
     }
   }
 
-  def setManyAtCell(keys:Seq[CalculationParametersIOLabels],values:Seq[Any], coordinates:Dimensions)(implicit timeStep: TimeStep):Unit = {
-    keys.foreach(k => setAtCell(k,values(keys.indexOf(k)),coordinates))
-  }
-
-  def setManyForTimeStep(keys:Seq[CalculationParametersIOLabels],values:Seq[Any])(implicit timeStep: TimeStep):Unit = {
-    val keysIndex:Seq[Int] = keys.map(k => variableMap(k))
-    keys.foreach(k => underlyingGrid(timeStep).setManyForAllCells(keysIndex,values))
-  }
-
   def initializeGrid(keys:Seq[CalculationParametersIOLabels],values:Seq[Any]):Unit = {
-    (0 until nbSteps).foreach(t => setManyForTimeStep(keys,values)(t))
-  }
-
-  private def reduceToOneVariable(key:Int):UniversalGrid = {
-    val updatedGrid = this.copy(gridGeometry, nbSteps, variableMap,underlyingGrid)
-    (0 until nbSteps).foreach(i => updatedGrid.underlyingGrid(i).getValueForAllCells(key))
-    updatedGrid
+    keys.foreach(k => (0 until nbSteps).foreach(ts => {
+      underlyingGrid(k).timestep(ts).setForAllCells(values(keys.indexOf(k)))
+    }))
   }
 
   override def toString:String = {
@@ -58,10 +57,15 @@ case class UniversalGrid(override val gridGeometry:Seq[Int],
       case 2 => ",X,Y"
       case _ => ",X,Y,Z"
     }
-    "Timestep"+cString+ListMap(variableMap.toSeq.sortBy(_._2):_*).map(x => ","+x._1.toString).foldLeft("")(_+_)+lineSeparator()+
+
+    val sortedVariableMap:Map[CalculationParametersIOLabels,Int] = ListMap(variableMap.toSeq.sortBy(_._2):_*)
+    val keys = sortedVariableMap.keys
+    val returnString = "Timestep"+cString+keys.map(x => ","+x.toString).foldLeft("")(_+_)+lineSeparator()+
     (0 until nbSteps).map(s => {
-      underlyingGrid(s).toString()
-    }).foldLeft("")(_+_)
+      allGridCells.map(c => (List(s.toString+",")++c.map(cc => cc.toString+",")++keys.map(k => underlyingGrid(k).timestep(s).getValueAtCell(c).toString+",")).foldLeft("")(_+_).dropRight(1) + EOL)
+        .foldLeft("")(_+_)
+    }).foldLeft("")(_+_)+EOL
+    returnString
   }
 
   def printGridResults:String = {
@@ -74,8 +78,7 @@ case class UniversalGrid(override val gridGeometry:Seq[Int],
 
 object UniversalGrid {
   def apply(gridGeometry:Seq[Int], nbSteps:Int, variableMap:Map[CalculationParametersIOLabels,Int]):UniversalGrid = {
-     val underlyingGrid = DenseVector.tabulate[GridElement](nbSteps){i => UniversalGrid1D(gridGeometry,variableMap.size,Seq(i))}
-
+    val underlyingGrid:Map[CalculationParametersIOLabels,TimeStepVector] = variableMap.map(vm => (vm._1, TimeStepVector(vm._1, nbSteps, gridGeometry)(ClassTag(nbSteps.getClass),breeze.storage.Zero.IntZero)))
     new UniversalGrid(gridGeometry, nbSteps, variableMap, underlyingGrid)
   }
 }
