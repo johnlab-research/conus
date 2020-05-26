@@ -20,7 +20,10 @@ package org.carbonateresearch.conus.common
 
 import org.carbonateresearch.conus.util.StepFunctionUtils.StepFunction
 import java.lang.System.lineSeparator
-import scala.util.{Try, Success,Failure}
+
+import org.carbonateresearch.conus.calibration.{Calibrator, ValueEqualTo, InRange, LargerThan, SmallerThan}
+
+import scala.util.{Failure, Success, Try}
 
 final case class ModelVariable[T](override val name: String,
                                   initialValue:T,
@@ -70,13 +73,28 @@ val EOL = lineSeparator()
     returnedValue
   }
 
-
-
   private def tryAccess(step:Step,stepNumber:Int):Try[T] = {
      Try {
         step.grid.getVariableAtCellForTimeStep(this,step.coordinates)(stepNumber).asInstanceOf[T]
       }
     }
+
+  def isLessThan(value:T)(implicit num:Numeric[T]):SmallerThan[T] = {
+    SmallerThan(value:T,this)
+  }
+
+  def isLargerThan(value:T)(implicit num:Numeric[T]):LargerThan[T] = {
+    LargerThan(value:T,this)
+  }
+
+  def isBetween(min:T, max:T)(implicit num:Numeric[T]):InRange[T] = {
+    InRange(min, max,this)
+  }
+
+  def isEqualTo(value:T)(implicit num:Numeric[T]):ValueEqualTo[T] = {
+    ValueEqualTo(value,this)
+  }
+
 
   def =>>(f: StepFunction[T]):CalculationDescription[T] = {
     ApplyStepFunction(f).storeResultAs(this)

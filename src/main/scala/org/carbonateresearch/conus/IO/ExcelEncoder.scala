@@ -37,8 +37,10 @@ case object ExcelEncoder{
     val successful = dir.mkdirs
     if (successful) {
       println("Writing results to folder '"+fullPathName+"'")
-    models.foreach(m => writeIndividualModel(m,fullPathName+"/Model"+m.ID+".xlsx"))}
+    models.foreach(m => writeIndividualModel(m,fullPathName+checkedCalibrated(m.calibrated)+m.ID+".xlsx"))}
   }
+
+  private def checkedCalibrated(isCalibrated:Boolean):String = if (isCalibrated){"/Calibrated_Model"} else{"/Uncalibrated_Model"}
 
   private def writeIndividualModel(model:SingleModelResults,filename:String):Unit = {
     val workbook = new XSSFWorkbook

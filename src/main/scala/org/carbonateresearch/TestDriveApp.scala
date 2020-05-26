@@ -18,6 +18,7 @@
 
 package org.carbonateresearch
 
+import org.carbonateresearch.conus.calibration.{Calibrator, ValueEqualTo, InRange, LargerThan, SmallerThan}
 import org.carbonateresearch.conus.common.{ModelVariable, SteppedModel}
 import org.carbonateresearch.conus.grids.{AllCells, PerCell}
 import org.carbonateresearch.conus.modelzoo.GeneralGeology._
@@ -55,6 +56,7 @@ object TestDriveApp extends App {
         (List(0.566),Seq(1,1)),
         (List(0.676),Seq(0,1)))
     ))
+    .defineCalibration(SampleTemp.isEqualTo(159.43044964126625).atCells(Seq(1,1)))
 
  val runnedModel = myFirstModel.run
 

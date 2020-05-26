@@ -27,7 +27,6 @@ case class CalculationDescription[T](f:Step=>T, label:ModelVariable[T]) extends 
     val currentStepNumber:Int = step.stepNumber
     val theGrid:Grid = step.grid
     val coordinates:Seq[Int] = step.coordinates
-    val stepError = step.stepErrors
     val calculatedValue:T = f(step)
     theGrid.setAtCell(label,calculatedValue,coordinates)(currentStepNumber)
     step

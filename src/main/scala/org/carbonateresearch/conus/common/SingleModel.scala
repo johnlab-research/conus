@@ -22,9 +22,12 @@ import org.carbonateresearch.conus.grids.Grid
 import org.carbonateresearch.conus.util.TimeUtils
 import java.lang.System.lineSeparator
 
+import org.carbonateresearch.conus.calibration.{ApplyCalibrationRules, Calibrator}
+
 case class SingleModel(ID:Int,nbSteps:Int,grid:Grid,
                        calculations:List[Calculator],
-                       initialConditions:List[InitialCondition]) extends Combinatorial {
+                       initialConditions:List[InitialCondition],
+                       calibrationSet:List[Calibrator]=List()) extends Combinatorial {
   val EOL:String = lineSeparator()
   val steps:Seq[Int] = (0 until nbSteps).toList
   val geometry:Seq[Int] = grid.gridGeometry
@@ -62,19 +65,26 @@ case class SingleModel(ID:Int,nbSteps:Int,grid:Grid,
         })
       })
     })
-    val evaluatedModel = SingleModelResults(ID,nbSteps,grid,initialConditions)
+    val evaluatedModel = SingleModelResults(ID,nbSteps,grid,initialConditions, checkCalibrated)
     val currentTime = System.nanoTime()
     printOutputString(currentTime-startTime,evaluatedModel)
     evaluatedModel
   }
 
-
+  private def checkCalibrated:Boolean = {
+    if (calibrationSet.isEmpty) {
+      true
+    } else {
+     ApplyCalibrationRules(grid,calibrationSet).results
+    }
+  }
 
   private def printOutputString(time:Double,model:SingleModelResults): Unit = {
     val timeTaken:String = TimeUtils.formatHoursMinuteSeconds(time)
     val nbChar = timeTaken.length + ID.toString.length + 25
     val deleteSequence:String = "\b"*nbChar
-    print("Model #"+model.ID+" completed in "+timeTaken+EOL)
+    val calibratedMsg:String = if(checkCalibrated){" is calibrated."}else{" is not calibrated."}
+    print("Model #"+model.ID+" completed in "+timeTaken+calibratedMsg+EOL)
   }
 
   def formatHoursMinuteSeconds(nannoseconds:Double): String = {

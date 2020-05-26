@@ -11,6 +11,7 @@ osName := (System.getProperty("os.name") match {
 version := "0.0.1"
 
 scalaVersion:="2.13.1"
+crossScalaVersions := Seq(scalaVersion.value, "2.12.8","2.11.12")
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases"),

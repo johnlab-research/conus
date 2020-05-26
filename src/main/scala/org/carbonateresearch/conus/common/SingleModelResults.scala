@@ -25,7 +25,8 @@ import org.carbonateresearch.conus.util.CommonModelVariables.NumberOfSteps
 case class SingleModelResults(ID:Int,
                               nbSteps:Int,
                               theGrid:Grid,
-                              initialConditions:List[InitialCondition]) extends SimulationResults {
+                              initialConditions:List[InitialCondition],
+                              calibrated:Boolean = false) extends SimulationResults {
 val EOL = lineSeparator()
   def size:Int = theGrid.size
 
