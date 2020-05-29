@@ -14876,3 +14876,242 @@ You may wish to define V as -V instead. (SLS 4.5) ERROR
 2020-05-26 16:18:03.066 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 0 milliseconds
 2020-05-26 16:18:03.066 INFO  c.t.hydra.Hydra - Hydra compiling: 376 ms
 2020-05-26 16:18:03.068 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1590506282682
+2020-05-26 16:22:04.988 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 50 files in 1 roots took 8 ms.
+2020-05-26 16:22:04.994 INFO  c.t.hydra.Hydra - Loaded pickle store with 212 entries.
+2020-05-26 16:22:04.994 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-26 16:22:04.994 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-26 16:22:04.994 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-26 16:22:04.995 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-26 16:22:04.995 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-26 16:22:04.996 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 23. Maximum cores: 8
+2020-05-26 16:22:04.996 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-26 16:22:04.997 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-26 16:22:04.997 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 408:362:330:1
+2020-05-26 16:22:05.002 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-26 16:22:05.002 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 1 files.
+2020-05-26 16:22:05.002 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 1 files.
+2020-05-26 16:22:05.002 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 1 files.
+2020-05-26 16:22:05.339 INFO  worker.3 - Worker used 21 cached entries.
+2020-05-26 16:22:05.339 INFO  c.t.h.WorkerThread - [worker.3]: 336 ms 	1 sources.
+2020-05-26 16:22:05.403 INFO  worker.2 - Worker used 30 cached entries.
+2020-05-26 16:22:05.404 INFO  c.t.h.WorkerThread - [worker.2]: 401 ms 	1 sources.
+2020-05-26 16:22:05.410 INFO  worker.1 - Worker used 21 cached entries.
+2020-05-26 16:22:05.411 INFO  c.t.h.WorkerThread - [worker.1]: 408 ms 	1 sources.
+2020-05-26 16:22:05.443 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-26 16:22:05.443 INFO  c.t.h.WorkerThread - [worker.0]: 441 ms 	1 sources.
+2020-05-26 16:22:05.443 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 65 milliseconds
+2020-05-26 16:22:05.443 INFO  c.t.hydra.Hydra - Hydra compiling: 441 ms
+2020-05-26 16:22:05.446 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1590506524994
+2020-05-26 19:40:50.344 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 50 files in 1 roots took 133 ms.
+2020-05-26 19:40:50.389 INFO  c.t.hydra.Hydra - Loaded pickle store with 212 entries.
+2020-05-26 19:40:50.390 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-26 19:40:50.392 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-26 19:40:50.392 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-26 19:40:50.399 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 5 ms.
+2020-05-26 19:40:50.400 INFO  c.t.hydra.Hydra - Clean build: false
+2020-05-26 19:40:51.507 INFO  c.t.h.l.ActivatedLicenseText - ActivatedLicenseText.validate took 1090 ms.
+2020-05-26 19:40:51.507 INFO  c.t.h.l.HydraLicenseChecker - Trying to reactivate license close to expiration date. Days left: 23
+2020-05-26 19:40:51.518 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 23. Maximum cores: 8
+2020-05-26 19:40:51.523 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-26 19:40:51.527 INFO  c.t.h.m.Metrics - Deserializing unit-timings.csv.
+2020-05-26 19:40:51.537 INFO  c.t.h.m.AutoBalancer - Balanced workers with distribution (ms): 330
+2020-05-26 19:40:51.542 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 1 files.
+2020-05-26 19:40:52.857 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-26 19:40:52.857 INFO  c.t.h.WorkerThread - [worker.0]: 1296 ms 	1 sources.
+2020-05-26 19:40:52.862 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 16 milliseconds
+2020-05-26 19:40:52.863 INFO  c.t.hydra.Hydra - Hydra compiling: 1321 ms
+2020-05-26 19:40:52.901 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1590518450390
+2020-05-26 19:40:55.091 INFO  c.t.h.l.HydraLicenseChecker - Successfully reactivated license, new days left: 23
+2020-05-27 08:59:06.498 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 50 files in 1 roots took 128 ms.
+2020-05-27 08:59:06.536 INFO  c.t.hydra.Hydra - Loaded pickle store with 212 entries.
+2020-05-27 08:59:06.537 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-27 08:59:06.539 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-27 08:59:06.540 INFO  c.t.hydra.Hydra - Compiling project:   diagenesissim/main
+2020-05-27 08:59:06.547 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 6 ms.
+2020-05-27 08:59:06.547 INFO  c.t.hydra.Hydra - Clean build: true
+2020-05-27 08:59:06.745 INFO  c.t.h.l.ActivatedLicenseText - ActivatedLicenseText.validate took 176 ms.
+2020-05-27 08:59:06.745 INFO  c.t.h.l.HydraLicenseChecker - Trying to reactivate license close to expiration date. Days left: 23
+2020-05-27 08:59:06.757 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 23. Maximum cores: 8
+2020-05-27 08:59:06.763 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-27 08:59:06.765 INFO  c.t.h.SourcePartitioner$ - No automatically balanced partition file /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/diagenesissim/main/partition.hydra exist yet. Using plain partition strategy.
+2020-05-27 08:59:06.797 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 7 files.
+2020-05-27 08:59:06.797 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 7 files.
+2020-05-27 08:59:06.797 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 6 files.
+2020-05-27 08:59:06.797 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 6 files.
+2020-05-27 08:59:06.797 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 6 files.
+2020-05-27 08:59:06.797 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 6 files.
+2020-05-27 08:59:06.797 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 6 files.
+2020-05-27 08:59:06.797 INFO  c.t.hydra.Hydra - [worker.7]: Starting worker with 6 files.
+2020-05-27 08:59:10.610 INFO  worker.6 - Worker used 53 cached entries.
+2020-05-27 08:59:10.612 INFO  worker.7 - Worker used 92 cached entries.
+2020-05-27 08:59:10.612 INFO  c.t.h.WorkerThread - [worker.6]: 3788 ms 	6 sources.
+2020-05-27 08:59:10.612 INFO  worker.0 - Worker used 65 cached entries.
+2020-05-27 08:59:10.613 INFO  c.t.h.WorkerThread - [worker.7]: 3790 ms 	6 sources.
+2020-05-27 08:59:10.616 INFO  c.t.h.WorkerThread - [worker.0]: 3790 ms 	7 sources.
+2020-05-27 08:59:10.643 INFO  worker.4 - Worker used 62 cached entries.
+2020-05-27 08:59:10.644 INFO  c.t.h.WorkerThread - [worker.4]: 3821 ms 	6 sources.
+2020-05-27 08:59:10.645 INFO  worker.2 - Worker used 64 cached entries.
+2020-05-27 08:59:10.646 INFO  c.t.h.WorkerThread - [worker.2]: 3823 ms 	6 sources.
+2020-05-27 08:59:10.663 INFO  worker.3 - Worker used 61 cached entries.
+2020-05-27 08:59:10.663 INFO  c.t.h.WorkerThread - [worker.3]: 3841 ms 	6 sources.
+2020-05-27 08:59:10.667 INFO  worker.5 - Worker used 64 cached entries.
+2020-05-27 08:59:10.668 INFO  c.t.h.WorkerThread - [worker.5]: 3845 ms 	6 sources.
+2020-05-27 08:59:10.728 INFO  worker.1 - Worker used 51 cached entries.
+2020-05-27 08:59:10.728 INFO  c.t.h.WorkerThread - [worker.1]: 3906 ms 	7 sources.
+2020-05-27 08:59:10.733 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 173 milliseconds
+2020-05-27 08:59:10.734 INFO  c.t.hydra.Hydra - Hydra compiling: 3937 ms
+2020-05-27 08:59:10.774 INFO  worker.0 - Total time in late files: 840 ms in 16 late files
+2020-05-27 08:59:10.775 INFO  worker.1 - Total time in late files: 632 ms in 18 late files
+2020-05-27 08:59:10.775 INFO  worker.2 - Total time in late files: 656 ms in 17 late files
+2020-05-27 08:59:10.775 INFO  worker.3 - Total time in late files: 732 ms in 17 late files
+2020-05-27 08:59:10.775 INFO  worker.4 - Total time in late files: 747 ms in 15 late files
+2020-05-27 08:59:10.775 INFO  worker.5 - Total time in late files: 706 ms in 20 late files
+2020-05-27 08:59:10.775 INFO  worker.6 - Total time in late files: 674 ms in 12 late files
+2020-05-27 08:59:10.776 INFO  worker.7 - Total time in late files: 1029 ms in 22 late files
+2020-05-27 08:59:10.777 INFO  c.t.hydra.Hydra - Compile time threshold for reporting unbalanced workers is 7788 ms.
+2020-05-27 08:59:10.796 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/diagenesissim-1590566346537
+2020-05-27 08:59:12.105 INFO  c.t.h.l.HydraLicenseChecker - Successfully reactivated license, new days left: 23
+2020-05-27 12:19:00.401 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 50 files in 1 roots took 130 ms.
+2020-05-27 12:19:00.412 INFO  c.t.hydra.Hydra - Loaded pickle store with 0 entries.
+2020-05-27 12:19:00.413 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-27 12:19:00.415 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-27 12:19:00.415 INFO  c.t.hydra.Hydra - Compiling project:   conus/main
+2020-05-27 12:19:00.423 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 6 ms.
+2020-05-27 12:19:00.423 INFO  c.t.hydra.Hydra - Clean build: true
+2020-05-27 12:19:00.645 INFO  c.t.h.l.ActivatedLicenseText - ActivatedLicenseText.validate took 202 ms.
+2020-05-27 12:19:00.645 INFO  c.t.h.l.HydraLicenseChecker - Trying to reactivate license close to expiration date. Days left: 23
+2020-05-27 12:19:00.657 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 23. Maximum cores: 8
+2020-05-27 12:19:00.663 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-27 12:19:00.665 INFO  c.t.h.SourcePartitioner$ - No automatically balanced partition file /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/conus/main/partition.hydra exist yet. Using plain partition strategy.
+2020-05-27 12:19:00.694 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 7 files.
+2020-05-27 12:19:00.694 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 7 files.
+2020-05-27 12:19:00.694 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 6 files.
+2020-05-27 12:19:00.694 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 6 files.
+2020-05-27 12:19:00.694 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 6 files.
+2020-05-27 12:19:00.694 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 6 files.
+2020-05-27 12:19:00.694 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 6 files.
+2020-05-27 12:19:00.694 INFO  c.t.hydra.Hydra - [worker.7]: Starting worker with 6 files.
+2020-05-27 12:19:04.132 INFO  worker.0 - Worker used 0 cached entries.
+2020-05-27 12:19:04.133 INFO  c.t.h.WorkerThread - [worker.0]: 3414 ms 	7 sources.
+2020-05-27 12:19:04.134 INFO  worker.7 - Worker used 0 cached entries.
+2020-05-27 12:19:04.140 INFO  c.t.h.WorkerThread - [worker.7]: 3415 ms 	6 sources.
+2020-05-27 12:19:04.158 INFO  worker.4 - Worker used 0 cached entries.
+2020-05-27 12:19:04.159 INFO  c.t.h.WorkerThread - [worker.4]: 3439 ms 	6 sources.
+2020-05-27 12:19:04.170 INFO  worker.6 - Worker used 0 cached entries.
+2020-05-27 12:19:04.171 INFO  c.t.h.WorkerThread - [worker.6]: 3451 ms 	6 sources.
+2020-05-27 12:19:04.187 INFO  worker.2 - Worker used 0 cached entries.
+2020-05-27 12:19:04.188 INFO  c.t.h.WorkerThread - [worker.2]: 3468 ms 	6 sources.
+2020-05-27 12:19:04.199 INFO  worker.3 - Worker used 0 cached entries.
+2020-05-27 12:19:04.201 INFO  c.t.h.WorkerThread - [worker.3]: 3480 ms 	6 sources.
+2020-05-27 12:19:04.227 INFO  worker.5 - Worker used 0 cached entries.
+2020-05-27 12:19:04.229 INFO  c.t.h.WorkerThread - [worker.5]: 3509 ms 	6 sources.
+2020-05-27 12:19:04.290 INFO  worker.1 - Worker used 0 cached entries.
+2020-05-27 12:19:04.290 INFO  c.t.h.WorkerThread - [worker.1]: 3571 ms 	7 sources.
+2020-05-27 12:19:04.298 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 195 milliseconds
+2020-05-27 12:19:04.299 INFO  c.t.hydra.Hydra - Hydra compiling: 3605 ms
+2020-05-27 12:19:04.354 INFO  worker.0 - Total time in late files: 682 ms in 16 late files
+2020-05-27 12:19:04.354 INFO  worker.1 - Total time in late files: 428 ms in 18 late files
+2020-05-27 12:19:04.355 INFO  worker.2 - Total time in late files: 636 ms in 17 late files
+2020-05-27 12:19:04.355 INFO  worker.3 - Total time in late files: 646 ms in 17 late files
+2020-05-27 12:19:04.355 INFO  worker.4 - Total time in late files: 650 ms in 15 late files
+2020-05-27 12:19:04.355 INFO  worker.5 - Total time in late files: 648 ms in 20 late files
+2020-05-27 12:19:04.355 INFO  worker.6 - Total time in late files: 547 ms in 12 late files
+2020-05-27 12:19:04.356 INFO  worker.7 - Total time in late files: 867 ms in 22 late files
+2020-05-27 12:19:04.357 INFO  c.t.hydra.Hydra - Compile time threshold for reporting unbalanced workers is 7414 ms.
+2020-05-27 12:19:04.403 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/conus-1590578340413
+2020-05-27 12:19:05.839 INFO  c.t.h.l.HydraLicenseChecker - Successfully reactivated license, new days left: 23
+2020-05-27 13:21:09.268 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 50 files in 1 roots took 22 ms.
+2020-05-27 13:21:09.279 INFO  c.t.hydra.Hydra - Loaded pickle store with 61 entries.
+2020-05-27 13:21:09.279 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-27 13:21:09.279 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-27 13:21:09.279 INFO  c.t.hydra.Hydra - Compiling project:   conus/main
+2020-05-27 13:21:09.280 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 1 ms.
+2020-05-27 13:21:09.280 INFO  c.t.hydra.Hydra - Clean build: true
+2020-05-27 13:21:09.283 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 23. Maximum cores: 8
+2020-05-27 13:21:09.283 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-27 13:21:09.283 INFO  c.t.h.SourcePartitioner$ - No automatically balanced partition file /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/conus/main/partition.hydra exist yet. Using plain partition strategy.
+2020-05-27 13:21:09.305 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 7 files.
+2020-05-27 13:21:09.306 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 7 files.
+2020-05-27 13:21:09.306 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 6 files.
+2020-05-27 13:21:09.306 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 6 files.
+2020-05-27 13:21:09.306 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 6 files.
+2020-05-27 13:21:09.306 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 6 files.
+2020-05-27 13:21:09.306 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 6 files.
+2020-05-27 13:21:09.306 INFO  c.t.hydra.Hydra - [worker.7]: Starting worker with 6 files.
+2020-05-27 13:21:10.810 INFO  worker.4 - Worker used 62 cached entries.
+2020-05-27 13:21:10.810 INFO  c.t.h.WorkerThread - [worker.4]: 1503 ms 	6 sources.
+2020-05-27 13:21:10.850 INFO  worker.0 - Worker used 65 cached entries.
+2020-05-27 13:21:10.850 INFO  c.t.h.WorkerThread - [worker.0]: 1543 ms 	7 sources.
+2020-05-27 13:21:11.035 INFO  worker.7 - Worker used 92 cached entries.
+2020-05-27 13:21:11.036 INFO  c.t.h.WorkerThread - [worker.7]: 1727 ms 	6 sources.
+2020-05-27 13:21:11.206 INFO  worker.6 - Worker used 53 cached entries.
+2020-05-27 13:21:11.211 INFO  c.t.h.WorkerThread - [worker.6]: 1898 ms 	6 sources.
+2020-05-27 13:21:11.271 INFO  worker.2 - Worker used 64 cached entries.
+2020-05-27 13:21:11.272 INFO  c.t.h.WorkerThread - [worker.2]: 1964 ms 	6 sources.
+2020-05-27 13:21:11.287 INFO  worker.3 - Worker used 61 cached entries.
+2020-05-27 13:21:11.288 INFO  c.t.h.WorkerThread - [worker.3]: 1980 ms 	6 sources.
+2020-05-27 13:21:11.442 INFO  worker.5 - Worker used 64 cached entries.
+2020-05-27 13:21:11.443 INFO  c.t.h.WorkerThread - [worker.5]: 2135 ms 	6 sources.
+2020-05-27 13:21:11.636 INFO  worker.1 - Worker used 51 cached entries.
+2020-05-27 13:21:11.636 INFO  c.t.h.WorkerThread - [worker.1]: 2329 ms 	7 sources.
+2020-05-27 13:21:11.636 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 148 milliseconds
+2020-05-27 13:21:11.636 INFO  c.t.hydra.Hydra - Hydra compiling: 2331 ms
+2020-05-27 13:21:11.639 INFO  worker.0 - Total time in late files: 447 ms in 16 late files
+2020-05-27 13:21:11.639 INFO  worker.1 - Total time in late files: 392 ms in 18 late files
+2020-05-27 13:21:11.639 INFO  worker.2 - Total time in late files: 440 ms in 17 late files
+2020-05-27 13:21:11.639 INFO  worker.3 - Total time in late files: 449 ms in 17 late files
+2020-05-27 13:21:11.639 INFO  worker.4 - Total time in late files: 437 ms in 15 late files
+2020-05-27 13:21:11.640 INFO  worker.5 - Total time in late files: 459 ms in 20 late files
+2020-05-27 13:21:11.640 INFO  worker.6 - Total time in late files: 360 ms in 12 late files
+2020-05-27 13:21:11.640 INFO  worker.7 - Total time in late files: 717 ms in 22 late files
+2020-05-27 13:21:11.640 INFO  c.t.hydra.Hydra - Compile time threshold for reporting unbalanced workers is 5503 ms.
+2020-05-27 13:21:11.652 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/conus-1590582069279
+2020-05-29 10:38:34.099 INFO  c.t.h.c.c.ParsedLogicalPackage$OutlineParseCompiler - Outline parse 50 files in 1 roots took 125 ms.
+2020-05-29 10:38:34.124 INFO  c.t.hydra.Hydra - Loaded pickle store with 61 entries.
+2020-05-29 10:38:34.124 INFO  c.t.hydra.Hydra - Hydra Scala version: 2.13.1-hydra41
+2020-05-29 10:38:34.127 INFO  c.t.hydra.Hydra - Hydra version:       2.2.3
+2020-05-29 10:38:34.127 INFO  c.t.hydra.Hydra - Compiling project:   conus/main
+2020-05-29 10:38:34.134 INFO  c.t.h.FullBuildDetector$ - Recursive - Full build detection took 6 ms.
+2020-05-29 10:38:34.134 INFO  c.t.hydra.Hydra - Clean build: true
+2020-05-29 10:38:34.273 INFO  c.t.h.l.ActivatedLicenseText - ActivatedLicenseText.validate took 119 ms.
+2020-05-29 10:38:34.273 INFO  c.t.h.l.HydraLicenseChecker - Trying to reactivate license close to expiration date. Days left: 21
+2020-05-29 10:38:34.286 INFO  c.t.h.l.HydraLicenseChecker - Days until license expiration: 21. Maximum cores: 8
+2020-05-29 10:38:34.292 WARN  c.t.hydra.Hydra - Trying to use 10 workers, but the license allows maximum 8, capping workers to 8.
+2020-05-29 10:38:34.294 INFO  c.t.h.SourcePartitioner$ - No automatically balanced partition file /Users/cedric/IdeaProjects/diagenesissim/.hydra/idea/conus/main/partition.hydra exist yet. Using plain partition strategy.
+2020-05-29 10:38:34.331 INFO  c.t.hydra.Hydra - [worker.0]: Starting worker with 7 files.
+2020-05-29 10:38:34.332 INFO  c.t.hydra.Hydra - [worker.1]: Starting worker with 7 files.
+2020-05-29 10:38:34.332 INFO  c.t.hydra.Hydra - [worker.2]: Starting worker with 6 files.
+2020-05-29 10:38:34.332 INFO  c.t.hydra.Hydra - [worker.3]: Starting worker with 6 files.
+2020-05-29 10:38:34.332 INFO  c.t.hydra.Hydra - [worker.4]: Starting worker with 6 files.
+2020-05-29 10:38:34.332 INFO  c.t.hydra.Hydra - [worker.5]: Starting worker with 6 files.
+2020-05-29 10:38:34.332 INFO  c.t.hydra.Hydra - [worker.6]: Starting worker with 6 files.
+2020-05-29 10:38:34.332 INFO  c.t.hydra.Hydra - [worker.7]: Starting worker with 6 files.
+2020-05-29 10:38:39.105 INFO  worker.0 - Worker used 65 cached entries.
+2020-05-29 10:38:39.105 INFO  worker.7 - Worker used 92 cached entries.
+2020-05-29 10:38:39.107 INFO  worker.6 - Worker used 53 cached entries.
+2020-05-29 10:38:39.109 INFO  c.t.h.WorkerThread - [worker.0]: 4735 ms 	7 sources.
+2020-05-29 10:38:39.110 INFO  c.t.h.WorkerThread - [worker.7]: 4734 ms 	6 sources.
+2020-05-29 10:38:39.110 INFO  c.t.h.WorkerThread - [worker.6]: 4736 ms 	6 sources.
+2020-05-29 10:38:39.121 INFO  worker.2 - Worker used 64 cached entries.
+2020-05-29 10:38:39.123 INFO  c.t.h.WorkerThread - [worker.2]: 4751 ms 	6 sources.
+2020-05-29 10:38:39.158 INFO  worker.3 - Worker used 61 cached entries.
+2020-05-29 10:38:39.158 INFO  worker.4 - Worker used 62 cached entries.
+2020-05-29 10:38:39.158 INFO  c.t.h.WorkerThread - [worker.3]: 4787 ms 	6 sources.
+2020-05-29 10:38:39.159 INFO  c.t.h.WorkerThread - [worker.4]: 4788 ms 	6 sources.
+2020-05-29 10:38:39.175 INFO  worker.5 - Worker used 64 cached entries.
+2020-05-29 10:38:39.176 INFO  c.t.h.WorkerThread - [worker.5]: 4805 ms 	6 sources.
+2020-05-29 10:38:39.270 INFO  worker.1 - Worker used 51 cached entries.
+2020-05-29 10:38:39.270 INFO  c.t.h.WorkerThread - [worker.1]: 4900 ms 	7 sources.
+2020-05-29 10:38:39.277 INFO  c.t.h.m.GarbageCollection$ - Garbage collection duration: 224 milliseconds
+2020-05-29 10:38:39.278 INFO  c.t.hydra.Hydra - Hydra compiling: 4947 ms
+2020-05-29 10:38:39.371 INFO  worker.0 - Total time in late files: 877 ms in 16 late files
+2020-05-29 10:38:39.372 INFO  worker.1 - Total time in late files: 644 ms in 18 late files
+2020-05-29 10:38:39.372 INFO  worker.2 - Total time in late files: 814 ms in 17 late files
+2020-05-29 10:38:39.372 INFO  worker.3 - Total time in late files: 811 ms in 17 late files
+2020-05-29 10:38:39.372 INFO  worker.4 - Total time in late files: 868 ms in 15 late files
+2020-05-29 10:38:39.373 INFO  worker.5 - Total time in late files: 855 ms in 20 late files
+2020-05-29 10:38:39.373 INFO  worker.6 - Total time in late files: 747 ms in 12 late files
+2020-05-29 10:38:39.373 INFO  worker.7 - Total time in late files: 1124 ms in 22 late files
+2020-05-29 10:38:39.376 INFO  c.t.hydra.Hydra - Compile time threshold for reporting unbalanced workers is 8734 ms.
+2020-05-29 10:38:39.397 INFO  c.t.h.m.MetricsSerializer - Compilation metrics successfully stored in /Users/cedric/.triplequote/metrics/conus-1590745114124
+2020-05-29 10:38:40.212 INFO  c.t.h.l.HydraLicenseChecker - Successfully reactivated license, new days left: 21

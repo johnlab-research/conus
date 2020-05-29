@@ -8,10 +8,10 @@ osName := (System.getProperty("os.name") match {
 })
 
 
-version := "0.0.1"
+version := "0.0.1b"
 
 scalaVersion:="2.13.1"
-crossScalaVersions := Seq(scalaVersion.value, "2.12.8","2.11.12")
+//crossScalaVersions := Seq(scalaVersion.value, "2.12.8","2.11.12")
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases"),
@@ -38,9 +38,42 @@ libraryDependencies  ++= Seq(
   "org.scalanlp" %% "breeze-viz" % "1.0"
 )
 
-libraryDependencies += "org.ojalgo" % "ojalgo" % "48.1.0"
+//libraryDependencies += "org.ojalgo" % "ojalgo" % "48.1.0"
 
-libraryDependencies += "org.ujmp" % "ujmp-core" % "0.3.0"
+val username = "cedricjohn"
+val repo     = "conus"
+
+inThisBuild(
+  List(
+    organization := "org.carbonateresearch",
+    homepage := Some(url(s"https://github.com/$username/$repo")),
+    licenses := List("GNU General Public License" -> url(s"https://github.com/$username/$repo/LICENSE")),
+    developers := List(
+      Developer(
+        id = username,
+        name = "Cedric John",
+        email = "cedric.john@gmail.com",
+        url = new URL(s"http://github.com/${username}")
+      )
+    )
+  )
+)
+
+
+ThisBuild / description := "CoNuS is a library for Concurrent Numerical Simulations."
+ThisBuild / licenses := List("GNU General Public License" -> new URL("http://www.gnu.org/licenses/"))
+ThisBuild / homepage := Some(url("https://github.com/cedricmjohn/conus"))
+
+// Remove all additional repository other than Maven Central from POM
+ThisBuild / pomIncludeRepository := { _ => false }
+ThisBuild / publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
+ThisBuild / publishMavenStyle := true
+
+publishTo := sonatypePublishToBundle.value
 
 
 
