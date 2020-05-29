@@ -1,2 +1,2 @@
-# conus
+# CoNuS
 Generic library for numerical modelling in Scala. Work currently in progress.
