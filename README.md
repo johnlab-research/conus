@@ -10,7 +10,7 @@ For SBT, add these lines to your SBT project definition:
 ```scala
 libraryDependencies  ++= Seq(
   // Last  release
-  "org.carbonateresearch" %% "conus" % "0.01b",
+  "org.carbonateresearch" %% "conus" % "0.01b"
 )
 
 
