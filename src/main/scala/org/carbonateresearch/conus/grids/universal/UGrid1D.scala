@@ -26,8 +26,8 @@ case class UGrid1D(gridGeometry:Seq[Int],
   override val vecSize:Int = gridGeometry.head
 
   override def toString:String = {
-
-  "TODO"
+    ("[" + (0 until gridGeometry.head-1).map(i => underlyingGrid(i).toString() + ",").foldLeft("")(_ + _) +
+      underlyingGrid(gridGeometry.head-1).toString() + "]")
   }
 
 
