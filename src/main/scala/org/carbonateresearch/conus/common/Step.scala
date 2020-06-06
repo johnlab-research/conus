@@ -28,8 +28,8 @@ case class Step(stepNumber:Int, coordinates:Seq[Int], grid:Grid, stepErrors:Stri
 object Step {
   def apply[T](k:ModelVariable[T],v:T):Step = {
     val mv = ModelVariable[Int]("Dummy",0)
-    val varMap = Map(mv.asInstanceOf[CalculationParametersIOLabels]->0)
-    val grid = GridFactory(Seq(1),1,varMap)
+    val varL = List(mv.asInstanceOf[CalculationParametersIOLabels])
+    val grid = GridFactory(Seq(1),1,varL)
     Step(0,Seq(0),grid,"")
   }
 }

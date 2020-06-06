@@ -18,35 +18,37 @@
 
 package org.carbonateresearch.conus.common
 
-import org.carbonateresearch.conus.grids.Grid
+import org.carbonateresearch.conus.grids.{Grid, GridFactory}
 import org.carbonateresearch.conus.util.TimeUtils
 import java.lang.System.lineSeparator
 
 import org.carbonateresearch.conus.calibration.{ApplyCalibrationRules, Calibrator}
 
-case class SingleModel(ID:Int,nbSteps:Int,grid:Grid,
+case class SingleModel(ID:Int,
+                       nbSteps:Int,
+                       gridGeometry:Seq[Int],
                        calculations:List[Calculator],
                        initialConditions:List[InitialCondition],
                        calibrationSet:List[Calibrator]=List()) extends Combinatorial {
   val EOL:String = lineSeparator()
   val steps:Seq[Int] = (0 until nbSteps).toList
-  val geometry:Seq[Int] = grid.gridGeometry
+
   private val allGridCells:List[Seq[Int]] = {
-    geometry.size match {
+    gridGeometry.size match {
       case 0 => List(Seq(1))
-      case 1 => (0 until geometry.head).map(x=>Seq(x)).toList
+      case 1 => (0 until gridGeometry.head).map(x=>Seq(x)).toList
       case 2 => {
-        val firstCoord:Seq[Int] = (0 until geometry.head)
-        val secondCoord:Seq[Int] = (0 until geometry(1))
+        val firstCoord:Seq[Int] = (0 until gridGeometry.head)
+        val secondCoord:Seq[Int] = (0 until gridGeometry(1))
         for {
           f <- firstCoord
           s <- secondCoord
         } yield Seq(f,s)
       }.toList
       case 3 => {
-        val firstCoord:Seq[Int] = (0 until geometry.head)
-        val secondCoord:Seq[Int] = (0 until geometry(1))
-        val thirdCoord:Seq[Int] = (0 until geometry(2))
+        val firstCoord:Seq[Int] = (0 until gridGeometry.head)
+        val secondCoord:Seq[Int] = (0 until gridGeometry(1))
+        val thirdCoord:Seq[Int] = (0 until gridGeometry(2))
         for {
           f <- firstCoord
           s <- secondCoord
@@ -57,6 +59,7 @@ case class SingleModel(ID:Int,nbSteps:Int,grid:Grid,
   }
 
   def evaluate(startTime:Double): SingleModelResults = {
+    val grid:Grid = createAndInitializeGrid(initialConditions)
     steps.foreach(s => {
       calculations.foreach(c => {
         allGridCells.foreach(coordinates => {
@@ -65,13 +68,34 @@ case class SingleModel(ID:Int,nbSteps:Int,grid:Grid,
         })
       })
     })
-    val evaluatedModel = SingleModelResults(ID,nbSteps,grid,initialConditions, checkCalibrated)
+    val evaluatedModel = SingleModelResults(ID,nbSteps,grid,initialConditions, checkCalibrated(grid))
     val currentTime = System.nanoTime()
     printOutputString(currentTime-startTime,evaluatedModel)
     evaluatedModel
   }
 
-  private def checkCalibrated:Boolean = {
+   private def createAndInitializeGrid(initialValues:List[InitialCondition]):Grid= {
+
+    val variableList:List[CalculationParametersIOLabels] = defineVariableList
+      val theGrid = GridFactory(gridGeometry, nbSteps, variableList)
+      val defaultValues = variableList.map(v => v.defaultValue)
+      theGrid.initializeGrid(variableList,defaultValues)
+
+      initialValues.foreach(ic => ic.values.foreach(icv =>
+        theGrid.setAtCell(ic.variable,icv._1,icv._2)(0)))
+
+    theGrid
+  }
+
+
+  private def defineVariableList:List[CalculationParametersIOLabels] = {
+    val labelsForInitialization:List[CalculationParametersIOLabels] = initialConditions.map(x => x.variable)
+    val labelsForCalculations:List[CalculationParametersIOLabels] = calculations.map(x => x.outputs)
+
+    (labelsForInitialization ++ labelsForCalculations).distinct
+  }
+
+  private def checkCalibrated(grid:Grid):Boolean = {
     if (calibrationSet.isEmpty) {
       true
     } else {
@@ -82,8 +106,7 @@ case class SingleModel(ID:Int,nbSteps:Int,grid:Grid,
   private def printOutputString(time:Double,model:SingleModelResults): Unit = {
     val timeTaken:String = TimeUtils.formatHoursMinuteSeconds(time)
     val nbChar = timeTaken.length + ID.toString.length + 25
-    val deleteSequence:String = "\b"*nbChar
-    val calibratedMsg:String = if(checkCalibrated){" is calibrated."}else{" is not calibrated."}
+    val calibratedMsg:String = if(model.calibrated){" is calibrated."}else{" is not calibrated."}
     print("Model #"+model.ID+" completed in "+timeTaken+calibratedMsg+EOL)
   }
 

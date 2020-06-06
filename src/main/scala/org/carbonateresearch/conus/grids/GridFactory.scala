@@ -22,7 +22,7 @@ import org.carbonateresearch.conus.common.CalculationParametersIOLabels
 import org.carbonateresearch.conus.grids.universal.UniversalGrid
 
 object GridFactory {
-  def apply(gridGeometry:Seq[Int], nbSteps:Int, variableMap:Map[CalculationParametersIOLabels,Int]):Grid = {
-    UniversalGrid(gridGeometry, nbSteps, variableMap)
+  def apply(gridGeometry:Seq[Int], nbSteps:Int, variableList:List[CalculationParametersIOLabels]):Grid = {
+    UniversalGrid(gridGeometry, nbSteps, variableList)
   }
 }
