@@ -63,7 +63,7 @@ val EOL = lineSeparator()
     theGrid.getVariableForTimeStep(k)(stepNumber)
   }
 
-  def  getModelVariablesForStep(step:Int):List[CalculationParametersIOLabels] = theGrid.variableMap.keys.toList
+  def  getModelVariablesForStep(step:Int):List[CalculationParametersIOLabels] = theGrid.variableList
 
   private def lastStepNumber:Int = theGrid.nbSteps
   //private def lastStep:GridElement = theGrid.getTimeStep(lastStepNumber)

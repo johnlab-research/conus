@@ -7,10 +7,9 @@ osName := (System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 })
 
+version := "0.1.0-SNAPSHOT"
 
-version := "0.0.1b"
-
-scalaVersion:="2.13.1"
+scalaVersion:="2.13.2"
 //crossScalaVersions := Seq(scalaVersion.value, "2.12.8","2.11.12")
 
 resolvers ++= Seq(
@@ -18,9 +17,9 @@ resolvers ++= Seq(
   Resolver.sonatypeRepo("snapshots")
 )
 
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.1"
+libraryDependencies += "com.typesafe.akka" %% "akka-actor-typed" % "2.6.5"
 
-libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0"
+libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3" % Runtime
 
 libraryDependencies += "io.monix" %% "monix" % "3.1.0-2156c0e"
 

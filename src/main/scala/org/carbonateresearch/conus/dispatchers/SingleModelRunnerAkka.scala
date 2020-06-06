@@ -18,17 +18,20 @@
 
 package org.carbonateresearch.conus.dispatchers
 
-import akka.actor.Actor
+import akka.actor.typed.scaladsl.Behaviors
+import akka.actor.typed.{Behavior}
+import org.carbonateresearch.conus.dispatchers.CalculationDispatcherAkka.{RunSingleModel, ModelResults}
 
-abstract class ParrallelSingleModelRunnerActor extends Actor {
+object SingleModelRunnerAkka  {
 
-  /*
-  def receive = {
-    case model: OldChainableCalculation => {
-      val result:OldSingleModelWithResults = model.evaluate(0)
-      sender ! result
+  def apply(): Behavior[RunSingleModel] = Behaviors.setup { context =>
+
+    Behaviors.receive { (context, message) => {
+      message.replyTo ! ModelResults(message.theModel.evaluate(message.startTime))
     }
-    case _       => println("Sample type not handled by Runner")
+
+      Behaviors.stopped
+    }
   }
-  */
+
 }

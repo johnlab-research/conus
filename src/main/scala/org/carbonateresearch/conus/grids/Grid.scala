@@ -25,7 +25,7 @@ trait Grid {
   type Dimensions = Seq[Int]
   def gridGeometry:Dimensions
   def size:Int = gridGeometry.product
-  def variableMap:Map[CalculationParametersIOLabels,Int]
+  def variableList:List[CalculationParametersIOLabels]
   def nbSteps: Int
   def numberOfCells:Int = gridGeometry.product * nbSteps
 

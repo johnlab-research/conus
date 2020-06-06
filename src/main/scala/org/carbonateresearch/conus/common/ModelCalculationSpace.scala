@@ -40,7 +40,7 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
   private val modelFolder:String = System.getProperty("user.home")+"/Conus/"+modelName
 
   def defineCalibration(set:List[Calibrator]) : ModelCalculationSpace = {
-    val updatedModels:List[SingleModel] = models.map(m => m.copy(m.ID,m.nbSteps,m.grid,
+    val updatedModels:List[SingleModel] = models.map(m => m.copy(m.ID,m.nbSteps,m.gridGeometry,
       m.calculations,
       m.initialConditions,
       set))
@@ -53,50 +53,6 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
   }
 
   def size : Int = models.size
-
-  def run: ModelCalculationSpace = {
-    println("----------------------------------------"+EOL+"RUN STARTED"+EOL+"----------------------------------------")
-
-     implicit val ec = global
-      val dispatcher = new CalculationDispatcherWithFuture
-      val newResults:Future[List[SingleModelResults]] = dispatcher.calculateModelsList(models)
-
-      newResults.onComplete{
-        case Success(results) => {
-        this.results = results
-        println(EOL+"----------------------------------------"+ EOL + "END OF RUN"+EOL+"----------------------------------------")
-         ExcelEncoder.writeExcel(results,modelFolder)
-      }
-        case Failure(failure) => {
-          println("Model has failed to run: "+failure.getMessage)}
-      }
-
-    this
-  }
-
-  def handleResults(modelResults: List[SingleModelResults]): ModelCalculationSpace = {
-    ModelCalculationSpace(models, modelName,calibrationSets, modelResults)
-  }
-
-  def calibrated():List[SingleModelResults] = {
-    lazy val calibratedModelList:List[SingleModelResults] = if (calibrationSets.isEmpty) {
-      resultsList
-    } else {resultsList.filter(p => checkAllConditions(p))}
-
-    def checkAllConditions(thisModel: SingleModelResults):Boolean = {
-      val conditions:List[Boolean] = this.calibrationSets.map(cs => {
-        //cs.interval.contains(thisModel.finalResult(cs.calibrationParameters))
-        false
-      })
-      !conditions.contains(false)
-    }
-
-    println("Found " + calibratedModelList.size + " calibrated models:")
-    calibratedModelList.map(r => r.summary + EOL).foreach(println)
-    print("")
-
-    calibratedModelList
-  }
 
 }
 

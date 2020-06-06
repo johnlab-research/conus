@@ -25,7 +25,7 @@ import scala.collection.immutable.ListMap
 
 case class UniversalGrid(override val gridGeometry:Seq[Int],
                          override val nbSteps:Int,
-                         override val variableMap:Map[CalculationParametersIOLabels,Int],
+                         override val variableList:List[CalculationParametersIOLabels],
                          private val underlyingGrid:Map[CalculationParametersIOLabels,TimeStepVector]) extends Grid {
 
   private val EOL = lineSeparator()
@@ -58,8 +58,7 @@ case class UniversalGrid(override val gridGeometry:Seq[Int],
       case _ => ",X,Y,Z"
     }
 
-    val sortedVariableMap:Map[CalculationParametersIOLabels,Int] = ListMap(variableMap.toSeq.sortBy(_._2):_*)
-    val keys = sortedVariableMap.keys
+    val keys:List[CalculationParametersIOLabels] = variableList.sortBy(cp => cp.name)
     val returnString = "Timestep"+cString+keys.map(x => ","+x.toString).foldLeft("")(_+_)+lineSeparator()+
     (0 until nbSteps).map(s => {
       allGridCells.map(c => (List(s.toString+",")++c.map(cc => cc.toString+",")++keys.map(k => underlyingGrid(k).timestep(s).getValueAtCell(c).toString+",")).foldLeft("")(_+_).dropRight(1) + EOL)
@@ -77,8 +76,8 @@ case class UniversalGrid(override val gridGeometry:Seq[Int],
 }
 
 object UniversalGrid {
-  def apply(gridGeometry:Seq[Int], nbSteps:Int, variableMap:Map[CalculationParametersIOLabels,Int]):UniversalGrid = {
-    val underlyingGrid:Map[CalculationParametersIOLabels,TimeStepVector] = variableMap.map(vm => (vm._1, TimeStepVector(vm._1, nbSteps, gridGeometry)(ClassTag(nbSteps.getClass),breeze.storage.Zero.IntZero)))
-    new UniversalGrid(gridGeometry, nbSteps, variableMap, underlyingGrid)
+  def apply(gridGeometry:Seq[Int], nbSteps:Int, variableList:List[CalculationParametersIOLabels]):UniversalGrid = {
+    val underlyingGrid:Map[CalculationParametersIOLabels,TimeStepVector] = variableList.map(v => (v, TimeStepVector(v, nbSteps, gridGeometry)(ClassTag(nbSteps.getClass),breeze.storage.Zero.IntZero))).toMap
+    new UniversalGrid(gridGeometry, nbSteps, variableList, underlyingGrid)
   }
 }

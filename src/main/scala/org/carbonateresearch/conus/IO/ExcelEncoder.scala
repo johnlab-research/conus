@@ -115,7 +115,6 @@ case object ExcelEncoder{
     val data:Array[Array[String]] = rows.map(str => str.split(","))
     val rowIndex = rows.indices
     val colIndex = data(0).indices
-
     rowIndex.foreach(ri => {
       val row = dataSheet.createRow(ri)
       colIndex.foreach(ci => {
