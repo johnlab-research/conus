@@ -20,16 +20,21 @@ package org.carbonateresearch.conus.calibration
 
 import org.carbonateresearch.conus.common.{CalculationParametersIOLabels, ModelVariable}
 import scala.util.{Success, Try}
+import math.pow
 
 trait Calibrator{
   val coordinates:List[Seq[Int]]
+  val step:Option[Int]
   def atCells(allCells:Seq[Int]*):Calibrator
+  def atStep(stepNb:Int):Calibrator
   def label:CalculationParametersIOLabels
   def checkCalibration(value:Any):Boolean
+  def squaredError(value:Any):Option[Double]
 }
-case class InRange[T](min:T, max:T,label:ModelVariable[T],coordinates:List[Seq[Int]]=List(Seq()))
+case class InRange[T](min:T, max:T,label:ModelVariable[T],coordinates:List[Seq[Int]]=List(Seq()), step:Option[Int]=None)
                      (implicit num:Numeric[T]) extends Calibrator{
   def atCells(allCells:Seq[Int]*):Calibrator = this.copy(coordinates=allCells.toList)
+  def atStep(stepNb:Int):Calibrator = this.copy(step=Some(stepNb))
   def checkCalibration(value:Any):Boolean = {
     val attempt = Try {
       applyRules(value.asInstanceOf[T])
@@ -39,12 +44,31 @@ case class InRange[T](min:T, max:T,label:ModelVariable[T],coordinates:List[Seq[I
       case _ => false
     }
   }
+
+  def squaredError(value:Any):Option[Double] = {
+    val attempt = Try {
+      val result = value.asInstanceOf[Double]
+      val maxDouble = max.asInstanceOf[Double]
+      val minDouble = min.asInstanceOf[Double]
+
+      val target:Double = if(result > minDouble && result < maxDouble){result}
+               else if(result < minDouble) {minDouble}
+               else {maxDouble}
+      pow((result - target),2)
+    }
+    attempt match {
+      case Success(v) => Some(v)
+      case _ => None
+    }
+  }
+
   private def applyRules(value:T):Boolean = num.min(max, value) == num.max(min, value)
 }
 
-case class LargerThan[T](min:T,label:ModelVariable[T],coordinates:List[Seq[Int]]=List(Seq()))
+case class LargerThan[T](min:T,label:ModelVariable[T],coordinates:List[Seq[Int]]=List(Seq()), step:Option[Int]=None)
                         (implicit num:Numeric[T])  extends Calibrator{
   def atCells(allCells:Seq[Int]*):Calibrator = this.copy(coordinates=allCells.toList)
+  def atStep(stepNb:Int):Calibrator = this.copy(step=Some(stepNb))
   def checkCalibration(value:Any):Boolean = {
     val attempt = Try {
       applyRules(value.asInstanceOf[T])
@@ -54,12 +78,27 @@ case class LargerThan[T](min:T,label:ModelVariable[T],coordinates:List[Seq[Int]]
       case _ => false
     }
   }
+
+  def squaredError(value:Any):Option[Double] = {
+    val attempt = Try {
+      val result = value.asInstanceOf[Double]
+      val minDouble = min.asInstanceOf[Double]
+      val target = if(result-minDouble>0){result}else{minDouble}
+      pow((result-target),2)
+    }
+    attempt match {
+      case Success(v) => Some(v)
+      case _ => None
+    }
+  }
+
   private def applyRules(value:T):Boolean = value == num.max(min, value)
 }
 
-case class SmallerThan[T](max:T,label:ModelVariable[T],coordinates:List[Seq[Int]]=List(Seq()))
+case class SmallerThan[T](max:T,label:ModelVariable[T],coordinates:List[Seq[Int]]=List(Seq()), step:Option[Int]=None)
                          (implicit num:Numeric[T])  extends Calibrator{
   def atCells(allCells:Seq[Int]*):Calibrator = this.copy(coordinates=allCells.toList)
+  def atStep(stepNb:Int):Calibrator = this.copy(step=Some(stepNb))
   def checkCalibration(value:Any):Boolean = {
     val attempt = Try {
       applyRules(value.asInstanceOf[T])
@@ -69,12 +108,27 @@ case class SmallerThan[T](max:T,label:ModelVariable[T],coordinates:List[Seq[Int]
       case _ => false
     }
   }
+
+  def squaredError(value:Any):Option[Double] = {
+    val attempt = Try {
+      val result = value.asInstanceOf[Double]
+      val maxDouble = max.asInstanceOf[Double]
+      val target = if(result-maxDouble<0){result}else{maxDouble}
+      pow((result-target),2)
+    }
+    attempt match {
+      case Success(v) => Some(v)
+      case _ => None
+    }
+  }
+
   private def applyRules(value:T):Boolean = num.min(max, value) == value
 }
 
-case class ValueEqualTo[T](targetVal:T, label:ModelVariable[T], coordinates:List[Seq[Int]]=List(Seq()))
+case class ValueEqualTo[T](targetVal:T, label:ModelVariable[T], coordinates:List[Seq[Int]]=List(Seq()), step:Option[Int]=None)
                           (implicit num:Numeric[T])  extends Calibrator{
   def atCells(allCells:Seq[Int]*):Calibrator = this.copy(coordinates=allCells.toList)
+  def atStep(stepNb:Int):Calibrator = this.copy(step=Some(stepNb))
   def checkCalibration(value:Any):Boolean = {
     val attempt = Try {
       applyRules(value.asInstanceOf[T])
@@ -82,6 +136,18 @@ case class ValueEqualTo[T](targetVal:T, label:ModelVariable[T], coordinates:List
     attempt match {
       case Success(v) => v
       case _ => false
+    }
+  }
+
+  def squaredError(value:Any):Option[Double] = {
+    val attempt = Try {
+      val result = value.asInstanceOf[Double]
+      val target = targetVal.asInstanceOf[Double]
+      pow((result-target),2)
+    }
+    attempt match {
+      case Success(v) => Some(v)
+      case _ => None
     }
   }
   private def applyRules(value:T):Boolean = targetVal == value

@@ -26,9 +26,12 @@ case class SingleModelResults(ID:Int,
                               nbSteps:Int,
                               theGrid:Grid,
                               initialConditions:List[InitialCondition],
-                              calibrated:Boolean = false) extends SimulationResults {
+                              calibrated:Boolean = false,
+                              modelName:String = "Anonymous",
+                              rsme:Option[Double]) {
 val EOL = lineSeparator()
   def size:Int = theGrid.size
+
 
   def prettyPrint[T](k:ModelVariable[T],step:Int, coordinate:Seq[Int]):String = {
     theGrid.getVariableForTimeStep(k)(step).toString()

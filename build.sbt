@@ -7,10 +7,12 @@ osName := (System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 })
 
-version := "0.1.0-SNAPSHOT"
+version := "0.1.1-SNAPSHOT"
 
 scalaVersion:="2.13.2"
 //crossScalaVersions := Seq(scalaVersion.value, "2.12.8","2.11.12")
+
+resolvers += "jitpack" at "https://jitpack.io"
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases"),
@@ -19,11 +21,15 @@ resolvers ++= Seq(
 
 libraryDependencies += "com.typesafe.akka" %% "akka-actor-typed" % "2.6.5"
 
-libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3" % Runtime
+libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3" //% Runtime
 
-libraryDependencies += "io.monix" %% "monix" % "3.1.0-2156c0e"
+libraryDependencies += "com.lihaoyi" %% "scalatags" % "0.9.1"
 
-libraryDependencies += "com.chuusai" %% "shapeless" % "2.3.3"
+libraryDependencies += "com.github.jupyter" % "jvm-repr" % "0.4.0"
+
+libraryDependencies += "sh.almond" %% "interpreter-api" % "0.10.0"
+
+libraryDependencies += "sh.almond" %% "jupyter-api" % "0.10.0"
 
 libraryDependencies ++= Seq(
   "org.apache.poi" % "poi" % "4.1.2",
@@ -41,6 +47,7 @@ libraryDependencies  ++= Seq(
 
 val username = "cedricjohn"
 val repo     = "conus"
+//name := "conus"
 
 inThisBuild(
   List(

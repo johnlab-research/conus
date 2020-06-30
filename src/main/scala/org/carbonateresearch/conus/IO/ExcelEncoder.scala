@@ -26,18 +26,19 @@ import org.apache.poi.ss.usermodel.DataFormatter
 import org.apache.poi.xssf.usermodel.{XSSFSheet, XSSFWorkbook}
 import org.carbonateresearch.conus.common.{CalculationParametersIOLabels, SingleModelResults}
 
-case object ExcelEncoder{
+
+class ExcelEncoder{
 
   private val EOL = lineSeparator()
 
-  def writeExcel(models: List[SingleModelResults], pathName:String): Unit ={
-    val dateAndTime:String = new SimpleDateFormat("/yyyy-MM-dd-hh-mm-ss").format(new Date)
-    val fullPathName = pathName+dateAndTime
+  def writeExcel(models: List[SingleModelResults], fullPathName:String): Unit ={
     val dir = new File(fullPathName)
     val successful = dir.mkdirs
     if (successful) {
       println("Writing results to folder '"+fullPathName+"'")
-    models.foreach(m => writeIndividualModel(m,fullPathName+checkedCalibrated(m.calibrated)+m.ID+".xlsx"))}
+    models.foreach(m => writeIndividualModel(m,fullPathName+checkedCalibrated(m.calibrated)+m.ID+".xlsx"))} else {
+      models.foreach(m => writeIndividualModel(m,fullPathName+checkedCalibrated(m.calibrated)+m.ID+".xlsx"))
+    }
   }
 
   private def checkedCalibrated(isCalibrated:Boolean):String = if (isCalibrated){"/Calibrated_Model"} else{"/Uncalibrated_Model"}

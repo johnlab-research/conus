@@ -44,7 +44,7 @@ case class SteppedModelWithCalculations(nbSteps:Int,
     val modelIDs:Seq[Int] = initialValues.indices
 
     modelIDs.map(i => {
-      SingleModel(ID = i+1,nbSteps=nbSteps,gridGeometry = gridGeometry,calculations=mathematicalModel,initialConditions=initialValues(i))
+      SingleModel(ID = i+1,nbSteps=nbSteps,gridGeometry = gridGeometry,calculations=mathematicalModel,initialConditions=initialValues(i),List(),modelName)
     }).toList
   }
 }

@@ -3,6 +3,7 @@
   <component name="HydraSettings">
     <option name="hydraStorePath" value="$PROJECT_DIR$/.hydra/idea" />
     <option name="hydraVersion" value="2.2.3" />
+    <option name="isHydraEnabled" value="false" />
     <option name="lastHydraReleaseNotification" value="2.2.3" />
     <option name="noOfCores" value="10" />
     <option name="projectRoot" value="$PROJECT_DIR$" />

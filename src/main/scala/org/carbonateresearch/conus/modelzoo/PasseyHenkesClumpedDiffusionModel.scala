@@ -42,6 +42,4 @@ object PasseyHenkesClumpedDiffusionModel {
   val D47iFun: Step => Double =  (s:Step) =>
     (D47i(s-1) - D47eq(s)) * math.exp((-1*dT(s) * kref * exp((ea / r * ((1 / tref) - (1 / (burialTemperature(s)+273.15))))))) + D47eq(s)
   val davies19_T: Step => Double = (s:Step) => pow(0.04028 * pow(10,6) / (D47iFun(s) - 0.23776),0.5)-273.15
-
-
 }

@@ -22,12 +22,12 @@ import org.carbonateresearch.conus.common.{ModelVariable, SteppedModel,Step}
 import org.carbonateresearch.conus.grids.{AllCells, PerCell}
 import org.carbonateresearch.conus.modelzoo.GeneralGeology._
 import org.carbonateresearch.conus.modelzoo.PasseyHenkesClumpedDiffusionModel._
-import org.carbonateresearch.conus.RunScheduler
+import org.carbonateresearch.conus.Simulator
 import math._
 
 object TestDriveApp extends App {
 
-  val modelWarehouse = RunScheduler
+  val modelWarehouse = Simulator
   // a few constants
   val rhocal:Double = 2.71 //Density of carbonates
   val cOf=889000 //concentration of O in fluid
@@ -178,8 +178,11 @@ object TestDriveApp extends App {
 
  //val runnedModel = eaglefordModel.run
 
-modelWarehouse.run(eaglefordModel)
-  //Thread.sleep(4000)
+modelWarehouse.evaluate(eaglefordModel)
+  Thread.sleep(200)
+  println("ABOUT TO START")
+  modelWarehouse.evaluate(eaglefordModel)
+  println("STARTED")
   //println("At one second: "+modelWarehouse(eaglefordModel)(0))
   //println(modelWarehouse.runnedModels.size)
   Thread.sleep(10000000)

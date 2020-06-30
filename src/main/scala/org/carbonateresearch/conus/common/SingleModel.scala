@@ -29,7 +29,8 @@ case class SingleModel(ID:Int,
                        gridGeometry:Seq[Int],
                        calculations:List[Calculator],
                        initialConditions:List[InitialCondition],
-                       calibrationSet:List[Calibrator]=List()) extends Combinatorial {
+                       calibrationSet:List[Calibrator]=List(),
+                      modelName:String = "Anonymous") extends Combinatorial {
   val EOL:String = lineSeparator()
   val steps:Seq[Int] = (0 until nbSteps).toList
 
@@ -68,7 +69,7 @@ case class SingleModel(ID:Int,
         })
       })
     })
-    val evaluatedModel = SingleModelResults(ID,nbSteps,grid,initialConditions, checkCalibrated(grid))
+    val evaluatedModel = SingleModelResults(ID,nbSteps,grid,initialConditions, checkCalibrated(grid),modelName,calculateRSME(grid))
     val currentTime = System.nanoTime()
     printOutputString(currentTime-startTime,evaluatedModel)
     evaluatedModel
@@ -102,6 +103,15 @@ case class SingleModel(ID:Int,
      ApplyCalibrationRules(grid,calibrationSet).results
     }
   }
+
+  private def calculateRSME(grid:Grid):Option[Double] = {
+    if (calibrationSet.isEmpty) {
+      None
+    } else {
+      ApplyCalibrationRules(grid,calibrationSet).rsme
+    }
+  }
+
 
   private def printOutputString(time:Double,model:SingleModelResults): Unit = {
     val timeTaken:String = TimeUtils.formatHoursMinuteSeconds(time)

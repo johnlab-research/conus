@@ -18,36 +18,42 @@
 
 package org.carbonateresearch.conus.dispatchers
 
+import java.lang.System.lineSeparator
+import java.text.SimpleDateFormat
+import java.util.Date
+
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.Behavior
-import org.carbonateresearch.conus.IO.ExcelEncoder
 import org.carbonateresearch.conus.Simulator
 import org.carbonateresearch.conus.common.SingleModelResults
-import org.carbonateresearch.conus.dispatchers.CalculationDispatcherAkka.{ModelResults, RunSingleModel, WriteableModelResults}
+import org.carbonateresearch.conus.IO.ExcelEncoder
+import org.carbonateresearch.conus.dispatchers.CalculationDispatcherAkka.WriteableModelResults
 
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.Future
 
-object SingleModelRunnerAkka  {
 
-  def apply(): Behavior[RunSingleModel] = Behaviors.setup { context =>
+object FileWriterDispatcherAkka {
+
+  def apply(): Behavior[WriteableModelResults] = Behaviors.setup { context =>
 
     Behaviors.receive { (context, message) => {
-      val result:SingleModelResults = message.theModel.evaluate(message.startTime)
-      //val writer = context.spawn(FileWriterDispatcherAkka(), this.toString+"writer"+result.ID)
-      //writer ! WriteableModelResults(result,message.runName)
-      //The writer pattern did not work
-
-      val path = Simulator.baseDirectory + result.modelName + "/" + message.runName
+      val model = message.theResults
+      val path = Simulator.baseDirectory + model.modelName + message.runName
       val encoder = new ExcelEncoder
       implicit val ec = global
-      Future(encoder.writeExcel(List(result),path))
+      val write = Future {
+        encoder.writeExcel(List(model), path)
+      }
 
-      message.replyTo ! ModelResults(result)
+      write.onComplete{
+      f => Behaviors.stopped}
+      Behaviors.same
     }
 
-      Behaviors.stopped
+
     }
   }
-
 }
+
+
