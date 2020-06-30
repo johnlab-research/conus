@@ -18,17 +18,8 @@
 
 package org.carbonateresearch.conus.common
 
-
-import scala.concurrent.Future
-import java.lang.System.lineSeparator
-
-import org.carbonateresearch.conus.IO.ExcelEncoder
 import org.carbonateresearch.conus.calibration.Calibrator
-import org.carbonateresearch.conus.dispatchers.CalculationDispatcherWithFuture
-import org.carbonateresearch.conus.grids.Grid
 
-import scala.concurrent.ExecutionContext.global
-import scala.util.{Failure, Success}
 
 final case class ModelCalculationSpace(models: List[SingleModel] = List(),
                                        modelName:String,
@@ -36,14 +27,13 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
                                        var results: List[SingleModelResults] = List()) {
 
   var resultsList:List[SingleModelResults] = scala.collection.mutable.ListBuffer.empty[SingleModelResults].toList
-  private val EOL = lineSeparator()
-  private val modelFolder:String = System.getProperty("user.home")+"/Conus/"+modelName
 
   def defineCalibration(set:List[Calibrator]) : ModelCalculationSpace = {
     val updatedModels:List[SingleModel] = models.map(m => m.copy(m.ID,m.nbSteps,m.gridGeometry,
       m.calculations,
       m.initialConditions,
-      set))
+      set,
+      modelName))
 
     this.copy(models=updatedModels,calibrationSets=set)
   }

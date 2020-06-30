@@ -19,14 +19,18 @@
 package org.carbonateresearch.conus.dispatchers
 
 import java.lang.System.lineSeparator
+import java.text.SimpleDateFormat
+import java.util.Date
 
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.{ActorRef, Behavior}
 import org.carbonateresearch.conus.IO.ExcelEncoder
 import org.carbonateresearch.conus.common.{ModelCalculationSpace, SingleModel, SingleModelResults}
-import org.carbonateresearch.conus.RunScheduler
+import org.carbonateresearch.conus.Simulator
 
 import scala.Console.{BLUE, MAGENTA, RESET, UNDERLINED, WHITE, YELLOW}
+import scala.concurrent.ExecutionContext.global
+import scala.concurrent.Future
 
 object CalculationDispatcherAkka {
   private val typeOfDispatcher: String = java.lang.Runtime.getRuntime.availableProcessors.toString
@@ -36,43 +40,44 @@ object CalculationDispatcherAkka {
   private var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelResults]
 
   sealed trait runBehaviour
-  final case class RunMultipleModels(modelsToRun: ModelCalculationSpace) extends runBehaviour
-  final case class RunSingleModel(theModel: SingleModel, startTime:Double = t0, replyTo: ActorRef[ModelResults]) extends runBehaviour
+  final case class RunMultipleModels(modelsToRun: ModelCalculationSpace, PID:Int) extends runBehaviour
+  final case class RunSingleModel(theModel: SingleModel, startTime:Double = t0, runName:String, replyTo: ActorRef[ModelResults]) extends runBehaviour
   final case class ModelResults(theResults: SingleModelResults) extends runBehaviour
-  final case class GetIntermediateResults(fromModel: ModelCalculationSpace) extends runBehaviour
+  final case class WriteableModelResults(theResults: SingleModelResults, runName:String) extends runBehaviour
 
   def apply(): Behavior[runBehaviour] = Behaviors.setup { context =>
 
     Behaviors.receive { (context, message) =>
       message match {
-        case RunMultipleModels(modelsToRun) => {
+        case RunMultipleModels(modelsToRun,pid) => {
           println("----------------------------------------"+lineSeparator()+"RUN STARTED"+lineSeparator()+"----------------------------------------")
+          val dateAndTime:String = new SimpleDateFormat("/yyyy-MM-dd-hh-mm-ss").format(new Date)
+
           thisModelCalculationSpace = modelsToRun
           initialCount = modelsToRun.models.size
           println(runStartOutputString(modelsToRun.models))
           modelsToRun.models.foreach(m => {
-            val runner = context.spawn(SingleModelRunnerAkka(), "runner"+m.ID)
-            runner ! RunSingleModel(m, t0, context.self)
+            val id =m.ID
+            val runner = context.spawn(SingleModelRunnerAkka(), s"Process-$pid-runner-$id")
+            runner ! RunSingleModel(m, t0, dateAndTime,context.self)
           })
           Behaviors.same
         }
         case ModelResults(theResults) => {
           resultsList.addOne(theResults)
+          Simulator.updateModelList(thisModelCalculationSpace,resultsList.toList)
           if (resultsList.size == initialCount) {
-            RunScheduler.updateModelList(thisModelCalculationSpace,resultsList.toList)
             println(lineSeparator()+"----------------------------------------"+ lineSeparator() + "END OF RUN"+lineSeparator()+"----------------------------------------")
-            val modelFolder:String = System.getProperty("user.home")+"/Conus/"+thisModelCalculationSpace.modelName
-            ExcelEncoder.writeExcel(resultsList.toList,modelFolder)
+            //Simulator.writeModels(thisModelCalculationSpace)
             Behaviors.stopped
           } else {
             Behaviors.same
           }
         }
-
-        case GetIntermediateResults(theModel) => {
       }
     }
   }
+
 
   def runStartOutputString(models:List[SingleModel]):String = {
     val EOL = lineSeparator()

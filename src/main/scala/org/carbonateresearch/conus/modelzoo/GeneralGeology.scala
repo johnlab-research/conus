@@ -18,6 +18,7 @@
 
 package org.carbonateresearch.conus.modelzoo
 
+
 import org.carbonateresearch.conus.util.CommonFunctions.{interpolatedValue, scaleFromMinToMaxByStep}
 import org.carbonateresearch.conus.common.{ModelVariable, Step}
 import org.carbonateresearch.conus.util.StepFunctionUtils.StepFunction
@@ -28,6 +29,9 @@ object GeneralGeology {
   val surfaceTemperature  = ModelVariable[Double]("Surface Temperature",0,"˚C", precision =1)
   val burialTemperature = ModelVariable[Double]("Burial Temperature",0,"˚C", precision =1)
   val geothermalGradient = ModelVariable[Double]("Geothermal gradient",25,"˚C/km", precision =1)
+
+
+
 
   def ageOfStep[T](oldestAge: T, youngestAge:T)(implicit num:Fractional[T]):StepFunction[T] = {
     scaleFromMinToMaxByStep(youngestAge,oldestAge)}
