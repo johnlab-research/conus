@@ -20,6 +20,8 @@ package org.carbonateresearch.conus.modelzoo
 
 import org.carbonateresearch.conus.common._
 import GeneralGeology._
+import org.carbonateresearch.conus.{ModelVariable, Step}
+
 import scala.math.{abs, exp, pow}
 
 object PasseyHenkesClumpedDiffusionModel {

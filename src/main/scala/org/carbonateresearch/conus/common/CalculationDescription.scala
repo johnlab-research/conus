@@ -18,6 +18,7 @@
 
 package org.carbonateresearch.conus.common
 
+import org.carbonateresearch.conus.{ModelVariable, Step}
 import org.carbonateresearch.conus.grids.Grid
 
 case class CalculationDescription[T](f:Step=>T, label:ModelVariable[T]) extends Calculator {

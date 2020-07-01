@@ -16,7 +16,9 @@
  * along with CoNuS. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.carbonateresearch.conus.common
+package org.carbonateresearch.conus
+
+import org.carbonateresearch.conus.common.{Calculator, SteppedModelWithCalculations}
 
 class SteppedModel (nbSteps:Int, modelName:String="no name",gridGeometry:Seq[Int]=Seq(1))  {
   val prepareSteps:  List[Int] = (0 until nbSteps+1).toList

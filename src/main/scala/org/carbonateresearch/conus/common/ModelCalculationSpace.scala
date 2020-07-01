@@ -18,13 +18,13 @@
 
 package org.carbonateresearch.conus.common
 
+import org.carbonateresearch.conus.Simulator
 import org.carbonateresearch.conus.calibration.Calibrator
 
 
 final case class ModelCalculationSpace(models: List[SingleModel] = List(),
                                        modelName:String,
-                                       calibrationSets: List[Calibrator] = List(),
-                                       var results: List[SingleModelResults] = List()) {
+                                       calibrationSets: List[Calibrator] = List()) {
 
   var resultsList:List[SingleModelResults] = scala.collection.mutable.ListBuffer.empty[SingleModelResults].toList
 
@@ -43,6 +43,12 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
   }
 
   def size : Int = models.size
+
+  def results:ModelResults = Simulator.getResults(this)
+
+  def save = Simulator.save(this)
+
+  def run = Simulator.evaluate(this)
 
 }
 

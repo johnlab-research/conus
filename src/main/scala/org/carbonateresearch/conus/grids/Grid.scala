@@ -61,6 +61,7 @@ trait Grid {
   def summary:String
   def getVariableAtCellForTimeStep(key:CalculationParametersIOLabels, coordinates:Seq[Int])(implicit timeStep: TimeStep):Any
   def getVariableForTimeStep(key:CalculationParametersIOLabels)(implicit timeStep: TimeStep):GridElement
+  def getTimeStep(timestep:Int):GridView = GridView(this,timestep)
   def setAtCell[T](key:CalculationParametersIOLabels,value:T, coordinates:Dimensions)(implicit timeStep: TimeStep):Unit
   def initializeGrid(keys:Seq[CalculationParametersIOLabels],values:Seq[Any]):Unit
 }

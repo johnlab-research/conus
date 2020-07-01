@@ -34,11 +34,14 @@ class ExcelEncoder{
   def writeExcel(models: List[SingleModelResults], fullPathName:String): Unit ={
     val dir = new File(fullPathName)
     val successful = dir.mkdirs
-    if (successful) {
-      println("Writing results to folder '"+fullPathName+"'")
-    models.foreach(m => writeIndividualModel(m,fullPathName+checkedCalibrated(m.calibrated)+m.ID+".xlsx"))} else {
-      models.foreach(m => writeIndividualModel(m,fullPathName+checkedCalibrated(m.calibrated)+m.ID+".xlsx"))
-    }
+    println("Writing results to folder '"+fullPathName+"'")
+
+    models.foreach(m => {
+      val rsme:String = m.rsme match {
+        case Some(v) => f"RSME[$v%1.5f]_Model"
+        case _ =>"RSME:[N/A]_Model"
+      }
+      writeIndividualModel(m,fullPathName+rsme+m.ID+".xlsx")})
   }
 
   private def checkedCalibrated(isCalibrated:Boolean):String = if (isCalibrated){"/Calibrated_Model"} else{"/Uncalibrated_Model"}
@@ -74,6 +77,9 @@ class ExcelEncoder{
     val cell4 = row.createCell(3)
     cell4.setAsActiveCell()
     cell4.setCellValue("COORDINATES")
+    val cell5 = row.createCell(4)
+    cell5.setAsActiveCell()
+    cell5.setCellValue("RSME")
 
     val initialConditions:List[(CalculationParametersIOLabels, Any, Seq[Int])] =
       model.initialConditions.flatMap(ic => ic.values.map(icv => (ic.variable,icv._1,icv._2)))
@@ -97,7 +103,18 @@ class ExcelEncoder{
       val cell4 = row.createCell(3)
       cell4.setAsActiveCell()
       cell4.setCellValue(coordinatesAsString(initialConditions(r)._3))
+
+      val rsme:String = model.rsme match {
+        case Some(v) => v.toString
+        case _ => "NA"
+      }
+
+      val cell5 = row.createCell(4)
+      cell5.setAsActiveCell()
+      cell5.setCellValue(rsme)
     })
+
+
   }
 
   private def coordinatesAsString(coord:Seq[Int]):String ={

@@ -18,7 +18,9 @@
 
 package org.carbonateresearch.conus.calibration
 
-import org.carbonateresearch.conus.common.{CalculationParametersIOLabels, ModelVariable}
+import org.carbonateresearch.conus.ModelVariable
+import org.carbonateresearch.conus.common.CalculationParametersIOLabels
+
 import scala.util.{Success, Try}
 import math.pow
 

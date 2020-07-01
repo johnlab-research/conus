@@ -19,7 +19,8 @@
 package org.carbonateresearch.conus.common
 import java.lang.System.lineSeparator
 
-import org.carbonateresearch.conus.grids.{Grid, GridElement}
+import org.carbonateresearch.conus.ModelVariable
+import org.carbonateresearch.conus.grids.{Grid, GridElement, GridView}
 import org.carbonateresearch.conus.util.CommonModelVariables.NumberOfSteps
 
 case class SingleModelResults(ID:Int,
@@ -67,6 +68,10 @@ val EOL = lineSeparator()
   }
 
   def  getModelVariablesForStep(step:Int):List[CalculationParametersIOLabels] = theGrid.variableList
+
+  def getTimestep(timeStep:Int):GridView = theGrid.getTimeStep(timeStep)
+
+  def apply(timeStep:Int):GridView = getTimestep(timeStep)
 
   private def lastStepNumber:Int = theGrid.nbSteps
   //private def lastStep:GridElement = theGrid.getTimeStep(lastStepNumber)
