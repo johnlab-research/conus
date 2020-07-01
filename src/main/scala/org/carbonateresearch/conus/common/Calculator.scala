@@ -18,6 +18,8 @@
 
 package org.carbonateresearch.conus.common
 
+import org.carbonateresearch.conus.Step
+
 trait Calculator {
   def calculate (step:Step): Step = ???
   def outputs:CalculationParametersIOLabels

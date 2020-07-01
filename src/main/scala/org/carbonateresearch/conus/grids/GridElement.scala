@@ -20,6 +20,33 @@ package org.carbonateresearch.conus.grids
 
 trait GridElement {
   val vecSize:Int
+  val coordinates:Seq[Int]
+
+  def allGridCells:List[Seq[Int]] = {
+    coordinates.size match {
+      case 0 => List(Seq(1))
+      case 1 => (0 until coordinates.head).map(x=>Seq(x)).toList
+      case 2 => {
+        val firstCoord:Seq[Int] = (0 until coordinates.head)
+        val secondCoord:Seq[Int] = (0 until coordinates(1))
+        for {
+          f <- firstCoord
+          s <- secondCoord
+        } yield Seq(f,s)
+      }.toList
+      case 3 => {
+        val firstCoord:Seq[Int] = (0 until coordinates.head)
+        val secondCoord:Seq[Int] = (0 until coordinates(1))
+        val thirdCoord:Seq[Int] = (0 until coordinates(2))
+        for {
+          f <- firstCoord
+          s <- secondCoord
+          t <- thirdCoord
+        } yield Seq(f,s,t)
+      }.toList
+    }
+  }
+
   def toString:String
   def setAtCell(value:Any, coordinates:Seq[Int]):Unit
   def setForAllCells(value:Any):Unit

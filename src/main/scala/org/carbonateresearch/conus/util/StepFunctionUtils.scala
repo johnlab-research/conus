@@ -18,8 +18,8 @@
 
 package org.carbonateresearch.conus.util
 
+import org.carbonateresearch.conus.Step
 import org.carbonateresearch.conus.common.CalculationParametersIOLabels
-import org.carbonateresearch.conus.common.Step
 
 case object StepFunctionUtils{
   type StepFunction[T] =  Step => T

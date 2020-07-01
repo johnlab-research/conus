@@ -19,7 +19,7 @@
 package org.carbonateresearch.conus.util
 
 import StepFunctionUtils._
-import org.carbonateresearch.conus.common.{Step,ModelVariable}
+import org.carbonateresearch.conus.{ModelVariable, Step}
 
 object CommonFunctions {
 

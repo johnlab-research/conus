@@ -18,6 +18,8 @@
 
 package org.carbonateresearch.conus.common
 
+import org.carbonateresearch.conus.ModelVariable
+
 case class ResultsPerModelVariable(private val dataContainer: Map[CalculationParametersIOLabels, Map[Int, Any]]) {
   def apply[T](k:ModelVariable[T]):Map[Int,T] = {
     dataContainer(k).asInstanceOf[Map[Int,T]]

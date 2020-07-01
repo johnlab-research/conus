@@ -18,11 +18,10 @@
 
 package org.carbonateresearch
 
-import org.carbonateresearch.conus.common.{ModelVariable, SteppedModel,Step}
-import org.carbonateresearch.conus.grids.{AllCells, PerCell}
 import org.carbonateresearch.conus.modelzoo.GeneralGeology._
 import org.carbonateresearch.conus.modelzoo.PasseyHenkesClumpedDiffusionModel._
-import org.carbonateresearch.conus.Simulator
+import org.carbonateresearch.conus.{AllCells, ModelVariable, PerCell, Simulator, Step, SteppedModel}
+
 import math._
 
 object TestDriveApp extends App {
@@ -102,7 +101,7 @@ object TestDriveApp extends App {
       AllCells(fractionRec,rangeOfPartialRecrystallization),
       AllCells(D47i,List(0.670,0.680,0.690)),
       AllCells(D47r,List(0.670,0.680,0.690)),
-      PerCell(initalBurialAtModelStart,List(
+      conus.PerCell(initalBurialAtModelStart,List(
         (List(0.0),Seq(0)),
         (List(-0.91),Seq(1)),
         (List(-1.22),Seq(2)),

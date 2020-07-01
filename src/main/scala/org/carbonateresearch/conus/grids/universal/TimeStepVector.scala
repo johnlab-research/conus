@@ -20,7 +20,8 @@ package org.carbonateresearch.conus.grids.universal
 
 import breeze.linalg._
 import breeze.storage.Zero
-import org.carbonateresearch.conus.common.{CalculationParametersIOLabels, ModelVariable}
+import org.carbonateresearch.conus.ModelVariable
+import org.carbonateresearch.conus.common.CalculationParametersIOLabels
 import org.carbonateresearch.conus.grids.GridElement
 
 import scala.reflect.ClassTag

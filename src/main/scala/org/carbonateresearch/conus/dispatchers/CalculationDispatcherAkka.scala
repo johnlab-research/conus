@@ -40,8 +40,8 @@ object CalculationDispatcherAkka {
   private var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelResults]
 
   sealed trait runBehaviour
-  final case class RunMultipleModels(modelsToRun: ModelCalculationSpace, PID:Int) extends runBehaviour
-  final case class RunSingleModel(theModel: SingleModel, startTime:Double = t0, runName:String, replyTo: ActorRef[ModelResults]) extends runBehaviour
+  final case class RunMultipleModels(modelsToRun: ModelCalculationSpace, PID:Int, autoSave:Boolean) extends runBehaviour
+  final case class RunSingleModel(theModel: SingleModel, startTime:Double = t0, runName:String, replyTo: ActorRef[ModelResults], autoSave:Boolean) extends runBehaviour
   final case class ModelResults(theResults: SingleModelResults) extends runBehaviour
   final case class WriteableModelResults(theResults: SingleModelResults, runName:String) extends runBehaviour
 
@@ -49,7 +49,7 @@ object CalculationDispatcherAkka {
 
     Behaviors.receive { (context, message) =>
       message match {
-        case RunMultipleModels(modelsToRun,pid) => {
+        case RunMultipleModels(modelsToRun,pid,autoSave) => {
           println("----------------------------------------"+lineSeparator()+"RUN STARTED"+lineSeparator()+"----------------------------------------")
           val dateAndTime:String = new SimpleDateFormat("/yyyy-MM-dd-hh-mm-ss").format(new Date)
 
@@ -59,7 +59,7 @@ object CalculationDispatcherAkka {
           modelsToRun.models.foreach(m => {
             val id =m.ID
             val runner = context.spawn(SingleModelRunnerAkka(), s"Process-$pid-runner-$id")
-            runner ! RunSingleModel(m, t0, dateAndTime,context.self)
+            runner ! RunSingleModel(m, t0, dateAndTime,context.self,autoSave)
           })
           Behaviors.same
         }
@@ -68,12 +68,12 @@ object CalculationDispatcherAkka {
           Simulator.updateModelList(thisModelCalculationSpace,resultsList.toList)
           if (resultsList.size == initialCount) {
             println(lineSeparator()+"----------------------------------------"+ lineSeparator() + "END OF RUN"+lineSeparator()+"----------------------------------------")
-            //Simulator.writeModels(thisModelCalculationSpace)
             Behaviors.stopped
           } else {
             Behaviors.same
           }
         }
+        case _ => {Behaviors.stopped}
       }
     }
   }

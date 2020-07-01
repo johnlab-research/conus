@@ -7,7 +7,7 @@ osName := (System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 })
 
-version := "0.1.1-SNAPSHOT"
+version := "0.2.0"
 
 scalaVersion:="2.13.2"
 //crossScalaVersions := Seq(scalaVersion.value, "2.12.8","2.11.12")

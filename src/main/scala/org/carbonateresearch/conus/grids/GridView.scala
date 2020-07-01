@@ -15,23 +15,6 @@
  * You should have received a copy of the GNU General Public License
  * along with CoNuS. If not, see <http://www.gnu.org/licenses/>.
  */
+package org.carbonateresearch.conus.grids
 
-package org.carbonateresearch.conus.util
-
-import org.carbonateresearch.conus
-import org.carbonateresearch.conus.ModelVariable
-import org.carbonateresearch.conus.common.ReturnDefaultValue
-
-object CommonModelVariables {
-  val NumberOfSteps: ModelVariable[Int] = conus.ModelVariable("Number of steps",
-    initialValue = 0,
-    silent = true,
-    ifNoValue = ReturnDefaultValue,
-    precision = 0)
-
-val Depth: ModelVariable[Double] =conus.ModelVariable("Depth",
-  initialValue = 0,
-  silent = false,
-  ifNoValue = ReturnDefaultValue,
-  precision = 2)
-}
+case class GridView(theGrid:Grid,timestep:Int)

@@ -16,8 +16,9 @@
  * along with CoNuS. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.carbonateresearch.conus.common
+package org.carbonateresearch.conus
 
+import org.carbonateresearch.conus.common.CalculationParametersIOLabels
 import org.carbonateresearch.conus.grids.{Grid, GridFactory}
 
 case class Step(stepNumber:Int, coordinates:Seq[Int], grid:Grid, stepErrors:String, stepOffset:Int=0){

@@ -34,14 +34,13 @@ object SingleModelRunnerAkka  {
 
     Behaviors.receive { (context, message) => {
       val result:SingleModelResults = message.theModel.evaluate(message.startTime)
-      //val writer = context.spawn(FileWriterDispatcherAkka(), this.toString+"writer"+result.ID)
-      //writer ! WriteableModelResults(result,message.runName)
-      //The writer pattern did not work
 
+      if(message.autoSave){
       val path = Simulator.baseDirectory + result.modelName + "/" + message.runName
       val encoder = new ExcelEncoder
       implicit val ec = global
       Future(encoder.writeExcel(List(result),path))
+      }
 
       message.replyTo ! ModelResults(result)
     }
