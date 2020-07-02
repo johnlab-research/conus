@@ -18,7 +18,7 @@ libraryDependencies  ++= Seq(
 
 ### Jupyter Notebook with Almond.sh
 
-To use CoNuS within a Jupyter Notebook with the Almond kernel, first add the following resolver:
+The preferred and easiest way to work with forward models using CoNuS is via notebooks. To use CoNuS within a Jupyter Notebook with the Almond kernel, first add the following resolver:
 
 ```scala
 interp.repositories() ++= Seq(coursierapi.MavenRepository.of(
