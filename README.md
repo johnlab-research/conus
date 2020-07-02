@@ -1,5 +1,5 @@
 # CoNuS
-CoNuS stands for "Concurrent Numerical Simulations". As it names implies, CoNuS is a generic library for numerical modelling in Scala. CoNuS is currently experimental, with active testing and coding currently in progress within Cédric John's research group: http//www.carbonateresearch.org 
+CoNuS stands for "Concurrent Numerical Simulations". As it names implies, CoNuS is a generic library for numerical modelling in Scala. It is part of the <b>Carbonate Shells</> numerical toolset. CoNuS is currently experimental software, with active testing and coding currently in progress within <a href="http//www.carbonateresearch.org">Cédric John's research group</a>.
 
 The latest version of the library is 0.2.0, running on Scala 2.13
 
