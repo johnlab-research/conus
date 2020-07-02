@@ -18,7 +18,7 @@ libraryDependencies  ++= Seq(
 
 ### Jupyter Notebook with Almond.sh
 
-The preferred and easiest way to work with forward models using CoNuS is via notebooks. To use CoNuS within a Jupyter Notebook with the Almond kernel, first add the following resolver:
+The preferred and easiest way to work with forward models using CoNuS is via notebooks. We tested CoNuS with Almond v.0.9.1. To use CoNuS within a Jupyter Notebook with the Almond kernel, first add the following resolver:
 
 ```scala
 interp.repositories() ++= Seq(coursierapi.MavenRepository.of(
@@ -30,13 +30,12 @@ Then import the CoNuS library:
 ```scala
 import $ivy. `org.carbonateresearch::conus:0.2.0`
 ```
-
-You can import all of the useful classes simply by running the following:
+All of the basic classes you need to work with stepped models can be imported with this wildcard import:
 
 ```scala
 import org.carbonateresearch.conus._
 ```
-Followed by the following command to set the graphic output to nicely print on Almond:
+Finally, you need to run this command to set the graphic output of the library to work correctly with Almond:
 ```scala
 Simulator.almond_display
 ```
