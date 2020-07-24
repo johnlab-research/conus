@@ -29,7 +29,8 @@ case class SingleModelResults(ID:Int,
                               initialConditions:List[InitialCondition],
                               calibrated:Boolean = false,
                               modelName:String = "Anonymous",
-                              rsme:Option[Double]) {
+                              rsme:Option[Double],
+                              timeTaken:String="Not available") {
 val EOL = lineSeparator()
   def size:Int = theGrid.size
 

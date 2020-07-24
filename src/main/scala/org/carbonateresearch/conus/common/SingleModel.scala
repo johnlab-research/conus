@@ -72,8 +72,7 @@ case class SingleModel(ID:Int,
     })
     val evaluatedModel = SingleModelResults(ID,nbSteps,grid,initialConditions, checkCalibrated(grid),modelName,calculateRSME(grid))
     val currentTime = System.nanoTime()
-    printOutputString(currentTime-startTime,evaluatedModel)
-    evaluatedModel
+    evaluatedModel.copy(timeTaken = outputString(currentTime-startTime,evaluatedModel))
   }
 
    private def createAndInitializeGrid(initialValues:List[InitialCondition]):Grid= {
@@ -114,11 +113,11 @@ case class SingleModel(ID:Int,
   }
 
 
-  private def printOutputString(time:Double,model:SingleModelResults): Unit = {
+  private def outputString(time:Double,model:SingleModelResults): String = {
     val timeTaken:String = TimeUtils.formatHoursMinuteSeconds(time)
     val nbChar = timeTaken.length + ID.toString.length + 25
     val calibratedMsg:String = if(model.calibrated){" is calibrated."}else{" is not calibrated."}
-    print("Model #"+model.ID+" completed in "+timeTaken+calibratedMsg+EOL)
+    "Model #"+model.ID+" completed in "+timeTaken+calibratedMsg+EOL
   }
 
   def formatHoursMinuteSeconds(nannoseconds:Double): String = {

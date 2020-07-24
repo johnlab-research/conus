@@ -7,10 +7,9 @@ osName := (System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 })
 
-version := "0.2.0"
+version := "0.2.2"
 
-scalaVersion:="2.13.2"
-//crossScalaVersions := Seq(scalaVersion.value, "2.12.8","2.11.12")
+crossScalaVersions := Seq("2.12.12", "2.13.3")
 
 resolvers += "jitpack" at "https://jitpack.io"
 
@@ -27,9 +26,15 @@ libraryDependencies += "com.lihaoyi" %% "scalatags" % "0.9.1"
 
 libraryDependencies += "com.github.jupyter" % "jvm-repr" % "0.4.0"
 
-libraryDependencies += "sh.almond" %% "interpreter-api" % "0.10.0"
+libraryDependencies += "sh.almond" %% "interpreter-api" % "0.10.3"
 
-libraryDependencies += "sh.almond" %% "jupyter-api" % "0.10.0"
+libraryDependencies += "sh.almond" %% "jupyter-api" % "0.10.3"
+
+libraryDependencies ++= Seq(
+  ("com.lihaoyi" % "ammonite-interp" % "2.1.4-11-307f3d8" % Provided).cross(CrossVersion.full), // for ammonite.interp.InterpAPI
+  ("com.lihaoyi" % "ammonite-repl" % "2.1.4-11-307f3d8" % Provided).cross(CrossVersion.full), // for ammonite.repl.ReplAPI
+  ("sh.almond" % "scala-kernel-api" % "0.10.3" % Provided).cross(CrossVersion.full) // for almond.api.JupyterAPI
+)
 
 libraryDependencies ++= Seq(
   "org.apache.poi" % "poi" % "4.1.2",

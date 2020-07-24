@@ -24,63 +24,85 @@ import java.util.Date
 
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.{ActorRef, Behavior}
-import org.carbonateresearch.conus.IO.ExcelEncoder
 import org.carbonateresearch.conus.common.{ModelCalculationSpace, SingleModel, SingleModelResults}
-import org.carbonateresearch.conus.Simulator
-
+import org.carbonateresearch.conus.simulators.AkkaCentralSimulatorActor
 import scala.Console.{BLUE, MAGENTA, RESET, UNDERLINED, WHITE, YELLOW}
-import scala.concurrent.ExecutionContext.global
-import scala.concurrent.Future
+
 
 object CalculationDispatcherAkka {
-  private val typeOfDispatcher: String = java.lang.Runtime.getRuntime.availableProcessors.toString
-  private var initialCount:Int = 0
-  private var thisModelCalculationSpace:ModelCalculationSpace = null
-  private val t0 = System.nanoTime()
-  private var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelResults]
 
-  sealed trait runBehaviour
-  final case class RunMultipleModels(modelsToRun: ModelCalculationSpace, PID:Int, autoSave:Boolean) extends runBehaviour
-  final case class RunSingleModel(theModel: SingleModel, startTime:Double = t0, runName:String, replyTo: ActorRef[ModelResults], autoSave:Boolean) extends runBehaviour
-  final case class ModelResults(theResults: SingleModelResults) extends runBehaviour
-  final case class WriteableModelResults(theResults: SingleModelResults, runName:String) extends runBehaviour
+  var EOL = lineSeparator()
 
   def apply(): Behavior[runBehaviour] = Behaviors.setup { context =>
+    var initialCount: Int = 0
+    var thisModelCalculationSpace: ModelCalculationSpace = null
+    val t0 = System.nanoTime()
+    var resultsList = scala.collection.mutable.ListBuffer.empty[SingleModelResults]
+    var initialMessage: String = "None"
+    var EOL = lineSeparator()
 
     Behaviors.receive { (context, message) =>
       message match {
-        case RunMultipleModels(modelsToRun,pid,autoSave) => {
-          println("----------------------------------------"+lineSeparator()+"RUN STARTED"+lineSeparator()+"----------------------------------------")
-          val dateAndTime:String = new SimpleDateFormat("/yyyy-MM-dd-hh-mm-ss").format(new Date)
+        case RunMultipleModels(modelsToRun, pid, autoSave, loggerType) => {
+          loggerType match {
+            case l: AlmondLoggerType => EOL = "<br>"
+          }
+
+          val batchLogger: ActorRef[runBehaviour] = context.spawn(EventLogger(), s"Process-$pid-logger")
+
+          val runStartedMessage: runBehaviour = setupMessage(loggerType, batchLogger,
+            "----------------------------------------" + lineSeparator() + "EVALUATING MODEL" + lineSeparator() + "----------------------------------------")
+
+          batchLogger ! runStartedMessage
+
+          val dateAndTime: String = new SimpleDateFormat("/yyyy-MM-dd-hh-mm-ss").format(new Date)
 
           thisModelCalculationSpace = modelsToRun
           initialCount = modelsToRun.models.size
-          println(runStartOutputString(modelsToRun.models))
+          initialMessage = dateAndTime + lineSeparator() + runStartOutputString(modelsToRun.models)
+
+          val runDetailsMessage: runBehaviour = setupMessage(loggerType, batchLogger, initialMessage)
+          batchLogger ! runDetailsMessage
+
           modelsToRun.models.foreach(m => {
-            val id =m.ID
+            val id = m.ID
             val runner = context.spawn(SingleModelRunnerAkka(), s"Process-$pid-runner-$id")
-            runner ! RunSingleModel(m, t0, dateAndTime,context.self,autoSave)
+            runner ! RunSingleModel(m, t0, dateAndTime, context.self, autoSave, batchLogger, loggerType)
           })
           Behaviors.same
         }
-        case ModelResults(theResults) => {
-          resultsList.addOne(theResults)
-          Simulator.updateModelList(thisModelCalculationSpace,resultsList.toList)
+        case ResultsSingleRun(singleRunResult, batchLogger, loggerType) => {
+          resultsList += singleRunResult
+          val percentComplete: Double = (resultsList.size.toDouble / initialCount.toDouble) * 100
+          val hashLine = "#" * percentComplete.ceil.toInt + " "
+          val progress = "Run progress:" + EOL + hashLine + f"$percentComplete%1.1f" + "%"
+          val currentProgressMessage: runBehaviour = setupMessage(loggerType, batchLogger, progress)
+          batchLogger ! currentProgressMessage
+          AkkaCentralSimulatorActor.updateModelList(thisModelCalculationSpace, resultsList.toList)
           if (resultsList.size == initialCount) {
-            println(lineSeparator()+"----------------------------------------"+ lineSeparator() + "END OF RUN"+lineSeparator()+"----------------------------------------")
+
+            val timeDifference:String = "Total runtime: "+getHoursMinuteSeconds(System.nanoTime()-t0)
+            val finalProgressMessage: runBehaviour = setupMessage(loggerType, batchLogger, progress+EOL+timeDifference)
+            batchLogger ! finalProgressMessage
             Behaviors.stopped
           } else {
             Behaviors.same
           }
         }
-        case _ => {Behaviors.stopped}
+        case _ => {
+          Behaviors.stopped
+        }
       }
     }
   }
 
+  def setupMessage(loggerType:LoggerType, myLogger:ActorRef[runBehaviour],theMessage:String):runBehaviour = {
+    loggerType match {
+      case l:ConsoleLoggerType => ConsolePrintableMessage(theMessage,myLogger)
+      case l:AlmondLoggerType => AlmondPrintableMessage(theMessage,l.kernel,l.cellID,myLogger)}}
 
   def runStartOutputString(models:List[SingleModel]):String = {
-    val EOL = lineSeparator()
+
     val nbModels = models.size
     val model = models.head
     val gridSize:Int = model.gridGeometry.product
@@ -102,15 +124,15 @@ object CalculationDispatcherAkka {
     }
 
     val totNbOperationStringFormatted = placeTick(totNbOperationString,positions)
-
-    s"${RESET}${MAGENTA}${UNDERLINED}RUN DATA${RESET}" + EOL +
-      s"${RESET}${YELLOW}Total number of models:${RESET} ${WHITE}" + nbModels.toString + EOL +
-      s"${RESET}${YELLOW}Number of cell per grid:${RESET}${WHITE} " + gridSize + EOL +
-      s"${RESET}${YELLOW}Number of steps per model:${RESET}${WHITE} " + nbSteps + EOL +
-      s"${RESET}${YELLOW}Number of operation per step:${RESET}${WHITE} " + nbOperation + EOL +
-      s"${RESET}${YELLOW}Total number of operations:${RESET}${WHITE} "+ totNbOperationStringFormatted + EOL +
-      s"${RESET}${YELLOW}Available CPU cores:${RESET}${WHITE} "+ typeOfDispatcher + EOL +
-      s"${RESET}${BLUE}----------------------------------------${RESET}" + EOL + s"${RESET}${MAGENTA}${UNDERLINED}RUN PROGRESS${RESET}"
+    val nbCPUs: String = java.lang.Runtime.getRuntime.availableProcessors.toString
+    s"RUN DATA" + EOL +
+      s"Total number of models:" + nbModels.toString + EOL +
+      s"Number of cell per grid: " + gridSize + EOL +
+      s"Number of steps per model: " + nbSteps + EOL +
+      s"Number of operation per step: " + nbOperation + EOL +
+      s"Total number of operations: "+ totNbOperationStringFormatted + EOL +
+      s"Available CPU cores: "+ nbCPUs + EOL +
+      s"----------------------------------------" + EOL + s"RUN PROGRESS"
 
   }
 
@@ -126,6 +148,4 @@ object CalculationDispatcherAkka {
    else {seconds + " seconds"}
     timeString
   }
-
-
 }

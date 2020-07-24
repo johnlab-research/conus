@@ -16,21 +16,17 @@
  * along with CoNuS. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.carbonateresearch.conus.common
+package org.carbonateresearch.conus
 
-import scala.util.{Success, Try}
+import org.carbonateresearch.conus.common.ModelCalculationSpace
+import org.carbonateresearch.conus.dispatchers.ConsoleLoggerType
+import org.carbonateresearch.conus.simulators.{AkkaCentralSimulatorActor, Simulator}
 
-case class ModelResults(results:List[SingleModelResults]){
-  def getModel(modelNumber:Int):SingleModelResults = {
-    val attempt = Try {
-      results(modelNumber)
-    }
 
-    attempt match {
-      case Success(v) => v
-      case _ => results(results.size-1)
-    }
+class BasicSimulator extends Simulator {
+  AkkaCentralSimulatorActor.simulatorInterface = this
+  def evaluate(models: ModelCalculationSpace): Unit = {
+    AkkaCentralSimulatorActor.evaluate(models,ConsoleLoggerType())
   }
 
-  def apply(modelNumber:Int):SingleModelResults = getModel(modelNumber)
 }

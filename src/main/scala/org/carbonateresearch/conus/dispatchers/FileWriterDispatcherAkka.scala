@@ -24,10 +24,8 @@ import java.util.Date
 
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.Behavior
-import org.carbonateresearch.conus.Simulator
-import org.carbonateresearch.conus.common.SingleModelResults
 import org.carbonateresearch.conus.IO.ExcelEncoder
-import org.carbonateresearch.conus.dispatchers.CalculationDispatcherAkka.WriteableModelResults
+import org.carbonateresearch.conus.simulators.AkkaCentralSimulatorActor
 
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.Future
@@ -39,7 +37,7 @@ object FileWriterDispatcherAkka {
 
     Behaviors.receive { (context, message) => {
       val model = message.theResults
-      val path = Simulator.baseDirectory + model.modelName + message.runName
+      val path = AkkaCentralSimulatorActor.baseDirectory + model.modelName + message.runName
       val encoder = new ExcelEncoder
       implicit val ec = global
       val write = Future {

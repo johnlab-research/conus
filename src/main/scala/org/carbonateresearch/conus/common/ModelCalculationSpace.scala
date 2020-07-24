@@ -18,8 +18,8 @@
 
 package org.carbonateresearch.conus.common
 
-import org.carbonateresearch.conus.Simulator
 import org.carbonateresearch.conus.calibration.Calibrator
+import org.carbonateresearch.conus.simulators.AkkaCentralSimulatorActor
 
 
 final case class ModelCalculationSpace(models: List[SingleModel] = List(),
@@ -43,12 +43,6 @@ final case class ModelCalculationSpace(models: List[SingleModel] = List(),
   }
 
   def size : Int = models.size
-
-  def results:ModelResults = Simulator.getResults(this)
-
-  def save = Simulator.save(this)
-
-  def run = Simulator.evaluate(this)
 
 }
 

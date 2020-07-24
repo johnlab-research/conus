@@ -21,9 +21,8 @@ package org.carbonateresearch.conus.dispatchers
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.Behavior
 import org.carbonateresearch.conus.IO.ExcelEncoder
-import org.carbonateresearch.conus.Simulator
 import org.carbonateresearch.conus.common.SingleModelResults
-import org.carbonateresearch.conus.dispatchers.CalculationDispatcherAkka.{ModelResults, RunSingleModel, WriteableModelResults}
+import org.carbonateresearch.conus.simulators.AkkaCentralSimulatorActor
 
 import scala.concurrent.ExecutionContext.global
 import scala.concurrent.Future
@@ -36,13 +35,12 @@ object SingleModelRunnerAkka  {
       val result:SingleModelResults = message.theModel.evaluate(message.startTime)
 
       if(message.autoSave){
-      val path = Simulator.baseDirectory + result.modelName + "/" + message.runName
+      val path = AkkaCentralSimulatorActor.baseDirectory + result.modelName + "/" + message.runName
       val encoder = new ExcelEncoder
       implicit val ec = global
       Future(encoder.writeExcel(List(result),path))
       }
-
-      message.replyTo ! ModelResults(result)
+      message.replyTo ! ResultsSingleRun(result,message.logger, message.loggerType)
     }
 
       Behaviors.stopped
