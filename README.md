@@ -1,7 +1,7 @@
 # CoNuS
 CoNuS stands for "Concurrent Numerical Simulations". As it names implies, CoNuS is a generic library for numerical modelling in Scala. It is part of the <b>Carbonate Shells</b> numerical toolset. CoNuS is currently experimental software, with active testing and coding currently in progress within <a href="http//www.carbonateresearch.com">Cédric John's research group</a>.
 
-The latest version of the library is 0.2.2, running on Scala versions 2.12 and 2.13
+The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2.13
 
 ## Using CoNuS
 
@@ -14,7 +14,7 @@ resolvers += "jitpack" at "https://jitpack.io"
 
 libraryDependencies  ++= Seq(
   // Last  release
-  "org.carbonateresearch" %% "conus" % "0.2.2"
+  "org.carbonateresearch" %% "conus" % "0.2.3"
 )
 ```
 
@@ -30,7 +30,7 @@ interp.repositories() ++= Seq(coursierapi.MavenRepository.of(
 Then import the CoNuS library:
 
 ```scala
-import $ivy. `org.carbonateresearch::conus:0.2.2`
+import $ivy. `org.carbonateresearch::conus:0.2.3`
 ```
 All of the basic classes you need to work with stepped models can be imported with this wildcard import:
 
