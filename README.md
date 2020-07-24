@@ -17,6 +17,10 @@ libraryDependencies  ++= Seq(
   "org.carbonateresearch" %% "conus" % "0.2.3"
 )
 ```
+To access the simulator, simply create an interface to the BasicSimulator:
+```scala
+val sim = new BasicSimulator
+```
 
 ### Jupyter Notebook with Almond.sh
 
@@ -37,16 +41,11 @@ All of the basic classes you need to work with stepped models can be imported wi
 ```scala
 import org.carbonateresearch.conus._
 ```
-Finally, you need to create an interface to the simulator, which is the object you will use to run your code. What interface you create depends on how you use the library. 
-If you are using it from Almond, you need to create your simulator interface that way:
+Finally, you need to create an interface to the simulator, which is the object you will use to run your code. For the Almond kernel, create an AlmondSimulator this way:
 ```scala
 val sim = new AlmondSimulator
 ```
-For any other applications, simply use the basic simulator:
-```scala
-val sim = new BasicSimulator
-```
-Once you have created a model definition, you will use your simulator interface to run and fetch results like this:
+This will add nice graphical output to your cells, and will ensure that CoNuS integrates well with the Jupyter notebook. Once you have created a model definition, you will use your simulator interface to run and fetch results like this:
 ```scala
 sim.evaluate(myModel)
 sim.getResults(myModel)
