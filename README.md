@@ -51,3 +51,6 @@ sim.evaluate(myModel)
 sim.getResults(myModel)
 sim.save(myModel)
 ```
+
+![CoNuS architecture](https://user-images.githubusercontent.com/25725554/89734485-39336900-da54-11ea-9a6b-8b5463bda7be.png)
+![conusExcecution](https://user-images.githubusercontent.com/25725554/89734490-3fc1e080-da54-11ea-962e-6845a38f2b98.png)
