@@ -51,6 +51,14 @@ sim.evaluate(myModel)
 sim.getResults(myModel)
 sim.save(myModel)
 ```
+## Basic principle of CoNuS
+### Focus user code on the mathematical model
+
+Stepwise simulation can be defined as the art of modeling a system and its changing states at discrete 'steps'. There is often (but not always) an implicit notion of time associated with the steps, as in each step represents a new time either later (forward models) or earlier (inverse models) in time.
+
+Stepwise simulation is not new
 
 ![CoNuS architecture](https://user-images.githubusercontent.com/25725554/89734485-39336900-da54-11ea-9a6b-8b5463bda7be.png)
+<b>Figure 1:</b> Architecture of CoNuS
+
 ![conusExcecution](https://user-images.githubusercontent.com/25725554/89734490-3fc1e080-da54-11ea-962e-6845a38f2b98.png)
