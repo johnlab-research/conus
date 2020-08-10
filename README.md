@@ -4,7 +4,7 @@ CoNuS stands for "Concurrent Numerical Simulations". As it names implies, CoNuS 
 The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2.13
 
 ## Content
-[Introduction to CoNuS](#Introduction-to-CoNuS)   
+<b>[Introduction to CoNuS](#Introduction-to-CoNuS)</b>   
   [The CoNuS modelling philosophy](#the-conus-modelling-philosophy)
   
 [Using CoNuS](#using-conus)  
