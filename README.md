@@ -1,7 +1,7 @@
 # CoNuS
 <img align="right" width="150" height="150" src="https://user-images.githubusercontent.com/25725554/89795444-4fa6f680-db20-11ea-8a67-e3cf26470720.png">
 
-CoNuS stands for "<b>Con</b>current <b>Nu</b>merical <b>S</b>imulations", but the name also refers to the <a href="https://en.wikipedia.org/wiki/Conus"> Conus of predatory sea snails</a>, hence the library logo. As its acronym implies, CoNuS is a generic library for numerical modelling in Scala. It is part of the <b>Carbonate Shells</b> numerical toolset. CoNuS is currently experimental software, with active testing and coding currently in progress within <a href="http//www.carbonateresearch.com">Cédric John's research group</a>. This means that code written using CoNuS is likely to break in future releases as the API is not fully stable yet.</img>
+CoNuS stands for "<b>Con</b>current <b>Nu</b>merical <b>S</b>imulations", but the name also refers to the <a href="https://en.wikipedia.org/wiki/Conus"> conus genus of predatory sea snails</a>, hence the library logo. As its acronym implies, CoNuS is a generic library for numerical modelling in Scala. It is part of the <b>Carbonate Shells</b> numerical toolset. CoNuS is currently experimental software, with active testing and coding currently in progress within <a href="http//www.carbonateresearch.com">Cédric John's research group</a>. This means that code written using CoNuS is likely to break in future releases as the API is not fully stable yet.</img>
 
 The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2.13
 
