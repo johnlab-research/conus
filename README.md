@@ -11,6 +11,12 @@ The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2
 <b>[Introduction to CoNuS](#Introduction-to-CoNuS)</b>   
   [The CoNuS modelling philosophy](#the-conus-modelling-philosophy)  
   [CoNuS execution model and advantages of Scala](#CoNuS-execution-model-and-advantages-of-Scala)
+    
+<b>[A step by step example](#step-by-step-example)</b>   
+  [Defining a very simple model](#Defining-a-very-simple-model)  
+  [Running your model and querying results](#Running-your-model-querying-and saving-results)  
+  [Running multiple version of your model in parrallel](#Running-multiple-version-of-your-model-in-parrallel)
+  
   
 ## Quick starting guide 
 
@@ -182,7 +188,7 @@ val ratPopulation = new SteppedModel(numberOfSteps,"Simplified rat population dy
     )
 ```
 
-### Running your model and querying results
+### Running your model, querying and saving results
 You are now ready to run your model. For this, you will use the simulator that you have defined earlier:
 ```scala
 sim.evaluate(ratPopulation)
