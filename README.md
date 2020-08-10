@@ -4,7 +4,7 @@ CoNuS stands for "Concurrent Numerical Simulations". As it names implies, CoNuS 
 The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2.13
 
 ## Content
-<b>[Using CoNuS](#quick-starting-guide)</b>  
+<b>[Quick setup guide](#quick-setup-guide)</b>  
   [CoNuS with SBT](#using-conus-with-sbt)  
   [CoNuS within a Jupyter Notebook](#using-conus-within-a-Jupyter-Notebook)
   
@@ -18,7 +18,7 @@ The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2
   [Running multiple version of your model in parrallel](#Running-multiple-version-of-your-model-in-parrallel)
   
   
-## Quick starting guide 
+## Quick setup guide 
 
 ### Using CoNuS with SBT
 
