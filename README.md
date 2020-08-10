@@ -4,9 +4,8 @@ CoNuS stands for "Concurrent Numerical Simulations". As it names implies, CoNuS 
 The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2.13
 
 ## Content
-[Introduction to CoNuS](#Introduction-to-CoNuS) <cr>
-  
-[Stepped Models with CoNuS](#Stepped-Models-with-CoNuS)<cr>
+[Introduction to CoNuS](#Introduction-to-CoNuS)   
+[The CoNuS modelling philosophy](#the-conus-modelling-philosophy)
   
 [Using CoNuS](#using-conus)<cr>
   
@@ -16,7 +15,7 @@ The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2
 
 ## Introduction to CoNuS
 
-### Stepped Models with CoNuS
+### The CoNuS modelling philosophy
 
 Stepwise simulation can be defined as the art of modeling a system and its changing states at discrete 'steps'. There is often (but not always) an implicit notion of time associated with the steps, as in each step represents a new time either later (forward models) or earlier (inverse models) in time.
 
