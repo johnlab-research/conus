@@ -4,9 +4,9 @@ CoNuS stands for "Concurrent Numerical Simulations". As it names implies, CoNuS 
 The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2.13
 
 ## Content
-<b>[Using CoNuS]</b>(#quick-starting-guide)  
+<b>[Using CoNuS](#quick-starting-guide)</b>  
   [CoNuS with SBT](#using-conus-with-sbt)  
-  [CoNuS with Jupyter Notebooks](#using-conus-within-a-Jupyter-Notebook)<cr>
+  [CoNuS within a Jupyter Notebook](#using-conus-within-a-Jupyter-Notebook)
   
 <b>[Introduction to CoNuS](#Introduction-to-CoNuS)</b>   
   [The CoNuS modelling philosophy](#the-conus-modelling-philosophy)
@@ -70,9 +70,11 @@ Stepwise simulation is a very general modelling approach that can be applied to 
 
 Stepwise simulation packages can be divided into two broad categories: professional packages and user code. Professional packages come with all the belts and whistles, they usually run on optimised code to maximize CPU/GPU efficiency with the most appropriate algorithm, and they typically have a nice GUI. However, professional code have their limitations too. They can be expensive, and as a user you have no control on the mathematical model used in your calculator. Also, only certain specific applications are possible with a given professional system: for instance, a stepwise simulator dedicated to model disease conrol will not be able to handle applications to weather patterns. So if a given dedicated code does not exist for your application, or if you want to slightly modify the modelling approach in your systen, chances are you won't be able to do it.
 
-At the opposite end of this approach is pure user code: you can choose the programming language of your choice (typically C/C++, MATLAB, Python...) and implement the entire system in this language. This means you will have complete control on the mathematical model applied in your simulator, but you will also be respondible for implementing the simulator, i.e. design a grid system for your simulator, design an event loop that will run through the  steps in your model one by one and store the state of your system at each simulation step, and of course, design the testing strategy that will allow you to assess how well your model has performed. In my experience as a researcher, this is very prone to error, inefficiency in executing your code, and of course, it means reinventing the wheel for each new problem you want to solve with a stepwise modelling approach.
+At the opposite end of this approach is pure user code: you can choose the programming language of your choice (typically C/C++, MATLAB, Python...) and implement the entire system in this language. This means you will have complete control on the mathematical model applied in your simulator, but you will also be respondible for implementing the simulator, i.e. design a grid system for your simulator, design an event loop that will run through the  steps in your model one by one and store the state of your system at each simulation step, and of course, design the testing strategy that will allow you to assess how well your model has performed. In my experience as a researcher, this is very prone to error, often inefficient due to language/platform choice, and of course, it means reinventing the wheel for each new problem to be solve with a stepwise modelling approach.
 
-CoNuS offers an alternative model for running stepwise models (Figure 1). In CoNuS, the user if only responsible for writing the mathematical model used by the simulator (using stepFunctions, more about this later) as well as providing inital conditions (the inital state of the model), the number of steps to run the model for, as well as any model calibration code (to test how well the model performs). In other words, the user only supplies code that is directly relevant to the 
+CoNuS offers an alternative model for running stepwise models (Figure 1), including the convenience of doing this into a Jupyter Notebook with the Scala <a href="https://almond.sh/docs/quick-start-install">Almond.sh kernel</a> installed. In CoNuS, the user if only responsible for writing (in Scala) the mathematical model used by the simulator (using stepFunctions, more about this later) as well as providing the dimension of the model grid, inital conditions (the inital state of the model), the number of steps to run the model, as well as any model calibration code (to test how well the model performs). In other words, the user only supplies code that is directly relevant to the modelling problem.
+
+The CoNuS library takes care of running the model for the user (Figure 1). CoNuS
 
 
 ![CoNuS architecture](https://user-images.githubusercontent.com/25725554/89734485-39336900-da54-11ea-9a6b-8b5463bda7be.png)
