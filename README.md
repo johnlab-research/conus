@@ -10,6 +10,7 @@ The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2
   
 <b>[Introduction to CoNuS](#Introduction-to-CoNuS)</b>   
   [The CoNuS modelling philosophy](#the-conus-modelling-philosophy)
+  [CoNuS execution model and advantages of Scala](#CoNuS-execution-model-and-advantages-of-Scala)
   
 ## Quick starting guide 
 
@@ -74,12 +75,14 @@ At the opposite end of this approach is pure user code: you can choose the progr
 
 CoNuS offers an alternative model for running stepwise models (Figure 1), including the convenience of doing this into a <a href="https://jupyter.org/">Jupyter Notebook</a> with the Scala <a href="https://almond.sh/docs/quick-start-install">Almond.sh kernel</a> installed. In CoNuS, the user if only responsible for writing (in Scala) the mathematical model used by the simulator (using stepFunctions, more about this later) as well as providing the dimension of the model grid, inital conditions (the inital state of the model), the number of steps to run the model, as well as any model calibration code (to test how well the model performs). In other words, the user only supplies code that is directly relevant to the modelling problem.
 
-The CoNuS library takes care of running the model for the user (Figure 1). CoNuS
+The CoNuS library takes care of running the model for the user (Figure 1). CoNuS will load user code onto an internal representation of a grid (1D, 2D or 3D). Under the hood, we use <a href="https://github.com/scalanlp/breeze">Breeze's</a> matrix or vector to represent the grid, as this is an efficient linear algebra library in Scala build on top of BLAS. However, this is transparent to the user and might change in the future. The CoNuS Simulator then centralises the running, evaluating and interaction with the user-created model. This ensures low overload for the library user, and the use of efficient and type-safe code.
 
 
 ![CoNuS architecture](https://user-images.githubusercontent.com/25725554/89734485-39336900-da54-11ea-9a6b-8b5463bda7be.png)
 <b>Figure 1:</b> Architecture of CoNuS
 
+
+### CoNuS execution model and advantages of Scala
 ![conusExcecution](https://user-images.githubusercontent.com/25725554/89734490-3fc1e080-da54-11ea-962e-6845a38f2b98.png)
 
 
