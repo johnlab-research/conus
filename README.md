@@ -73,17 +73,19 @@ Stepwise simulation packages can be divided into two broad categories: professio
 
 At the opposite end of this approach is pure user code: you can choose the programming language of your choice (typically C/C++, MATLAB, Python...) and implement the entire system in this language. This means you will have complete control on the mathematical model applied in your simulator, but you will also be respondible for implementing the simulator, i.e. design a grid system for your simulator, design an event loop that will run through the  steps in your model one by one and store the state of your system at each simulation step, and of course, design the testing strategy that will allow you to assess how well your model has performed. In my experience as a researcher, this is very prone to error, often inefficient due to language/platform choice, and of course, it means reinventing the wheel for each new problem to be solve with a stepwise modelling approach.
 
+![CoNuS architecture](https://user-images.githubusercontent.com/25725554/89734485-39336900-da54-11ea-9a6b-8b5463bda7be.png)
+<b>Figure 1:</b> Architecture of CoNuS
+
 CoNuS offers an alternative model for running stepwise models (Figure 1), including the convenience of doing this into a <a href="https://jupyter.org/">Jupyter Notebook</a> with the Scala <a href="https://almond.sh/docs/quick-start-install">Almond.sh kernel</a> installed. In CoNuS, the user if only responsible for writing (in Scala) the mathematical model used by the simulator (using stepFunctions, more about this later) as well as providing the dimension of the model grid, inital conditions (the inital state of the model), the number of steps to run the model, as well as any model calibration code (to test how well the model performs). In other words, the user only supplies code that is directly relevant to the modelling problem.
 
 The CoNuS library takes care of running the model for the user (Figure 1). CoNuS will load user code onto an internal representation of a grid (1D, 2D or 3D). Under the hood, we use <a href="https://github.com/scalanlp/breeze">Breeze's</a> matrix or vector to represent the grid, as this is an efficient linear algebra library in Scala build on top of BLAS. However, this is transparent to the user and might change in the future. The CoNuS Simulator then centralises the running, evaluating and interaction with the user-created model. This ensures low overload for the library user, and the use of efficient and type-safe code.
 
-
-![CoNuS architecture](https://user-images.githubusercontent.com/25725554/89734485-39336900-da54-11ea-9a6b-8b5463bda7be.png)
-<b>Figure 1:</b> Architecture of CoNuS
-
-
 ### CoNuS execution model and advantages of Scala
+A core concept behind the design of CoNuS is concurency and the ability to run multiple models at once (Figure 2). Scala is therefore a language of choice, as CoNuS leverages on the functional approach in Scala to write step functions for the simulator, and to use the flexibility of the Scala syntax to develope a DSL (domaine specific language) for numerical modelling. Scala is also an excellent choice for concurrent work, thanks to the availability of native support for concurrency and the Akka Actor library.
+
+CoNuS offers the ability to define several possible initial model condition values when declaring a model variable (see Figure 2). These different initial values are then associated using combinatorial rules to create a list of all possible initial model conditions (Figure 2). We refer to this as the 'Model Calculation Space'.
+
 ![conusExcecution](https://user-images.githubusercontent.com/25725554/89734490-3fc1e080-da54-11ea-962e-6845a38f2b98.png)
 
-
+In Figure 2, a very simple example is provided. Two model variables each have two possible distinct initial values (a or b for model 1, c or d for model 2). With this user input, CoNuS will automatically create a model calculation space containing 4 different models that represent the possible combination of these initial conditions (Figure 2). The simulator will then run each model independently in parrallel, test the model output against the expected results (if they are provided) and calculate a root mean squared error (RSME) for each model, before storing all of the models into the simulator results for further querying by the user. This is done behind the scene using the <a href="https://doc.akka.io/docs/akka/current/typed/index.html">Akka Typed</a> framework. The ability to run multiple models in parrallel, and then assess the results of each one of them against a supplied 'truth' is one of the strenght of CoNuS.
 
