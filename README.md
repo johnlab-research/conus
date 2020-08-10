@@ -14,7 +14,7 @@ The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2
     
 <b>[A step by step example](#step-by-step-example)</b>   
   [Defining a very simple model](#Defining-a-very-simple-model)  
-  [Running your model and querying results](#Running-your-model-querying-and saving-results)  
+  [Running your model and querying results](#Running-your-model,-querying-and saving-results)  
   [Running multiple version of your model in parrallel](#Running-multiple-version-of-your-model-in-parrallel)
   
   
