@@ -4,10 +4,10 @@ CoNuS stands for "Concurrent Numerical Simulations". As it names implies, CoNuS 
 The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2.13
 
 ## Content
-[Usning Co](#ausing-conus)
+[Usning CoNuS](#ausing-conus)
 
-## Using CoNuS (#using-conus)
-
+## Using CoNuS 
+(#using-conus)
 ### SBT
 
 For SBT, add these lines to your SBT project definition:
