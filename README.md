@@ -5,9 +5,13 @@ The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2
 
 ## Content
 [Introduction to CoNuS](#Introduction-to-CoNuS) <cr>
+  
 [Stepped Models with CoNuS](#Stepped-Models-with-CoNuS)<cr>
+  
 [Using CoNuS](#using-conus)<cr>
+  
 [CoNuS with SBT](#sbt)<cr>
+  
 [CoNuS with Jupyter Notebooks](#Jupyter-Notebook-with-Almondsh)<cr>
 
 ## Introduction to CoNuS
