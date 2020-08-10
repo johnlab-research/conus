@@ -54,12 +54,7 @@ Finally, you need to create an interface to the simulator, which is the object y
 ```scala
 val sim = new AlmondSimulator
 ```
-This will add nice graphical output to your cells, and will ensure that CoNuS integrates well with the Jupyter notebook. Once you have created a model definition, you will use your simulator interface to run and fetch results like this:
-```scala
-sim.evaluate(myModel)
-sim.getResults(myModel)
-sim.save(myModel)
-```
+This will add nice graphical output to your cells, and will ensure that CoNuS integrates well with the Jupyter notebook.
 
 ## Introduction to CoNuS
 
@@ -90,3 +85,12 @@ CoNuS offers the ability to define several possible initial model condition valu
 
 In Figure 2, a very simple example is provided. Two model variables each have two possible distinct initial values (a or b for model 1, c or d for model 2). With this user input, CoNuS will automatically create a model calculation space containing 4 different models that represent the possible combination of these initial conditions (Figure 2). The simulator will then run each model independently in parrallel, test the model output against the expected results (if they are provided) and calculate a root mean squared error (RSME) for each model, before storing all of the models into the simulator results for further querying by the user. This is done behind the scene using the <a href="https://doc.akka.io/docs/akka/current/typed/index.html">Akka Typed</a> framework. The ability to run multiple models in parrallel, and then assess the results of each one of them against a supplied 'truth' is one of the strenght of CoNuS.
 
+## A step by step example
+Here we will build a very simple model. In fact, this model is not just simple, it is simplistic! But it will help you understand the coding philosophy behind CoNuS. We will assume that you are using CoNuS from a [Jupyter Notebook with Almond.](#Using-CoNuS-within-a-Jupyter-Notebook). This is the easiest way to interact with CoNuS and we recommend using it. Of course, you can also use CoNuS in your IDE of choice: the library can be used to build applications, for instance, a highly optimised simulator for your favorite application domaine.
+
+The simulation we will build will try to predict rat population in a field. The field will be simulated as a 3x3 2D grid. This is a very small simulation but it serves as an illustration of what you could do with more complex problems.
+
+### Starting CoNuS
+Make sure you have followed [the instructions for importing the CoNuS dependencies in Almond](#Using-CoNuS-within-a-Jupyter-Notebook), all the way to the line that imports the most commonly needed classes into your notebook, and the creation of your simulator (which we have named 'sim' for convenience in our code). The first step is to reason about our modelling problem. In this case, we have the following two parameters at each step:
+- An initial rat population. For simplification we will assume that half of the population is male, half female
+- 
