@@ -88,9 +88,85 @@ In Figure 2, a very simple example is provided. Two model variables each have tw
 ## A step by step example
 Here we will build a very simple model. In fact, this model is not just simple, it is simplistic! But it will help you understand the coding philosophy behind CoNuS. We will assume that you are using CoNuS from a [Jupyter Notebook with Almond.](#Using-CoNuS-within-a-Jupyter-Notebook). This is the easiest way to interact with CoNuS and we recommend using it. Of course, you can also use CoNuS in your IDE of choice: the library can be used to build applications, for instance, a highly optimised simulator for your favorite application domaine.
 
-The simulation we will build will try to predict rat population in a field. The field will be simulated as a 3x3 2D grid. This is a very small simulation but it serves as an illustration of what you could do with more complex problems.
+The simulation we will build will try to predict rat population in a field. This is a very small simulation but it serves as an illustration of what you could do with more complex problems.
 
-### Starting CoNuS
-Make sure you have followed [the instructions for importing the CoNuS dependencies in Almond](#Using-CoNuS-within-a-Jupyter-Notebook), all the way to the line that imports the most commonly needed classes into your notebook, and the creation of your simulator (which we have named 'sim' for convenience in our code). The first step is to reason about our modelling problem. In this case, we have the following two parameters at each step:
-- An initial rat population. For simplification we will assume that half of the population is male, half female
-- 
+### Defining a very simple model
+Make sure you have followed [the instructions for importing the CoNuS dependencies in Almond](#Using-CoNuS-within-a-Jupyter-Notebook), all the way to the line that imports the most commonly needed classes into your notebook, and the creation of your simulator (which we have named 'sim' for convenience in our code). The first step is to reason about our modelling problem. 
+
+We will simulate a wheat field where the rats live: this will be represented by a 2D CoNuS grid. The grid has a dimension of 3x3 cells, and each grid cell is meant to represent  100x100 meters of a field. We initialize the model with values ranging from 2.0 to 6.0. These represent the population of rats living in each 100 sq meter of the field. 
+We will run the simulation for 10 time step, each time step represents one generation of rats. We assume a perfect parity between male and female rat, and we also assume that each couple will have 10 babies per generation. In addition, we will simulate a death rate between 0 to 0.9 (0 to 90% of the population), assigned randomly at each timestep and independently for each square. A major simplification is that each cell (square in the field) has its own rat population, there is no movement of rats in between the different grid cells.
+
+So the first thing is to decide what will be calculated: the rat population and the death rate. Both of these will vary throughout the steps of the model. In other words, they represent the state of the model and need to be represented as model variables.Enter the following in a cell of your notebook and press shift+return:
+
+```scala
+// In CoNuS, values that will be calculated are known as model variables. Let's set a few:
+val nbRats:ModelVariable[Int] = ModelVariable("Number of Rats",2,"Individuals") //Notice this is an Int
+val deathRate:ModelVariable[Double] = ModelVariable("Death rate",0.0,"%") //This is a double. CoNuS is type safe.
+
+// Let's initialise a variabe that sets the number of steps in our model:
+val numberOfSteps = 10
+
+// And let's create a function that, given a rat population and a deathRate, calculates a new population 
+
+def survivingRats(initialPopulation:Int, deathRate:Double): Int = {
+    initialPopulation-math.floor(initialPopulation.toDouble*deathRate).toInt
+}
+
+```
+Of course, Scala comments ('//') are optional and do not need to be typed. Because this is such as simple model, we are now ready to write the CoNuS code for the model:
+
+```scala
+// We will call our model 'ratPopulation'
+val ratPopulation = new SteppedModel(numberOfSteps,"Simplified rat population dynamics") //Notice that we give the number of steps, and a long name for the model as a string
+    .setGrid(3,3) // This sets the 2D grid, or a 3x3 = 9 cells grid. 
+    .defineMathematicalModel( // In this super simple model we do only two things at each step
+      deathRate =>> {(s:Step) => scala.util.Random.nextDouble()*0.9}, // calculate a death rate
+      nbRats =>> {(s:Step) => {survivingRats(nbRats(s-1)+(nbRats(s-1)/2*10),deathRate(s))}} // calcuate the nb rats
+    )
+    .defineInitialModelConditions( // Now we need to determine the inital size of the population at each model grid
+      PerCell(nbRats,List(
+        (List(2),Seq(0,0)), // This sets 1 unique value of 2 for cell 0,0. The other lines do the same, with different values for different grid coordinates
+        (List(2),Seq(0,1)),
+        (List(4),Seq(0,2)),
+        (List(4),Seq(1,0)),
+        (List(2),Seq(1,1)),
+        (List(6),Seq(1,2)),
+        (List(2),Seq(2,0)),
+        (List(4),Seq(2,1)),
+        (List(6),Seq(2,2)))))
+```
+That's it! The model is read to be run: we have defined two model variables, and a mathematical model that will be executed at each step. Notice the use of the 'step functions' in the mathematical model. A step function is define the following way:
+
+```scala
+val deathRateStepFunction[Step => Double] = (s:Step) => scala.util.Random.nextDouble()*0.9}, // calculate a death rate
+```
+Notice the step function signature: step functions in CoNuS are type safe. Using the letter 's' to designate the current step is convention, but you can subsitute any other variable name of your choice here. When defining your mathematical model, you assign to a model variable the value of your current step as follows:
+
+```scala
+nbRats =>> {(s:Step) => {survivingRats(nbRats(s-1)+(nbRats(s-1)/2*10),deathRate(s))}} // The '=>>' syntax means that the output of the step function needs to be 
+// assigned to step s for the nbRats model variable. You can query results as follows:
+{(s:Step) => nbRat(s)} // the value for the variable (in this case, an Int) for the current step (s)
+{(s:Step) => nbRat(s-1)} // the value for the variable (in this case, an Int) for the previous step (s-1)
+{(s:Step) => nbRat(s.i)} // the value for the variable (in this case, an Int) for initial step, i.e. step 0 of the model
+
+// You can also query earlier steps:
+{(s:Step) => nbRat(s-10)} // the value for the variable (in this case, an Int) for the 10th step before s. If this does not exist, the model will return step s.i by default.
+
+// but of course you cannot query future step results as these will not have been calculated. The following will raise an exception:
+{(s:Step) => nbRat(s+1)} // Won't compile!
+```
+
+It is important to realise that the order in which you define your mathematical model is important, as CoNuS will exectute each instruction line by line. For instance the following will crash at runtime:
+
+```scala
+// We will call our model 'ratPopulation'
+val ratPopulation = new SteppedModel(numberOfSteps,"Simplified rat population dynamics") //Notice that we give the number of steps, and a long name for the model as a string
+    .setGrid(3,3) // This sets the 2D grid, or a 3x3 = 9 cells grid. 
+    .defineMathematicalModel( // In this super simple model we do only two things at each step
+      nbRats =>> {(s:Step) => {survivingRats(nbRats(s-1)+(nbRats(s-1)/2*10),deathRate(s))}}, // You cannot use deathRate(s) as this has not been defined yet! 
+      deathRate =>> {(s:Step) => scala.util.Random.nextDouble()*0.9} // deathRate calculated after nbRats will cause an exeption
+    )
+```
+
+### Defining a very simple model
+Make sure you have followed [the instructions for importing the CoNuS dependencies in Almond](#Using-CoNuS-within-a-Jupyter-Notebook), all the way to the line that imports the most commonly needed classes into your notebook, and the creation of your simulator (which we have named 'sim' for convenience in our code). The first step is to reason about our modelling problem. 
