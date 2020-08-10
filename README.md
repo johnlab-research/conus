@@ -15,9 +15,12 @@ The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2
 
 ### The CoNuS modelling philosophy
 
-Stepwise simulation can be defined as the art of modeling a system and its changing states at discrete 'steps'. There is often (but not always) an implicit notion of time associated with the steps, as in each step represents a new time either later (forward models) or earlier (inverse models) in time.
+Stepwise simulation can be defined as the art of modeling a system and its changing states by dividing the modelling space into discrete 'steps'. There is often (but not always) an implicit notion of time associated with the steps, i.e. each step represents an increment in time to either later (forward models) or earlier (inverse models) time.
 
-Stepwise simulation is not new
+Stepwise simulation is a very general modelling approach that can be applied to any natural or manmade systems, such as for instance weather patterns, ocean circulation, population dynamic, financial markets, disease propagation, systems engineering, electrical grid supply and demand, to name just a fiew.
+
+Stwpwise simulation packages can be divided into two broad categories: professional packages and user code. Professional packages come with all the belts and whistles, they usually run on optimised code to maximize CPU/GPU efficiency with the most appropriate algorithm, and they typically have a nice GUI. However, professional code have their limitations too. They can be expensive, and as a user you have no control on the mathematical model used in your calculator. Also, only certain specific applications are possible with a given professional system: for instance, a stepwise simulator dedicated to model disease conrol will not be able to handle applications to weather patterns. So if a given dedicated code does not exist for your application, or if you want to slightly modify the modelling approach in your systen, chances are you won't be able to do it.
+
 
 ![CoNuS architecture](https://user-images.githubusercontent.com/25725554/89734485-39336900-da54-11ea-9a6b-8b5463bda7be.png)
 <b>Figure 1:</b> Architecture of CoNuS
