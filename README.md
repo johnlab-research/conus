@@ -140,17 +140,31 @@ That's it! The model is read to be run: we have defined two model variables, and
 ```scala
 val deathRateStepFunction[Step => Double] = (s:Step) => scala.util.Random.nextDouble()*0.9}, // calculate a death rate
 ```
-Notice the step function signature: step functions in CoNuS are type safe. Using the letter 's' to designate the current step is convention, but you can subsitute any other variable name of your choice here. When defining your mathematical model, you assign to a model variable the value of your current step as follows:
+So the following line in our previous model definition:
+```scala
+deathRate =>> {(s:Step) => scala.util.Random.nextDouble()*0.9}, // calculate a death rate
+```
+can also be replaced by this one now that we have defined our dethRatesStepFunction:
+```scala
+deathRate =>> deathRateStepFunction, // calculate a death rate
+```
+At runtime, CoNuS will extract the value from the model variable corresponding to the current step. Notice the step function signature: step functions in CoNuS are type safe. Using the letter 's' to designate the current step is convention, but you can subsitute any other variable name of your choice here. 
+
+When defining your mathematical model, you assign to a model variable the value of your current step as follows:
 
 ```scala
-nbRats =>> {(s:Step) => {survivingRats(nbRats(s-1)+(nbRats(s-1)/2*10),deathRate(s))}} // The '=>>' syntax means that the output of the step function needs to be 
-// assigned to step s for the nbRats model variable. You can query results as follows:
+nbRats =>> {(s:Step) => {survivingRats(nbRats(s-1)+(nbRats(s-1)/2*10),deathRate(s))}} 
+// The '=>>' syntax assigns the output of the step function for step s for the nbRats model variable. 
+
+//You can query results as follows:
 {(s:Step) => nbRat(s)} // the value for the variable (in this case, an Int) for the current step (s)
 {(s:Step) => nbRat(s-1)} // the value for the variable (in this case, an Int) for the previous step (s-1)
 {(s:Step) => nbRat(s.i)} // the value for the variable (in this case, an Int) for initial step, i.e. step 0 of the model
 
-// You can also query earlier steps:
-{(s:Step) => nbRat(s-10)} // the value for the variable (in this case, an Int) for the 10th step before s. If this does not exist, the model will return step s.i by default.
+// You can also query any earlier steps:
+{(s:Step) => nbRat(s-10)} 
+// the value for the variable (in this case, an Int) for the 10th step before s. 
+//If this does not exist, the model will return step s.i by default.
 
 // but of course you cannot query future step results as these will not have been calculated. The following will raise an exception:
 {(s:Step) => nbRat(s+1)} // Won't compile!
@@ -159,14 +173,59 @@ nbRats =>> {(s:Step) => {survivingRats(nbRats(s-1)+(nbRats(s-1)/2*10),deathRate(
 It is important to realise that the order in which you define your mathematical model is important, as CoNuS will exectute each instruction line by line. For instance the following will crash at runtime:
 
 ```scala
-// We will call our model 'ratPopulation'
-val ratPopulation = new SteppedModel(numberOfSteps,"Simplified rat population dynamics") //Notice that we give the number of steps, and a long name for the model as a string
-    .setGrid(3,3) // This sets the 2D grid, or a 3x3 = 9 cells grid. 
-    .defineMathematicalModel( // In this super simple model we do only two things at each step
-      nbRats =>> {(s:Step) => {survivingRats(nbRats(s-1)+(nbRats(s-1)/2*10),deathRate(s))}}, // You cannot use deathRate(s) as this has not been defined yet! 
+// This will not compile
+val ratPopulation = new SteppedModel(numberOfSteps,"Simplified rat population dynamics") 
+    .setGrid(3,3) //
+    .defineMathematicalModel(
+      nbRats =>> {(s:Step) => {survivingRats(nbRats(s-1)+(nbRats(s-1)/2*10),deathRate(s))}}, // You cannot use deathRate(s) defined on the next line!
       deathRate =>> {(s:Step) => scala.util.Random.nextDouble()*0.9} // deathRate calculated after nbRats will cause an exeption
     )
 ```
 
-### Defining a very simple model
-Make sure you have followed [the instructions for importing the CoNuS dependencies in Almond](#Using-CoNuS-within-a-Jupyter-Notebook), all the way to the line that imports the most commonly needed classes into your notebook, and the creation of your simulator (which we have named 'sim' for convenience in our code). The first step is to reason about our modelling problem. 
+### Running your model and querying results
+You are now ready to run your model. For this, you will use the simulator that you have defined earlier:
+```scala
+sim.evaluate(ratPopulation)
+```
+You will see a progress bar appear with the % completion indicated. On this model, this should take < 1 second. To query your results as html table in Jupyter do the following:
+```scala
+sim(ratPopulation) // will output a table of all models with their RSME. This will be 0 in your case as there are no calibration parameters
+sim(ratPopulation)(0) // will output a table the details of model #0
+sim(ratPopulation)(0)(5) // will output a table the details of step #5 of model #0
+```
+You can also save all of your model results as Excel spreadsheet by doing the following:
+```scala
+sim.save(ratPopulation)
+```
+This will save by default all of your models to the folder ~/conus/name-of-the-model/ . You can change the destination folder by entering the following:
+```scala
+sim.setUserDirectory("path to selected directory")
+```
+
+### Running multiple version of your model in parrallel
+You can easily modify the previous example to run multiple models in parrallel, and then output an RSME based on your selected criteria
+```scala
+val ratPopulation = new SteppedModel(numberOfSteps,"Simplified rat population dynamics")
+    .setGrid(3,3) // This sets the 2D grid, or a 3x3 = 9 cells grid. 
+    .defineMathematicalModel(
+      deathRate =>> {(s:Step) => scala.util.Random.nextDouble()*0.9}, 
+      nbRats =>> {(s:Step) => {survivingRats(nbRats(s-1)+(nbRats(s-1)/2*10),deathRate(s))}} 
+    )
+    .defineInitialModelConditions( // Now will illustrate how we can create multiple models
+      AllCells(deathRate, List(2.0, 12.3)), // Two possible initial death rates at all cells
+      PerCell(nbRats,List(
+        (List(2,4),Seq(0,0)), // This cell can have 2 different initial values, 2 or 4
+        (List(2),Seq(0,1)),
+        (List(4),Seq(0,2)),
+        (List(4),Seq(1,0)),
+        (List(2),Seq(1,1)),
+        (List(6),Seq(1,2)),
+        (List(2),Seq(2,0)),
+        (List(4),Seq(2,1)),
+        (List(6),Seq(2,2)))))
+     .defineCalibration(
+        nbRats.isEqualTo(9000).atCells(Seq(0,0)), //Will calculate an RSME based on the assumption that value at cell 0 needs to be exactly 9000
+        nbRats.isLessThan(10000).atCells(Seq(0,1)), //As long as the valus is <, the RSME is 0. Otherwise the error is calculated
+        d18OcalciteBulk.isBetween(min:5000, max:10000)) //Here we ensure that ALL cells are in between two values, or we calculate an RSME
+```
+If you run this new version of the model, you should see 4 models with various RSMEs. This will allow you to pick the model (and thus the model conditions) that match best your observations of the natural system.
