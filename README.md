@@ -21,6 +21,10 @@ Stepwise simulation is a very general modelling approach that can be applied to 
 
 Stwpwise simulation packages can be divided into two broad categories: professional packages and user code. Professional packages come with all the belts and whistles, they usually run on optimised code to maximize CPU/GPU efficiency with the most appropriate algorithm, and they typically have a nice GUI. However, professional code have their limitations too. They can be expensive, and as a user you have no control on the mathematical model used in your calculator. Also, only certain specific applications are possible with a given professional system: for instance, a stepwise simulator dedicated to model disease conrol will not be able to handle applications to weather patterns. So if a given dedicated code does not exist for your application, or if you want to slightly modify the modelling approach in your systen, chances are you won't be able to do it.
 
+At the opposite end of this approach is pure user code: you can choose the programming language of your choice (typically C/C++, MATLAB, Python...) and implement the entire system in this language. This means you will have complete control on the mathematical model applied in your simulator, but you will also be respondible for implementing the simulator, i.e. design a grid system for your simulator, design an event loop that will run through the  steps in your model one by one and store the state of your system at each simulation step, and of course, design the testing strategy that will allow you to assess how well your model has performed. In my experience as a researcher, this is very prone to error, inefficiency in executing your code, and of course, it means reinventing the wheel for each new problem you want to solve with a stepwise modelling approach.
+
+With CoNuS, you have an intermediate situation (Figure 1).
+
 
 ![CoNuS architecture](https://user-images.githubusercontent.com/25725554/89734485-39336900-da54-11ea-9a6b-8b5463bda7be.png)
 <b>Figure 1:</b> Architecture of CoNuS
