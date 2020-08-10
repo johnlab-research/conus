@@ -9,8 +9,7 @@ The latest version of the library is 0.2.3, running on Scala versions 2.12 and 2
   [CoNuS within a Jupyter Notebook](#using-conus-within-a-Jupyter-Notebook)
   
 <b>[Introduction to CoNuS](#Introduction-to-CoNuS)</b>   
-  [The CoNuS modelling philosophy](#the-conus-modelling-philosophy)
-  
+  [The CoNuS modelling philosophy](#the-conus-modelling-philosophy)  
   [CoNuS execution model and advantages of Scala](#CoNuS-execution-model-and-advantages-of-Scala)
   
 ## Quick starting guide 
