@@ -23,7 +23,7 @@ Stepwise simulation packages can be divided into two broad categories: professio
 
 At the opposite end of this approach is pure user code: you can choose the programming language of your choice (typically C/C++, MATLAB, Python...) and implement the entire system in this language. This means you will have complete control on the mathematical model applied in your simulator, but you will also be respondible for implementing the simulator, i.e. design a grid system for your simulator, design an event loop that will run through the  steps in your model one by one and store the state of your system at each simulation step, and of course, design the testing strategy that will allow you to assess how well your model has performed. In my experience as a researcher, this is very prone to error, inefficiency in executing your code, and of course, it means reinventing the wheel for each new problem you want to solve with a stepwise modelling approach.
 
-CoNuS offers an alternative model for running stepwise models (Figure 1(!conus-architecture)).
+CoNuS offers an alternative model for running stepwise models (Figure 1(#conus-architecture)).
 
 
 ![CoNuS architecture](https://user-images.githubusercontent.com/25725554/89734485-39336900-da54-11ea-9a6b-8b5463bda7be.png)
