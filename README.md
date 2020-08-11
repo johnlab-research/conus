@@ -232,8 +232,8 @@ val ratPopulation = new SteppedModel(numberOfSteps,"Simplified rat population dy
         (List(4),Seq(2,1)),
         (List(6),Seq(2,2)))))
      .defineCalibration(
-        nbRats.isEqualTo(9000).atCells(Seq(0,0)), //Will calculate an RSME based on the assumption that value at cell 0 needs to be exactly 9000
-        nbRats.isLessThan(10000).atCells(Seq(0,1)), //As long as the valus is <, the RSME is 0. Otherwise the error is calculated
-        d18OcalciteBulk.isBetween(min:5000, max:10000)) //Here we ensure that ALL cells are in between two values, or we calculate an RSME
+        nbRats.isEqualTo(9000).atCells(Seq(0,0)), //Will calculate an RSME based on the assumption that value at cell (0,0) needs to be exactly 9000
+        nbRats.isLessThan(10000).atCells(Seq(0,1)), //As long as the valus is <10000 at cell (0,1), the RSME is 0. Otherwise the RSME is calculated on the deviation from 10000
+        d18OcalciteBulk.isBetween(min:5000, max:10000)) //Here we ensure that ALL cells values are in between 5000 and 10000, or we calculate an RSME as a deviation from these
 ```
 If you run this new version of the model, you should see 4 models with various RSMEs. This will allow you to pick the model (and thus the model conditions) that match best your observations of the natural system.
